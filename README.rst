@@ -7,6 +7,7 @@ leveraging state-of-the-art co-registration methods and openly available dataset
 
 BigBrain is a singular dataset that offers a volumetric reconstruction of high-resolution cell-stained slices of a post mortem human brain.
 With BigBrainWarp, we aim provide to provide a centralised repository of resources and code to maximise the utility of BigBrain.
+
 * Centralised information on integration of BigBrain with multi-modal imaging
 * Simple scripts to perform nonlinear warping between spaces
 * Imaging-based maps in BigBrain space
