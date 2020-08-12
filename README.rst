@@ -3,7 +3,7 @@ BigBrainWarp
 ====================
 
 
-Hello BigBrain
+This repository provides tools and resources for multimodal integration with `Big Brain <https://bigbrain.loris.ca/main.php>`_, leveraging state-of-the-art co-registration methods and openly available datasets for in vivo structural and functional MRI, gene expression, receptor mapping, polarized light imaging, and intracranial electroencephalography.
 
 
 
