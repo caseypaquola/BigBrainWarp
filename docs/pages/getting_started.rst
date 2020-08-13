@@ -14,5 +14,5 @@ Dependencies
 
 We've included some small dependencies in this git Repo. In addition, 
 
-* For all transformations, MINC2 - http://www.bic.mni.mcgill.ca/ServicesSoftware/MINC
+* For all transformations, MINC2 - http://bic-mni.github.io/
 * For surface-based transformations, the CBIG git repo - https://github.com/ThomasYeoLab/CBIG
