@@ -16,3 +16,4 @@ We've included some small dependencies in this git Repo. In addition,
 
 * For all transformations, MINC2 - http://bic-mni.github.io/
 * For surface-based transformations, the CBIG git repo - https://github.com/ThomasYeoLab/CBIG
+* For surface-based transformations, MATLAB (tested on 19b, https://www.mathworks.com/products/matlab.html) 
