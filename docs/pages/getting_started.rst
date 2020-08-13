@@ -10,8 +10,9 @@ Getting Started
     <img src="https://github.com/OualidBenkarim/BigBrainWarp/blob/master/docs/tree_example.PNG" height="300px">
 
 Dependencies
------------
+**************
 
-We've included some small dependencies in this git Repo.
+We've included some small dependencies in this git Repo. In addition, 
 
-* For surface-based transformations, please also download https://github.com/ThomasYeoLab/CBIG
+* For all transformations, MINC2 - http://www.bic.mni.mcgill.ca/ServicesSoftware/MINC
+* For surface-based transformations, the CBIG git repo - https://github.com/ThomasYeoLab/CBIG
