@@ -43,3 +43,16 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
     
  
 .. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/iEEG_bigbrain.PNG
+
+
+Step 3: Label electrodes with BigBrain grey/white matter masks and cortical parcels
+**************************************************************
+
+
+
+
+Step 4: Map cortical electrodes to nearest surface vertex
+**************************************************************
+
+
+
