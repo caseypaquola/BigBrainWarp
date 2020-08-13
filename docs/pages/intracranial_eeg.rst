@@ -9,7 +9,7 @@ Step 1: Coordinates -> Volume
 *******************************
 Electrode channels locations are provided as a list of coordinates in MNI152 (specifcally, ICBM2009 nonlinear symmetric space). First, we project the channel locations into a MNI152 mask.
 
-.. code-block:: matlab
+.. code-block:: language
 
 % create empty volume using the icbm mask
 hdr = niftiinfo([bbwDir '/maps/mni152_space/mni_icbm152_t1_tal_nlin_sym_09c_mask.nii']);
