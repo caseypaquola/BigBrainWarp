@@ -13,6 +13,13 @@ With BigBrainWarp, we aim provide to provide a centralised repository of resourc
 * Imaging-based maps in BigBrain space
 * BigBrain-based maps in MNI152 space
 
+Getting Started
+-----------
+
+* Clone this repo to your local machine using `https://github.com/MICA-MNI/BigBrainWarp.git`
+* The keystone for the transformations is the work of Xiao et al., (2019). Go to `https://osf.io/xkqb3/` and download `HistTransformations/BigBrainHist-to-ICBM2009sym` as a zip
+* Unzip the BigBrainHist-to-ICBM2009sym.zip, move the folder into the top level of BigBrainWarp and rename the directory to `xfms`
+
 
 Support
 -----------
