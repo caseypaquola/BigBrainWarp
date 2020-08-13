@@ -24,6 +24,14 @@ Getting Started
 
     <img src="https://github.com/OualidBenkarim/BigBrainWarp/blob/master/docs/tree_example.PNG" height="300px">
 
+Dependencies
+-----------
+
+We've included some small dependencies in this git Repo.
+
+* For surface-based transformations, please also download https://github.com/ThomasYeoLab/CBIG
+
+
 Support
 -----------
 

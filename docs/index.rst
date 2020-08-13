@@ -12,6 +12,16 @@ utilise the cytoarchitectural information encoded in BigBrain. We aim to provide
 * BigBrain-based maps in MNI152 space
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Table of Contents:
+
+   pages/getting_started
+   pages/intracranial_eeg
+   pages/references
+   pages/funding
+   
+
 Authors
 -------
 
