@@ -8,3 +8,8 @@ Normal physiological activity of neuronal populations have been recorded with st
 
     <img src="https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/frauscher.2018.PNG" height="500px">
 
+
+Step 1: Coordinates -> Volume
+*******************************
+Electrode channels locations are provided as a list of coordinates in MNI152 (specifcally, ICBM2009 nonlinear symmetric space). First, we project the channel locations into a MNI152 mask.
+
