@@ -47,7 +47,7 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
 
 Step 3: Label electrodes with BigBrain grey/white matter masks and cortical parcels
 **************************************************************
-We'll use the classified BigBrain volumes (https://bigbrain.loris.ca/main.php?test_name=brainclassifiedvolumes&release=2015) to identify whether each channel is in grey or white matter. At the same time, we'll label each grey matter channel according to the aparc-aseg atlas. The authors of the iEEG atlas provide region names for each channel, which we can use to cross-reference the alignment of the channels following the transformation to BigBrain space.
+We'll use the classified BigBrain volumes (https://bigbrain.loris.ca/main.php?test_name=brainclassifiedvolumes&release=2015) to identify whether each channel is in grey or white matter. At the same time, we'll label each channel according to the Harvard-Oxford cortical and subcortical atlases. The authors of the iEEG atlas provide region names for each channel, so this can help us check the efficacy of the alignment.
 
 
 
