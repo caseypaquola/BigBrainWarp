@@ -33,5 +33,11 @@ Electrode channels locations are provided as a list of coordinates in MNI152 (sp
 Step 2: MNI152 -> BigBrain 
 *******************************
 
-Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to realign the MNI152 volume to BigBrain space.
+Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to realign the MNI152 volume to BigBrain space. The three-step procedure is contained in icbm_to_bigbrain.sh, which requires two arguments: the file name to be transformed and the path to the BigBrainWarp directory.
 
+.. code-block:: bash
+
+    bbwDir=/path/to/BigBrainWarp
+    sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp
+    
+ 
