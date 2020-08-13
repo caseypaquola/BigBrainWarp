@@ -38,6 +38,7 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
 .. code-block:: bash
 
     bbwDir=/path/to/BigBrainWarp
+    nii2mnc ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.nii ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.mnc
     sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp
     
  
