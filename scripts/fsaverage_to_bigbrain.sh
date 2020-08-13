@@ -16,7 +16,12 @@ rm -rf ${outName}_mni152.nii
 sh $bbwDir/scripts/icbm_to_bigbrain.sh ${outName}_mni152 $bbwDir
 mv ${outName}_mni152_bigbrain.mnc ${outName}_bigbrain.mnc
 
-volume_object_evaluate ${outName}_bigbrain.mnc $bbwDir/bigbrain_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
-volume_object_evaluate ${outName}_bigbrain.mnc $bbwDir/bigbrain_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
+if [ ${interp} = linear ]; then
+	voe_interp = linear
+elif [ ${interp} = nearest ]
+	voe_interp=nearest_neighbour
+fi
+volume_object_evaluate -${voe_interp} ${outName}_bigbrain.mnc $bbwDir/bigbrain_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
+volume_object_evaluate -${voe_interp} ${outName}_bigbrain.mnc $bbwDir/bigbrain_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
 
 
