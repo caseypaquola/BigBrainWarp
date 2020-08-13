@@ -22,7 +22,7 @@ Getting Started
 
 .. raw:: html
 
-    <img src="https://github.com/OualidBenkarim/BigBrainWarp/blob/master/docs/tree_example.PNG" height="100px">
+    <img src="https://github.com/OualidBenkarim/BigBrainWarp/blob/master/docs/tree_example.PNG" height="300px">
 
 Support
 -----------
