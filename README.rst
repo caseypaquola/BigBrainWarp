@@ -17,7 +17,7 @@ Getting Started
 -----------
 
 * Clone this repo to your local machine using `https://github.com/MICA-MNI/BigBrainWarp.git`
-* The keystone for the transformations is the work of Xiao et al., (2019). Go to `https://osf.io/xkqb3/` and download `HistTransformations/BigBrainHist-to-ICBM2009sym` as a zip
+* The keystone for the transformations is Xiao et al., (2019). Go to `https://osf.io/xkqb3/` and download `HistTransformations/BigBrainHist-to-ICBM2009sym` as a zip (sorry, they're too large to include in this repo)
 * Unzip the BigBrainHist-to-ICBM2009sym.zip, move the folder into the top level of BigBrainWarp and rename the directory to `xfms`
 
 
