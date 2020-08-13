@@ -43,3 +43,16 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
     
  
 .. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/iEEG_bigbrain.PNG
+
+
+Step 3: Label electrodes with BigBrain grey/white matter masks and cortical parcels
+**************************************************************
+We'll use the classified BigBrain volumes (https://bigbrain.loris.ca/main.php?test_name=brainclassifiedvolumes&release=2015) to identify whether each channel is in grey or white matter. At the same time, we'll label each channel according to the Harvard-Oxford cortical and subcortical atlases. The authors of the iEEG atlas provide region names for each channel, so this can help us check the efficacy of the alignment.
+
+
+
+Step 4: Map cortical electrodes to nearest surface vertex
+**************************************************************
+
+
+
