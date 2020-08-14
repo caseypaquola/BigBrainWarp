@@ -1,13 +1,13 @@
 Mapping an atlas of intracranial EEG to BigBrain space
 ======================================================
 
-Normal physiological activity of neuronal populations have been recorded with stereo-EEG electrodes and cortical grids/strips, and collated across 106 subjects to construct a atlaas of intracranial EEG with 1785 channels (Frauscher et al., 2018). The electrode traces and their positions (co-registered to MNI152) are provided as an open web resource (https://mni-open-ieegatlas.research.mcgill.ca). Here, we aim to adjust the coordinates of the electrodes to BigBrain space to facilitate complementary histological analyses.
+Normal physiological activity of neuronal populations have been recorded with stereo-EEG electrodes and cortical grids/strips, and collated across 106 subjects to construct an atlas of intracranial EEG with 1772 channels (`Frauscher et al., 2018 <https://academic.oup.com/brain/article/141/4/1130/4915909>`_). Channel signals and their positions (co-registered to MNI152) are provided as an `open web resource <https://mni-open-ieegatlas.research.mcgill.ca>`_. Here, we aim to adjust the coordinates of the channels to BigBrain space to facilitate complementary histological analyses.
 
 .. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/frauscher.2018.PNG
 
 Step 1: Coordinates -> Volume
 *******************************
-Electrode channels locations are provided as a list of coordinates in MNI152 (specifcally, ICBM2009 nonlinear symmetric space). First, we project the channel locations into a MNI152 mask.
+Bipolar channel locations are provided as a list of coordinates in MNI152 (specifcally, ICBM2009 nonlinear symmetric space). First, we project the channel locations into a MNI152 mask.
 
 .. code-block:: matlab
 
@@ -42,3 +42,17 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
     sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp
     
  
+.. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/iEEG_bigbrain.PNG
+
+
+Step 3: Label electrodes with BigBrain grey/white matter masks and cortical parcels
+**************************************************************
+We'll use the classified BigBrain volumes to identify whether each channel is in grey or white matter (download Histological Space, Full Classified Volume, 100um, MNC, from https://bigbrain.loris.ca/main.php?test_name=brainclassifiedvolumes&release=2015, "full_cls_100um.mnc"). At the same time, we'll label each channel according to the Harvard-Oxford cortical and subcortical atlases (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases). The authors of the iEEG atlas provide region names for each channel, so this can help us check the efficacy of the alignment.
+
+
+
+Step 4: Map cortical electrodes to nearest surface vertex
+**************************************************************
+
+
+
