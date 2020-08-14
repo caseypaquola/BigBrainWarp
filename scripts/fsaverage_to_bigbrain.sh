@@ -9,19 +9,23 @@ outName=$4
 bbwDir=$5
 cbigDir=$6
 
+export MATLABPATH=$MATLABPATH:$bbwDir
 matlab19b -r 'wrapper_fsaverage2mni("'${lh_input}'", "'${rh_input}'", "'${interp}'", "'${outName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
 nii2mnc ${outName}_mni152.nii ${outName}_mni152.mnc
 rm -rf ${outName}_mni152.nii
 
 sh $bbwDir/scripts/icbm_to_bigbrain.sh ${outName}_mni152 $bbwDir
-mv ${outName}_mni152_bigbrain.mnc ${outName}_bigbrain.mnc
+mnc2nii ${outName}_mni152_bigbrain.mnc ${outName}_bigbrain.nii
+rm -rf ${outName}_mni152_bigbrain.mnc
+fslmaths ${outName}_bigbrain.nii -dilD -dilD -dilD -dilD -dilD ${outName}_bigbrain_dilated.nii
+nii2mnc ${outName}_bigbrain_dilated.nii ${outName}_bigbrain_dilated.mnc
 
 if [ ${interp} = linear ]; then
 	voe_interp = linear
 elif [ ${interp} = nearest ]
 	voe_interp=nearest_neighbour
 fi
-volume_object_evaluate -${voe_interp} ${outName}_bigbrain.mnc $bbwDir/bigbrain_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
-volume_object_evaluate -${voe_interp} ${outName}_bigbrain.mnc $bbwDir/bigbrain_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
+volume_object_evaluate -${voe_interp} ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrain_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
+volume_object_evaluate -${voe_interp} ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrain_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
 
 

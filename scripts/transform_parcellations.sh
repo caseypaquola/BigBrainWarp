@@ -20,9 +20,8 @@ for parc in vosdewael_100 vosdewael_200 vosdewael_300 vosdewael_400 schaefer_100
 		nearest \
 		$bbwDir/maps/mni152_space/parcellations/${parc} \
 		$bbwDir $cbigDir
-
-	mv $bbwDir/maps/mni152_space/parcellations/${parc}_bigbrain.mnc $bbwDir/maps/bigbrain_space/parcellations/${parc}_bigbrain.mnc
 done
+
 
 
 
