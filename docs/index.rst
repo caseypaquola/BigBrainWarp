@@ -17,6 +17,7 @@ utilise the cytoarchitectural information encoded in BigBrain. We aim to provide
    :caption: Table of Contents:
 
    pages/getting_started
+   pages/data_descriptor
    pages/intracranial_eeg
    pages/references
    pages/funding
