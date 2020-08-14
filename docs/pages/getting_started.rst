@@ -14,5 +14,5 @@ Dependencies
 
 We've included some small dependencies in the github repository. In addition, 
 
-* For all transformations, MINC2 - http://bic-mni.github.io/
-* For surface-based transformations, the CBIG git repo - https://github.com/ThomasYeoLab/CBIG and MATLAB (tested on 19b, https://www.mathworks.com/products/matlab.html)
+* For all transformations, MINC2 (http://bic-mni.github.io/) and FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
+* For surface-based transformations, the CBIG git repo (https://github.com/ThomasYeoLab/CBIG) and MATLAB (tested on 19b, https://www.mathworks.com/products/matlab.html)
