@@ -3,7 +3,13 @@ Mapping an atlas of intracranial EEG to BigBrain space
 
 Normal physiological activity of neuronal populations have been recorded with stereo-EEG electrodes and cortical grids/strips, and collated across 106 subjects to construct an atlas of intracranial EEG with 1772 channels (`Frauscher et al., 2018 <https://academic.oup.com/brain/article/141/4/1130/4915909>`_). Channel signals and their positions (co-registered to MNI152) are provided as an `open web resource <https://mni-open-ieegatlas.research.mcgill.ca>`_. Here, we aim to adjust the coordinates of the channels to BigBrain space to facilitate complementary histological analyses.
 
-.. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/frauscher.2018.PNG
+.. figure:: ./images/frauscher.2018.PNG
+   :height: 350px
+   :align: center
+   
+   Positioning and classification of channels from Frauscher et al., (2018)
+
+
 
 Step 1: Coordinates -> Volume
 *******************************
@@ -33,21 +39,30 @@ Bipolar channel locations are provided as a list of coordinates in MNI152 (speci
 Step 2: MNI152 -> BigBrain 
 *******************************
 
-Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to realign the MNI152 volume to BigBrain space. The three-step procedure is contained in icbm_to_bigbrain.sh, which requires two arguments: the file name to be transformed and the path to the BigBrainWarp directory.
+Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to realign the MNI152 volume to BigBrain space. The three-step procedure is contained in icbm_to_bigbrain.sh, which requires three arguments: the file name to be transformed, the path to the BigBrainWarp directory and the type of interpolation.
 
 .. code-block:: bash
 
     bbwDir=/path/to/BigBrainWarp
     nii2mnc ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.nii ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.mnc
-    sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp
+    sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp nearest_neighbour
     
- 
-.. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/iEEG_bigbrain.PNG
+
+.. image:: ./images/iEEG_bigbrain.PNG
+   :height: 350px
+   :align: center
 
 
 Step 3: Label electrodes with BigBrain grey/white matter masks and cortical parcels
 **************************************************************
-We'll use the classified BigBrain volumes to identify whether each channel is in grey or white matter (download Histological Space, Full Classified Volume, 100um, MNC, from https://bigbrain.loris.ca/main.php?test_name=brainclassifiedvolumes&release=2015, "full_cls_100um.mnc"). At the same time, we'll label each channel according to the Harvard-Oxford cortical and subcortical atlases (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases). The authors of the iEEG atlas provide region names for each channel, so this can help us check the efficacy of the alignment.
+We'll use the classified BigBrain volumes to identify whether each channel is in grey or white matter; `full_cls_1000um.mnc <https://bigbrain.loris.ca/main.php?test_name=brainclassifiedvolumes&release=2015>`_. We'll also label each channel according to the `Harvard-Oxford cortical and subcortical atlases <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases>`_. The authors of the iEEG atlas provide region names for each channel, so this can help us check the efficacy of the alignment. We take the `world-coordinate <http://www.bic.mni.mcgill.ca/software/minc/minc2_uguide/node22.html>`_ of each channel from the iEEG volume and sample the intensity in the classified volume and Harvard-Oxford atlas (transformed to BigBrain space), then write these values to a series of text files. 
+
+.. code-block:: bash
+
+   # for example, how to sample the intensities from the classified volume
+   sh sample_iEEG_channel_intensities.sh full_cls_1000um cls /path/to/BigBrainWarp
+   
+
 
 
 
