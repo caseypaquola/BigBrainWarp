@@ -1,5 +1,5 @@
-Welcome to BigBrainWrap's documentation!
-========================================
+BIG BRAIN WARP - Multi-modal Integration of Big Brain
+================================================================================
 
 *BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
 cell-stained slices of a post mortem human brain. BigBrainWarp provides approaches to 
