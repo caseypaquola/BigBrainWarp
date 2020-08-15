@@ -2,7 +2,7 @@
 BigBrainWarp
 ====================
 
-This repository provides tools and resources for multimodal integration with `Big Brain <https://bigbrain.loris.ca/main.php>`_, 
+This repository provides tools and resources for multimodal integration with `BigBrain <https://bigbrain.loris.ca/main.php>`_, 
 leveraging state-of-the-art co-registration methods and openly available datasets for in vivo structural and functional MRI, gene expression, receptor mapping, polarized light imaging, and intracranial electroencephalography.
 
 BigBrain is a singular dataset that offers a volumetric reconstruction of high-resolution cell-stained slices of a post mortem human brain.
