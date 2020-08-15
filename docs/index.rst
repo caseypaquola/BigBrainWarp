@@ -12,7 +12,7 @@ utilise the cytoarchitectural information encoded in BigBrain.*
 We aim to provide:
 
 * Centralised information on integration of BigBrain with multi-modal imaging
-* Simple scripts to perform nonlinear warping between spaces
+* Simple modular scripts to perform nonlinear warping between spaces, that readily accomodate ongoing methodological advances
 * Imaging-based maps in BigBrain space
 * BigBrain-based maps in MNI152 space
 
