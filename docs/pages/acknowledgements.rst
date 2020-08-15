@@ -5,13 +5,15 @@ This project is supported by HIBALL (Helmholtz International BigBrain Analytics 
 
 
 .. image:: ./images/logo-hiball.png
-   :scale: 30%
+   :height: 100px
    :align: centre
+
 
 
 .. image:: ./images/logo-neuro.png
    :scale: 30%
    :align: centre
+
 
 
 .. image:: ./images/logo-julich.png
