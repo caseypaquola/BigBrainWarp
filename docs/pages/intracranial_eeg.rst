@@ -63,9 +63,12 @@ We'll use the classified BigBrain volumes to identify whether each channel is in
    sh sample_iEEG_channel_intensities.sh full_cls_1000um cls /path/to/BigBrainWarp
    
 
-.. image:: ./images/iEEG_channel_table.PNG
+.. figure:: ./images/iEEG_channel_table.PNG
    :height: 200px
    :align: center
+   
+   The cross-reference table shows an overlap in the regional labels of the channels pre and post transformation.
+   Some channels, however, fall outside of BigBrain, showing the possiblity of further improvment of the algorithm.
 
 
 Step 4: Map cortical electrodes to nearest surface vertex
