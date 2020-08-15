@@ -6,7 +6,7 @@ Getting Started
 * Unzip the BigBrainHist-to-ICBM2009sym.zip, move the folder into the top level of BigBrainWarp and rename the directory to `xfms`, like so:
 
 .. image:: ./images/tree_example.PNG
-   :height: 200
+   :height: 200px
    :align: left
 
 Dependencies
@@ -14,5 +14,5 @@ Dependencies
 
 We've included some small dependencies in the github repository. In addition, 
 
-* For all transformations, MINC2 (http://bic-mni.github.io/) and FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
-* For surface-based transformations, the CBIG git repo (https://github.com/ThomasYeoLab/CBIG) and MATLAB (tested on 19b, https://www.mathworks.com/products/matlab.html)
+* All transformations require MINC2 (http://bic-mni.github.io/) and FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
+* Surface-based transformations require the CBIG github repository (https://github.com/ThomasYeoLab/CBIG) and MATLAB (tested on 19b, https://www.mathworks.com/products/matlab.html)
