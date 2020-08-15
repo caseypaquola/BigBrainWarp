@@ -20,8 +20,12 @@ export MATLABPATH=$MATLABPATH:$bbwDir/scripts
 # precise interpolation method for minc
 if [ ${interp} = linear ]; then
 	mnc_interp=trilinear
+	voe_interp=linear
+	dil=dilM # dilation of mean
 elif [ ${interp} = nearest ] ; then
 	mnc_interp=nearest_neighbour
+	voe_interp=nearest_neighbour
+	dil=dilD # dilation of mode
 fi
 
 # transform from mni152 to bigbrain volume space
@@ -33,12 +37,13 @@ export PATH=/data_/mica1/01_programs/minc2/:$PATH
 #mnc2nii ${outName}_mni152_bigbrain.mnc ${outName}_bigbrain.nii
 
 # dilate the volume in bigbrain space to ensure the whole cortical ribbon is covered
-#fslmaths ${outName}_bigbrain.nii -dilD -dilD -dilD -dilD -dilD ${outName}_bigbrain_dilated.nii
-#gunzip ${outName}_bigbrain_dilated.nii.gz
-#nii2mnc ${outName}_bigbrain_dilated.nii ${outName}_bigbrain_dilated.mnc
+fslmaths ${outName}_bigbrain.nii -abs -thr 0.001 -bin -mul ${outName}_bigbrain.nii ${outName}_bigbrain_thresh.nii
+fslmaths ${outName}_bigbrain_thresh.nii -$dil -$dil -$dil -$dil -$dil ${outName}_bigbrain_dilated.nii
+gunzip ${outName}_bigbrain_dilated.nii.gz
+nii2mnc ${outName}_bigbrain_dilated.nii ${outName}_bigbrain_dilated.mnc
 
 # sample parcellation values from the cortical midsurface
-volume_object_evaluate -linear ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrain_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
-volume_object_evaluate -linear ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrain_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
+volume_object_evaluate -$voe_linear ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrain_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
+volume_object_evaluate -$voe_linear ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrain_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
 
 
