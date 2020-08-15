@@ -4,7 +4,7 @@ Mapping an atlas of intracranial EEG to BigBrain space
 Normal physiological activity of neuronal populations have been recorded with stereo-EEG electrodes and cortical grids/strips, and collated across 106 subjects to construct an atlas of intracranial EEG with 1772 channels (`Frauscher et al., 2018 <https://academic.oup.com/brain/article/141/4/1130/4915909>`_). Channel signals and their positions (co-registered to MNI152) are provided as an `open web resource <https://mni-open-ieegatlas.research.mcgill.ca>`_. Here, we aim to adjust the coordinates of the channels to BigBrain space to facilitate complementary histological analyses.
 
 .. image:: ./images/frauscher.2018.PNG
-   :height: 400px
+   :height: 100px
    :align: center
 
 
