@@ -6,6 +6,9 @@ Normal physiological activity of neuronal populations have been recorded with st
 .. image:: ./images/frauscher.2018.PNG
    :height: 350px
    :align: center
+   
+   Positioning and classification of channels from Frauscher et al., (2018)
+
 
 
 Step 1: Coordinates -> Volume
