@@ -3,7 +3,10 @@ Mapping an atlas of intracranial EEG to BigBrain space
 
 Normal physiological activity of neuronal populations have been recorded with stereo-EEG electrodes and cortical grids/strips, and collated across 106 subjects to construct an atlas of intracranial EEG with 1772 channels (`Frauscher et al., 2018 <https://academic.oup.com/brain/article/141/4/1130/4915909>`_). Channel signals and their positions (co-registered to MNI152) are provided as an `open web resource <https://mni-open-ieegatlas.research.mcgill.ca>`_. Here, we aim to adjust the coordinates of the channels to BigBrain space to facilitate complementary histological analyses.
 
-.. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/frauscher.2018.PNG
+.. image:: ./images/frauscher.2018.PNG
+   :scale: 70%
+   :align: center
+
 
 Step 1: Coordinates -> Volume
 *******************************
@@ -41,8 +44,10 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
     nii2mnc ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.nii ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.mnc
     sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp
     
- 
-.. image:: https://github.com/OualidBenkarim/BigBrainWarp/blob/master/images/iEEG_bigbrain.PNG
+
+.. image:: ./images/frauscher.2018.PNG
+   :scale: 70%
+   :align: center
 
 
 Step 3: Label electrodes with BigBrain grey/white matter masks and cortical parcels

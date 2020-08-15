@@ -5,9 +5,9 @@ Getting Started
 * The keystone for the transformations is Xiao et al., (2019). Go to `https://osf.io/xkqb3/` and download `HistTransformations/BigBrainHist-to-ICBM2009sym` as a zip
 * Unzip the BigBrainHist-to-ICBM2009sym.zip, move the folder into the top level of BigBrainWarp and rename the directory to `xfms`, like so:
 
-.. raw:: html
-
-    <img src="https://github.com/OualidBenkarim/BigBrainWarp/blob/master/docs/tree_example.PNG" height="300px">
+.. image:: ./images/tree_example.PNG
+   :scale: 70%
+   :align: left
 
 Dependencies
 **************
