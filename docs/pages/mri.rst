@@ -19,8 +19,8 @@ Transformations for surface-based data
 
 We've devised a standard procedure to transform data from fsaverage to the BigBrain surface. This involves:
 
-i) fsaverage surface to MNI152 volume using the Xu et al., technique
-ii) Nonlinear transformation from MNI152 to BigBrain volume using an inverted version of the Xiao et al., technique
+i) fsaverage surface to MNI152 volume using the Wu et al., (2018) technique
+ii) Nonlinear transformation from MNI152 to BigBrain volume using an inverted version of the Xiao et al., (2019) technique
 iii) Sample the parcellation labels along the BigBrain midsurface
 
 This may be accomplished using the following script and works on common freesurfer formats (.annot, .thickness, .curv) and gifti. 
@@ -40,7 +40,5 @@ Using the above procedure, we transformed MRI-derived functional and microstruct
    :align: center
    
    Gradient of microstructural gradient on fsaverage5 (above) and BigBrain (below)
-
-
-
+   
 
