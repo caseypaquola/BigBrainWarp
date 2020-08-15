@@ -8,7 +8,9 @@ sampleImage=$1  # .mnc image in bigbrain space to sample intensity from (don't i
 outName=$2 	# a tag to name the output text files
 bbwDir=$3 	# /path/to/BigBrainWarp
 
-for ii in `seq 1 1 1172` ; do
+rm -rf $bbwDir/maps/bigbrain_space/iEEG_channels_${outName}_coord.txt
+rm -rf $bbwDir/maps/bigbrain_space/iEEG_channels_${outName}.txt
+for ii in `seq 1 1 1772` ; do
 	world_com=`mincstats -CoM -world_only -binvalue $ii $bbwDir/maps/bigbrain_space/iEEG_channels_bigbrain.mnc`;
 	worldtovoxel $sampleImage.mnc ${world_com##*: } >> $bbwDir/maps/bigbrain_space/iEEG_channels_${outName}_coord.txt
 done
