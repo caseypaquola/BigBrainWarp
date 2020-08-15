@@ -27,6 +27,8 @@ iii) Sample the parcellation labels along the BigBrain midsurface
 
 For the Desikan-Killany atlas, this provides the following result:
 
-
+.. figure:: ./images/aparc_parcellation.png
+   :height: 200px
+   :align: center
 
 In this manner we may match the cytoarchitectural features with gene expression from the AHBA.
