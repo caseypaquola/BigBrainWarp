@@ -6,8 +6,8 @@ Getting Started
 * Unzip BigBrainHist-to-ICBM2009sym, move the folder into the top level of BigBrainWarp and rename the directory to `xfms`, like so:
 
 .. image:: ./images/tree_example.PNG
-   :height: 200px
-   :align: left
+   :height: 250px
+   :align: centre
 
 
 
