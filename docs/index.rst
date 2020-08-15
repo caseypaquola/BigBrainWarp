@@ -1,10 +1,15 @@
 Welcome to BigBrainWrap's documentation!
 ========================================
 
-BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
+*BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
 cell-stained slices of a post mortem human brain. BigBrainWarp provides approaches to 
 transform from histological to MNI152 space to help a wide range of neuroscientistists 
-utilise the cytoarchitectural information encoded in BigBrain. We aim to provide:
+utilise the cytoarchitectural information encoded in BigBrain.*
+
+[ insert figure / video here ]
+
+
+We aim to provide:
 
 * Centralised information on integration of BigBrain with multi-modal imaging
 * Simple scripts to perform nonlinear warping between spaces
@@ -19,6 +24,7 @@ utilise the cytoarchitectural information encoded in BigBrain. We aim to provide
    pages/getting_started
    pages/data_descriptor
    pages/intracranial_eeg
+   pages/gene_expression
    pages/references
    pages/acknowledgements
    
@@ -30,7 +36,6 @@ Authors
 * Jessica Royer, MICA Lab - Montreal Neurological Institute
 * Oualid Benkarim, MICA Lab - Montreal Neurological Institute
 * Boris Bernhardt, MICA Lab - Montreal Neurological Institute
-
 
 
 Support
