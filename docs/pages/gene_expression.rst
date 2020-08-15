@@ -1,7 +1,7 @@
 Gene expression across BigBrain
 ======================================================
 
-With increasing availablity of gene expression maps of the human brain, such as the Allen Human Brain Atlas (AHBA), we may investigate the spatial variation of transcriptomics in relation the cytoarchitectural information provided by BigBrain.  
+With increasing availablity of gene expression maps of the human brain, such as the Allen Human Brain Atlas [AHBA; Hawrylycz et al., (2012)], we may investigate the spatial variation of transcriptomics in relation the cytoarchitectural information provided by BigBrain.  
 
 
 
@@ -21,8 +21,8 @@ Step 2: Parcellate the BigBrain cortical surface
 
 We've devised a standard procedure to transform a parcellation scheme from fsaverage to the BigBrain surface. This involves:
 
-i) fsaverage surface to MNI152 volume using the Xu et al., technique
-ii) Nonlinear transformation from MNI152 to BigBrain volume using an inverted version of the Xiao et al., technique
+i) fsaverage surface to MNI152 volume using the Wu et al., (2018) technique
+ii) Nonlinear transformation from MNI152 to BigBrain volume using an inverted version of the Xiao et al., (2019) technique
 iii) Sample the parcellation labels along the BigBrain midsurface
 
 .. figure:: ./images/aparc_parcellation.png
