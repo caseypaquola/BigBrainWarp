@@ -63,7 +63,7 @@ We'll use the classified BigBrain volumes to identify whether each channel is in
    sh sample_iEEG_channel_intensities.sh full_cls_1000um cls /path/to/BigBrainWarp
    
 
-.. image:: ./images/iEEG_channels_table.PNG
+.. image:: ./images/iEEG_channel_table.PNG
    :height: 200px
    :align: center
 
