@@ -25,10 +25,10 @@ i) fsaverage surface to MNI152 volume using the Xu et al., technique
 ii) Nonlinear transformation from MNI152 to BigBrain volume using an inverted version of the Xiao et al., technique
 iii) Sample the parcellation labels along the BigBrain midsurface
 
-For the Desikan-Killany atlas, this provides the following result:
-
 .. figure:: ./images/aparc_parcellation.png
-   :height: 200px
+   :height: 300px
    :align: center
+   
+   For example, the Desikan-Killany atlas on fsaverage5 (above) and BigBrain (below)
 
 In this manner we may match the cytoarchitectural features with gene expression from the AHBA.
