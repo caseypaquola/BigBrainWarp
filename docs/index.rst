@@ -1,4 +1,4 @@
-BIG BRAIN WARP - Multi-modal Integration of Big Brain
+BIG BRAIN WARP
 ================================================================================
 
 *BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
