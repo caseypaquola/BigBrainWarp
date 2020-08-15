@@ -1,4 +1,4 @@
-**Big Brain Warp** - Multimodal integration of BigBrain
+Big Brain Warp
 ================================================================================
 
 *BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
