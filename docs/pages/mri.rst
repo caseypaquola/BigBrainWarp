@@ -1,4 +1,4 @@
-Bringing BigBrain to MRI, and back
+Bridging BigBrain and MRI
 ======================================================
 
 Understanding the histological underpinnings of imaging-based differences can greatly enhance our understanding of neuroanatomy. 
