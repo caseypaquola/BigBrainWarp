@@ -2,13 +2,13 @@ Data Descriptor
 ==================
 
 * *maps: subdivided by standard space*
-	* parcellations
+	* *parcellations*
 		* aparc: Desikan-Killany, originally on fsaverage
 		* vosdewael: subdivision of the Desikan-Killany atlas in 100-400 nodes, originally on fsaverage
 		* schaefer: 7 network versions with 100-400 nodes, originally on fsaverage
 		* glasser: HCP-MMP1, originally on fsaverage
 		* Harvard-Oxford: fsl5.0 implementation, originally in MNI152
-	* G1_mpc: first principle gradient of microstructural differentitation acquired with quantitative T1 imaging (Paquola et al., 2019)
+	* *G1_mpc*: first principle gradient of microstructural differentitation acquired with quantitative T1 imaging (Paquola et al., 2019)
 * *bigbrain_surfaces*
 	* grey/white: original BigBrain surfaces in histological space (Amunts et al. 2013)
 	* layer 1/4: histologically verified surfaces at the layer I/II boundary and within layer IV (Wagstyl et al., 2018)
