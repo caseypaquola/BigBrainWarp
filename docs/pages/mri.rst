@@ -39,6 +39,6 @@ Using the above procedure, we transformed MRI-derived functional and microstruct
    :height: 300px
    :align: center
    
-   Gradient of microstructural gradient on fsaverage5 (above) and BigBrain (below)
+   Gradient of microstructural similarity on fsaverage5 (above) and BigBrain (below)
    
 
