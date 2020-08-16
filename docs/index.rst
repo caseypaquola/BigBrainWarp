@@ -7,6 +7,7 @@ transform from histological to MNI152 space to help a wide range of neuroscienti
 utilise the cytoarchitectural information encoded in BigBrain.*
 
 .. image:: ./pages/images/transformation.gif
+   :height: 250px
    :align: center
 
 
