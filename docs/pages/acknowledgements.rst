@@ -5,7 +5,7 @@ This project is supported by HIBALL (Helmholtz International BigBrain Analytics 
 
 .. figure:: ./images/logo-hiball.png
    :height: 100px
-   :align: centre
+   :align: center
 
 
 The work is conducted through a collaboration of researchers at the Neuro and JÃ¼lich Forschungszentrum.
@@ -13,9 +13,9 @@ The work is conducted through a collaboration of researchers at the Neuro and JÃ
 
 .. figure:: ./images/logo-neuro.png
    :height: 100px
-   :align: centre
+   :align: center
 
 
 .. figure:: ./images/logo-julich.png
    :height: 100px
-   :align: centre
+   :align: center
