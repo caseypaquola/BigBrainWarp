@@ -6,7 +6,8 @@ cell-stained slices of a post mortem human brain. BigBrainWarp provides approach
 transform from histological to MNI152 space to help a wide range of neuroscientistists 
 utilise the cytoarchitectural information encoded in BigBrain.*
 
-[ insert figure / video here ]
+.. image:: ./pages/images/transformation.gif
+   :align: center
 
 
 We aim to provide:
