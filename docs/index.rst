@@ -1,4 +1,4 @@
-Big Brain Warp
+The Big Brain Warp
 ================================================================================
 
 *BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
