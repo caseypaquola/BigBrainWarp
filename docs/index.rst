@@ -10,7 +10,6 @@ utilise the cytoarchitectural information encoded in BigBrain.*
    :height: 250px
    :align: center
 
-
 We aim to provide:
 
 * Centralised information on integration of BigBrain with multi-modal imaging
@@ -24,6 +23,7 @@ We aim to provide:
    :caption: Table of Contents:
 
    pages/getting_started
+   pages/workflow
    pages/data_descriptor
    pages/mri
    pages/intracranial_eeg
