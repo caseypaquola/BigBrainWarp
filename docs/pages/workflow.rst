@@ -1,24 +1,24 @@
 Workflow
 ==================
 
-Multi-modal integration of BigBrain involves many moving parts. We aim to update modules as they become available. To start with, the general workflow between spaces follows:
+Multi-modal integration of BigBrain involves many moving parts. Here's a simple schema of the core transformations that are involved.
 
 .. image:: ./images/bbw_workflow/Slide1.PNG
-   :height: 400px
+   :height: 350px
    :align: center
 
-Breaking this down, the most simple scripts that trasnform between BigBrain and ICBM volumetric look like so:
+Upacking this further, the most simple scripts that transform between BigBrain and ICBM volumetric would follow the paths:
 
 .. image:: ./images/bbw_workflow/Slide2.PNG
-   :height: 400px
+   :height: 350px
    :align: center
 
 .. image:: ./images/bbw_workflow/Slide3.PNG
-   :height: 400px
+   :height: 350px
    :align: center
 
-Or perhaps you're interested in mapping a MRI-derived gradient from fsaverage to the BigBrain surface:
+In contrast, the conversion from fsaverage to the BigBrain surface, for example with an MRI-derived cortical gradient, follows the path:
 
 .. image:: ./images/bbw_workflow/Slide4.PNG
-   :height: 400px
+   :height: 350px
    :align: center
