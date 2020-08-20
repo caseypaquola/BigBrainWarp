@@ -1,10 +1,18 @@
 Acknowledgements
 ==================
 
-This project is supported by HIBALL (Helmholtz International BigBrain Analytics & Learning Labratory).
+We'd like to recognise the support of the Canadian Institutes of Health Research (CIHR), Fonds de la recherche en santé du Québec (FRQS) and Helmholtz International BigBrain Analytics & Learning Labratory (HIBALL).
+
+.. figure:: ./images/logo-cihr.jpeg
+   :height: 50px
+   :align: center
+
+.. figure:: ./images/logo-frqs.png
+   :height: 50px
+   :align: center
 
 .. figure:: ./images/logo-hiball.png
-   :height: 100px
+   :height: 50px
    :align: center
 
 
@@ -12,10 +20,10 @@ The work is conducted through a collaboration of researchers at the Neuro and J�
 
 
 .. figure:: ./images/logo-neuro.png
-   :height: 100px
+   :height: 50px
    :align: center
 
 
 .. figure:: ./images/logo-julich.png
-   :height: 100px
+   :height: 50px
    :align: center
