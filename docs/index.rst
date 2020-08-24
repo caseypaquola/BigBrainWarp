@@ -1,10 +1,8 @@
 The Big Brain Warp
 ================================================================================
 
-*BigBrain is singular dataset that offers a volumetric reconstruction of high-resolution 
-cell-stained slices of a post mortem human brain. BigBrainWarp provides approaches to 
-transform from histological to MNI152 space to help a wide range of neuroscientistists 
-utilise the cytoarchitectural information encoded in BigBrain.*
+*BigBrain is a singular dataset that offers a volumetric reconstruction of ultra-high-resolution cell-stained slices of a post mortem human brain. 
+BigBrainWarp provides for approaches to multi-modal integration of BigBrain by transforming between histological to MNI152 space, towards helping a wide range of neuroscientistists utilise the cytoarchitectural information encoded in BigBrain.*
 
 .. image:: ./pages/images/transformation.gif
    :height: 250px
