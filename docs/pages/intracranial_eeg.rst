@@ -77,7 +77,7 @@ Step 4: Map cortical electrodes to nearest surface vertex
 For each coordinate in the cortex, we then calculate the Euclidean distance to all midsurface vertices, and select the nearest one as the matched vertex.
 For such tasks, we have pre-computed a MNI space volume that the closest BigBrain midsurface vertex and the distance to that vertex. This was constructed by transforming midsurface vertices from BigBrain to MNI152 space, and results in the following maps.
 
-.. figure:: ./images/map_bbvert.PNG
+.. figure:: ./images/map_bbvert.png
    :height: 300px
    :align: center
 
