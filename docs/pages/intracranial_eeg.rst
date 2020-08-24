@@ -48,7 +48,7 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
     sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm sym nearest_neighbour $bbwWarp
     
 
-.. image:: ./images/iEEG_bigbrainsyn.PNG
+.. image:: ./images/iEEG_bigbrainsym.PNG
    :height: 350px
    :align: center
 
