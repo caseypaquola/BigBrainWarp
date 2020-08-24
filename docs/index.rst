@@ -12,6 +12,7 @@ We aim to provide:
 
 * Centralised information on integration of BigBrain with multi-modal imaging
 * Simple modular scripts to perform nonlinear warping between spaces, that readily accomodate ongoing methodological advances
+* Step-by-step examples of multi-modal integration with BigBrain
 * Imaging-based maps in BigBrain space
 * BigBrain-based maps in MNI152 space
 
