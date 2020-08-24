@@ -11,8 +11,10 @@ Transformations in volume space
 .. code-block:: bash
 
 	# Wrapper scripts for the nonlinear transformation procedure of Xiao et al., (2019)
-	sh bigbrain_to_icbm.sh file_name /path/to/BigBrainWarp interp_method
-	sh icbm_to_bigbrain.sh file_name /path/to/BigBrainWarp interp_method
+	# bb_space can be "histological" (involes 3-steps) or "sym" (involves 1-step)
+	# interp_method can be "linear" (recommended for smooth data) or "nearest_neighbour" (recommended for discrete data)
+	sh bigbrain_to_icbm.sh file_name bb_space interp_method /path/to/BigBrainWarp
+	sh icbm_to_bigbrain.sh file_name bb_space interp_method /path/to/BigBrainWarp
 
 Transformations for surface-based data
 ***************************************
