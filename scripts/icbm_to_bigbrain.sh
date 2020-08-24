@@ -12,11 +12,13 @@ bbwDir=$4		# /path/to/BigBrainWarp/
 
 
 /data_/mica1/01_programs/minc2/mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -$interp ${fileName}.mnc ${fileName}_nl.mnc
-if [[ $bbSpace=histological ]] ; then
+if [[ -z $bbSpace=histological ]] ; then
+	echo "transform to original BigBrain space"
 	/data_/mica1/01_programs/minc2/mincresample -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_nl.xfm -invert_transformation -tfm_input_sampling -$interp ${fileName}_nl.mnc ${fileName}_nl_nl.mnc
 	/data_/mica1/01_programs/minc2/mincresample -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_lin.xfm -invert_transformation -tfm_input_sampling -$interp ${fileName}_nl_nl.mnc ${fileName}_bigbrain.mnc
 else
-	mv ${fileName}_nl.mnc ${fileName}_bigbrain.mnc
-end
-rm -rf *nl.mnc
+	echo "transform to BigBrainSym"
+	mv ${fileName}_nl.mnc ${fileName}_bigbrainsym.mnc
+fi
+rm -rf ${fileName}*nl.mnc
 

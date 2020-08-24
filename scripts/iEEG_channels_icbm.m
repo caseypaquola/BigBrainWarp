@@ -2,7 +2,7 @@
 % populates a nifti volume with each channel from the atlas
 
 % create empty volume using the icbm mask
-hdr = niftiinfo([bbwDir '/maps/mni152_space/mni_icbm152_t1_tal_nlin_sym_09c_mask.nii']);
+hdr = niftiinfo([bbwDir '/spaces/mni152/mni_icbm152_t1_tal_nlin_sym_09c_mask.nii']);
 vol = zeros(hdr.ImageSize);
 
 % load channel coordinates

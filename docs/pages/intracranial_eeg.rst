@@ -45,10 +45,10 @@ Next, we use a three-step transformation procedure (2 nonlinear, 1 linear) to re
 
     bbwDir=/path/to/BigBrainWarp
     nii2mnc ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.nii ${bbwDir}/maps/mni152_space/iEEG_channels_icbm.mnc
-    sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm $bbwWarp nearest_neighbour
+    sh icbm_to_bigbrain.sh ${bbwDir}/maps/mni152_space/iEEG_channels_icbm sym nearest_neighbour $bbwWarp
     
 
-.. image:: ./images/iEEG_bigbrain.PNG
+.. image:: ./images/iEEG_bigbrainsym.PNG
    :height: 350px
    :align: center
 
@@ -73,6 +73,16 @@ We'll use the classified BigBrain volumes to identify whether each channel is in
 
 Step 4: Map cortical electrodes to nearest surface vertex
 **************************************************************
+
+For each coordinate in the cortex, we then calculate the Euclidean distance to all midsurface vertices, and select the nearest one as the matched vertex.
+For such tasks, we have pre-computed a MNI space volume that the closest BigBrainSym midsurface vertex and the distance to that vertex. This was constructed by transforming midsurface vertices from BigBrainSym to MNI152 space, and results in the following maps.
+
+.. figure:: ./images/map_bbvert.png
+   :height: 300px
+   :align: center
+
+   Left: distance from voxel to BigBrain midsurface vertex. Right: index of matched BigBrain vertex, with very distant voxels thresholded out for visual simpicity. 
+
 
 
 

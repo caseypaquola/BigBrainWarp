@@ -1,7 +1,8 @@
 Workflow
 ==================
 
-Multi-modal integration of BigBrain involves many moving parts. Here's a simple schema of the core transformations that are involved.
+Multi-modal integration of BigBrain involves many moving parts. Using extant publications and new scripts to bridge gaps, moving between the spaces follows this general schema: 
+
 
 .. image:: ./images/bbw_workflow/Slide1.PNG
    :height: 350px
