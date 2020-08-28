@@ -31,13 +31,21 @@ We aim to provide:
    pages/acknowledgements
    
 
-Authors
--------
+Acknowledgements
+------------------
 
-* Casey Paquola, MICA Lab - Montreal Neurological Institute
-* Jessica Royer, MICA Lab - Montreal Neurological Institute
-* Oualid Benkarim, MICA Lab - Montreal Neurological Institute
-* Boris Bernhardt, MICA Lab - Montreal Neurological Institute
+This project is conducted as part of the Helmholtz International BigBrain Analytics Learning Laboratory (HIBALL).
+
+.. image:: ./pages/images/logo-hibal.png
+   :height: 150px
+   :align: center
+
+The authors are:
+
+* Casey Paquola, MICA Lab, Montreal Neurological Institute
+* Jessica Royer, MICA Lab, Montreal Neurological Institute
+* Oualid Benkarim, MICA Lab, Montreal Neurological Institute
+* Boris Bernhardt, MICA Lab, Montreal Neurological Institute
 
 
 Support
