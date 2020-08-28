@@ -40,13 +40,14 @@ This project is conducted as part of the Helmholtz International BigBrain Analyt
    :height: 150px
    :align: center
 
-The authors are:
+Core development team:
 
 * Casey Paquola, MICA Lab, Montreal Neurological Institute
 * Jessica Royer, MICA Lab, Montreal Neurological Institute
 * Oualid Benkarim, MICA Lab, Montreal Neurological Institute
 * Boris Bernhardt, MICA Lab, Montreal Neurological Institute
 
+Please drop us a line if you're interested in contributing!
 
 Support
 -------
