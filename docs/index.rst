@@ -36,7 +36,7 @@ Acknowledgements
 
 This project is conducted as part of the Helmholtz International BigBrain Analytics Learning Laboratory (HIBALL).
 
-.. image:: ./pages/images/logo-hibal.png
+.. image:: ./pages/images/logo-hiball.png
    :height: 150px
    :align: center
 
