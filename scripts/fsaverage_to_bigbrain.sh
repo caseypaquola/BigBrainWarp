@@ -38,7 +38,7 @@ gunzip ${outName}_bigbrain_dilated.nii.gz
 nii2mnc ${outName}_bigbrain_dilated.nii ${outName}_bigbrain_dilated.mnc
 
 # sample parcellation values from the cortical midsurface
-volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrainsym_surfaces/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
-volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/bigbrainsym_surfaces/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
+volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/spaces/bigbrain/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
+volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/spaces/bigbrain/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
 
 
