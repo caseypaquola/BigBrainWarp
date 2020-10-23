@@ -19,7 +19,10 @@
   <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/saratheriver_tabs.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/saratheriver_enigma.css" type="text/css" />
+<<<<<<< HEAD
   <link rel="stylesheet" href="../../_static/css/saratheriver_nomaxwidth.css" type="text/css" />
+=======
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
   
   
@@ -46,7 +49,11 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Disease-related gene expression maps" href="../11.epilepsygenes/index.html" />
+<<<<<<< HEAD
     <link rel="prev" title="Epicenter mapping" href="../07.epicenter/index.html" /> 
+=======
+    <link rel="prev" title="Graph theory analyses" href="../09.gt/index.html" /> 
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </head>
 
 <body class="wy-body-for-nav">
@@ -71,6 +78,11 @@
             
           
 
+<<<<<<< HEAD
+=======
+          <script type="text/javascript" src="../../static/js/copybutton.js"></script>
+
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -108,6 +120,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../06.hubs/index.html">Hub susceptibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07.epicenter/index.html">Epicenter mapping</a></li>
 </ul>
+<<<<<<< HEAD
+=======
+<p class="caption"><span class="caption-text">Structural covariance networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../08.covariance/index.html">Structural covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09.gt/index.html">Graph theory analyses</a></li>
+</ul>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <p class="caption"><span class="caption-text">Gene expression</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gene expression data</a><ul>
@@ -123,8 +143,11 @@
 <p class="caption"><span class="caption-text">References &amp; acknowledgements</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../13.citeus/index.html">Citing the ENIGMA TOOLBOX</a></li>
+<<<<<<< HEAD
 <li class="toctree-l1"><a class="reference internal" href="../13.01.apireference/index.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13.02.apireferencematlab/index.html">Matlab API</a></li>
+=======
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <li class="toctree-l1"><a class="reference internal" href="../14.refs/index.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15.funding/index.html">Acknowledgements</a></li>
 </ul>
@@ -237,15 +260,24 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fetch gene expression data (output of fetch_ahba() is a dataframe)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">genes</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
 
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain region labels</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">genes</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain gene labels</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">genelabels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain the region labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">genes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As well as the gene labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genelabels</span> <span class="o">=</span> <span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Fetch gene expression data</span>
 <span class="n">genes</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
 
@@ -254,6 +286,13 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
 
 <span class="c">% Obtain gene labels</span>
 <span class="n">genelabels</span> <span class="p">=</span> <span class="n">genes</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Fetch gene expression data</span>
+<span class="p">[</span><span class="n">genes</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
@@ -273,7 +312,11 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
         <a href="../11.epilepsygenes/index.html" class="btn btn-neutral float-right" title="Disease-related gene expression maps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
+<<<<<<< HEAD
         <a href="../07.epicenter/index.html" class="btn btn-neutral float-left" title="Epicenter mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+=======
+        <a href="../09.gt/index.html" class="btn btn-neutral float-left" title="Graph theory analyses" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
       
     </div>
   

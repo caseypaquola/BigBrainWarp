@@ -1,6 +1,10 @@
 .. _funding:
 
+<<<<<<< HEAD
 .. title:: Thank you to our funders and collaborators! 💙
+=======
+.. title:: Thank you to our funders! 💙
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
 Acknowledgements
 ======================================
@@ -67,6 +71,7 @@ The authors would like to express their gratitude to the open science initiative
 We would also like to recognise funding support from the Canadian Institutes of Health Research (CIHR) and Fonds de la recherche en santé du Québec (FRQS).
 Core funding for ENIGMA was provided by the NIH Big Data to Knowledge (BD2K) program under consortium grant U54
 EB020403, by the ENIGMA World Aging Center (R56 AG058854), and
+<<<<<<< HEAD
 by the ENIGMA Sex Differences Initiative (R01 MH116147).
 
 .. raw:: html
@@ -78,3 +83,6 @@ by the ENIGMA Sex Differences Initiative (R01 MH116147).
 | - **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
 | - **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
 | - **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
+=======
+by the ENIGMA Sex Differences Initiative (R01 MH116147).
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3

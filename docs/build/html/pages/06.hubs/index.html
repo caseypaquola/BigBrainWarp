@@ -19,7 +19,10 @@
   <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/saratheriver_tabs.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/saratheriver_enigma.css" type="text/css" />
+<<<<<<< HEAD
   <link rel="stylesheet" href="../../_static/css/saratheriver_nomaxwidth.css" type="text/css" />
+=======
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
   
   
@@ -71,6 +74,11 @@
             
           
 
+<<<<<<< HEAD
+=======
+          <script type="text/javascript" src="../../static/js/copybutton.js"></script>
+
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -115,6 +123,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../07.epicenter/index.html">Epicenter mapping</a></li>
 </ul>
+<<<<<<< HEAD
+=======
+<p class="caption"><span class="caption-text">Structural covariance networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../08.covariance/index.html">Structural covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09.gt/index.html">Graph theory analyses</a></li>
+</ul>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <p class="caption"><span class="caption-text">Gene expression</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../10.genemaps/index.html">Gene expression data</a></li>
@@ -127,8 +143,11 @@
 <p class="caption"><span class="caption-text">References &amp; acknowledgements</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../13.citeus/index.html">Citing the ENIGMA TOOLBOX</a></li>
+<<<<<<< HEAD
 <li class="toctree-l1"><a class="reference internal" href="../13.01.apireference/index.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13.02.apireferencematlab/index.html">Matlab API</a></li>
+=======
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <li class="toctree-l1"><a class="reference internal" href="../14.refs/index.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15.funding/index.html">Acknowledgements</a></li>
 </ul>
@@ -243,6 +262,7 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Compute weighted degree centrality measures from the connectivity data</span>
 <span class="n">fc_ctx_dc</span>           <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">fc_ctx</span><span class="p">);</span>
 <span class="n">sc_ctx_dc</span>           <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">sc_ctx</span><span class="p">);</span>
@@ -259,6 +279,29 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">plot_cortical</span><span class="p">(</span><span class="n">sc_ctx_dc_fsa5</span><span class="p">,</span> <span class="s">&#39;surface_name&#39;</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span> <span class="mi">300</span><span class="p">],</span> <span class="k">...</span>
                 <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Blues&#39;</span><span class="p">,</span> <span class="s">&#39;label_text&#39;</span><span class="p">,</span> <span class="s">&#39;Structural degree centrality&#39;</span><span class="p">)</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Compute weighted degree centrality measures from the connectivity data</span>
+<span class="n">fc_ctx_dc</span>           <span class="s">=</span> <span class="s">sum(fc_ctx)</span><span class="p">;</span>
+<span class="n">sc_ctx_dc</span>           <span class="s">=</span> <span class="s">sum(sc_ctx)</span><span class="p">;</span>
+
+<span class="c">% Map parcellated data to the surface</span>
+<span class="n">fc_ctx_dc_fsa5</span>      <span class="s">=</span> <span class="s">parcel_to_surface(fc_ctx_dc,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">sc_ctx_dc_fsa5</span>      <span class="s">=</span> <span class="s">parcel_to_surface(sc_ctx_dc,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+
+<span class="c">% Project the results on the surface brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">fc_ctx_dc_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;functional degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Reds</span><span class="p">])</span>
+  <span class="n">colorbar_range</span><span class="p">([</span><span class="mi">20</span> <span class="mi">30</span><span class="p">])</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">sc_ctx_dc_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;structural degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Blues</span><span class="p">])</span>
+  <span class="n">colorbar_range</span><span class="p">([</span><span class="mi">100</span> <span class="mi">300</span><span class="p">])</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
@@ -302,7 +345,11 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the subcortical surfaces (don&#39;t forget to set the ventricles flag to False!)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
@@ -312,6 +359,7 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Compute weighted degree centrality measures from the connectivity data</span>
 <span class="n">fc_sctx_dc</span>          <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="n">sc_sctx_dc</span>          <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
@@ -324,6 +372,25 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="s">&#39;ventricles&#39;</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span> <span class="mi">300</span><span class="p">],</span> <span class="k">...</span>
                    <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Blues&#39;</span><span class="p">,</span> <span class="s">&#39;label_text&#39;</span><span class="p">,</span> <span class="s">&#39;Structural degree centrality&#39;</span><span class="p">)</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Compute weighted degree centrality measures from the connectivity data</span>
+<span class="n">fc_sctx_dc</span>          <span class="s">=</span> <span class="s">sum(fc_sctx,</span> <span class="s">2)</span><span class="p">;</span>
+<span class="n">sc_sctx_dc</span>          <span class="s">=</span> <span class="s">sum(sc_sctx,</span> <span class="s">2)</span><span class="p">;</span>
+
+<span class="c">% Project the results on the subcortical surfaces (don&#39;t forget to set the ventricles flag to &#39;False&#39;!</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;functional degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Reds</span><span class="p">])</span>
+  <span class="n">colorbar_range</span><span class="p">([</span><span class="mi">5</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;structural degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Blues</span><span class="p">])</span>
+  <span class="n">colorbar_range</span><span class="p">([</span><span class="mi">100</span> <span class="mi">300</span><span class="p">])</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
@@ -341,8 +408,13 @@ For simplicity, in the following example, we will spatially correlate degree cen
 cortical and subcortical atrophy (where lower values indicating greater atrophy relative to controls).</p>
 <pre class="literal-block"><strong>Prerequisites</strong>
 ↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
+<<<<<<< HEAD
 ↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>mega only</em>)
 ↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>mega only</em>)
+=======
+↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>individual site/mega-analysis data only</em>)
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 ↪ Load <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">cortico-cortical</span></a> and <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">subcortico-cortical</span></a> connectivity matrices
 ↪ Compute <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">cortical-cortical</span></a> and <a class="reference internal" href="#subcortical-hubs"><span class="std std-ref">subcortico-cortical</span></a> degree centrality</pre>
 <div class="sphinx-tabs docutils container">
@@ -376,10 +448,18 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding to the ventricles</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">SV_d_noVent</span> <span class="o">=</span> <span class="n">SV_d</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding the ventricles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_d_noVent</span> <span class="o">=</span> <span class="n">SV_d</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_d_noVent</span> <span class="o">=</span> <span class="n">SV_d_noVent</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between functional hubs and Cohen&#39;s d</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -388,18 +468,31 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between structural hubs and Cohen&#39;s d</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<<<<<<< HEAD
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Store correlation coefficients</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rvals</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;functional cortical hubs&#39;</span><span class="p">:</span> <span class="n">fc_ctx_r</span><span class="p">,</span> <span class="s1">&#39;functional subcortical hubs&#39;</span><span class="p">:</span> <span class="n">fc_sctx_r</span><span class="p">,</span>
 <span class="gp">... </span>         <span class="s1">&#39;structural cortical hubs&#39;</span><span class="p">:</span> <span class="n">sc_ctx_r</span><span class="p">,</span> <span class="s1">&#39;structural subcortical hubs&#39;</span><span class="p">:</span> <span class="n">sc_sctx_r</span><span class="p">}</span>
+=======
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Remove subcortical values corresponding the ventricles</span>
 <span class="c">% (as we don&#39;t have connectivity values for them!)</span>
 <span class="n">SV_d_noVent</span> <span class="p">=</span> <span class="n">SV_d</span><span class="p">;</span>
 <span class="n">SV_d_noVent</span><span class="p">([</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">SV</span><span class="p">.</span><span class="n">Structure</span><span class="p">,</span> <span class="s">&#39;LLatVent&#39;</span><span class="p">));</span> <span class="k">...</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Remove subcortical values corresponding the ventricles</span>
+<span class="c">% (as we don&#39;t have connectivity values for them!)</span>
+<span class="n">SV_d_noVent</span> <span class="p">=</span> <span class="n">SV_d</span><span class="p">;</span>
+<span class="n">SV_d_noVent</span><span class="p">([</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">SV</span><span class="p">.</span><span class="n">Structure</span><span class="p">,</span> <span class="s">&#39;LLatVent&#39;</span><span class="p">));</span> <span class="c">...</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
             <span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">SV</span><span class="p">.</span><span class="n">Structure</span><span class="p">,</span> <span class="s">&#39;RLatVent&#39;</span><span class="p">))],</span> <span class="p">:)</span> <span class="p">=</span> <span class="p">[];</span>
 
 <span class="c">% Perform spatial correlations between cortical hubs and Cohen&#39;s d</span>
@@ -409,11 +502,14 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 <span class="c">% Perform spatial correlations between structural hubs and Cohen&#39;s d</span>
 <span class="n">fc_sctx_r</span> <span class="p">=</span> <span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">);</span>
 <span class="n">sc_sctx_r</span> <span class="p">=</span> <span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">);</span>
+<<<<<<< HEAD
 
 <span class="c">% Store correlation coefficients</span>
 <span class="n">rvals</span> <span class="p">=</span> <span class="n">cell2struct</span><span class="p">({</span><span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span> <span class="k">...</span>
                     <span class="p">{</span><span class="s">&#39;functional_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;functional_subcortical_hubs&#39;</span><span class="p">,</span> <span class="k">...</span>
                      <span class="s">&#39;structural_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;structural_subcortical_hubs&#39;</span><span class="p">},</span> <span class="mi">2</span><span class="p">);</span>
+=======
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
@@ -426,6 +522,7 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding to the ventricles</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">SV_z_mean_noVent</span> <span class="o">=</span> <span class="n">SV_z_mean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;LLatVent&#39;</span><span class="p">,</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -441,10 +538,24 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Store correlation coefficients</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rvals</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;functional cortical hubs&#39;</span><span class="p">:</span> <span class="n">fc_ctx_r</span><span class="p">,</span> <span class="s1">&#39;functional subcortical hubs&#39;</span><span class="p">:</span> <span class="n">fc_sctx_r</span><span class="p">,</span>
 <span class="gp">... </span>         <span class="s1">&#39;structural cortical hubs&#39;</span><span class="p">:</span> <span class="n">sc_ctx_r</span><span class="p">,</span> <span class="s1">&#39;structural subcortical hubs&#39;</span><span class="p">:</span> <span class="n">sc_sctx_r</span><span class="p">}</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding the ventricles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_z_mean_noVent</span> <span class="o">=</span> <span class="n">SV_z_mean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;LLatVent&#39;</span><span class="p">,</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between cortical hubs and atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SV_z_mean_noVent</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_z_mean</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between subcortical hubs and atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_z_mean</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_z_mean_noVent</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Remove subcortical values corresponding the ventricles</span>
 <span class="c">% (as we don&#39;t have connectivity values for them!)</span>
 <span class="n">SV_z_mean_noVent</span> <span class="p">=</span> <span class="n">SV_z_mean</span><span class="p">;</span>
@@ -463,6 +574,24 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 <span class="n">rvals</span> <span class="p">=</span> <span class="n">cell2struct</span><span class="p">({</span><span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span> <span class="k">...</span>
                     <span class="p">{</span><span class="s">&#39;functional_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;functional_subcortical_hubs&#39;</span><span class="p">,</span> <span class="k">...</span>
                      <span class="s">&#39;structural_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;structural_subcortical_hubs&#39;</span><span class="p">},</span> <span class="mi">2</span><span class="p">);</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Remove subcortical values corresponding the ventricles</span>
+<span class="c">% (as we don&#39;t have connectivity values for them!)</span>
+<span class="n">SV_z_mean_noVent</span>           <span class="s">=</span> <span class="s">SV_z_mean</span><span class="p">;</span>
+<span class="n">SV_z_mean_noVent</span><span class="p">.</span><span class="n">LLatVent</span>  <span class="p">=</span> <span class="p">[];</span>
+<span class="n">SV_z_mean_noVent</span><span class="p">.</span><span class="n">RLatVent</span>  <span class="p">=</span> <span class="p">[];</span>
+
+<span class="c">% Perform spatial correlations between cortical hubs and atrophy</span>
+<span class="n">fc_ctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(fc_ctx_dc,</span> <span class="s">CT_z_mean)</span><span class="p">;</span>
+<span class="n">sc_ctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(sc_ctx_dc,</span> <span class="s">CT_z_mean)</span><span class="p">;</span>
+
+<span class="c">% Perform spatial correlations between subcortical hubs and atrophy</span>
+<span class="n">fc_sctx_r</span>   <span class="s">=</span> <span class="s">corrcoef(fc_sctx_dc,</span> <span class="s">SV_z_mean_noVent)</span><span class="p">;</span>
+<span class="n">sc_sctx_r</span>   <span class="s">=</span> <span class="s">corrcoef(sc_sctx_dc,</span> <span class="s">SV_z_mean_noVent)</span><span class="p">;</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
@@ -487,8 +616,13 @@ that subcortical labels were randomly shuffled as opposed to being projected ont
 Two brain maps from which you want to assess the signifcance of their correlations, as for example:
 degree centrality <em>vs</em>. atrophy
      ↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
+<<<<<<< HEAD
      ↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>mega only</em>)
      ↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>mega only</em>)
+=======
+     ↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>individual site/mega-analysis data only</em>)
+     ↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
      ↪ Load <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">cortico-cortical</span></a> and <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">subcortico-cortical</span></a> connectivity matrices
      ↪ Compute <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">cortical-cortical</span></a> and <a class="reference internal" href="#subcortical-hubs"><span class="std std-ref">subcortico-cortical</span></a> degree centrality</pre>
 <div class="sphinx-tabs docutils container">
@@ -522,6 +656,7 @@ degree centrality <em>vs</em>. atrophy
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.permutation_testing</span> <span class="kn">import</span> <span class="n">spin_test</span><span class="p">,</span> <span class="n">shuf_test</span>
 
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding to the ventricles</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">SV_d_noVent</span> <span class="o">=</span> <span class="n">SV_d</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
@@ -542,10 +677,30 @@ degree centrality <em>vs</em>. atrophy
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Store p-values and null distributions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_and_d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;functional cortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">fc_ctx_p</span><span class="p">,</span> <span class="n">fc_ctx_d</span><span class="p">],</span> <span class="s1">&#39;functional subcortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">fc_sctx_d</span><span class="p">],</span>
 <span class="gp">... </span>           <span class="s1">&#39;structural cortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sc_ctx_p</span><span class="p">,</span> <span class="n">sc_ctx_d</span><span class="p">],</span> <span class="s1">&#39;structural subcortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">sc_sctx_d</span><span class="p">]}</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding the ventricles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_d_noVent</span> <span class="o">=</span> <span class="n">SV_d</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">SV</span><span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_d_noVent</span> <span class="o">=</span> <span class="n">SV_d_noVent</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Spin permutation testing for two cortical maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_p</span><span class="p">,</span> <span class="n">fc_ctx_d</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span> <span class="n">parcellation_name</span><span class="o">=</span><span class="s1">&#39;aparc&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                               <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_p</span><span class="p">,</span> <span class="n">sc_ctx_d</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span> <span class="n">parcellation_name</span><span class="o">=</span><span class="s1">&#39;aparc&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                               <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Shuf permutation testing for two subcortical maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">fc_sctx_d</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">sc_sctx_d</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Remove subcortical values corresponding to the ventricles</span>
 <span class="c">% (as we don&#39;t have connectivity values for them!)</span>
 <span class="n">SV_d_noVent</span> <span class="p">=</span> <span class="n">SV_d</span><span class="p">;</span>
@@ -570,6 +725,28 @@ degree centrality <em>vs</em>. atrophy
 <span class="n">p_and_d</span> <span class="p">=</span>  <span class="n">cell2struct</span><span class="p">({[</span><span class="n">fc_ctx_p</span><span class="p">;</span> <span class="n">fc_ctx_d</span><span class="p">],</span> <span class="p">[</span><span class="n">fc_sctx_p</span><span class="p">;</span> <span class="n">fc_sctx_d</span><span class="p">],</span> <span class="p">[</span><span class="n">sc_ctx_p</span><span class="p">;</span> <span class="n">sc_ctx_d</span><span class="p">],</span> <span class="p">[</span><span class="n">sc_sctx_p</span><span class="p">;</span> <span class="n">sc_sctx_d</span><span class="p">]},</span> <span class="k">...</span>
                        <span class="p">{</span><span class="s">&#39;functional_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;functional_subcortical_hubs&#39;</span><span class="p">,</span> <span class="k">...</span>
                         <span class="s">&#39;structural_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;structural_subcortical_hubs&#39;</span><span class="p">},</span> <span class="mi">2</span><span class="p">);</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Remove subcortical values corresponding the ventricles</span>
+<span class="c">% (as we don&#39;t have connectivity values for them!)</span>
+<span class="n">SV_d_noVent</span> <span class="p">=</span> <span class="n">SV_d</span><span class="p">;</span>
+<span class="n">SV_d_noVent</span><span class="p">([</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">SV</span><span class="p">.</span><span class="n">Structure</span><span class="p">,</span> <span class="s">&#39;LLatVent&#39;</span><span class="p">));</span> <span class="c">...</span>
+            <span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">SV</span><span class="p">.</span><span class="n">Structure</span><span class="p">,</span> <span class="s">&#39;RLatVent&#39;</span><span class="p">))],</span> <span class="p">:)</span> <span class="p">=</span> <span class="p">[];</span>
+
+<span class="c">% Spin permutation testing for two cortical maps</span>
+<span class="p">[</span><span class="n">fc_ctx_p</span><span class="p">,</span> <span class="n">fc_ctx_d</span><span class="p">]</span>   <span class="p">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="c">...</span>
+                                   <span class="s">&#39;aparc&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="p">[</span><span class="n">sc_ctx_p</span><span class="p">,</span> <span class="n">sc_ctx_d</span><span class="p">]</span>   <span class="p">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="c">...</span>
+                                   <span class="s">&#39;aparc&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+
+<span class="c">% Shuf permutation testing for two subcortical maps</span>
+<span class="p">[</span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">fc_sctx_d</span><span class="p">]</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="c">...</span>
+                                   <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="p">[</span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">sc_sctx_d</span><span class="p">]</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="c">...</span>
+                                   <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
@@ -582,6 +759,7 @@ degree centrality <em>vs</em>. atrophy
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.permutation_testing</span> <span class="kn">import</span> <span class="n">spin_test</span><span class="p">,</span> <span class="n">shuf_test</span>
 
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove subcortical values corresponding to the ventricles</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># (as we don&#39;t have connectivity values for them!)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">SV_z_mean_noVent</span> <span class="o">=</span> <span class="n">SV_z_mean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;LLatVent&#39;</span><span class="p">,</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -601,10 +779,24 @@ degree centrality <em>vs</em>. atrophy
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Store p-values and null distributions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_and_d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;functional cortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">fc_ctx_p</span><span class="p">,</span> <span class="n">fc_ctx_d</span><span class="p">],</span> <span class="s1">&#39;functional subcortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">fc_sctx_d</span><span class="p">],</span>
 <span class="gp">... </span>           <span class="s1">&#39;structural cortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sc_ctx_p</span><span class="p">,</span> <span class="n">sc_ctx_d</span><span class="p">],</span> <span class="s1">&#39;structural subcortical hubs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">sc_sctx_d</span><span class="p">]}</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Spin permutation testing for two cortical maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_p</span><span class="p">,</span> <span class="n">fc_ctx_d</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_z_mean</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                               <span class="n">parcellation_name</span><span class="o">=</span><span class="s1">&#39;aparc&#39;</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_p</span><span class="p">,</span> <span class="n">sc_ctx_d</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_z_mean</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                               <span class="n">parcellation_name</span><span class="o">=</span><span class="s1">&#39;aparc&#39;</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Shuf permutation testing for two subcortical maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">fc_sctx_d</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SV_z_mean_noVent</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">sc_sctx_d</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_z_mean_noVent</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">spin_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Remove subcortical values corresponding to the ventricles</span>
 <span class="c">% (as we don&#39;t have connectivity values for them!)</span>
 <span class="n">SV_z_mean_noVent</span> <span class="p">=</span> <span class="n">SV_z_mean</span><span class="p">;</span>
@@ -703,6 +895,22 @@ degree centrality <em>vs</em>. atrophy
 </div>
 </div>
 <img alt="../../_images/nulldist.png" class="align-center" src="../../_images/nulldist.png" />
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Spin permutation testing for two cortical maps</span>
+<span class="p">[</span><span class="n">fc_ctx_p</span><span class="p">,</span> <span class="n">fc_ctx_d</span><span class="p">]</span>  <span class="p">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">dc_f</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;aparc&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="p">[</span><span class="n">sc_ctx_p</span><span class="p">,</span> <span class="n">sc_ctx_d</span><span class="p">]</span>  <span class="p">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">dc_s</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;aparc&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+
+<span class="c">% Shuf permutation testing for two subcortical maps</span>
+<span class="p">[</span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">fc_sctx_d</span><span class="p">]</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">dc_f</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="p">[</span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">sc_sctx_d</span><span class="p">]</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">dc_s</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -710,17 +918,29 @@ degree centrality <em>vs</em>. atrophy
 <div class="section" id="plot-hub-atrophy-correlations">
 <h2>Plot hub-atrophy correlations<a class="headerlink" href="#plot-hub-atrophy-correlations" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have done all the necessary analyses, we can finally display our correlations!
+<<<<<<< HEAD
 Here, a negative correlation indicates that greater atrophy correlates
+=======
+Here, a negative correlation indicates that greater atrophy (negative z-score values) correlates
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 with the spatial distribution of hub regions (greater degree centrality).</p>
 <pre class="literal-block"><strong>Prerequisites</strong>
      The script below can be used to show relationships between any two variables, as for example:
      degree centrality <em>vs</em>. atrophy
           ↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
+<<<<<<< HEAD
           ↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>mega only</em>)
           ↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>mega only</em>)
           ↪ Load <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">cortico-cortical</span></a> and <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">subcortico-cortical</span></a> connectivity matrices
           ↪ Compute <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">cortical-cortical</span></a> and <a class="reference internal" href="#subcortical-hubs"><span class="std std-ref">subcortico-cortical</span></a> degree centrality
           ↪ Assess statistical significance via <a class="reference internal" href="#spin-perm"><span class="std std-ref">spin permutation tests</span></a></pre>
+=======
+          ↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>individual site/mega-analysis data only</em>)
+          ↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)
+          ↪ Load <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">cortico-cortical</span></a> and <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">subcortico-cortical</span></a> connectivity matrices
+          ↪ Compute <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">cortical-cortical</span></a> and <a class="reference internal" href="#subcortical-hubs"><span class="std std-ref">subcortico-cortical</span></a> degree centrality
+          ↪ <a class="reference internal" href="#spin-perm"><span class="std std-ref">Assess statistical significance</span></a></pre>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
@@ -733,7 +953,11 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 <p><strong>Matlab</strong> | meta</p>
 </div>
 </div>
+<<<<<<< HEAD
 <div class="item sphinx-data-tab-5-0 docutils container">
+=======
+<div class="item sphinx-data-tab-4-0 docutils container">
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <div class="docutils container">
 <p>⤎ ⤏</p>
 </div>
@@ -751,6 +975,7 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Store degree centrality and atrophy measures</span>
@@ -782,10 +1007,43 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">enigma_scatter</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create figure</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Functional cortical hubs and cortical thickness</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Cortical thickness (Cohen</span><span class="se">\&#39;</span><span class="s1">s d)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">fc_ctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">fc_ctx_p</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Functional subcortical hubs and subcortical volume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Subcortical volume (Cohen</span><span class="se">\&#39;</span><span class="s1">s d)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">fc_sctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">p_type</span><span class="o">=</span><span class="s1">&#39;shuf&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Structural cortical hubs and cortical thickness</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Cortical thickness (Cohen</span><span class="se">\&#39;</span><span class="s1">s d)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">350</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">sc_ctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">sc_ctx_p</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Structural subcortical hubs and subcortical volume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Subcortical volume (Cohen</span><span class="se">\&#39;</span><span class="s1">s d)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">375</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">sc_sctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">p_type</span><span class="o">=</span><span class="s1">&#39;shuf&#39;</span><span class="p">)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Store degree centrality measures</span>
 <span class="n">meas</span>  <span class="p">=</span>  <span class="n">cell2struct</span><span class="p">({</span><span class="n">fc_ctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sc_ctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">sc_sctx_dc</span><span class="p">},</span> <span class="k">...</span>
                      <span class="p">{</span><span class="s">&#39;Functional_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;Functional_subcortical_hubs&#39;</span><span class="p">,</span> <span class="k">...</span>
@@ -824,6 +1082,47 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-0 docutils container">
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Create figure</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">);</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;units&#39;</span><span class="p">,</span><span class="s">&#39;normalized&#39;</span><span class="p">,</span><span class="s">&#39;position&#39;</span><span class="p">,[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mf">0.3</span><span class="p">])</span>
+
+    <span class="c">% Functional cortical hubs and cortical thickness</span>
+    <span class="n">ax1</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortical thickness (Cohen&#39;&#39;s d)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">30</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">fc_ctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;spin&#39;</span><span class="p">)</span>
+
+    <span class="c">% Functional subcortical hubs and subcortical volume</span>
+    <span class="n">ax2</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">fc_sctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="c">...</span>
+                   <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortical volume (Cohen&#39;&#39;s d)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">13</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">fc_sctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;shuf&#39;</span><span class="p">)</span>
+
+    <span class="c">% Structural cortical hubs and cortical thickness</span>
+    <span class="n">ax3</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span><span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortical thickness (Cohen&#39;&#39;s d)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">350</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">sc_ctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;spin&#39;</span><span class="p">)</span>
+
+    <span class="c">% Structural subcortical hubs and subcortical volume</span>
+    <span class="n">ax4</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">sc_sctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">SV_d_noVent</span><span class="p">,</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="c">...</span>
+                   <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortical volume (Cohen&#39;&#39;s d)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">90</span> <span class="mi">375</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">sc_sctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;shuf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 docutils container">
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 <div class="line-block">
 <div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
 <div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
@@ -831,6 +1130,7 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Store degree centrality and atrophy measures</span>
@@ -862,10 +1162,43 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+=======
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">enigma_scatter</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create figure</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Functional cortical hubs and cortical thickness</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Cortical thickness (z-score)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">fc_ctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">fc_ctx_p</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Functional subcortical hubs and subcortical volume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Subcortical volume (z-score)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">fc_sctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">fc_sctx_p</span><span class="p">,</span> <span class="n">p_type</span><span class="o">=</span><span class="s1">&#39;shuf&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Structural cortical hubs and cortical thickness</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Cortical thickness (z-score)&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">350</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">sc_ctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">sc_ctx_p</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Structural subcortical hubs and subcortical volume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="n">scatter_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span> <span class="n">linear_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Subcortical volume (z-score)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">375</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">corr_value</span><span class="o">=</span><span class="n">sc_sctx_r</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">sc_sctx_p</span><span class="p">,</span> <span class="n">p_type</span><span class="o">=</span><span class="s1">&#39;shuf&#39;</span><span class="p">)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<<<<<<< HEAD
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Store degree centrality measures</span>
 <span class="n">meas</span>  <span class="p">=</span>  <span class="n">cell2struct</span><span class="p">({</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">fc_sctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">sc_sctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">},</span> <span class="k">...</span>
                      <span class="p">{</span><span class="s">&#39;Functional_cortical_hubs&#39;</span><span class="p">,</span> <span class="s">&#39;Functional_subcortical_hubs&#39;</span><span class="p">,</span> <span class="k">...</span>
@@ -901,11 +1234,52 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
                   <span class="s">&#39;{\it p}=&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p_and_d</span><span class="p">.(</span><span class="n">lower</span><span class="p">(</span><span class="n">fns</span><span class="p">{</span><span class="n">k</span><span class="p">}))(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">3</span><span class="p">))])</span>
         <span class="n">legend</span> <span class="s">boxoff</span>
     <span class="n">end</span>
+=======
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Create figure</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">);</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;units&#39;</span><span class="p">,</span><span class="s">&#39;normalized&#39;</span><span class="p">,</span><span class="s">&#39;position&#39;</span><span class="p">,[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mf">0.3</span><span class="p">])</span>
+
+    <span class="c">% Functional cortical hubs and cortical thickness</span>
+    <span class="n">ax1</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CortThick_Z_LTLE_mean</span><span class="p">{:,</span> <span class="p">:},</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortical thickness (z-score)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">30</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="mi">1</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">fc_ctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;spin&#39;</span><span class="p">)</span>
+
+    <span class="c">% Functional subcortical hubs and subcortical volume</span>
+    <span class="n">ax2</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">fc_sctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">SubVol_Z_LTLE_r_mean_noVent</span><span class="p">{:,</span> <span class="p">:},</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortical volume (z-score)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">13</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.5</span> <span class="mi">0</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">fc_sctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;shuf&#39;</span><span class="p">)</span>
+
+    <span class="c">% Structural cortical hubs and cortical thickness</span>
+    <span class="n">ax3</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CortThick_Z_LTLE_mean</span><span class="p">{:,</span> <span class="p">:},</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Cortical thickness (z-score)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">350</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="mi">1</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">sc_ctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;spin&#39;</span><span class="p">)</span>
+
+    <span class="c">% Structural subcortical hubs and subcortical volume</span>
+    <span class="n">ax4</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">enigma_scatter</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="n">sc_sctx_dc</span><span class="p">.</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">SubVol_Z_LTLE_r_mean_noVent</span><span class="p">{:,</span> <span class="p">:},</span> <span class="s">&#39;scatter_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;linear_fit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;fit_color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;xlabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">,</span> <span class="c">...</span>
+                   <span class="s">&#39;ylabel&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortical volume (z-score)&#39;</span><span class="p">,</span> <span class="s">&#39;xlim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">90</span> <span class="mi">375</span><span class="p">],</span> <span class="s">&#39;ylim&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.5</span> <span class="mi">0</span><span class="p">],</span> <span class="c">...</span>
+                   <span class="s">&#39;corr_value&#39;</span><span class="p">,</span> <span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;p_value&#39;</span><span class="p">,</span> <span class="n">sc_sctx_p</span><span class="p">,</span> <span class="s">&#39;p_type&#39;</span><span class="p">,</span> <span class="s">&#39;shuf&#39;</span><span class="p">)</span>
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </pre></div>
 </div>
 </div>
 </div>
+<<<<<<< HEAD
 <img alt="../../_images/scatter.png" class="align-center" src="../../_images/scatter.png" />
+=======
+<img alt="../../_images/hubs_atrophy.png" class="align-center" src="../../_images/hubs_atrophy.png" />
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 </div>
 </div>
 

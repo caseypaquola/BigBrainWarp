@@ -48,8 +48,13 @@
 Data archiving and data sharing 💌
 ----------------------------------
 The **ENIGMA TOOLBOX** provides a platform for archiving meta- and mega-analytical :ref:`case-control 
+<<<<<<< HEAD
 comparisons<load_sumstats>` across a wide range of disorders. As part of the **ENIGMA TOOLBOX**, we are 
 also making several data matrices openly available! As of now, these include :ref:`functional and structural 
+=======
+comparisons<load_sumstats>` across a wide range of disorders. As part of the **ENIGMA TOOLBOX**, we are a
+lso making several data matrices openly available! As of now, these include :ref:`functional and structural 
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 connectivity data<hcp_connectivity>` as well as :ref:`transcriptomic data<gene_maps>`.
 
 .. raw:: html
@@ -93,10 +98,23 @@ or sharing your ENIGMA-related codes/tools? `Noice <https://www.urbandictionary.
 Make sure you familiarize yourself with our `contributing guidelines <https://github.com/MICA-MNI/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
 first and then discuss your ideas on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_ and 
 `pull request <https://github.com/MICA-MNI/ENIGMA/pulls>`_.
+<<<<<<< HEAD
+=======
 
 .. toctree::
    :maxdepth: 1
    :hidden:
+   :caption: Getting started
+   
+   pages/01.install/index
+   pages/02.01.tutorialsinstructions/index
+   pages/02.whatsnew/index
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+<<<<<<< HEAD
    :caption: Getting started
    
    pages/01.install/index
@@ -108,6 +126,10 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :hidden:
    :caption: ENIGMA datasets
    
+=======
+   :caption: ENIGMA datasets
+   
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
    pages/03.loadct/index
    pages/04.loadsumstats/index
 
@@ -121,10 +143,18 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    pages/07.epicenter/index
 
 
+<<<<<<< HEAD
 .. .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: Structural covariance networks
+=======
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Structural covariance networks
+
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
    pages/08.covariance/index
    pages/09.gt/index
 
@@ -152,6 +182,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :caption: References & acknowledgements
 
    pages/13.citeus/index
+<<<<<<< HEAD
    pages/13.01.apireference/index
    pages/13.02.apireferencematlab/index
    pages/14.refs/index
@@ -170,3 +201,22 @@ Core developers 👩🏻‍💻
 
 - **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
 - **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*
+=======
+   pages/14.refs/index
+   pages/15.funding/index
+
+|
+
+___________________________________________________________________________________________________
+
+Enigmators 🦀
+-------------------------
+
+- **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
+- **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
+- **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
+- **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
+- **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
+- **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*
+
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3

@@ -693,7 +693,11 @@ pre {
     overflow-y: hidden;  /* fixes display issues on Chrome browsers */
 }
 
+<<<<<<< HEAD
 pre, div[class*="highlight-"] {
+=======
+pre, div[class|="highlight"] {
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
     clear: both;
 }
 
@@ -704,7 +708,11 @@ span.pre {
     hyphens: none;
 }
 
+<<<<<<< HEAD
 div[class*="highlight-"] {
+=======
+div[class^="highlight-"] {
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
     margin: 1em 0;
 }
 

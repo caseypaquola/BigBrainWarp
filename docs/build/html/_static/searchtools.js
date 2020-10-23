@@ -166,7 +166,12 @@ var Search = {
           objectterms.push(tmp[i].toLowerCase());
       }
 
+<<<<<<< HEAD
       if ($u.indexOf(stopwords, tmp[i].toLowerCase()) != -1 || tmp[i] === "") {
+=======
+      if ($u.indexOf(stopwords, tmp[i].toLowerCase()) != -1 || tmp[i].match(/^\d+$/) ||
+          tmp[i] === "") {
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         // skip this "word"
         continue;
       }

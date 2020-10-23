@@ -5,6 +5,7 @@
 References
 ======================================
 
+<<<<<<< HEAD
 ENIGMA datasets
 -----------------------
 - Sun, D., Ching, C. R., Lin, A., Forsyth, J. K., Kushan, L., Vajdi, A., ... & Jonas, R. K. (2018). Large-scale mapping of cortical alterations in 22q11. 2 deletion syndrome: convergence with idiopathic psychosis and effects of deletion size. Molecular psychiatry, 1-13.
@@ -81,3 +82,6 @@ GWAS
 - Pardiñas, A. F., Holmans, P., Pocklington, A. J., Escott-Price, V., Ripke, S., Carrera, N., ... & Han, J. (2018). Common schizophrenia alleles are enriched in mutation-intolerant genes and in regions under strong background selection. Nature genetics, 50(3), 381-389.
 - Yu, D., Sul, J. H., Tsetsos, F., Nawaz, M. S., Huang, A. Y., Zelaya, I., ... & Greenberg, E. (2019). Interrogating the genetic determinants of Tourette’s syndrome and other tic disorders through genome-wide association studies. American Journal of Psychiatry, 176(3), 217-227.
 
+=======
+List of references here
+>>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
