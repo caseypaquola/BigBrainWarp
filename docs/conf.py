@@ -37,9 +37,9 @@ author = 'Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 <<<<<<< HEAD
-extensions = ['sphinx_tabs.tabs', 
+extensions = ['sphinx_tabs.tabs',
               'sphinx.ext.autodoc',
-              'sphinx.ext.autosectionlabel', 
+              'sphinx.ext.autosectionlabel',
               'sphinx.ext.autosummary',
               #'sphinx.ext.doctest',
               #'sphinx.ext.intersphinx',
@@ -106,7 +106,7 @@ html_static_path = ['_static']
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
 <<<<<<< HEAD
-html_css_files = ['css/saratheriver_enigma.css', 
+html_css_files = ['css/saratheriver_enigma.css',
                   'css/saratheriver_nomaxwidth.css']
 =======
 html_css_files = ['css/saratheriver_enigma.css']
