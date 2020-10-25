@@ -19,9 +19,9 @@ import enigmatoolbox
 
 # -- Project information -----------------------------------------------------
 
-project = 'ENIGMA TOOLBOX'
-copyright = '2020, enigmators'
-author = 'Sara Larivière, Boris Bernhardt'
+project = 'The Big Brain Warp'
+copyright = '2020*, MICA'
+author = 'Casey Paquola, Boris Bernhardt'
 
 
 # -- General configuration ---------------------------------------------------
@@ -86,10 +86,10 @@ html_static_path = ['_static']
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
 html_css_files = ['css/bigbrainwarp.css', 
-                  'css/saratheriver_nomaxwidth.css']
+                  'css/bigbrainwarp_nomaxwidth.css']
 
 #html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
-   app.add_css_file('css/saratheriver_tabs.css')
+   app.add_css_file('css/bigbrainwarp_tabs.css')

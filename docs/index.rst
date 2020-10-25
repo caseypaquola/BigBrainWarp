@@ -1,7 +1,3 @@
-.. ENIGMA TOOLBOX documentation master file, created by
-   sphinx-quickstart on Wed Jul 15 16:09:38 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 .. **THE BIG BRAIN WARP**
    ============================
@@ -20,9 +16,9 @@
       }
    </style>
 
+
 .. .. image:: ./pages/images/transformation.gif
    :align: left
-
 
 **Welcome to The Big Brain Warp**
 ==========================================
@@ -30,6 +26,7 @@
 Integrating BigBrain with multi-modal imaging 
 ----------------------------------------------------
 **The Big Brain Warp** ....
+
 .. raw:: html
 
    <br>
@@ -46,7 +43,7 @@ Tutorial...
 
 Spatial maps
 -----------------
-Map... 
+Maps ... 
 
 .. raw:: html
 
