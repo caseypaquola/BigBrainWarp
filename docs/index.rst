@@ -1,8 +1,6 @@
 
 .. **THE BIG BRAIN WARP**
    ============================
-   *BigBrain is a singular dataset that offers a volumetric reconstruction of ultra-high-resolution cell-stained slices of a post mortem human brain. BigBrainWarp provides for approaches to multi-modal integration of BigBrain by transforming between histological to MNI152 space, towards helping a wide range of neuroscientistists utilise the cytoarchitectural information encoded in BigBrain.*
-
 .. title:: THE BIG BRAIN WARP
 
 .. raw:: html
@@ -11,7 +9,7 @@
       hr {
       width: 100%;
       height: 1px;
-      background-color: #02920F;
+      background-color: #D23A2D;
       margin-top: 24px;
       }
    </style>
@@ -25,7 +23,7 @@
 
 Integrating BigBrain with multi-modal imaging 
 ----------------------------------------------------
-**The Big Brain Warp** ....
+BigBrain is a singular dataset that offers a volumetric reconstruction of ultra-high-resolution cell-stained slices of a post mortem human brain. BigBrainWarp provides for approaches to multi-modal integration of BigBrain by transforming between histological to MNI152 space, towards helping a wide range of neuroscientistists utilise the cytoarchitectural information encoded in BigBrain. The enclosed scripts will help transform between various spaces and extract pertinent information from BigBrain.
 
 .. raw:: html
 
@@ -34,7 +32,7 @@ Integrating BigBrain with multi-modal imaging
 
 Step-by-step tutorials
 ------------------------------------
-Tutorial...
+Using these scripts, we'll demonstrate how to perform multi-modal integration of BigBrain for a range of scenarios.
 
 .. raw:: html
 
@@ -43,7 +41,8 @@ Tutorial...
 
 Spatial maps
 -----------------
-Maps ... 
+We've also generated spatial maps of some interesting measures and performed the transformations. That means pre-computed BigBrain maps in imaging space and imaging-based maps in BigBrain space ready for download. 
+
 
 .. raw:: html
 
@@ -81,6 +80,7 @@ Maps ...
 
    pages/references
    pages/acknowledgements
+   pages/contributors
 
 __________________________________________________________________________________________________
 
@@ -93,8 +93,7 @@ Core developers
 ------------------
 
 - Casey Paquola, MICA Lab, Montreal Neurological Institute
-- Jessica Royer, MICA Lab, Montreal Neurological Institute
-- Oualid Benkarim, MICA Lab, Montreal Neurological Institute
 - Boris Bernhardt, MICA Lab, Montreal Neurological Institute
+
 
 Please drop us a line if you're interested in contributing!

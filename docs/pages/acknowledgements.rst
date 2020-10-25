@@ -14,15 +14,3 @@ We'd like to recognise funding support from the Canadian Institutes of Health Re
 .. figure:: ./images/logo-hiball.png
    :height: 50px
    :align: center
-
-
-The work is conducted through a collaboration of researchers at the Neuro and Jülich Forschungszentrum.
-
-.. figure:: ./images/logo-neuro.png
-   :height: 50px
-   :align: center
-
-
-.. figure:: ./images/logo-julich.png
-   :height: 50px
-   :align: center
