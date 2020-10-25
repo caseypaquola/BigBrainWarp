@@ -6,3 +6,4 @@ spaces/mni152/bigbrain_midsurf_vertices.mnc
 docs/build/*
 docs/py*
 docs/en*
+env/*
