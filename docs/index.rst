@@ -15,7 +15,7 @@
       hr {
       width: 100%;
       height: 1px;
-      background-color: #259595;
+      background-color: #02920F;
       margin-top: 24px;
       }
    </style>
