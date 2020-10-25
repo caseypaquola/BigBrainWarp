@@ -15,20 +15,13 @@ import sys
 import warnings
 sys.path.insert(0, os.path.abspath('..'))
 
-<<<<<<< HEAD
 import enigmatoolbox
 
-=======
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 # -- Project information -----------------------------------------------------
 
 project = 'ENIGMA TOOLBOX'
 copyright = '2020, enigmators'
-<<<<<<< HEAD
 author = 'Sara Larivière, Boris Bernhardt'
-=======
-author = 'Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
 
 # -- General configuration ---------------------------------------------------
@@ -36,10 +29,9 @@ author = 'Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-<<<<<<< HEAD
-extensions = ['sphinx_tabs.tabs',
+extensions = ['sphinx_tabs.tabs', 
               'sphinx.ext.autodoc',
-              'sphinx.ext.autosectionlabel',
+              'sphinx.ext.autosectionlabel', 
               'sphinx.ext.autosummary',
               #'sphinx.ext.doctest',
               #'sphinx.ext.intersphinx',
@@ -54,12 +46,6 @@ autodoc_default_options = {'members': True, 'inherited-members': True}
 numpydoc_show_class_members = False
 autoclass_content = "class"
 
-=======
-extensions = ['sphinx_tabs.tabs', 'sphinx.ext.autosectionlabel']
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
 # The master toctree document.
 master_doc = 'index'
@@ -69,10 +55,7 @@ master_doc = 'index'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-<<<<<<< HEAD
 highlight_language ='none'
-=======
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -89,12 +72,9 @@ from pygments.styles import get_all_styles
 pygments_style = 'enigmalexer'
 
 
-<<<<<<< HEAD
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-=======
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 #def setup(app):
 #    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
 
@@ -105,19 +85,11 @@ html_static_path = ['_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
-<<<<<<< HEAD
-html_css_files = ['css/saratheriver_enigma.css',
+html_css_files = ['css/saratheriver_enigma.css', 
                   'css/saratheriver_nomaxwidth.css']
-=======
-html_css_files = ['css/saratheriver_enigma.css']
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
 
 #html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
-<<<<<<< HEAD
    app.add_css_file('css/saratheriver_tabs.css')
-=======
-   app.add_css_file("css/saratheriver_tabs.css")
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3

@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.load_sc
+enigmatoolbox.datasets.load_sc
 ==============================
 
 .. currentmodule:: enigmatoolbox.datasets

@@ -1,4 +1,4 @@
-﻿enigmatoolbox.permutation_testing.shuf_test
+enigmatoolbox.permutation_testing.shuf_test
 ===========================================
 
 .. currentmodule:: enigmatoolbox.permutation_testing

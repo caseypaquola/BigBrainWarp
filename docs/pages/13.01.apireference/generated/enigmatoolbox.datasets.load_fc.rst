@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.load_fc
+enigmatoolbox.datasets.load_fc
 ==============================
 
 .. currentmodule:: enigmatoolbox.datasets

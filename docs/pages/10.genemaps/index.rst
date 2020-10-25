@@ -44,19 +44,22 @@ Following the examples below, we can fetch microarray expression data.
         >>> # Fetch gene expression data (output of fetch_ahba() is a dataframe)
         >>> genes = fetch_ahba()
 
-        >>> # Obtain the region labels
-        >>> reglabels = genes.iloc[:,0].to_list()
+        >>> # Obtain region labels
+        >>> reglabels = genes['label']
 
-        >>> # As well as the gene labels
-        >>> genelabels = genes.columns.values[1:].tolist()
+        >>> # Obtain gene labels
+        >>> genelabels = list(genes.columns)[1]
 
    .. code-tab:: matlab
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-        
         % Fetch gene expression data
-        [genes, reglabels, genelabels] = fetch_ahba();  
+        genes = fetch_ahba();
+
+        % Obtain region labels
+        reglabels = genes.label;
+
+        % Obtain gene labels
+        genelabels = genes.Properties.VariableNames(2:end);  
 
 .. image:: ./examples/example_figs/gx.png
     :align: center

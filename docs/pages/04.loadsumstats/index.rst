@@ -43,12 +43,6 @@ several ENIGMA Working Groups!
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-22q
         sum_stats = load_summary_stats('22q');
 
@@ -95,12 +89,6 @@ Attention deficit hyperactivity disorder
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-ADHD
         sum_stats = load_summary_stats('adhd');
 
@@ -139,12 +127,6 @@ Autism spectrum disorder
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-Autism
         sum_stats = load_summary_stats('asd');
 
@@ -175,19 +157,11 @@ Bipolar disorder
         >>> # Get case-control surface area table
         >>> SA = sum_stats['CortSurf_case_vs_controls']
 
-<<<<<<< HEAD
         >>> # Extract Cohen's d values
         >>> SA_d = SA['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
-=======
-   .. code-tab:: matlab **Matlab** | meta
-
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-BD
         sum_stats = load_summary_stats('bipolar');
 
@@ -232,12 +206,6 @@ Epilepsy
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-Epilepsy
         sum_stats = load_summary_stats('epilepsy');
 
@@ -280,12 +248,6 @@ Major depressive disorder
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-MDD
         sum_stats = load_summary_stats('depression');
 
@@ -332,12 +294,6 @@ Obsessive-compulsive disorder
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Load summary statistics for ENIGMA-OCD
         sum_stats = load_summary_stats('ocd');
 
@@ -378,12 +334,6 @@ Schizophrenia
 
    .. code-tab:: matlab **Matlab** | meta
 
-<<<<<<< HEAD
-=======
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
         % Get case-control cortical thickness and surface area tables
         CT = sum_stats.CortThick_case_vs_controls;
         SA = sum_stats.CortSurf_case_vs_controls;

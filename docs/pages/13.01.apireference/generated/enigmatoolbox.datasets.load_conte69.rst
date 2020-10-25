@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.load_conte69
+enigmatoolbox.datasets.load_conte69
 ===================================
 
 .. currentmodule:: enigmatoolbox.datasets

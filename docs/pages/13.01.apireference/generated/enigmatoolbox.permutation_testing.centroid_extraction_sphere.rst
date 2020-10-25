@@ -1,4 +1,4 @@
-﻿enigmatoolbox.permutation_testing.centroid_extraction_sphere
+enigmatoolbox.permutation_testing.centroid_extraction_sphere
 ============================================================
 
 .. currentmodule:: enigmatoolbox.permutation_testing

@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.load_fsa5
+enigmatoolbox.datasets.load_fsa5
 ================================
 
 .. currentmodule:: enigmatoolbox.datasets

@@ -11,38 +11,22 @@
 }
 
 .sphinx-tabs .sphinx-menu a.item {
-<<<<<<< HEAD
-    color: #2980b9 !important;
-}
-
-.sphinx-tabs .sphinx-menu {
-    border-bottom-color: #a0b3bf !important;
-=======
     color: #259595 !important;
 }
 
 .sphinx-tabs .sphinx-menu {
     border-bottom-color: #259595 !important;
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .sphinx-tabs .sphinx-menu a.active.item {
-<<<<<<< HEAD
-    border-color: #a0b3bf !important;
-}
-
-.sphinx-tab {
-    border-color: #a0b3bf !important;
-=======
     border-color: #259595 !important;
 }
 
 .sphinx-tab {
     border-color: #259595 !important;
->>>>>>> 324355be65bff257eecbf05c0c8c2569f3d3a5e3
     box-sizing: border-box;
 }
 

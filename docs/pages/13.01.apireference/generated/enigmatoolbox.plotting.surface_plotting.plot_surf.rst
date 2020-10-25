@@ -1,4 +1,4 @@
-﻿enigmatoolbox.plotting.surface_plotting.plot_surf
+enigmatoolbox.plotting.surface_plotting.plot_surf
 =================================================
 
 .. currentmodule:: enigmatoolbox.plotting.surface_plotting

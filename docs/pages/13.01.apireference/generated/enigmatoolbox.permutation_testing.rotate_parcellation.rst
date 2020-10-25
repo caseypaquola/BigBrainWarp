@@ -1,4 +1,4 @@
-﻿enigmatoolbox.permutation_testing.rotate_parcellation
+enigmatoolbox.permutation_testing.rotate_parcellation
 =====================================================
 
 .. currentmodule:: enigmatoolbox.permutation_testing

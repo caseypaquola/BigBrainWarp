@@ -1,4 +1,4 @@
-﻿enigmatoolbox.utils.parcellation.parcel_to_surface
+enigmatoolbox.utils.parcellation.parcel_to_surface
 ==================================================
 
 .. currentmodule:: enigmatoolbox.utils.parcellation

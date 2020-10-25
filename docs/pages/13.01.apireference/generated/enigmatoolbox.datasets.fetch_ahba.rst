@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.fetch_ahba
+enigmatoolbox.datasets.fetch_ahba
 =================================
 
 .. currentmodule:: enigmatoolbox.datasets

@@ -1,4 +1,4 @@
-﻿enigmatoolbox.utils.useful.reorder_sctx
+enigmatoolbox.utils.useful.reorder_sctx
 =======================================
 
 .. currentmodule:: enigmatoolbox.utils.useful

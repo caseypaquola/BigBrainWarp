@@ -1,4 +1,4 @@
-﻿enigmatoolbox.utils.parcellation.subcorticalvertices
+enigmatoolbox.utils.parcellation.subcorticalvertices
 ====================================================
 
 .. currentmodule:: enigmatoolbox.utils.parcellation

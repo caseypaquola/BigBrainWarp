@@ -1,4 +1,4 @@
-﻿enigmatoolbox.permutation_testing.spin_test
+enigmatoolbox.permutation_testing.spin_test
 ===========================================
 
 .. currentmodule:: enigmatoolbox.permutation_testing

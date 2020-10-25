@@ -1,4 +1,4 @@
-﻿enigmatoolbox.utils.useful.zscore_matrix
+enigmatoolbox.utils.useful.zscore_matrix
 ========================================
 
 .. currentmodule:: enigmatoolbox.utils.useful

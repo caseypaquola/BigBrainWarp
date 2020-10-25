@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.load_example_data
+enigmatoolbox.datasets.load_example_data
 ========================================
 
 .. currentmodule:: enigmatoolbox.datasets

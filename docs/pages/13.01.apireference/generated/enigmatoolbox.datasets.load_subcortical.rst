@@ -1,4 +1,4 @@
-﻿enigmatoolbox.datasets.load_subcortical
+enigmatoolbox.datasets.load_subcortical
 =======================================
 
 .. currentmodule:: enigmatoolbox.datasets

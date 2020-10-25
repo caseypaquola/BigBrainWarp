@@ -1,4 +1,4 @@
-﻿enigmatoolbox.mesh.mesh_io.read_surface
+enigmatoolbox.mesh.mesh_io.read_surface
 =======================================
 
 .. currentmodule:: enigmatoolbox.mesh.mesh_io
