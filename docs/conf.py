@@ -68,8 +68,10 @@ html_theme_options = { 'style_nav_header_background': '#DE1100'}
 
 
 # The name of the Pygments (syntax highlighting) style to use.
-from pygments.styles import get_all_styles
-pygments_style = 'enigmalexer'
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
+pygments_style = 'micapipelexer.micapipeLexerStyle'
 
 
 # Add any paths that contain templates here, relative to this directory.
