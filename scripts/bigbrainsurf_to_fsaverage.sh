@@ -5,10 +5,10 @@
 lhInput=$1 		# full path to left hemisphere input file (should be in format lh.*.txt)
 rhInput=$2 		# full path to right hemisphere input file (should be in format rh.*.txt)
 lhSurf=$3 		# full path to left hemisphere surface (should be .obj and in bigbrainsym space)
-rhSurf=$5 		# full path to right hemisphere surface (should be .obj and in bigbrainsym space)
-interp=$6		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
-workDir=$7 		# working directory
-cleanup=$8 		# "y" to remove intermediate files, "n" to keep
+rhSurf=$4 		# full path to right hemisphere surface (should be .obj and in bigbrainsym space)
+interp=$5		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
+workDir=$6 		# working directory
+cleanup=$7 		# "y" to remove intermediate files, "n" to keep
 
 # create workDir if is doesn't already exist
 [[ -d $workDir ]] || mkdir -p $workDir
@@ -29,7 +29,8 @@ fi
 
 # fill the ribbon
 outName=$workDir/${fileName}.mnc
-matlab -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplate}'","'${outName}'","'${bbwDir}'"); quit'
+echo $lhSurf
+matlab -nodisplay -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplate}'","'${outName}'","'${bbwDir}'"); quit'
 
 # transformation in volume space
 echo "transform to icbm"

@@ -1,6 +1,5 @@
 xfms/*
-spaces/icbm/*.nii
-spaces/icbm/*.mnc
+spaces/icbm/*
 docs/build/*
 docs/py*
 docs/en*

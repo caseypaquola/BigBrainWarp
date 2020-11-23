@@ -1,12 +1,18 @@
-function fill_ribbon(lhSurf, rhSurf, templateVol, outName, bbwDir)
+function fill_ribbon(lhData, rhData, lhSurf, rhSurf, templateVol, outName, bbwDir)
 
 % read and concatenate data
-data = [readmatrix(lhSurf); readmatrix(rhSurf)];
+data = [readmatrix(lhData); readmatrix(rhData)];
 
 % load surface
 S = SurfStatAvSurf({lhSurf, rhSurf});
+if length(data)~=length(S.coord)
+	disp("data size doesn't match surfaces")
+	return
+end
+
 
 % load template volume
+disp(templateVol)
 vol = niftiread(templateVol);
 info = niftiinfo(templateVol);
 
