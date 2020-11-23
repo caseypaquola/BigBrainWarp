@@ -29,15 +29,24 @@ else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
 
+# precise interpolation method for minc
+if [ ${interp} = linear ]; then
+	mnc_interp=trilinear
+	dil=dilM # dilation of mean
+elif [ ${interp} = nearest ] ; then
+	mnc_interp=nearest_neighbour
+	dil=dilD # dilation of mode
+fi
+
 % transformation
 echo "transform to icbm"
 % note: icbmTemplate is set in the docker as "mni_icbm152_nlin_sym_09c.mnc"
 if [[ "$bbSpace" == "histological" ]] ; then
-	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_lin.xfm -tfm_input_sampling -"$interp" "$workDir"/"$fileName".mnc "$workDir"/"$fileName"_lin.mnc
-	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_nl.xfm -tfm_input_sampling -"$interp" "$workDir"/"$fileName"_lin.mnc "$workDir"/"$fileName"_lin_nl.mnc
-	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -"$interp" "$workDir"/"$fileName"_lin_nl.mnc "$workDir"/"$fileName"_icbm.mnc
+	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_lin.xfm -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName".mnc "$workDir"/"$fileName"_lin.mnc
+	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_nl.xfm -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName"_lin.mnc "$workDir"/"$fileName"_lin_nl.mnc
+	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/"$fileName"_lin_nl.mnc "$workDir"/"$fileName"_icbm.mnc
 else
-	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -"$interp" "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc
+	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc
 fi
 
 % file conversion if necessary
