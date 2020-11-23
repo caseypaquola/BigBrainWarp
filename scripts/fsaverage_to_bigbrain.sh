@@ -2,18 +2,27 @@
 # perform surface to volume mapping then nonlinear transformation from fsaverage to BigBrain surface
 # written by Casey Paquola @ MICA, MNI, 2020*
 
-lh_input=$1
-rh_input=$2
-interp=$3
-outName=$4
-bbwDir=$5
-cbigDir=$6
+lh_input=$1		# full path to input file of left hemisphere
+rh_input=$2		# full path to input file of righthemisphere
+bbSpace=$2 		# which bigbrain space to output to: "histological" or "sym"
+interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
+workDir=$4 		# working directory
+cleanup=$5 		# "y" to remove intermediate files, "n" to keep
+
+% output is $workDir/${fileFile}_bigbrain.mnc or $workDir/${fileFile}_bigbrain.nii (extension is determined by input)
+[[ -d $workDir ]] || mkdir -p $workDir
+
+% get name
+fileName=$(basename -- "$lh_input")
+fileName="${fileName%.*}"
+fileName="${fileName##*.}"
 
 # use Wu et al., transformation from fsaverage to mni152
 export MATLABPATH=$MATLABPATH:$bbwDir/scripts
+outName="$workDir"/"$fileName"
 matlab19b -r 'wrapper_fsaverage2mni("'${lh_input}'", "'${rh_input}'", "'${interp}'", "'${outName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
-nii2mnc ${outName}_mni152.nii ${outName}_mni152.mnc
-rm -rf ${outName}_mni152.nii
+nii2mnc  "$workDir"/${fileName}_mni152.nii "$workDir"/${fileName}_mni152.mnc
+rm -rf  "$workDir"/${fileName}_mni152.nii
 
 # precise interpolation method for minc
 if [ ${interp} = linear ]; then
@@ -38,7 +47,7 @@ gunzip ${outName}_bigbrain_dilated.nii.gz
 nii2mnc ${outName}_bigbrain_dilated.nii ${outName}_bigbrain_dilated.mnc
 
 # sample parcellation values from the cortical midsurface
-volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/spaces/bigbrain/equivolumetric/lh.9.obj ${outName}_bigbrain_lh.txt
-volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/spaces/bigbrain/equivolumetric/rh.9.obj ${outName}_bigbrain_rh.txt
+volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/spaces/bigbrain/lh.midsurf.obj ${outName}_bigbrain_lh.txt
+volume_object_evaluate -$voe_interp ${outName}_bigbrain_dilated.mnc $bbwDir/spaces/bigbrain/rh.midsurf.obj ${outName}_bigbrain_rh.txt
 
 
