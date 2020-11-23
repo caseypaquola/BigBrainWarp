@@ -1,2 +1,3 @@
 xfms/*
 spaces/mni152/*.mnc
+dependencies/surfstat/*
