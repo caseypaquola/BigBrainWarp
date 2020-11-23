@@ -1,8 +1,8 @@
 xfms/*
 bigbrain_surfaces/equivolumetric/*
 bigbrainsym_surfaces/equivolumetric/*
-spaces/mni152/bigbrain_midsurf_vertices.nii
-spaces/mni152/bigbrain_midsurf_vertices.mnc
+spaces/mni152/*.nii
+spaces/mni152/*.mnc
 docs/build/*
 docs/py*
 docs/en*

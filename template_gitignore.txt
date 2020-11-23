@@ -1,0 +1,2 @@
+xfms/*
+spaces/mni152/*.mnc
