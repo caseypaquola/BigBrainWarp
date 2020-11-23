@@ -20,7 +20,7 @@ fileName="${fileName##*.}"
 
 % fill the ribbon
 outName=$workDir/${fileName}.mnc
-matlab -r 'fill_ribbon("'${lh_input}'","'${rh_input}'","'${lh_surf}'","'${rh_surf}'","'${icbmTemplate}'","'${outName}'","'${bbwDir}'"); quit'
+matlab -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplate}'","'${outName}'","'${bbwDir}'"); quit'
 
 
 % transformation in volume space
