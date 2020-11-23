@@ -1,9 +1,10 @@
-function wrapper_mni2fsaverage(input_vol, interp, outName, bbwDir, cbigDir)
+function wrapper_mni2fsaverage(inputVol, interp, outName, bbwDir, cbigDir)
 % wrapper for volumetric mni to space to fsaverage transformations from
 % Wu et al., 2018 (https://doi.org/10.1002/hbm.24213) 
+% set up for fsaverage5 but can be made more flexible
 %
 % input:
-% input_vol            volumetric data in nifti
+% inputVol            volumetric data in nifti
 % interp               type of interpolation to use. Recommended 'nearest' for
 %                      discrete data (eg: parcellations) and 'linear' for
 %                      smooth data
@@ -21,7 +22,7 @@ addpath(genpath([cbigDir '/utilities/matlab']));
 addpath(genpath([cbigDir '/external_packages/SD']));
 
 % read in volume
-input = MRIread(input_vol);
+input = MRIread(inputVol);
 
 % set extra variables
 lh_map = [cbigDir '/stable_projects/registration/Wu2017_RegistrationFusion/bin/' ...
