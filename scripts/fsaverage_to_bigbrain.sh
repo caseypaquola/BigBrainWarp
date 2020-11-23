@@ -2,8 +2,8 @@
 # perform surface to volume mapping then nonlinear transformation from fsaverage to BigBrain surface
 # written by Casey Paquola @ MICA, MNI, 2020*
 
-lh_input=$1		# full path to input file of left hemisphere
-rh_input=$2		# full path to input file of righthemisphere
+lhInput=$1		# full path to input file of left hemisphere
+rhInput=$2		# full path to input file of righthemisphere
 bbSpace=$2 		# which bigbrain space to output to: "histological" or "sym"
 interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
@@ -13,14 +13,14 @@ cleanup=$5 		# "y" to remove intermediate files, "n" to keep
 [[ -d $workDir ]] || mkdir -p $workDir
 
 % get name
-fileName=$(basename -- "$lh_input")
+fileName=$(basename -- "$lhInput")
 fileName="${fileName%.*}"
 fileName="${fileName##*.}"
 
 # use Wu et al., transformation from fsaverage to mni152
 export MATLABPATH=$MATLABPATH:$bbwDir/scripts
 outName="$workDir"/"$fileName"
-matlab19b -r 'wrapper_fsaverage2mni("'${lh_input}'", "'${rh_input}'", "'${interp}'", "'${outName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
+matlab19b -r 'wrapper_fsaverage2mni("'${lhInput}'", "'${rhInput}'", "'${interp}'", "'${outName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
 nii2mnc  "$workDir"/${fileName}_mni152.nii "$workDir"/${fileName}_mni152.mnc
 rm -rf  "$workDir"/${fileName}_mni152.nii
 

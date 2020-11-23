@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # perform nonlinear transformation from BigBrain spaces to fsaverage
 # written by Casey Paquola @ MICA, MNI, 2020*
@@ -42,7 +41,7 @@ else
 fi
 
 % transformation to surface space
-matlab19b -r 'wrapper_fsaverage2mni("'${${fileName}_icbm.mnc}'", "'${interp}'", "'${fileName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
+matlab -r 'wrapper_fsaverage2mni("'${${fileName}_icbm.mnc}'", "'${interp}'", "'${fileName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
 
 % clean up if selected
 if [[ "$cleanup" == "y" ]] ; then
