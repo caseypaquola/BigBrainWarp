@@ -6,9 +6,9 @@ cbigDir=/data_/mica1/03_projects/casey/CBIG-master/
 mnc2Path=/data_/mica1/01_programs/minc2/
 
 # set template and download if not already there
-icbmTemplate=$bbwDir/spaces/mni152/mni_icbm152_nlin_asym_09c_mask.mnc
+icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_nlin_asym_09c_mask.mnc
 if [[ ! -f $icbmTemplate ]] ; then
-	cd $bbwDir/spaces/mni152/
+	cd $bbwDir/spaces/icbm/
 	wget http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_asym_09c_minc2.zip
 	unzip mni_icbm152_nlin_asym_09c_minc2.zip
 	rm mni_icbm152_nlin_asym_09c_minc2.zip
@@ -29,7 +29,7 @@ if [[ ! -f $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then
 fi
 
 # download surfstat to dependencies if not already there
-if [[ ! -d $bbwDir/surfstat/ ]] ; then
+if [[ ! -d $bbwDir/dependencies/surfstat/ ]] ; then
 	cd $bbwDir/dependencies/
 	wget https://www.math.mcgill.ca/keith/surfstat/surfstat.zip
 	unzip surfstat.zip -d surfstat

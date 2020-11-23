@@ -1,8 +1,6 @@
 xfms/*
-bigbrain_surfaces/equivolumetric/*
-bigbrainsym_surfaces/equivolumetric/*
-spaces/mni152/*.nii
-spaces/mni152/*.mnc
+spaces/icbm/*.nii
+spaces/icbm/*.mnc
 docs/build/*
 docs/py*
 docs/en*
