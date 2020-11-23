@@ -1,10 +1,10 @@
-function wrapper_fsaverage2mni(lh_data, rh_data, interp, outName, bbwDir, cbigDir)
+function wrapper_fsaverage2mni(lhData, rhData, interp, outName, bbwDir, cbigDir)
 % wrapper for fsaverage to volumetric mni space transformations from 
 % Wu et al., 2018 (https://doi.org/10.1002/hbm.24213) 
 %
 % input:
-% lh_data              data on the left hemisphere
-% rh_data              data on the right hemisphere 
+% lhData              data on the left hemisphere
+% rhData              data on the right hemisphere 
 % interp               type of interpolation to use. Recommended 'nearest' for
 %                      discrete data (eg: parcellations) and 'linear' for
 %                      smooth data
@@ -33,19 +33,19 @@ addpath(genpath([cbigDir '/utilities/matlab']));
 addpath(genpath([cbigDir '/external_packages/SD']));
 
 % load and vectorise surface data
-[~,~,ext] = fileparts(lh_data);
+[~,~,ext] = fileparts(lhData);
 if strcmp(ext, '.annot')
-    parc = annot2classes(lh_data, rh_data, 0);
+    parc = annot2classes(lhData, rhData, 0);
     lh_input = parc(1:end/2)';
     rh_input = parc((end/2)+1:end)';
 elseif strcmp(ext, '.gii')
-    tmp = gifti(lh_data);
+    tmp = gifti(lhData);
     lh_input = tmp.cdata';
-    tmp = gifti(rh_data);
+    tmp = gifti(rhData);
     rh_input = tmp.cdata';
 else
-    lh_input = read_curv(lh_data)';
-    rh_input = read_curv(rh_data)';
+    lh_input = read_curv(lhData)';
+    rh_input = read_curv(rhData)';
 end
 
 % need to gunzip the mask file (may not be an issue for all systems)
