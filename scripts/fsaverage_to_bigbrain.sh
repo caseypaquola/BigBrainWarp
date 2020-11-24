@@ -4,7 +4,6 @@
 
 lhInput=$1		# full path to input file of left hemisphere
 rhInput=$2		# full path to input file of righthemisphere
-bbSpace=$2 		# which bigbrain space to output to: "histological" or "sym"
 interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
 cleanup=$5 		# "y" to remove intermediate files, "n" to keep
