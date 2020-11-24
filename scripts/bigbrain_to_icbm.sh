@@ -8,23 +8,28 @@ interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
 cleanup=$5 		# "y" to remove intermediate files, "n" to keep
 
-% output is $workDir/${fileFile}_icbm.mnc or $workDir/${fileFile}_icbm.nii (extension is determined by input)
+# output is $workDir/${fileFile}_icbm.mnc or $workDir/${fileFile}_icbm.nii (extension is determined by input)
 [[ -d $workDir ]] || mkdir -p $workDir
 
-% file conversion if necessary
+# file conversion if necessary
 fileName=$(basename -- "$fullFile")
 extension="${fileName##*.}"
 fileName="${fileName%.*}"
 if [[ "$extension" == "mnc" ]] ; then
 	echo "minc image, continuing to transformation"
 	cp $fullFile $workDir/${fileName}.mnc
+elif [[ "$extension" == "gz" ]] ; then
+	gunzip $fullFile
+	fileName="${fileName%.*}"
+	nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
-	nii2mnc $fullFile $workDir/${fileName}.mnc
-elif [[ "$extension" == "gz" ]] ; then
-	echo "transforming nii to mnc"
-	gunzip $fullFile
-	nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
+	if [[ $fileName =~ \.gz$ ]]; then
+		gunzip $fullFile
+		nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
+	else
+		nii2mnc $fullFile $workDir/${fileName}.mnc
+	fi
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
@@ -38,9 +43,8 @@ elif [ ${interp} = nearest ] ; then
 	dil=dilD # dilation of mode
 fi
 
-% transformation
+# transformation
 echo "transform to icbm"
-% note: icbmTemplate is set in the docker as "mni_icbm152_nlin_sym_09c.mnc"
 if [[ "$bbSpace" == "histological" ]] ; then
 	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_lin.xfm -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName".mnc "$workDir"/"$fileName"_lin.mnc
 	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_nl.xfm -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName"_lin.mnc "$workDir"/"$fileName"_lin_nl.mnc
@@ -49,13 +53,13 @@ else
 	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc
 fi
 
-% file conversion if necessary
+# file conversion if necessary
 if [[ "$extension" != "mnc" ]] ; then
 	echo "transforming nii to mnc"
 	mnc2nii "$workDir"/${fileName}_icbm.mnc "$workDir"/${fileName}_icbm.nii
 fi
 
-% clean up if selected
+# clean up if selected
 if [[ "$cleanup" == "y" ]] ; then
 	rm "$workDir"/"$fileName"_lin*
 	if [[ "$extension" != "mnc" ]] ; then

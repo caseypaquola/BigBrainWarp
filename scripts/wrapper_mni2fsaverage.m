@@ -11,15 +11,15 @@ function wrapper_mni2fsaverage(inputVol, interp, outName, bbwDir, cbigDir)
 % outName              name of output file (will be apended with _?h_fsaverage5.curv)
 % bbwDir              /path/to/BigBrainWarp/
 % cbigDir             /path/to/CBIG-master (https://github.com/ThomasYeoLab/CBIG)
-% 
-% 
+%
+%
 % author: Casey Paquola @ MICA, MNI, 2020*
 
 % add relevant paths
-addpath([bbwDir '/dependencies/freesurfer_matlab']);
-addpath(genpath([cbigDir '/stable_projects/registration/Wu2017_RegistrationFusion/']));
-addpath(genpath([cbigDir '/utilities/matlab']));
-addpath(genpath([cbigDir '/external_packages/SD']));
+addpath([char(bbwDir) '/dependencies/freesurfer_matlab']);
+addpath(genpath([char(cbigDir) '/stable_projects/registration/Wu2017_RegistrationFusion/']));
+addpath(genpath([char(cbigDir) '/utilities/matlab']));
+addpath(genpath([char(cbigDir) '/external_packages/SD']));
 
 % read in volume
 input = MRIread(inputVol);

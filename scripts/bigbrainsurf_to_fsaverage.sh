@@ -14,9 +14,10 @@ cleanup=$7 		# "y" to remove intermediate files, "n" to keep
 [[ -d $workDir ]] || mkdir -p $workDir
 
 # get core of lh_input for file
-fileName=$(basename -- "$lh_input")
+fileName=$(basename -- "$lhInput")
 fileName="${fileName%.*}"
 fileName="${fileName##*.}"
+echo $fileName
 
 # precise interpolation method for minc
 if [ ${interp} = linear ]; then
@@ -28,22 +29,28 @@ elif [ ${interp} = nearest ] ; then
 fi
 
 # fill the ribbon
-outName=$workDir/${fileName}.mnc
-echo $lhSurf
-matlab -nodisplay -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplate}'","'${outName}'","'${bbwDir}'"); quit'
+outName=$workDir/${fileName}.nii
+bname=${icbmTemplate%.*}
+icbmTemplateNii=$bname.nii
+if [[ ! -f $icbmTemplateNii ]] ; then
+	mnc2nii $icbmTemplate $icbmTemplateNii
+fi
+matlab -nodisplay -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplateNii}'","'${outName}'","'${bbwDir}'"); quit'
+nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
 
 # transformation in volume space
 echo "transform to icbm"
 mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "${icbmTemplate}" -"$mnc_interp" "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc
 
-# convert to nifti and perform dilation
+# conve"$workDir"/${fileName}_icbm_dilated.niirt to nifti and perform dilation
 mnc2nii "$workDir"/${fileName}_icbm.mnc "$workDir"/${fileName}_icbm.nii
 rm "$workDir"/${fileName}_icbm.mnc
 fslmaths "$workDir"/${fileName}_icbm.nii -$dil -$dil -$dil -$dil -$dil "$workDir"/${fileName}_icbm_dilated.nii
+gunzip "$workDir"/${fileName}_icbm_dilated.nii.gz
 
 # transformation to surface space
 inputVol="$workDir"/${fileName}_icbm_dilated.nii
-matlab -r 'wrapper_mni2fsaverage("'${inputVol}'", "'${interp}'", "'${fileName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
+matlab -nodisplay -r 'wrapper_mni2fsaverage("'${inputVol}'", "'${interp}'", "'${fileName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
 
 # clean up if selected
 if [[ "$cleanup" == "y" ]] ; then
