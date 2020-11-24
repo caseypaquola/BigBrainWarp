@@ -27,11 +27,9 @@ rm -rf  "$workDir"/${fileName}_mni152.nii
 if [ ${interp} = linear ]; then
 	mnc_interp=trilinear
 	voe_interp=linear
-	dil=dilM # dilation of mean
 elif [ ${interp} = nearest ] ; then
 	mnc_interp=nearest_neighbour
 	voe_interp=nearest_neighbour
-	dil=dilD # dilation of mode
 fi
 
 # transform from mni152 to bigbrain volume space
@@ -41,7 +39,7 @@ mnc2nii ${outName}_bigbrain.mnc ${outName}_bigbrain.nii
 
 # dilate the volume in bigbrain space to ensure the whole cortical ribbon is covered
 fslmaths ${outName}_bigbrain.nii -abs -thr 0.001 -bin -mul ${outName}_bigbrain.nii ${outName}_bigbrain_thresh.nii
-fslmaths ${outName}_bigbrain_thresh.nii -$dil -$dil -$dil -$dil -$dil ${outName}_bigbrain_dilated.nii
+fslmaths ${outName}_bigbrain_thresh.nii -dilD -dilD -dilD -dilD -dilD ${outName}_bigbrain_dilated.nii
 gunzip ${outName}_bigbrain_dilated.nii.gz
 nii2mnc ${outName}_bigbrain_dilated.nii ${outName}_bigbrain_dilated.mnc
 

@@ -42,10 +42,10 @@ nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
 echo "transform to icbm"
 mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "${icbmTemplate}" -"$mnc_interp" "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc
 
-# conve"$workDir"/${fileName}_icbm_dilated.niirt to nifti and perform dilation
+# convert to nifti and perform dilation
 mnc2nii "$workDir"/${fileName}_icbm.mnc "$workDir"/${fileName}_icbm.nii
 rm "$workDir"/${fileName}_icbm.mnc
-fslmaths "$workDir"/${fileName}_icbm.nii -$dil -$dil -$dil -$dil -$dil "$workDir"/${fileName}_icbm_dilated.nii
+fslmaths "$workDir"/${fileName}_icbm.nii -dilD -dilD -dilD -dilD -dilD "$workDir"/${fileName}_icbm_dilated.nii
 gunzip "$workDir"/${fileName}_icbm_dilated.nii.gz
 
 # transformation to surface space
