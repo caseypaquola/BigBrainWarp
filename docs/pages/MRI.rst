@@ -3,29 +3,35 @@ Bridging between BigBrain and MRI
 
 Integrating histological information with in vivo neuroimaging can deepen our understanding of neuroanatomy and structure-function coupling in the human brain. 
 Recently, Xiao et al., (2019) optimised a nonlinear transformation procedure to shift data between BigBrainSym and standard MNI152 space. 
-Here, we provide simple scripts to transform your own data, as well as MRI-derived maps on on the BigBrain surface, such as gradients and parcellation schemes. 
+Here, we provide simple scripts to transform your own data, as well as MRI-derived maps on the BigBrain surface, such as gradients.
 
 Transformations in volume space
 ********************************
 
+Only one line of code is necessary to transform from icbm to bigbrain volumetric space, or vice versa. You will just need to supply the path to the file you want to transform (can be.mnc or .nii), the bigbrain space (histological or sym), the interpolation method (linear or nearest neighbour), your working directory and whether you would like the function to clean up intermediary files. 
+
 .. code-block:: bash
 
-	# Wrapper scripts for the nonlinear transformation procedure of Xiao et al., (2019)
-	# bb_space can be "histological" (involes 3-steps) or "sym" (involves 1-step)
-	# interp_method can be "linear" (recommended for smooth data) or "nearest_neighbour" (recommended for discrete data)
-	sh bigbrain_to_icbm.sh file_name bb_space interp_method /path/to/BigBrainWarp
-	sh icbm_to_bigbrain.sh file_name bb_space interp_method /path/to/BigBrainWarp
+	# For example, if you've definied a region of interest in BigBrain histological space, this can be transformed to icbm like so:
+	sh bigbrain_to_icbm.sh ROI.mnc histological nearest_neighbour my_working_directory y
+	# This will output my_working_directory/ROI_icbm.mnc, which can be examined by overlaying on BigBrainWarp/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c.mnc
+
+	# Conversely, if you have, say, an activation map in icbm, you can use the opposite script to transform it to BigBrain space:
+	sh icbm_to_bigbrain.sh activation.nii sym linear my_working_directory n
+	# The output will be my_working_directory/activation_bigbrain.nii
+	# Note, the final file type (.mnc or .nii) is determined by the input
+
 
 Transformations for surface-based data
 ***************************************
 
-We've devised a standard procedure to transform data from fsaverage to the BigBrain surface. This involves:
+We've devised a basic procedure to transform data between fsaverage and the BigBrain surface. This involves:
 
 i) fsaverage surface to MNI152 volume using the Wu et al., (2018) technique
 ii) Nonlinear transformation from MNI152 to BigBrainSym volume using an inverted version of the Xiao et al., (2019) technique
-iii) Sample the parcellation labels along the BigBrainSym midsurface
+iii) Coordinate-based sampling along BigBrain surface
 
-This may be accomplished using the following script and works on common freesurfer formats (.annot, .thickness, .curv) and gifti. 
+This may be accomplished using the following script and works on common freesurfer formats (.annot, .thickness, .curv), .gii and .txt files. 
 
 .. code-block:: bash
 

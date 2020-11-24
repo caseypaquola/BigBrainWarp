@@ -63,6 +63,7 @@ We've also generated spatial maps of some interesting measures and performed the
    
    pages/workflow
    pages/data_descriptor
+   pages/FAQs
 
 .. toctree::
    :maxdepth: 1
