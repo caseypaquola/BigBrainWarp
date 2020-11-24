@@ -1,4 +1,4 @@
-function fill_ribbon(lhData, rhData, lhSurf, rhSurf, templateVol, outName, bbwDir)
+function fill_ribbon(lhData, rhData, lhSurf, rhSurf, templateVol, outName)
 
 % read and concatenate data
 data = [readmatrix(lhData); readmatrix(rhData)];
@@ -9,7 +9,6 @@ if length(data)~=length(S.coord)
 	disp("data size doesn't match surfaces")
 	return
 end
-
 
 % load template volume
 disp(templateVol)
