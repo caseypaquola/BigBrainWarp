@@ -25,17 +25,18 @@ Only one line of code is necessary to transform from icbm to bigbrain volumetric
 Transformations for surface-based data
 ***************************************
 
-We've devised a basic procedure to transform data between fsaverage and the BigBrain surface. This involves:
+We've devised a basic procedure to transform data from fsaverage and the BigBrain surface. This involves:
 
 i) fsaverage surface to MNI152 volume using the Wu et al., (2018) technique
 ii) Nonlinear transformation from MNI152 to BigBrainSym volume using an inverted version of the Xiao et al., (2019) technique
 iii) Coordinate-based sampling along BigBrain surface
 
-This may be accomplished using the following script and works on common freesurfer formats (.annot, .thickness, .curv), .gii and .txt files. 
+This may be accomplished using the following script and works on common freesurfer formats (.annot, .thickness, .curv), .gii and .txt files. The function is executed in bash, but beware it does call matlab. 
 
 .. code-block:: bash
 
-	sh fsaverage_to_bigbrain.sh lh_data rh_data interp_method output_name /path/to/BigBrainWarp /path/to/CBIG-master
+	# Take your input data, say a group-dstored for left and right hemisphere separately. 
+	sh fsaverage_to_bigbrain.sh lh_data rh_data interp_method output_name
 
 
 MRI-derived gradients on the BigBrain surface
