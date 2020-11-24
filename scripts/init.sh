@@ -6,7 +6,7 @@ export cbigDir=/data_/mica1/03_projects/casey/CBIG-master/
 export mnc2Path=/data_/mica1/01_programs/minc2/
 
 # set template and download if not already there
-icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
+export icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
 if [[ ! -f $icbmTemplate ]] ; then
 	cd $bbwDir/spaces/icbm/
 	wget http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_sym_09c_minc2.zip
