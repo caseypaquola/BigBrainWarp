@@ -3,7 +3,7 @@ Getting Started
 
 * Clone the GitHub repository to your local machine (https://github.com/caseypaquola/BigBrainWarp.git)
 * Edit the BigBrainWarp/scripts/init.sh file based on the specific paths of your machine
-* Prior to running any scripts, run `source init.sh` to set the necessary global environment variables
+* Prior to running any scripts, run <source init.sh> to set the necessary global environment variables
 
 
 Dependencies
