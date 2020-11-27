@@ -13,7 +13,7 @@ Only one line of code is necessary to transform from icbm to bigbrain volumetric
 .. code-block:: bash
 
 	# For example, if you've definied a region of interest in BigBrain histological space, this can be transformed to icbm like so:
-	sh bigbrain_to_icbm.sh ROI.mnc histological nearest_neighbour my_working_directory y
+	sh bigbrain_to_icbm.sh ROI.mnc histological nearest my_working_directory y
 	# This will output my_working_directory/ROI_icbm.mnc, which can be examined by overlaying on BigBrainWarp/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c.mnc
 
 	# Conversely, if you have, say, an activation map in icbm, you can use the opposite script to transform it to BigBrain space:
