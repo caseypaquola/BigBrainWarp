@@ -35,9 +35,19 @@ This may be accomplished using the following script and works on common freesurf
 
 .. code-block:: bash
 
-	# Take your input data, say group-average qT1 on fsaverage5
+	# Take your input data, say a group-dstored for left and right hemisphere separately. 
 	sh fsaverage_to_bigbrain.sh lh_data rh_data interp_method output_name
 
-	# Conversely, you can transform data from either BigBrain surface to fsaverage5 using:
-	sh bigbrainsurf_to_freesurfer.sh lh_data rh_data interp_method output_name
+
+MRI-derived gradients on the BigBrain surface
+********************************************
+
+Using the above procedure, we transformed MRI-derived functional and microstructural gradients onto the BigBrain surface. For further information on cortical gradients, we recommend the readers to Margulies et al., (2016), Paquola et al., (2019) and the `BrainSpace toolbox <https://brainspace.readthedocs.io/en/latest/>`_. Briefly, these gradients represent the principle axes of variation in resting state functional connectivity and similarity in intracortical architectecture. We generated functional connectivity and microstructural similarity at a vertex-level on the fsaverage5 template for 47 healthy individuals, averaged the matrices across the cohort, extracted the principles axes of variation using diffusion map embedding, then transformed the first gradients to the BigBrain surface.
+
+.. figure:: ./images/mpc_gradient.png
+   :height: 300px
+   :align: center
+   
+   Gradient of microstructural similarity on fsaverage5 (above) and BigBrain (below)
+   
 
