@@ -55,15 +55,15 @@ We've also generated spatial maps of some interesting measures and performed the
    :caption: Getting started
    
    pages/getting_started
+   pages/FAQs
 
 .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: What's inside
-   
-   pages/workflow
+
+   pages/workflow   
    pages/data_descriptor
-   pages/FAQs
 
 .. toctree::
    :maxdepth: 1
