@@ -19,7 +19,7 @@ info = niftiinfo(templateVol);
 newVol = zeros(size(vol), 'double');
 for ii = 1:length(S.coord)
     volCoord = round((S.coord(:,ii) - info.Transform.T(4,1:3)')/info.Transform.T(1,1)); % transformation from surface to volume
-    newVol(volCoord(1), volCoord(2), volCoord(3)) = ii;
+    newVol(volCoord(1), volCoord(2), volCoord(3)) = data(ii);
 end
 
 info.Filename = outName;

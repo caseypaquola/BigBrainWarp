@@ -43,10 +43,15 @@ elseif strcmp(ext, '.gii')
     lh_input = tmp.cdata';
     tmp = gifti(rhData);
     rh_input = tmp.cdata';
+elseif strcmp(ext, '.txt')
+    lh_input = readmatrix(lhData);
+    rh_input = readmatrix(rhData);
 else
     lh_input = read_curv(lhData)';
     rh_input = read_curv(rhData)';
 end
+size(lh_input)
+size(rh_input)
 
 % need to gunzip the mask file (may not be an issue for all systems)
 mask_input=[cbigDir '/stable_projects/registration/Wu2017_RegistrationFusion/bin/' ...

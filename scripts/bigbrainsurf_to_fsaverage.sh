@@ -6,7 +6,7 @@ lhInput=$1 		# full path to left hemisphere input file (should be in format lh.*
 rhInput=$2 		# full path to right hemisphere input file (should be in format rh.*.txt)
 lhSurf=$3 		# full path to left hemisphere surface (should be .obj and in bigbrainsym space)
 rhSurf=$4 		# full path to right hemisphere surface (should be .obj and in bigbrainsym space)
-interp=$5		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
+interp=$5		# "linear" (smooth data) or "nearest" (discrete data)
 workDir=$6 		# working directory
 cleanup=$7 		# "y" to remove intermediate files, "n" to keep
 
@@ -35,7 +35,7 @@ icbmTemplateNii=$bname.nii
 if [[ ! -f $icbmTemplateNii ]] ; then
 	mnc2nii $icbmTemplate $icbmTemplateNii
 fi
-matlab -nodisplay -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplateNii}'","'${outName}'","'${bbwDir}'"); quit'
+matlab -nodisplay -r 'fill_ribbon("'${lhInput}'","'${rhInput}'","'${lhSurf}'","'${rhSurf}'","'${icbmTemplateNii}'","'${outName}'"); quit'
 nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
 
 # transformation in volume space
@@ -50,7 +50,7 @@ gunzip "$workDir"/${fileName}_icbm_dilated.nii.gz
 
 # transformation to surface space
 inputVol="$workDir"/${fileName}_icbm_dilated.nii
-matlab -nodisplay -r 'wrapper_mni2fsaverage("'${inputVol}'", "'${interp}'", "'${fileName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
+matlab -nodisplay -r 'wrapper_mni2fsaverage("'$inputVol'", "'$interp'", "'$workDir'", "'$fileName'", "'${bbwDir}'", "'${cbigDir}'"); quit'
 
 # clean up if selected
 if [[ "$cleanup" == "y" ]] ; then

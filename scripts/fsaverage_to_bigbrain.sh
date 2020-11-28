@@ -8,10 +8,10 @@ interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
 cleanup=$5 		# "y" to remove intermediate files, "n" to keep
 
-% output is $workDir/${fileFile}_bigbrain.mnc or $workDir/${fileFile}_bigbrain.nii (extension is determined by input)
+# output is $workDir/${fileFile}_bigbrain.mnc or $workDir/${fileFile}_bigbrain.nii (extension is determined by input)
 [[ -d $workDir ]] || mkdir -p $workDir
 
-% get name
+# get name
 fileName=$(basename -- "$lhInput")
 fileName="${fileName%.*}"
 fileName="${fileName##*.}"
@@ -19,7 +19,7 @@ fileName="${fileName##*.}"
 # use Wu et al., transformation from fsaverage to mni152
 export MATLABPATH=$MATLABPATH:$bbwDir/scripts
 outName="$workDir"/"$fileName"
-matlab19b -r 'wrapper_fsaverage2mni("'${lhInput}'", "'${rhInput}'", "'${interp}'", "'${outName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
+matlab -nodisplay -r 'wrapper_fsaverage2mni("'${lhInput}'", "'${rhInput}'", "'${interp}'", "'${outName}'", "'${bbwDir}'", "'${cbigDir}'"); quit'
 nii2mnc  "$workDir"/${fileName}_mni152.nii "$workDir"/${fileName}_mni152.mnc
 rm -rf  "$workDir"/${fileName}_mni152.nii
 
