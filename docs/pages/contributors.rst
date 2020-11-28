@@ -13,8 +13,10 @@ The work is conducted through a collaboration of researchers at the Neuro and J√
    :align: center
 
 
-A special thanks for their contributions
+A special thanks to the contributions of
 
+- Casey Paquola, MICA Lab, Montreal Neurological Institute
+- Boris Bernhardt, MICA Lab, Montreal Neurological Institute
 - Jessica Royer, MICA Lab, Montreal Neurological Institute
 - Oualid Benkarim, MICA Lab, Montreal Neurological Institute
 - Sara Larivi√®re, MICA Lab, Montreal Neurological Institute

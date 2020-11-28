@@ -6,8 +6,9 @@ Directory overview:
 * spaces:
 	* bigbrain: original histological space, includes surfaces and volumes
 	* bigbrainsym: stereotaxic registration of BigBrain to ICBM512 as part of main BigBrain release, includes surfaces and volumes
-	* mni152: volumetric data algined to the symmetric ICBM2009b atlas
+	* icbm: volumetric data algined to the symmetric ICBM2009b atlas
 	* fsaverage: surface data on fsaverage
+
 * scripts
 	* bigbrain_to_icbm.sh: implements one-step transformation to BigBrainSym or three-step transformation BigBrain (Xiao et al. 2019). Volumeteric.
 	* icbm_to_bigbrain.sh: inverted version of above (Xiao et al. 2019). Volumetric. 
@@ -15,6 +16,7 @@ Directory overview:
 	* wrapper_fsaverage2mni.m: shell wrapper for fsaverage to MNI152 surface-to-volume transformation (Wu et al., 2018)
 	* iEEG_channels_icbm.m: projects iEEG channel coordinates into a MNI152 volume.
 	* sample_iEEG_channel_intensities.sh: samples intensity of each iEEG channel from an another volume in BigBrain space
+
 
 Data, which may be found across spaces:
 
