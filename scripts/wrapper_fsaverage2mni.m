@@ -47,6 +47,9 @@ elseif strcmp(ext, '.gii')
 elseif strcmp(ext, '.txt')
     lh_input = readmatrix(lhData);
     rh_input = readmatrix(rhData);
+elseif strcmp(ext, '.mgh')
+    lh_input = load_mgh(lhData);
+    rh_input = load_mgh(rhData);
 else
     lh_input = read_curv(lhData)';
     rh_input = read_curv(rhData)';
@@ -54,7 +57,7 @@ end
 
 % check size and transpose if necessary
 compatSizes = [10242, 40962, 163842];
-if sum(size(lh_input)==size(rh_input))==2
+if sum(size(lh_input)==size(rh_input))~=2
    error('hemispheric data not the same size');
 end
 if ~ismember(size(lh_input,2), compatSizes)
