@@ -18,6 +18,7 @@ function wrapper_fsaverage2mni(lhData, rhData, interp, outName, bbwDir, cbigDir)
 % .gifti               requires gifti toolbox (https://www.artefact.tk/software/matlab/gifti/)
 % .thickness           requires Freesurfer matlab component
 % .curv                requires Freesurfer matlab component 
+% .mgh                requires Freesurfer matlab component 
 % .txt
 % 
 % author: Casey Paquola @ MICA, MNI, 2020*
@@ -44,15 +45,15 @@ elseif strcmp(ext, '.gii')
     lh_input = tmp.cdata';
     tmp = gifti(rhData);
     rh_input = tmp.cdata';
-elseif strcmp(ext, '.txt')
-    lh_input = readmatrix(lhData);
-    rh_input = readmatrix(rhData);
+elseif strcmp(ext, '.curv')
+    lh_input = read_curv(lhData)';
+    rh_input = read_curv(rhData)';
 elseif strcmp(ext, '.mgh')
     lh_input = load_mgh(lhData);
     rh_input = load_mgh(rhData);
 else
-    lh_input = read_curv(lhData)';
-    rh_input = read_curv(rhData)';
+    lh_input = readmatrix(lhData);
+    rh_input = readmatrix(rhData);
 end
 
 % check size and transpose if necessary
