@@ -3,8 +3,8 @@ function wrapper_fsaverage2mni(lhData, rhData, interp, outName, bbwDir, cbigDir)
 % Wu et al., 2018 (https://doi.org/10.1002/hbm.24213) 
 %
 % input:
-% lhData              data on the left hemisphere
-% rhData              data on the right hemisphere 
+% lhData              data on the left hemisphere (1 x vertices, can be )
+% rhData              data on the right hemisphere (1 x vertices)
 % interp               type of interpolation to use. Recommended 'nearest' for
 %                      discrete data (eg: parcellations) and 'linear' for
 %                      smooth data
@@ -17,7 +17,8 @@ function wrapper_fsaverage2mni(lhData, rhData, interp, outName, bbwDir, cbigDir)
 % .annot               requires Freesurfer matlab component
 % .gifti               requires gifti toolbox (https://www.artefact.tk/software/matlab/gifti/)
 % .thickness           requires Freesurfer matlab component
-% .curv                requires Freesurfer matlab component
+% .curv                requires Freesurfer matlab component 
+% .txt
 % 
 % author: Casey Paquola @ MICA, MNI, 2020*
 
@@ -50,8 +51,20 @@ else
     lh_input = read_curv(lhData)';
     rh_input = read_curv(rhData)';
 end
-size(lh_input)
-size(rh_input)
+
+% check size and transpose if necessary
+compatSizes = [10242, 40962, 163842];
+if sum(size(lh_input)==size(rh_input))==2
+   error('hemispheric data not the same size');
+end
+if ~ismember(size(lh_input,2), compatSizes)
+    if ismember(size(lh_input,1), compatSizes)
+        lh_input = lh_input';
+        rh_input = rh_input';
+    else
+        error('invalid number of vertices');
+    end
+end
 
 % need to gunzip the mask file (may not be an issue for all systems)
 mask_input=[cbigDir '/stable_projects/registration/Wu2017_RegistrationFusion/bin/' ...
@@ -61,7 +74,6 @@ if exist(mask_input, 'file')
 end
 mask_input=[cbigDir '/stable_projects/registration/Wu2017_RegistrationFusion/bin/' ...
                      'liberal_cortex_masks_FS5.3/FSL_MNI152_FS4.5.0_cortex_estimate.nii'];
-
 
 % set extra terms
 map=[cbigDir '/stable_projects/registration/Wu2017_RegistrationFusion/bin/' ...

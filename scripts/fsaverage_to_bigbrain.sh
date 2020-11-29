@@ -3,7 +3,7 @@
 # written by Casey Paquola @ MICA, MNI, 2020*
 
 lhInput=$1		# full path to input file of left hemisphere
-rhInput=$2		# full path to input file of righthemisphere
+rhInput=$2		# full path to input file of right hemisphere
 interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
 cleanup=$5 		# "y" to remove intermediate files, "n" to keep
