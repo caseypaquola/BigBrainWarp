@@ -28,6 +28,16 @@ if [[ ! -f $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then
 	rm mni_PD25_20190708_minc2.zip
 fi
 
+# download nonlinear transformation for BigBrainHist       
+if [[ ! -f $bbwDir/xfms/BigBrainHist-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then                                                                              
+	cd $bbwDir/xfms/                                                                                                                                                                                       
+	wget -O BigBrainHist-to-ICBM2009sym-nonlin.xfm https://osf.io/mr4gn/download                                                                                                                           
+	wget -O BigBrainHist-to-ICBM2009sym-nonlin_grid_0.mnc https://osf.io/a8ks2/download                                                                                                                    
+	wget -O BigBrainHist-to-ICBM2009sym-nonlin_grid_1.mnc https://osf.io/83rgw/download
+	wget -O BigBrainHist-to-ICBM2009sym-nonlin_grid_2.mnc https://osf.io/59c7v/download
+ 	wget -O BigBrainHist-to-ICBM2009sym-nonlin_grid_3.mnc https://osf.io/j8q3e/download
+fi  
+
 # download surfstat to dependencies if not already there
 if [[ ! -d $bbwDir/dependencies/surfstat/ ]] ; then
 	cd $bbwDir/dependencies/
