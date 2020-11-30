@@ -46,9 +46,7 @@ fi
 # transformation
 echo "transform to icbm"
 if [[ "$bbSpace" == "histological" ]] ; then
-	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_lin.xfm -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName".mnc "$workDir"/"$fileName"_lin.mnc
-	mincresample -clobber -transformation ${bbwDir}/xfms/bigbrain_to_icbm2009b_nl.xfm -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName"_lin.mnc "$workDir"/"$fileName"_lin_nl.mnc
-	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/"$fileName"_lin_nl.mnc "$workDir"/"$fileName"_icbm.mnc
+	mincresample -clobber -transformation ${bbwDir}/xfms//BigBrainHist-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/"$fileName".mnc "$workDir"/"$fileName"_icbm.mnc
 else
 	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc
 fi

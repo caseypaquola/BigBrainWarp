@@ -38,15 +38,12 @@ elif [ ${interp} = nearest ] ; then
 fi
 
 # transformation
-echo "transform to bigbrain"
-mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_nl.mnc
 if [[ -z $bbSpace=histological ]] ; then
 	echo "transform to original BigBrain space"
-	mincresample -transformation "$bbwDir"/xfms/bigbrain_to_icbm2009b_nl.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName"_nl.mnc "$workDir"/"$fileName"_nl_nl.mnc
-	mincresample -transformation "$bbwDir"/xfms/bigbrain_to_icbm2009b_lin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} "$workDir"/"$fileName"_nl_nl.mn "$workDir"/"$fileName"_bigbrain.mnc
+	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
 else
 	echo "transform to BigBrainSym"
-	mv "$workDir"/"$fileName"_nl.mnc "$workDir"/"$fileName"_bigbrain.mnc
+	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
 fi
 
 # file conversion if necessary
