@@ -49,8 +49,8 @@ elseif strcmp(ext, '.curv')
     lh_input = read_curv(lhData)';
     rh_input = read_curv(rhData)';
 elseif strcmp(ext, '.mgh')
-    lh_input = load_mgh(lhData);
-    rh_input = load_mgh(rhData);
+    lh_input = load_mgh(char(lhData));
+    rh_input = load_mgh(char(rhData));
 else
     lh_input = readmatrix(lhData);
     rh_input = readmatrix(rhData);
