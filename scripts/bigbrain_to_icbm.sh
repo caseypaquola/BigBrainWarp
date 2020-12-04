@@ -21,15 +21,12 @@ if [[ "$extension" == "mnc" ]] ; then
 elif [[ "$extension" == "gz" ]] ; then
 	gunzip $fullFile
 	fileName="${fileName%.*}"
+	rm $workDir/${fileName}.mnc
 	nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
-	if [[ $fileName =~ \.gz$ ]]; then
-		gunzip $fullFile
-		nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
-	else
-		nii2mnc $fullFile $workDir/${fileName}.mnc
-	fi
+	rm $workDir/${fileName}.mnc
+	nii2mnc $fullFile $workDir/${fileName}.mnc
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi

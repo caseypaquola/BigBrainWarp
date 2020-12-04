@@ -20,11 +20,13 @@ if [[ "$extension" == "mnc" ]] ; then
 	cp $fullFile "$workDir"/"$fileName".mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
+	rm "$workDir"/"$fileName".mnc
 	nii2mnc "$fullFile" "$workDir"/"$fileName".mnc
 elif [[ "$extension" == "gz" ]] ; then
 	echo "transforming nii to mnc"
 	fileName="${fileName%.*}"
 	gunzip "$fullFile" "$workDir"/"$fileName".nii
+	rm "$workDir"/"$fileName".mnc
 	nii2mnc "$workDir"/"$fileName".nii "$workDir"/"$fileName".mnc
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
@@ -38,6 +40,7 @@ elif [ ${interp} = nearest ] ; then
 fi
 
 # transformation
+rm "$workDir"/"$fileName"_bigbrain.mnc
 if [[ ${bbSpace} = histological ]] ; then
 	echo "transform to original BigBrain space"
 	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
