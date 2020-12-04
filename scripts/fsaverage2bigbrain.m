@@ -22,11 +22,12 @@ function fsaverage2bigbrain(lhData, rhData, outName, bbwDir)
 % convert variables to character vectors
 outName = char(outName);
 bbwDir = char(bbwDir);
+addpath([bbwDir '/scripts/']);
 
 % load and vectorise surface data
 [~,~,ext] = fileparts(lhData);
 if strcmp(ext, '.annot')
-    parc = annot2classes(lhData, rhData, 0);
+    parc = annot2classes(lhData, rhData, 1);
     lh_input = parc(1:end/2)';
     rh_input = parc((end/2)+1:end)';
 elseif strcmp(ext, '.gii')
