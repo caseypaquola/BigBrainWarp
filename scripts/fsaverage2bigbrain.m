@@ -77,4 +77,4 @@ for ii = 1:length(ubb)
 end
 
 % write out
-writematrix(data_fs, [outName '_bigbrain.txt'])
+writematrix(data_bb, [outName '_bigbrain.txt'])
