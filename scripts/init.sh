@@ -2,7 +2,6 @@
 
 # set up variables - change for your environment
 export bbwDir=/data_/mica1/03_projects/casey/BigBrainWarp/
-export cbigDir=/data_/mica1/03_projects/casey/CBIG-master/
 export mnc2Path=/data_/mica1/01_programs/minc2/
 
 # set template and download if not already there
@@ -65,7 +64,3 @@ fi
 export PATH=$bbwDir/scripts/:$mnc2Path:$PATH
 export PATH=$bbwDir/scripts/:$PATH
 export MATLABPATH=$bbwDir/scripts/:$MATLABPATH
-
-
-
-

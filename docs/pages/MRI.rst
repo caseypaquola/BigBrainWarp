@@ -25,19 +25,15 @@ Only one line of code is necessary to transform from icbm to bigbrain volumetric
 Transformations for surface-based data
 ***************************************
 
-We've devised a basic procedure to transform data from fsaverage and the BigBrain surface. This involves:
+For surface-based transformation, we leverage the common space of fsaverage with BigBrainSym to perform nearest neighbour interpolation. We've pre-computed the indexing between fsaverage5 and the bigbrain surface because it takes a little time to run, but you can see the procedure in "nn_surface_indexing.m". All that is left to do, is enter your data:
 
-i) fsaverage surface to MNI152 volume using the Wu et al., (2018) technique
-ii) Nonlinear transformation from MNI152 to BigBrainSym volume using an inverted version of the Xiao et al., (2019) technique
-iii) Coordinate-based sampling along BigBrain surface
-
-This may be accomplished using the following script and works on common freesurfer formats (.annot, .thickness, .curv), .gii and .txt files. The function is executed in bash, but beware it does call matlab. 
+The following bash scripts will call the necessary matlab functions and best used with .txt files. You may also input .mgh, .curv, .annot, .thickness and .gii files, however, the output mostly limited to .txt.
 
 .. code-block:: bash
 
 	# Take your input data, say group-average qT1 on fsaverage5
-	sh fsaverage_to_bigbrain.sh lh_data rh_data interp_method output_name
+	sh fsaverage_to_bigbrain.sh lh_data rh_data output_name
 
 	# Conversely, you can transform data from either BigBrain surface to fsaverage5 using:
-	sh bigbrainsurf_to_freesurfer.sh lh_data rh_data interp_method output_name
+	sh bigbrainsurf_to_freesurfer.sh lh_data rh_data output_name
 
