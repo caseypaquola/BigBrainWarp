@@ -57,6 +57,8 @@ if ~ismember(size(lh_input,2), compatSizes)
         rh_input = rh_input';
     else
         error('invalid number of vertices');
+	disp(["lhData is " size(lh_input)])
+	disp(["rhData is " size(rh_input)])
     end
 end
 
@@ -69,9 +71,9 @@ data_bb10k = data_fs(nn_bbicbm_fs);
 
 % upsample on bb
 data_bb = zeros(1,length(nn_bb));
-ubb = unique(downsampIdx);
+ubb = unique(bb_downsample);
 for ii = 1:length(ubb)
-    data_bb(nn_bb==ubb(ii)) = data_bb10k(downsampIdx==ubb(ii));
+    data_bb(nn_bb==ubb(ii)) = data_bb10k(bb_downsample==ubb(ii));
 end
 
 % write out

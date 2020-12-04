@@ -10,5 +10,5 @@ outName=$3 		# full path of output file (without extension or hemisphere label, 
 # the output takes the form ${outName}_bigbrain.txt (or .mgh, .curv)
 
 # use nearest neighbour surface indexing
-matlab -nodisplay -r 'bigbrain2fsaverage("'${lhInput}'","'${rhInput}'","'${outName}'","'${bbwDir}'"); quit'
+matlab -nodisplay -r 'fsaverage2bigbrain("'${lhInput}'","'${rhInput}'","'${outName}'","'${bbwDir}'"); quit'
 

@@ -25,6 +25,7 @@ function bigbrain2fsaverage(lhData, rhData, outName, bbwDir)
 % convert variables to character vectors
 outName = char(outName);
 bbwDir = char(bbwDir);
+addpath([bbwDir '/scripts'])
 
 % load and vectorise surface data
 [~,~,ext] = fileparts(lhData);
@@ -59,6 +60,8 @@ if ~ismember(size(lh_input,2), compatSizes)
         rh_input = rh_input';
     else
         error('invalid number of vertices');
+	disp(["lhData is " size(lh_input)])
+	disp(["rhData is " size(rh_input)])
     end
 end
 
