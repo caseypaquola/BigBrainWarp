@@ -45,7 +45,7 @@ fi
 
 # transformation
 echo "transform to icbm"
-if [[ "$bbSpace" == "histological" ]] ; then
+if [[ ${bbSpace} = histological ]] ; then
 	mincresample -clobber -transformation ${bbwDir}/xfms//BigBrainHist-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/"$fileName".mnc "$workDir"/"$fileName"_icbm.mnc
 else
 	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${mnc_interp} "$workDir"/${fileName}.mnc "$workDir"/${fileName}_icbm.mnc

@@ -38,7 +38,7 @@ elif [ ${interp} = nearest ] ; then
 fi
 
 # transformation
-if [[ -z $bbSpace=histological ]] ; then
+if [[ ${bbSpace} = histological ]] ; then
 	echo "transform to original BigBrain space"
 	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
 else
