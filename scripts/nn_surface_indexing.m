@@ -6,7 +6,8 @@
 % load surfaces
 BB = SurfStatAvSurf({[bbwDir '/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj'], ...
     [bbwDir '/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj']});
-fsAv = 
+fsAv = '/data_/mica1/03_projects/casey/micasoft/parcellations/fsaverage5';
+FS = SurfStatAvSurf({[fsAv '/lh.pial'], [fsAv '/rh.pial']});
 FSlh = SurfStatReadSurf([fsAv '/lh.pial']);  % using local versions of fsaverage pial surfaces (FS5.3)
 FSrh = SurfStatReadSurf([fsAv '/rh.pial']);
 
@@ -41,7 +42,7 @@ parfor ii = 1:length(BB.coord)
     end
 end
 
-% For each vertex on S10, find nearest neighbour for fsaverage
+% For each vertex on BB10, find nearest neighbour for fsaverage
 % (for indexing bigbrain surfaces, ie: bigbrain2fsaverage)
 % constrained by hemisphere
 n1 = length(FSlh.coord);
@@ -56,9 +57,9 @@ parfor ii = 1:length(BB10.coord)
     end
 end
 
-% For each vertex on B10, find nearest neighbour for fsaverage
+% For each vertex on BB10, find nearest neighbour for fsaverage
 % (for indexing bigbrain surfaces, ie: bigbrain2fsaverage)
-n1 = length(trans_coord);
+n1 = length(BB10.coord);
 nn_fs_bbicbm = zeros(1,length(FS.coord)); % nearest neighbour of each FS vertex on BB
 BBlh_coord = BB10.coord;
 BBlh_coord(:,bb_downsample>=(length(BB.coord)/2)) = inf;
