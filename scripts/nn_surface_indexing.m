@@ -6,6 +6,7 @@
 % load surfaces
 BB = SurfStatAvSurf({[bbwDir '/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj'], ...
     [bbwDir '/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj']});
+fsAv = 
 FSlh = SurfStatReadSurf([fsAv '/lh.pial']);  % using local versions of fsaverage pial surfaces (FS5.3)
 FSrh = SurfStatReadSurf([fsAv '/rh.pial']);
 
@@ -17,7 +18,7 @@ Sds         = reducepatch(patchNormal,numFaces);
 BB10.tri     = double(Sds.faces);
 BB10.coord   = Sds.vertices';
 
-% For each vertex on S, find nearest neighbour on S10, via mesh neighbours
+% For each vertex on BB, find nearest neighbour on BB10, via mesh neighbours
 nn_bb = zeros(1,length(BB.coord));
 edg = SurfStatEdg(BB);
 parfor ii = 1:length(BB.coord)
@@ -28,8 +29,15 @@ parfor ii = 1:length(BB.coord)
         while sum(ismember(nei, bb_downsample))==0
             nei = [unique(edg(sum(ismember(edg,nei),2)==1,:)); nei];
         end
-        tmp = nei(ismember(nei, bb_downsample));
-        nn_bb(ii) = tmp(1);
+        matched_vert = nei(ismember(nei, bb_downsample));
+        if length(matched_vert)>1  % choose the mesh neighbour that is closest in Euclidean space
+            n1 = length(matched_vert);
+            d = sqrt(sum((repmat(BB.coord(1:3,ii),1,n1) - BB.coord(:,matched_vert)).^2));
+            [~, idx] = min(d);
+            nn_bb(ii) = matched_vert(idx);
+        else
+            nn_bb(ii) = matched_vert;
+        end
     end
 end
 
