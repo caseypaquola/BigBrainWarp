@@ -56,7 +56,7 @@ parfor ii = 1:length(BB10.coord)
     end
 end
 
-% For each vertex on S10, find nearest neighbour for fsaverage
+% For each vertex on B10, find nearest neighbour for fsaverage
 % (for indexing bigbrain surfaces, ie: bigbrain2fsaverage)
 n1 = length(trans_coord);
 nn_fs_bbicbm = zeros(1,length(FS.coord)); % nearest neighbour of each FS vertex on BB
@@ -73,4 +73,4 @@ parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
     nn_fs_bbicbm(ii) = min(d); 
 end
 
-save([projDir '/tests/nn_surface_indexing.mat'], 'nn_fs_bbicbm', 'nn_bb', 'nn_bbicbm_fs', 'downsampIdx')
+save([bbwDir '/nn_surface_indexing.mat'], 'nn_fs_bbicbm', 'nn_bb', 'nn_bbicbm_fs', 'bb_downsample')
