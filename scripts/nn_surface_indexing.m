@@ -4,6 +4,8 @@
 % author: Casey Paquola @ MICA, MNI, 2020*
 
 % load surfaces
+GH          = '/data_/mica1/03_projects/casey/';
+bbwDir      = [GH '/BigBrainWarp/'];
 BB = SurfStatAvSurf({[bbwDir '/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj'], ...
     [bbwDir '/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj']});
 fsAv = '/data_/mica1/03_projects/casey/micasoft/parcellations/fsaverage5';
@@ -42,36 +44,34 @@ parfor ii = 1:length(BB.coord)
     end
 end
 
-% For each vertex on BB10, find nearest neighbour for fsaverage
-% (for indexing bigbrain surfaces, ie: bigbrain2fsaverage)
+% For indexing fsaverage surfaces, ie: fsaverage2bigbrain
 % constrained by hemisphere
 n1 = length(FSlh.coord);
-nn_bbicbm_fs = zeros(1,length(BB10.coord));
+nn_fs_bb10 = zeros(1,length(BB10.coord));
 parfor ii = 1:length(BB10.coord)
     if bb_downsample(ii)<=(length(FS.coord)/2)
         d = sqrt(sum((repmat(BB10.coord(1:3,ii),1,n1) - FSlh.coord).^2)); 
-        nn_bbicbm_fs(ii) = find(d==min(d)); 
+        nn_fs_bb10(ii) = find(d==min(d)); 
     else
         d = sqrt(sum((repmat(BB10.coord(1:3,ii),1,n1) - FSrh.coord).^2)); 
-        nn_bbicbm_fs(ii) = find(d==min(d))+length(FSlh.coord); 
+        nn_fs_bb10(ii) = find(d==min(d))+length(FSlh.coord); 
     end
 end
 
-% For each vertex on BB10, find nearest neighbour for fsaverage
-% (for indexing bigbrain surfaces, ie: bigbrain2fsaverage)
+% For indexing bigbrain surfaces, ie: bigbrain2fsaverage
 n1 = length(BB10.coord);
-nn_fs_bbicbm = zeros(1,length(FS.coord)); % nearest neighbour of each FS vertex on BB
+nn_bb10_fs = zeros(1,length(FS.coord)); % nearest neighbour of each FS vertex on BB
 BBlh_coord = BB10.coord;
 BBlh_coord(:,bb_downsample>=(length(BB.coord)/2)) = inf;
 parfor ii = 1:(length(FS.coord)/2)
     d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBlh_coord).^2)); 
-    nn_fs_bbicbm(ii) = min(d); 
+    nn_bb10_fs(ii) = min(d); 
 end
 BBrh_coord = BB10.coord;
 BBrh_coord(:,bb_downsample<(length(BB.coord)/2)) = inf;
 parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
     d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBrh_coord).^2)); 
-    nn_fs_bbicbm(ii) = min(d); 
+    nn_bb10_fs(ii) = min(d); 
 end
 
-save([bbwDir '/nn_surface_indexing.mat'], 'nn_fs_bbicbm', 'nn_bb', 'nn_bbicbm_fs', 'bb_downsample')
+save([bbwDir '/nn_surface_indexing.mat'], 'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_bb10_fs', 'BB10')
