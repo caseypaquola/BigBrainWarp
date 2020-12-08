@@ -66,12 +66,12 @@ if ~ismember(size(lh_input,2), compatSizes)
 end
 
 % load indexing scheme
-load([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_fs_bbicbm', 'bb_downsample');
+load([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb10_fs', 'bb_downsample');
 
 % re-index to 10k BigBrain surface
 data_bb = [lh_input rh_input];
 data_bb10k = data_bb(bb_downsample);
-data_fs = data_bb10k(nn_fs_bbicbm);
+data_fs = data_bb10k(nn_bb10_fs);
 
 % write out
 if strcmp(ext, '.curv')

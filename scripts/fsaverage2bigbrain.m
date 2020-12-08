@@ -63,11 +63,11 @@ if ~ismember(size(lh_input,2), compatSizes)
 end
 
 % load indexing scheme
-load([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bbicbm_fs', 'bb_downsample', 'nn_bb');
+load([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_fs_bb10', 'bb_downsample', 'nn_bb');
 
 % re-index to 10k BigBrain surface
 data_fs = [lh_input rh_input];
-data_bb10k = data_fs(nn_bbicbm_fs);
+data_bb10k = data_fs(nn_fs_bb10);
 
 % upsample on bb
 data_bb = zeros(1,length(nn_bb));
