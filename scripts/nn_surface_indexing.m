@@ -50,7 +50,7 @@ save([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb_fs', 'nn_fs_bb', ....
 
 
 
-%% Via downsample BB
+%% with downsampled BB
 % downsample BB
 numFaces    = 20484;
 patchNormal = patch('Faces', BB.tri, 'Vertices', BB.coord.','Visible','off');
