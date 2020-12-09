@@ -45,7 +45,6 @@ parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
     nn_bb_fs(ii) = find(d==min(d)); 
 end
 
-
 save([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb_fs', 'nn_fs_bb', ....
     'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_fs_bb10', 'BB10')
 
