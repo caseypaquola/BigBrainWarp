@@ -64,14 +64,14 @@ nn_bb10_fs = zeros(1,length(FS.coord)); % nearest neighbour of each FS vertex on
 BBlh_coord = BB10.coord;
 BBlh_coord(:,bb_downsample>=(length(BB.coord)/2)) = inf;
 parfor ii = 1:(length(FS.coord)/2)
-    d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBlh_coord).^2)); 
-    nn_bb10_fs(ii) = min(d); 
+   d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBlh_coord).^2)); 
+   nn_bb10_fs(ii) = find(d==min(d)); 
 end
 BBrh_coord = BB10.coord;
 BBrh_coord(:,bb_downsample<(length(BB.coord)/2)) = inf;
 parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
     d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBrh_coord).^2)); 
-    nn_bb10_fs(ii) = min(d); 
+    nn_bb10_fs(ii) = find(d==min(d)); 
 end
 
 save([bbwDir '/scripts/nn_surface_indexing.mat'], 'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_fs_bb10', 'BB10')
