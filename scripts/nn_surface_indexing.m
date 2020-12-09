@@ -12,7 +12,46 @@ fsAv = '/data_/mica1/03_projects/casey/micasoft/parcellations/fsaverage5';
 FS = SurfStatAvSurf({[fsAv '/lh.pial'], [fsAv '/rh.pial']});
 FSlh = SurfStatReadSurf([fsAv '/lh.pial']);  % using local versions of fsaverage pial surfaces (FS5.3)
 FSrh = SurfStatReadSurf([fsAv '/rh.pial']);
+load([bbwDir '/scripts/nn_surface_indexing.mat'])
 
+%% Highdim BB surface
+% For indexing fsaverage surfaces, ie: fsaverage2bigbrain
+% constrained by hemisphere
+n1 = length(FSlh.coord);
+nn_fs_bb = zeros(1,length(BB.coord));
+parfor ii = 1:length(BB.coord)
+    if ii<=(length(BB.coord)/2)
+        d = sqrt(sum((repmat(BB.coord(1:3,ii),1,n1) - FSlh.coord).^2)); 
+        nn_fs_bb(ii) = find(d==min(d)); 
+    else
+        d = sqrt(sum((repmat(BB.coord(1:3,ii),1,n1) - FSrh.coord).^2)); 
+        nn_fs_bb(ii) = find(d==min(d))+length(FSlh.coord); 
+    end
+end
+
+% For indexing bigbrain surfaces, ie: bigbrain2fsaverage
+n1 = length(BB.coord);
+nn_bb_fs = zeros(1,length(FS.coord)); % nearest neighbour of each FS vertex on BB
+BBlh_coord = BB.coord;
+BBlh_coord(:,bb_downsample>=(length(BB.coord)/2)) = inf;
+parfor ii = 1:(length(FS.coord)/2)
+   d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBlh_coord).^2)); 
+   nn_bb_fs(ii) = find(d==min(d)); 
+end
+BBrh_coord = BB.coord;
+BBrh_coord(:,bb_downsample<(length(BB.coord)/2)) = inf;
+parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
+    d = sqrt(sum((repmat(FS.coord(1:3,ii),1,n1) - BBrh_coord).^2)); 
+    nn_bb_fs(ii) = find(d==min(d)); 
+end
+
+
+save([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb_fs', 'nn_fs_bb', ....
+    'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_fs_bb10', 'BB10')
+
+
+
+%% Via downsample BB
 % downsample BB
 numFaces    = 20484;
 patchNormal = patch('Faces', BB.tri, 'Vertices', BB.coord.','Visible','off');
@@ -49,7 +88,7 @@ end
 n1 = length(FSlh.coord);
 nn_fs_bb10 = zeros(1,length(BB10.coord));
 parfor ii = 1:length(BB10.coord)
-    if bb_downsample(ii)<=(length(FS.coord)/2)
+    if bb_downsample(ii)<=(length(BB.coord)/2)
         d = sqrt(sum((repmat(BB10.coord(1:3,ii),1,n1) - FSlh.coord).^2)); 
         nn_fs_bb10(ii) = find(d==min(d)); 
     else
