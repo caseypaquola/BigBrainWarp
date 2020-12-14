@@ -130,6 +130,8 @@ Next, we interpolate the BigBrain-derived gradients to fsaverage5, using the pre
    :height: 350px
    :align: center
 
+	
+
 Et voila, the BigBrain-derived gradients are aligned to the MRI-derived gradients and can be statistically evaluated. The construction of the MRI-derived gradients is discussed at length in the :ref:`micapipe< https://micapipe.readthedocs.io/en/latest/>` documentation. Suffice to say, qT1 and rs-fMRI data from 50 healthy adults were registered to fsaverage5, then parcellated using the ~10k mesh patches discussed above. The microstructural gradient was generated using the MPC approach, with quantitative T1 images rather than BigBrain, and the functional gradient was created from resting state functional connectivity (a la :ref:`Margulies et al.,<10.1073/pnas.1608282113>`).
 
 For example, we may assess spatial correspondence of the gradients using Spearman correlations. We find that there is strong correlation between the sensory-fugal BigBrain-derived gradient with the MRI-derived microstructural gradient (r=0.64), and both of these are moderately correlated with the functional gradient (both r>0.5). In contrast, the anterior-posterior BigBrain-derived gradient does not overlap with the MRI-derived gradients (all r<0.3).
