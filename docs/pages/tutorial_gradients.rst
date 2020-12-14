@@ -2,7 +2,9 @@ Tutorial 1: Comparing BigBrain- and MRI-derived gradients on a common surface
 ============================================================================================================
 
 In this tutorial, we aim to inspect the convergence of large-scale gradients of cytoarchitecture, microstructure and functional connectivity. 
+
 First, we need to identify the input data and the transformations necessary to examine BigBrain- and MRI-derived gradients on a common surface. For BigBrain, we can use microstructure profiles to resolve the cytoarchitectural gradients. This procedure will involve matrix manipulation that is infeasible with a 327684x327684 array, however, so we will need to reduce the number of microstructure profiles prior to computation of the cytoarchitectural gradients. For MRI, we can use microstructure profiles of quantitative T1 mapping and resting state fMRI timeseries from the MICs dataset. Individual subject data must be aligned to a standard surface, for example fsaverage5 (20484 vertices), then again downsampled to a feasible number of parcels for cross-correlation and embedding. Finally, we will need to define an interpolation strategy from the downsampled BigBrain surface to the downsampled fsaverage5 surface.
+
 The interpolation is the crucial linking step, so we’ll address this first and use it inform our approach for the gradient construction. Given the need to downsample BigBrain, we’ll start by performing mesh decimation on the BigBrainSym surface. We’ll use BigBrainSym throughout the surface interpolation because it already closely conforms to fsaverage5 in terms of shape and the coordinate system. Mesh decimation will decrease the number of vertices in the surface close to a prescribed number (in this case ~10,000) and retriangulate the surface, in such a way that preserves the overall shape. 
 
 .. code-block:: matlab
