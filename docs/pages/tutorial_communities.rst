@@ -18,7 +18,7 @@ The transformation from fsaverage5 to the BigBrain surface can be conducted in B
    :align: center
 
 
-Check [tick emoji]. Then, we can load the microstructure profiles from the BigBrainWarp repository and calculate the central moments of each profile. The central moments are an efficient parameterisation of a distribution that have been used with histological data previously to perform observer-independent identification of areal borders (Schleicher, 1999).
+Check ✔️. Then, we can load the microstructure profiles from the BigBrainWarp repository and calculate the central moments of each profile. The central moments are an efficient parameterisation of a distribution that have been used with histological data previously to perform observer-independent identification of areal borders (Schleicher, 1999).
 
 
 .. code-block:: matlab
@@ -41,5 +41,5 @@ Check [tick emoji]. Then, we can load the microstructure profiles from the BigBr
 Projecting the first four moments onto BigBrain, we can see how cytoarchitectural variations across the cortical surface. Then using the transformed atlas to assign each vertex to a functional community, we can observe different distributions of central moments. For example, the visual network, in particular, exhibits a distinct cytoarchitecture. 
 
 .. image:: ./images/tutorial_communities_c.png
-   :height: 350px
+   :height: 250px
    :align: center
