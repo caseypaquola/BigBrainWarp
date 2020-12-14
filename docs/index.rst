@@ -15,33 +15,18 @@
    </style>
 
 
-.. .. image:: ./pages/images/transformation.gif
-   :align: left
-
 **Welcome to The Big Brain Warp**
 ==========================================
 
 Integrating BigBrain with multi-modal imaging 
 ----------------------------------------------------
 BigBrain is a singular dataset that offers a volumetric reconstruction of ultra-high-resolution cell-stained slices of a post mortem human brain. BigBrainWarp provides for approaches to multi-modal integration of BigBrain by transforming between histological to MNI152 space, towards helping a wide range of neuroscientistists utilise the cytoarchitectural information encoded in BigBrain. The enclosed scripts will help transform between various spaces and extract pertinent information from BigBrain.
-
-.. raw:: html
-
-   <br>
-
-
-Step-by-step tutorials
-------------------------------------
 Using these scripts, we'll demonstrate how to perform multi-modal integration of BigBrain for a range of scenarios.
-
-.. raw:: html
-
-   <br>
-
-
-Spatial maps
------------------
 We've also generated spatial maps of some interesting measures and performed the transformations. That means pre-computed BigBrain maps in imaging space and imaging-based maps in BigBrain space ready for download. 
+
+.. image:: ./pages/images/toolbox_overview.png
+   :height: 350px
+   :align: center
 
 
 .. raw:: html
@@ -57,7 +42,7 @@ We've also generated spatial maps of some interesting measures and performed the
    pages/installation
    pages/overview
    pages/FAQs
-   pages/Glossary
+   pages/glossary
 
 .. toctree::
    :maxdepth: 1
