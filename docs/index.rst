@@ -25,7 +25,7 @@ Using these scripts, we'll demonstrate how to perform multi-modal integration of
 We've also generated spatial maps of some interesting measures and performed the transformations. That means pre-computed BigBrain maps in imaging space and imaging-based maps in BigBrain space ready for download. 
 
 .. image:: ./pages/images/toolbox_overview.png
-   :height: 350px
+   :height: 250px
    :align: center
 
 
