@@ -54,8 +54,10 @@ We've also generated spatial maps of some interesting measures and performed the
    :hidden:
    :caption: Getting started
    
-   pages/getting_started
+   pages/installation
+   pages/overview
    pages/FAQs
+   pages/Glossary
 
 .. toctree::
    :maxdepth: 1
@@ -70,9 +72,9 @@ We've also generated spatial maps of some interesting measures and performed the
    :hidden:
    :caption: Tutorials
    
-   pages/MRI
-   pages/iEEG
-
+   pages/tutorial_gradients
+   pages/tutorial_communities
+   pages/tutorial_confluence
 
 .. toctree::
    :maxdepth: 1
