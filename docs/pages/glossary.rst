@@ -1,9 +1,8 @@
 Glossary
 ===========
 
-
-.. list-table:: Glossary
-   :widths: 25 25 50
+.. list-table::
+   :widths: 50 400
    :header-rows: 1
 
 * - Terms
