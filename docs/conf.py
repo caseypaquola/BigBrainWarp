@@ -64,7 +64,7 @@ highlight_language ='none'
 #
 html_theme = 'sphinx_rtd_theme'
 
-html_theme_options = { 'style_nav_header_background': '#DE1100'}
+html_theme_options = { 'style_nav_header_background': '#5D4BB7'}
 
 
 # The name of the Pygments (syntax highlighting) style to use.
