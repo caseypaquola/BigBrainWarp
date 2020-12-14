@@ -86,6 +86,7 @@ We also perform the same type of mesh decimation and patching on fsavearge5, dow
 
 In this analysis, we plan to move the BigBrain-derived gradients to fsaverage5 space. The reverse transformation is equally acceptable, and the choice generally depends on the research question. Our choice here was swayed by having more maps constructed on fsavearge5. In other cases, especially when more detailed aspects of BigBrain are investigated, it’s useful to move from fsavearge5 to BigBrainSym. The transformations between BigBrainSym and fsaverage5 currently involve nearest neighbour interpolation based on shortest Euclidean distance, conducted within each hemisphere separately. We’ve precomputed this indexing to support easy interpolation between the surfaces. Of note, there is not a unique mapping of vertices between surface using this technique (i.e. 19039 BigBrainSym vertices map to 20484 fsaverage5 vertices and 17540 fsaverage5 vertices map to 327684 BigBrainSym vertices), and analyses should take this into account. For example, we can overcome this issue by performing statistical analyses only on unique vertices or by using patches.
 
+
 .. image:: ./images/tutorial_gradients_a.png
    :height: 350px
    :align: center
@@ -136,4 +137,3 @@ For example, we may assess spatial correspondence of the gradients using Spearma
 .. image:: ./images/tutorial_gradients_c.png
    :height: 350px
    :align: center
-
