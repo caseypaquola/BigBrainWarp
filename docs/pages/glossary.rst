@@ -1,7 +1,8 @@
 Glossary
 ===========
 
-.. list-table:: Title
+
+.. list-table:: Glossary
    :widths: 25 25 50
    :header-rows: 1
 
@@ -9,6 +10,9 @@ Glossary
   - Contextual definitions
 * - Cortical confluence
   - Mergence of cortical types (iso and allo) in the mesiotemporal lobe
+
+
+
 
 
 =========================  ============================================================================================================
