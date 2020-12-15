@@ -2,13 +2,14 @@ Glossary
 ===========
 
 .. list-table::
-   :widths: 50 400
-   :header-rows: 1
+   :widths: 25 400
+   :header-rows: 0
 
-* - Terms
-  - Contextual definitions
-* - Cortical confluence
-  - Mergence of cortical types (iso and allo) in the mesiotemporal lobe
+   * - Terms
+     - Contextual definitions
+   * - Cortical confluence
+     - Mergence of cortical types (iso and allo) in the mesiotemporal lobe
+
 
 
 
