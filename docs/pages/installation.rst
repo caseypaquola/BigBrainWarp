@@ -1,4 +1,4 @@
-Getting Started
+Installation
 ==================
 
 1. Clone the GitHub repository to your local machine (https://github.com/caseypaquola/BigBrainWarp.git)
@@ -16,7 +16,19 @@ Dependencies
 
 We've included some small dependencies in the GitHub repository. In addition, 
 
-* All transformations require MINC2 (https://github.com/BIC-MNI/minc-toolkit-v2) and FSL (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
-* Surface-based transformations require MATLAB (tested on 19b, https://www.mathworks.com/products/matlab.html)
+* All transformations require :ref:`MINC2<https://github.com/BIC-MNI/minc-toolkit-v2` and :ref:`FSL<https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`
+* Surface-based transformations currently require :ref:`MATLAB<https://www.mathworks.com/products/matlab.html>` (tested on 19b)
+* MATLAB-based tutorials use a few in-house scripts that can be found on the micaopen gtihub
 
 These can be located anywhere on your system, just ensure that they are in your PATH and the functions are callable from your command line.
+
+
+Tips for Getting Started
+****************************
+
+* Follow the tutorials to get an understanding of BigBrain-MRI analysis strategies
+* Check out the Glossary and FAQ sections
+* Click the hyperlinks for more information
+* Get in touch if you have any questions 😁 
+
+

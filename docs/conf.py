@@ -77,9 +77,6 @@ pygments_style = 'micapipelexer.micapipeLexerStyle'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-#def setup(app):
-#    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
