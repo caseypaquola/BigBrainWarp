@@ -40,7 +40,6 @@ We've also generated spatial maps of some interesting measures and performed the
    :caption: Getting started
    
    pages/installation
-   pages/overview
    pages/FAQs
    pages/glossary
 
@@ -49,8 +48,10 @@ We've also generated spatial maps of some interesting measures and performed the
    :hidden:
    :caption: What's inside
 
-   pages/workflow   
-   pages/data_descriptor
+   pages/bigbrain_data
+   pages/scripts
+   pages/transformed_maps
+   pages/descriptor
 
 .. toctree::
    :maxdepth: 1

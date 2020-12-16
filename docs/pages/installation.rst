@@ -28,7 +28,7 @@ Tips for Getting Started
 
 * Follow the tutorials to get an understanding of BigBrain-MRI analysis strategies
 * Check out the Glossary and FAQ sections
-* Click the hyperlinks for more information
-* Get in touch if you have any questions 😁 
+* Use the hyperlinks to find related papers
+* Get in touch if you have any questions 🤙
 
 
