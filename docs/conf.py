@@ -63,7 +63,6 @@ highlight_language ='none'
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-
 html_theme_options = { 'style_nav_header_background': '#5D4BB7'}
 
 
@@ -92,3 +91,10 @@ html_css_files = ['css/bigbrainwarp.css',
 # add custom files that are stored in _static
 def setup(app):
    app.add_css_file('css/bigbrainwarp_tabs.css')
+
+# add logo
+html_logo = "warp2.png"
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+}
