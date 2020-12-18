@@ -4,22 +4,15 @@ BigBrain Background
 What is BigBrain?
 ****************************
 
-“An ultrahigh-resolution three-dimensional (3D) model of a human brain at nearly cellular resolution of 20 micrometers, based on the reconstruction of 7404 histological sections.” (`Amunts et al., 2013 https://doi.org/10.1126/science.1235381`_). BigBrain volumes can be downloaded from https://bigbrain.loris.ca/main.php. While the original slicing and staining were performed at 20µm, these have been upsampled for volumetric releases to 40µm, 100µm, 200µm, 300µm, 400µm and 1000µm. The 40µm versions are released as blocks, whereas lower resolutions are provided as a single, whole brain volume.
-The grey and white matter boundaries of the cortical surface were originally released with BigBrain, containing 163842 vertices per hemisphere that are aligned between grey and white matter surfaces. Since then, a number of additional surface reconstructions have been published from which we may attain a range of metrics (Table 1). While we could characterise cortical morphometry from this data, the real advantage of BigBrain is in the use of the staining intensity. Unlike, structural MRI, BigBrain intensities directly relate to cells. The Merker staining is a form of silver impregnation for cell bodies that produces a high contrast of black pigment in cells on a virtually colorless background (Merker, 1983). Stained histological sections were then digitized at 20µm, resulting in greyscale images with darker colouring where many or large cells occur. The density and size of cells varies across laminar, as well as areas, thus capturing the regional differentiation of cytoarchitecture. It’s common practice to invert the values of the intensity, so higher values correspond to higher cell density. Given the high resolution, we can sample from many cortical depths to attain a profile of the cytoarchitecture. This is achieved by constructing a set of surfaces within the cortex. The best approach at the moment involves equivolumetric surface construction, whereby the surfaces are initialised at equidistant depths, then modulated by the curvature of the cortex (Waehnert et al., 2014). This holds advantages for histological data because laminar vary in thickness depending on curvature of the cortex (Bok, 1929).
-
-.. image:: ./images/bigbrain_background_a.png
-   :height: 400px
-   :align: center
+“An ultrahigh-resolution three-dimensional (3D) model of a human brain at nearly cellular resolution of 20 micrometers, based on the reconstruction of 7404 histological sections.” (`Amunts et al., 2013 https://doi.org/10.1126/science.1235381`_). In essence, this allows investigation of variations in cell staining across one entire human brain. 
 
 
-What is BigBrain?
-****************************
+How is the BigBrain data provided?
+********************************************************
 
-
-.. image:: ./images/bigbrain_background_b.png
-   :height: 400px
-   :align: center
-
+The data is released via https://bigbrain.loris.ca/main.php. Images of the histological slices are available at 20µm resolution, however, the huge benefit of this dataset for computational neuroscientists comes with the reconstruction of these slices into a 3D brain. The 40µm versions are released as blocks, whereas lower resolutions are provided as a single volume. These are available in minc or nifti formats, which makes for smooth integration with neuroimaging tools. 
+Additionally,  grey and white matter cortical surfaces were reconstructed with great precision for BigBrain. These surfaces contain 163842 vertices per hemisphere, which are aligned between grey and white matter surfaces. 
+Since then, a number of additional surface reconstructions have been published from which we may attain a range of metrics. These are either incorporated in the BigBrain repository or available through the publication. 
 
 
 .. list-table::
@@ -47,5 +40,20 @@ What is BigBrain?
    * - Mesiotemporal confluence
      - Initialisation and visualisation
      - Paquola et al., 2020
+
+
+How can I interpret the intensity values in the BigBrain volumes? 
+****************************
+
+Merker staining, that used in BigBrain, is a form of silver impregnation for cell bodies that produces a high contrast of black pigment in cells on a virtually colorless background (Merker, 1983). Stained histological sections were then digitized at 20µm, resulting in greyscale images with darker colouring where many or large cells occur. The density and size of cells varies across cortical depths and areas, thus capturing the regional differentiation of cytoarchitecture. To explore these variations computationally, we create staining intensity profiles (Figure C). The best approach at the moment involves equivolumetric surface construction, whereby the surfaces are initialised at equidistant depths, then modulated by the curvature of the cortex (Waehnert et al., 2014). This holds advantages for histological data because laminar vary in thickness depending on curvature of the cortex (Bok, 1929).  For the present purpose, we generate equivolumetric surfaces between the grey and white matter surfaces, then sample the intensity values along matched vertices in direction of cortical columns. You can find pre-generated staining intensity profiles using 50 intracortical surfaces and the 100µm BigBrain volume in the repository **BigBrainWarp/spaces/bigbrain/data/profiles.txt**. 
+
+
+.. image:: ./images/bigbrain_background_a.png
+   :height: 400px
+   :align: center
+
+
+
+
 
 
