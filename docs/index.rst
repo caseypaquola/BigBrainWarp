@@ -1,7 +1,7 @@
 
-.. **THE BIG BRAIN WARP**
+.. **BIG BRAIN WARP**
    ============================
-.. title:: THE BIG BRAIN WARP
+.. title:: BIG BRAIN WARP
 
 .. raw:: html
 
@@ -15,7 +15,7 @@
    </style>
 
 
-**Welcome to The Big Brain Warp**
+**Welcome to BIG BRAIN WARP**
 ==========================================
 
 Integrating BigBrain with multi-modal imaging 
