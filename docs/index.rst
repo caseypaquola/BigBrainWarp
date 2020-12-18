@@ -40,6 +40,7 @@ We've also generated spatial maps of some interesting measures and performed the
    :caption: Getting started
    
    pages/installation
+   pages/bigbrain_background
    pages/FAQs
    pages/glossary
 
@@ -48,7 +49,6 @@ We've also generated spatial maps of some interesting measures and performed the
    :hidden:
    :caption: What's inside
 
-   pages/bigbrain_background
    pages/scripts
    pages/transformed_maps
    pages/descriptor
