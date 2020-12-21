@@ -29,6 +29,8 @@ We've also generated spatial maps of some interesting measures and performed the
    :align: center
 
 
+🚧 The toolbox and readthedocs are still under construction. If you're interested in a certain features or data, please get in touch and we can let you know whether it's finalised and provide the most up to date version. 
+
 .. raw:: html
 
    <br>
