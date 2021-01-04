@@ -19,6 +19,8 @@ Glossary
      - Standard surface in FreeSurfer
    * - Gradients
      - Graded spatial variations in a neurobiological feature
+   * - Isocortex
+     - Majority of the cortex, which exhibits six layers prenatally. Short for isogenetic cortex (Vogt 1910, Sanides 1969)
    * - Microstructure profile
      - A sequence of intracortical intensity values (staining or MRI) running from the pial to white matter, ie: in the direction of cortical column (Paquola et al., 2019)
    * - Moments

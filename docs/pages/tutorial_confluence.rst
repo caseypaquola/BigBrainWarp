@@ -3,7 +3,7 @@ Tutorial 3: Variations in resting state functional connectivity along a histolog
 
 In this tutorial, we aim to transform an axis defined on the BigBrain surface to a standard MRI volume, then explore variations in resting state functional connectivity (rsFC) along the histological axis.
 
-First, we should identify the input data and the necessary transformations. In this particular case, we’ll be using microstructure profiles constructed across the medial temporal lobe, ie: the `cortical confluence <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_, which are linked to surfaces in BigBrain space. The rs-fMRI data comes from 50 healthy adults, acquired as part of MICs, and are already preprocessed using `micapipe <https://micapipe.readthedocs.io/en/latest/>`_. Specifically, we’ll use deconfounded BOLD timeseries that have already been nonlinearly transformed to ICBM152 space. This means we’ll need to propagate the BigBrain-defined axis from surface to volume space, then perform a transformation from BigBrain volume to the ICBM152 volume. Fortunately, a nonlinear BigBrain-to-ICBM152 transformation has already been optimised and openly shared by `Xiao et al., (2019) < https://www.nature.com/articles/s41597-019-0217-0>`_ 🥳, so all we will have to work out is how to project the axis into the BigBrain volume and how to use the Xiao et al., transformation matrix.
+First, we should identify the input data and the necessary transformations. In this particular case, we’ll be using microstructure profiles constructed across the medial temporal lobe, ie: the `cortical confluence <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_, which are linked to surfaces in BigBrain space. The rs-fMRI data comes from 50 healthy adults, acquired as part of MICs, and are already preprocessed using `micapipe <https://micapipe.readthedocs.io/en/latest/>`_. Specifically, we’ll use deconfounded BOLD timeseries that have already been nonlinearly transformed to ICBM152 space. This means we’ll need to propagate the BigBrain-defined axis from surface to volume space, then perform a transformation from BigBrain volume to the ICBM152 volume. Fortunately, a nonlinear BigBrain-to-ICBM152 transformation has already been optimised and openly shared by `Xiao et al., (2019) <https://www.nature.com/articles/s41597-019-0217-0>`_ 🥳, so all we will have to work out is how to project the axis into the BigBrain volume and how to use the Xiao et al., transformation matrix. 
 
 Let’s begin with the construction of the histological axis. Here, we’re interested in capturing the principle axis of cytoarchitectural differentiation in the medial temporal lobe. For this project, we bridged hippocampal and `isocortical <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ surface meshes of BigBrain, which were both in native BigBrain space. This provides an ultra-high-resolution depiction of the curvature of the mesiotemporal lobe. Then, we can map the geodesic distance from each vertex to the intersection, creating an iso-to-allocortical axis in the mesiotemporal lobe. Additionally, we generate 14 intracortical `equivolumetric <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ surfaces between the pial/inner and white matter/outer surfaces to capture the full expanse of mesiotemporal lobe and to facilitate characterisation of the cytoarchitecture. For now, we will focus on the distance-based iso-to-allocortical axis.
 
@@ -49,7 +49,7 @@ Vertices are matched across surfaces. In other words, vertex 100 has the same is
 	info.Datatype = 'double';
 	niftiwrite(data,[homeDir '/constructs/bigbrain_axis_vox.nii'],info);
 
-Next, we nonlinearly transform the volume from BigBrain to ICBM152. This can be enacted using one line in BigBrainWarp, which calls mincresample and use the transformation matrices provided by Xiao et al., on `OSF <https://osf.io/xkqb3/>`_. Just like that, we have our histological axis aligned to a standard MRI space. This one-liner can be used on any volumetric data in BigBrain or BigBrainSym space.
+Next, we nonlinearly transform the volume from BigBrain to ICBM152. This can be enacted using one line in BigBrainWarp, which calls mincresample and uses the transformation matrices provided by Xiao et al., on `OSF <https://osf.io/xkqb3/>`_. Just like that, we have our histological axis aligned to a standard MRI space. This one-liner can be used on any volumetric data in BigBrain or BigBrainSym space. 
 
 .. code-block:: bash
 
@@ -72,6 +72,7 @@ Finally, we can explore how resting state functional connectivity varies along t
    :height: 350px
    :align: center
 
-	Cortical surfaces show the correlation of strength of rsFC with the iso-to-allocortical axis (red-blue). Scatterplots at seed regions illustrate these systematic variations in rsFC.
+
+The above figure shows that the correlation of strength of rsFC with the iso-to-allocortical axis (red-blue). Scatterplots at seed regions illustrate these systematic variations in rsFC.
 
 
