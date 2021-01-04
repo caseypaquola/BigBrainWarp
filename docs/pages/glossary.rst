@@ -24,7 +24,9 @@ Glossary
    * - Moments
      - Quantitative measures related to the shape of a microstructure profile
    * - Parcellated
-     - aggregation (usually averaging) of a neurobiological feature within a pre-defined cortical area
+     - Aggregation (usually averaging) of a neurobiological feature within a pre-defined cortical area
    * - Sensory-fugal
-     - A functional characterisation of the cortical gradient that runs from externally-focused primary sensory areas to transmodal, limbic areas that are relatively decoupled from environmental input (Mesulam 2000)
+     - A functional characterisation of the cortical gradient that runs from externally-focused primary sensory areas to limbic areas that are relatively decoupled from environmental input (Mesulam 2000). The term fugal is related to a fugue-state; a mental state that is decoupled from external reality. 
+   * - Vertex
+     - A point on a cortical mesh. In standard practice, the organisation of vertices is preserved across different depths (ie: grey and white matter boundaries), when the meshes come from the same reconstruction procedure.   
 
