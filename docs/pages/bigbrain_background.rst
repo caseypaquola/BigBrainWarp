@@ -4,7 +4,7 @@ BigBrain Background
 What is BigBrain?
 ****************************
 
-“An ultrahigh-resolution three-dimensional (3D) model of a human brain at nearly cellular resolution of 20 micrometers, based on the reconstruction of 7404 histological sections.” (`Amunts et al., 2013 https://doi.org/10.1126/science.1235381`_). In essence, this allows investigation of variations in cell staining across one entire human brain. 
+“An ultrahigh-resolution three-dimensional (3D) model of a human brain at nearly cellular resolution of 20 micrometers, based on the reconstruction of 7404 histological sections.” (`Amunts et al., 2013 <https://doi.org/10.1126/science.1235381>`_). In essence, this allows investigation of variations in cell staining across one entire human brain. 
 
 
 How is the BigBrain data provided?
@@ -45,11 +45,10 @@ Since then, a number of additional surface reconstructions have been published f
 How can I interpret the intensity values in the BigBrain volumes? 
 ****************************
 
-Merker staining, that used in BigBrain, is a form of silver impregnation for cell bodies that produces a high contrast of black pigment in cells on a virtually colorless background (Merker, 1983). Stained histological sections were then digitized at 20µm, resulting in greyscale images with darker colouring where many or large cells occur. The density and size of cells varies across cortical depths and areas, thus capturing the regional differentiation of cytoarchitecture. To explore these variations computationally, we create staining intensity profiles (Figure C). The best approach at the moment involves equivolumetric surface construction, whereby the surfaces are initialised at equidistant depths, then modulated by the curvature of the cortex (Waehnert et al., 2014). This holds advantages for histological data because laminar vary in thickness depending on curvature of the cortex (Bok, 1929).  For the present purpose, we generate equivolumetric surfaces between the grey and white matter surfaces, then sample the intensity values along matched vertices in direction of cortical columns. You can find pre-generated staining intensity profiles using 50 intracortical surfaces and the 100µm BigBrain volume in the repository **BigBrainWarp/spaces/bigbrain/profiles.txt**. 
-
+Merker staining (ie: that used in BigBrain) is a form of silver impregnation for cell bodies that produces a high contrast of black pigment in cells on a virtually colourless background (`Merker, 1983 <https://doi.org/10.1016/0165-0270(83)90086-9>`_). Stained histological sections were then digitized at 20µm, resulting in greyscale images with darker colouring where many or large cells occur. The density and size of cells varies across cortical depths and areas, thus capturing the regional differentiation of cytoarchitecture. To explore these variations computationally, we create staining intensity profiles (Figure C). The best approach at the moment involves equivolumetric surface construction, whereby the surfaces are initialised at equidistant depths, then modulated by the curvature of the cortex (`Waehnert et al., 2014 <https://doi.org/10.1016/j.neuroimage.2013.03.078>`_). This holds advantages for histological data because laminar vary in thickness depending on curvature of the cortex (Bok, 1929).  For the present purpose, we generate equivolumetric surfaces between the grey and white matter surfaces, then sample the intensity values along matched vertices in direction of cortical columns. You can find pre-generated staining intensity profiles using 50 intracortical surfaces and the 100µm BigBrain volume in the repository **BigBrainWarp/spaces/bigbrain/profiles.txt**.
 
 .. image:: ./images/bigbrain_background_a.png
-   :height: 400px
+   :height: 300px
    :align: center
 
 
