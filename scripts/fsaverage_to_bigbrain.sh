@@ -6,9 +6,9 @@ lhInput=$1		# full path to input file of left hemisphere, can be in format .anno
 rhInput=$2		# full path to input file of right hemisphere
 outName=$3 		# full path of output file (without extension or hemisphere label, eg: User/BigBrain/tests/thickness
 
-# default output is .txt, unless the input is .curv or .mgh, in which case this format is used for writing the data too.
+# default output is .txt
 # the output takes the form ${outName}_bigbrain.txt (or .mgh, .curv)
 
 # use nearest neighbour surface indexing
-matlab -nodisplay -r 'fsaverage2bigbrain("'${lhInput}'","'${rhInput}'","'${outName}'","'${bbwDir}'"); quit'
+python fsaverage2bigbrain.py ${lhInput} ${rhInput} ${outName} ${bbwDir}
 

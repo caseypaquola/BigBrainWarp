@@ -9,4 +9,4 @@ outName=$3 		# full path of output file (without extension or hemisphere label, 
 # the output takes the form ${outName}_fsaverage5.txt
 
 # use nearest neighbour surface indexing
-matlab -nodisplay -r 'bigbrain2fsaverage("'${lhInput}'","'${rhInput}'","'${outName}'","'${bbwDir}'"); quit'
+python bigbrain2fsaverage.py ${lhInput} ${rhInput} ${outName} ${bbwDir}
