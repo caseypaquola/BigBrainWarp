@@ -17,8 +17,7 @@ Dependencies
 We've included some small dependencies in the GitHub repository. In addition, 
 
 * All transformations require `MINC2 <https://github.com/BIC-MNI/minc-toolkit-v2>`_ and `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_
-* Surface-based transformations currently require `MATLAB <https://www.mathworks.com/products/matlab.html>`_ (tested on 19b)
-* MATLAB-based tutorials use a few in-house scripts that can be found on the `micaopen gtihub <https://github.com/MICA-MNI/micaopen.git>`_
+* Surface-based transformations use python (tested on 2.7), including `numpy <https://numpy.org/>`_, `scipy <https://www.scipy.org/>` and `nibabel <https://nipy.org/nibabel/index.html>`_ packages
 
 These can be located anywhere on your system, just ensure that they are in your PATH and the functions are callable from your command line.
 
