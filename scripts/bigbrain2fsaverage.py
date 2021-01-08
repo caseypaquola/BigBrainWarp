@@ -10,11 +10,6 @@ rhData=str(sys.argv[2])
 outName=str(sys.argv[3])
 bbwDir=str(sys.argv[4])
 
-lhData='/data_/mica1/03_projects/casey/BigBrainWarp/tests/lh.Ghist.txt'
-rhData='/data_/mica1/03_projects/casey/BigBrainWarp/tests/rh.Ghist.txt'
-outName='/data_/mica1/03_projects/casey/sandbox1/8_BigBrainWarp/Ghist'
-bbwDir='/data_/mica1/03_projects/casey/BigBrainWarp/'
-
 # load and vectorise surface data
 x = lhData.split(".")
 ext = x[-1]
@@ -52,4 +47,4 @@ data_bb = np.array(np.concatenate((lhInput, rhInput), axis=0))
 data_fs = data_bb[nn_bb_fs[0]]
 
 print("writing out as text file")
-np.savetxt([outName '_fsaverage5.txt'], data_fs, delimiter=',')
+np.savetxt(outName+'_fsaverage5.txt', data_fs, delimiter=',')
