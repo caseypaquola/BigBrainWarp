@@ -30,7 +30,7 @@ else:
     sys.exit()
 
 # check size
-compatSizes = 10242  # compatible number of vertices of input (ie: one fsaverage5 hemisphere)
+compatSizes=np.array(10242)  # compatible number of vertices of input (ie: one fsaverage5 hemisphere)
 if len(lhInput)!=len(rhInput):
     print('hemispheric data not the same size')
     sys.exit()

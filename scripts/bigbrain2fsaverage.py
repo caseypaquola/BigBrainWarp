@@ -30,7 +30,7 @@ else:
     sys.exit()
 
 # check size
-compatSizes = 163842 # compatible number of vertices of input (ie: one BigBrain hemispehre)
+compatSizes=np.array(163842) # compatible number of vertices of input (ie: one BigBrain hemispehre)
 if len(lhInput)!=len(rhInput):
     print('hemispheric data not the same size')
     sys.exit()
