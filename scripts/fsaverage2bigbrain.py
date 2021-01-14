@@ -30,21 +30,21 @@ else:
     sys.exit()
 
 # check size
-compatSizes = np.array(163842)  # did you mean np.arange(...)?  
-if lhInput.shape!=rhInput.shape:  # lhInput and rhInput are tuples, they don't have a shape attribute
+compatSizes = 163842
+if len(lhInput)!=len(rhInput):
     print('hemispheric data not the same size')
     sys.exit()
-if lhInput.shape[0] not in compatSizes:
+if len(lhInput) not in compatSizes:
     print("invalid number of vertices")
     sys.exit()
 
 # load indexing
 mat = io.loadmat(bbwDir + "/scripts/nn_surface_indexing.mat")
-nn_fs_bb = np.array(mat["nn_fs_bb"])
+nn_bb_fs = np.array(mat["nn_bb_fs"])
 
 print("reindexing data to bigbrain")
 data_fs = np.array(np.concatenate((lhInput, rhInput), axis=0))
 data_bb = data_fs[nn_bb_fs[0]]  # nn_bb_fs is not defined
 
 print("writing out as text file")
-np.savetxt([outName '_bigbrain.txt'], data_bb, delimiter=',') # syntax error, see fix in bigbrain2fsaverage.py
+np.savetxt(outName+'_bigbrain.txt', data_fs, delimiter=',')
