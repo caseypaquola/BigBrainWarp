@@ -6,7 +6,6 @@ fullFile=$1 	# full path to input file
 bbSpace=$2 		# which bigbrain space to output to: "histological" or "sym"
 interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
-cleanup=$5 		# "y" to remove intermediate files, "n" to keep
 
 # output is $workDir/${fileFile}_bigbrain.mnc or $workDir/${fileFile}_bigbrain.nii (extension is determined by input)
 [[ -d $workDir ]] || mkdir -p $workDir
@@ -53,12 +52,3 @@ if [[ "$extension" != "mnc" ]] ; then
 	echo "transforming nii to mnc"
 	mnc2nii "$workDir"/"$fileName"_bigbrain.mnc "$workDir"/"$fileName"_bigbrain.nii
 fi
-
-# clean up if selected
-if [[ "$cleanup" == "y" ]] ; then
-	rm "$workDir"/"$fileName"_nl*
-	if [[ "$extension" != "mnc" ]] ; then
-		rm "$workDir"/"$fileName"_bigbrain.mnc
-	fi
-fi
-
