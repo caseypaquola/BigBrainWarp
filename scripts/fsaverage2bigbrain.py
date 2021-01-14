@@ -30,8 +30,8 @@ else:
     sys.exit()
 
 # check size
-compatSizes = np.array(163842)
-if lhInput.shape!=rhInput.shape:
+compatSizes = np.array(163842)  # did you mean np.arange(...)?  
+if lhInput.shape!=rhInput.shape:  # lhInput and rhInput are tuples, they don't have a shape attribute
     print('hemispheric data not the same size')
     sys.exit()
 if lhInput.shape[0] not in compatSizes:
@@ -44,7 +44,7 @@ nn_fs_bb = np.array(mat["nn_fs_bb"])
 
 print("reindexing data to bigbrain")
 data_fs = np.array(np.concatenate((lhInput, rhInput), axis=0))
-data_bb = data_fs[nn_bb_fs[0]]
+data_bb = data_fs[nn_bb_fs[0]]  # nn_bb_fs is not defined
 
 print("writing out as text file")
-np.savetxt([outName '_bigbrain.txt'], data_bb, delimiter=',')
+np.savetxt([outName '_bigbrain.txt'], data_bb, delimiter=',') # syntax error, see fix in bigbrain2fsaverage.py

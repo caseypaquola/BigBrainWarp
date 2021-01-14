@@ -1,9 +1,0 @@
-The files enclosed in this directory may be used to test the following scripts:
-
-bigbrain_to_fsaverage lh.Ghist.txt rh.Ghist.txt outName
-
-fsaverage_to_bigbrain lh.Yeo2011_17Networks_N1000.annot rh.Yeo2011_17Networks_N1000.annot outName
-
-icbm_to_bigbrain motor_association-test_z_FDR_0.01 bbSpace interp workingDir cleanup
-
-bigbrain_to_icbm bigbrain_axis_vox.nii bbSpace interp workingDir cleanup
