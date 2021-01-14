@@ -2,7 +2,7 @@
 # perform nonlinear transformation from ICBM2009c nonlinear symmetric to BigBrain spaces
 # written by Casey Paquola @ MICA, MNI, 2020*
 
-fullFile=$1 		# full path to input file
+fullFile=$1 	# full path to input file
 bbSpace=$2 		# which bigbrain space to output to: "histological" or "sym"
 interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
 workDir=$4 		# working directory
@@ -40,7 +40,6 @@ elif [ ${interp} = nearest ] ; then
 fi
 
 # transformation
-rm "$workDir"/"$fileName"_bigbrain.mnc
 if [[ ${bbSpace} = histological ]] ; then
 	echo "transform to original BigBrain space"
 	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
