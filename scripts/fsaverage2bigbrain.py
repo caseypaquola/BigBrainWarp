@@ -15,7 +15,9 @@ x = lhData.split(".")
 ext = x[-1]
 if ext == 'annot':
     lhInput = nibabel.freesurfer.io.read_annot(lhData)
+    lhInput = lhInput[0]
     rhInput = nibabel.freesurfer.io.read_annot(rhData)
+    rhInput = rhInput[0]
 elif ext == 'txt':
     lhInput = np.loadtxt(lhData)
     rhInput = np.loadtxt(rhData)

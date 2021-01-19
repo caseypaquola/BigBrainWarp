@@ -32,9 +32,9 @@ else
 fi
 
 # precise interpolation method for minc
-if [ ${interp} = linear ]; then
+if [[] ${interp} = linear ]]; then
 	mnc_interp=trilinear
-elif [ ${interp} = nearest ] ; then
+elif [[ ${interp} = nearest ]] ; then
 	mnc_interp=nearest_neighbour
 fi
 
