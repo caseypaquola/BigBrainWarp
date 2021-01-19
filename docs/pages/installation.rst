@@ -1,6 +1,24 @@
 Installation
 ==================
 
+The simplest way to interact with *BigBrainWarp* is using the Docker engine.
+
+1. Get `Docker <https://docs.docker.com/get-docker/>`_
+2. Pull the latest Docker image. The image is automatically updated with each new version of *BigBrainWarp*
+
+.. code-block:: bash
+
+	docker pull caseypaquola/bigbrainwarp:latest	
+
+3. Run *BigBrainWarp* directly within the Docker engine
+
+.. code-block:: bash
+
+	docker run --rm -it caseypaquola/bigbrainwarp bash
+
+ 
+Alternatively, you can also install a local version of BigBrainWarp like so:
+
 1. Clone the GitHub repository to your local machine (https://github.com/caseypaquola/BigBrainWarp.git)
 2. Edit the first three lines of 'BigBrainWarp/scripts/init.sh' file based on the specific paths of your machine
 3. Prior to running any scripts, set the necessary global environment variables
@@ -11,10 +29,7 @@ Installation
 	source BigBrainWarp/scripts/init.sh
 
 
-Dependencies
-**************
-
-We've included some small dependencies in the GitHub repository. In addition, 
+If you're working with a local version, you will also need to set up the dependencies:
 
 * All transformations require `MINC2 <https://github.com/BIC-MNI/minc-toolkit-v2>`_ and `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_
 * Surface-based transformations use python (tested on 2.7), including `numpy <https://numpy.org/>`_, `scipy <https://www.scipy.org/>`_ and `nibabel <https://nipy.org/nibabel/index.html>`_ packages

@@ -18,4 +18,4 @@ A special thanks to the contributions of
 - Jessica Royer, MICA Lab, Montreal Neurological Institute - bug catcher extraordinaire 🐛
 - Sara Larivière, MICA Lab, Montreal Neurological Institute - website design wizard 🧙‍♀️ 
 - Oualid Benkarim, MICA Lab, Montreal Neurological Institute
-- Tristan Glatard, Concordia University
+- Tristan Glatard, Concordia University - Docker hero 🐳
