@@ -16,6 +16,8 @@ The simplest way to interact with *BigBrainWarp* is using the Docker engine.
 
 	docker run --rm -it caseypaquola/bigbrainwarp bash
 
+For more on interacting with the docker container, for example transferring files between your local machine and the docker container, see https://docs.docker.com/engine/reference/commandline/docker/
+
  
 Alternatively, you can also install a local version of BigBrainWarp like so:
 
@@ -31,18 +33,10 @@ Alternatively, you can also install a local version of BigBrainWarp like so:
 
 If you're working with a local version, you will also need to set up the dependencies:
 
-* All transformations require `MINC2 <https://github.com/BIC-MNI/minc-toolkit-v2>`_ and `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_
-* Surface-based transformations use python (tested on 2.7), including `numpy <https://numpy.org/>`_, `scipy <https://www.scipy.org/>`_ and `nibabel <https://nipy.org/nibabel/index.html>`_ packages
+* `MINC2 <https://github.com/BIC-MNI/minc-toolkit-v2>`_ is required for volumetric transformations (tested on MINC2-v2)
+* `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_ is required for volumetric transformations (tested on FSL 5.5)
+* Python (tested on 2.7 and 3.8) is required for surface-based transformations, with `numpy <https://numpy.org/>`_, `scipy <https://www.scipy.org/>`_ and `nibabel <https://nipy.org/nibabel/index.html>`_ packages
 
 These can be located anywhere on your system, just ensure that they are in your PATH and the functions are callable from your command line.
-
-
-Tips for Getting Started
-****************************
-
-* Follow the tutorials to get an understanding of BigBrain-MRI analysis strategies
-* Check out the Glossary and FAQ sections
-* Use the hyperlinks to find related papers
-* Get in touch if you have any questions 🤙
 
 

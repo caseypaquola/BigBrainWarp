@@ -1,7 +1,7 @@
-Tutorial 1: Comparing BigBrain- and MRI-derived gradients on a common surface
+Tutorial 1: Comparing BigBrain- and MRI-derived cortical gradients on a common surface
 ============================================================================================================
 
-In this tutorial, we aim to inspect the convergence of large-scale `gradients <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ of cytoarchitecture, microstructure and functional connectivity. 
+In this tutorial, we aim to inspect the convergence of large-scale cortical `gradients <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ of cytoarchitecture, microstructure and functional connectivity. 
 
 First, we need to identify the input data and the transformations necessary to examine BigBrain- and MRI-derived gradients on a common surface. For BigBrain, we can use `microstructure profiles <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ to resolve the cytoarchitectural gradients. This procedure will involve matrix manipulation that is infeasible with a `327684 <https://bigbrainwarp.readthedocs.io/en/latest/pages/bigbrain_background.html>`_ x 327684 array, however, so we will need to reduce the number of microstructure profiles prior to computation of the cytoarchitectural gradients. For MRI, we can use microstructure profiles of quantitative T1 mapping and resting state fMRI timeseries from the MICs dataset. Individual subject data must be aligned to a standard surface, for example `fsaverage5 (20484 vertices) <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_, then again downsampled to a feasible number of parcels for cross-correlation and embedding. Finally, we will need to define an interpolation strategy from the downsampled BigBrain surface to the downsampled fsaverage5 surface.
 
