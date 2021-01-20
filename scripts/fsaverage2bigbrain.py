@@ -49,4 +49,5 @@ data_fs = np.array(np.concatenate((lhInput, rhInput), axis=0))
 data_bb = data_fs[nn_bb_fs[0]]  # nn_bb_fs is not defined
 
 print("writing out as text file")
-np.savetxt(outName+'_bigbrain.txt', data_fs, delimiter=',')
+np.savetxt(outName+'_lh_bigbrain.txt', data_bb[:len(data_bb)//2], delimiter=',')
+np.savetxt(outName+'_rh_bigbrain.txt', data_bb[len(data_bb)//2:], delimiter=',')
