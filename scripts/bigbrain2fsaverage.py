@@ -48,4 +48,4 @@ data_fs = data_bb[nn_bb_fs[0]]
 
 print("writing out as text file")
 np.savetxt(outName+'_lh_fsaverage5.txt', data_fs[:len(data_fs)//2], delimiter=',')
-np.savetxt(outName+'_lh_fsaverage5.txt', data_fs[len(data_fs)//2:], delimiter=',')
+np.savetxt(outName+'_rh_fsaverage5.txt', data_fs[len(data_fs)//2:], delimiter=',')
