@@ -1,5 +1,7 @@
-Data Descriptor
+Toolbox contents
 ==================
+
+An overview of what scripts and features are contained in *BigBrainWarp*
 
 * scripts
 	* bigbrain_to_icbm.sh: implements one-step transformation to BigBrainSym or three-step transformation BigBrain (Xiao et al. 2019)
@@ -8,6 +10,8 @@ Data Descriptor
 	* fsaverage_to_bigbrain.sh: bash wrapper script to perform nearest neighbour interpolation from fsaverage5 to BigBrain
 	* nn_surface_indexing.m: the creation of nearest neighbour indexing between fsaverage5 and BigBrainSym surfaces
 	* nn_surface_indexing.mat: output of nn_surface_indexing.m
+	* bigbrain2fsaverage.py: python script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
+	* fsaverage2bigbrain.py: python script to perform nearest neighbour interpolation from fsaverage5 to BigBrain	
 	* bigbrain2fsaverage.m: matlab script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
 	* fsaverage2bigbrain.m: matlab script to perform nearest neighbour interpolation from fsaverage5 to BigBrain	
 

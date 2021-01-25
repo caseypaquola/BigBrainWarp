@@ -16,5 +16,6 @@ The work is conducted through a collaboration of researchers at the Neuro and J�
 A special thanks to the contributions of
 
 - Jessica Royer, MICA Lab, Montreal Neurological Institute - bug catcher extraordinaire 🐛
-- Oualid Benkarim, MICA Lab, Montreal Neurological Institute
 - Sara Larivière, MICA Lab, Montreal Neurological Institute - website design wizard 🧙‍♀️ 
+- Oualid Benkarim, MICA Lab, Montreal Neurological Institute
+- Tristan Glatard, Concordia University - Docker hero 🐳

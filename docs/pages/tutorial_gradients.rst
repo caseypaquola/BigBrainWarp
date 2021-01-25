@@ -1,11 +1,11 @@
-Tutorial 1: Comparing BigBrain- and MRI-derived gradients on a common surface
+Tutorial 1: Comparing BigBrain- and MRI-derived cortical gradients on a common surface
 ============================================================================================================
 
-In this tutorial, we aim to inspect the convergence of large-scale `gradients <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ of cytoarchitecture, microstructure and functional connectivity. 
+In this tutorial, we aim to inspect the convergence of large-scale cortical `gradients <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ of cytoarchitecture, microstructure and functional connectivity. 
 
-First, we need to identify the input data and the transformations necessary to examine BigBrain- and MRI-derived gradients on a common surface. For BigBrain, we can use `microstructure profiles <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ to resolve the cytoarchitectural gradients. This procedure will involve matrix manipulation that is infeasible with a `327684 <https://bigbrainwarp.readthedocs.io/en/latest/pages/bigbrain_background.html>`_x327684 array, however, so we will need to reduce the number of microstructure profiles prior to computation of the cytoarchitectural gradients. For MRI, we can use microstructure profiles of quantitative T1 mapping and resting state fMRI timeseries from the MICs dataset. Individual subject data must be aligned to a standard surface, for example `fsaverage5 (20484 vertices) <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_, then again downsampled to a feasible number of parcels for cross-correlation and embedding. Finally, we will need to define an interpolation strategy from the downsampled BigBrain surface to the downsampled fsaverage5 surface.
+First, we need to identify the input data and the transformations necessary to examine BigBrain- and MRI-derived gradients on a common surface. For BigBrain, we can use `microstructure profiles <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_ to resolve the cytoarchitectural gradients. This procedure will involve matrix manipulation that is infeasible with a `327684 <https://bigbrainwarp.readthedocs.io/en/latest/pages/bigbrain_background.html>`_ x 327684 array, however, so we will need to reduce the number of microstructure profiles prior to computation of the cytoarchitectural gradients. For MRI, we can use microstructure profiles of quantitative T1 mapping and resting state fMRI timeseries from the MICs dataset. Individual subject data must be aligned to a standard surface, for example `fsaverage5 (20484 vertices) <https://bigbrainwarp.readthedocs.io/en/latest/pages/glossary.html>`_, then again downsampled to a feasible number of parcels for cross-correlation and embedding. Finally, we will need to define an interpolation strategy from the downsampled BigBrain surface to the downsampled fsaverage5 surface.
 
-The interpolation is the crucial linking step, so we’ll address this first and use it inform our approach for the gradient construction. Given the need to downsample BigBrain, we’ll start by performing mesh decimation on the BigBrainSym surface. We’ll use BigBrainSym throughout the surface interpolation because it already closely conforms to fsaverage5 in terms of shape and the coordinate system. Mesh decimation will decrease the number of vertices in the surface close to a prescribed number (in this case ~10,000) and retriangulate the surface, in such a way that preserves the overall shape. 
+The interpolation is the crucial linking step, so we’ll address this first and use it inform our approach for the gradient construction. Given the need to downsample BigBrain, we’ll start by performing mesh decimation on the BigBrainSym surface. We’ll use BigBrainSym throughout the surface interpolation because it already closely conforms to fsaverage5 in terms of shape and the coordinate system. Mesh decimation will decrease the number of vertices in the surface close to a prescribed number (in this case ~10,000) and retriangulate the surface, in such a way that preserves the overall shape. You can find the decimated mesh in **BigBrainWarp/scripts/nn_surface_indexing.mat** as the BB10 variable. 
 
 .. code-block:: matlab
 
@@ -21,7 +21,7 @@ The interpolation is the crucial linking step, so we’ll address this first and
 	BB10.coord   = Sds.vertices';
 
 
-Rather than doing away with the other ~310,000 vertices though, we assign each of the removed vertices to the nearest maintained vertex, determined by shortest path on the mesh (ties are solved by shortest Euclidean distance). In this manner, all 320,000 vertices belong to one of ~10,000 patches.
+Rather than doing away with the other ~310,000 vertices though, we assign each of the removed vertices to the nearest maintained vertex, determined by shortest path on the mesh (ties are solved by shortest Euclidean distance). In this manner, all 320,000 vertices belong to one of ~10,000 patches. 
 
 .. code-block:: matlab
 
@@ -48,7 +48,7 @@ Rather than doing away with the other ~310,000 vertices though, we assign each o
 	end
 
 
-We also perform the same type of mesh decimation and patching on fsavearge5, downsampling from 20484 vertices to ~10,000 patches.
+Again the nn_bb can be found pre-generated in **BigBrainWarp/scripts/nn_surface_indexing.mat**. We also perform the same type of mesh decimation and patching on fsavearge5, downsampling from 20484 vertices to ~10,000 patches.
 
 .. code-block:: matlab
 
