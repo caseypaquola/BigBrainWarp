@@ -41,14 +41,21 @@ fi
 # transformation
 if [[ ${bbSpace} = histological ]] ; then
 	echo "transform to original BigBrain space"
+	rm "$workDir"/"$fileName"_bigbrain.mnc
 	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
+	# file conversion if necessary
+	if [[ "$extension" != "mnc" ]] ; then
+		echo "transforming nii to mnc"
+		mnc2nii "$workDir"/"$fileName"_bigbrain.mnc "$workDir"/"$fileName"_bigbrain.nii
+	fi
 else
 	echo "transform to BigBrainSym"
-	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
+	rm "$workDir"/"$fileName"_bigbrainsym.mnc
+	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrainsym.mnc
+	# file conversion if necessary
+	if [[ "$extension" != "mnc" ]] ; then
+		echo "transforming nii to mnc"
+		mnc2nii "$workDir"/"$fileName"_bigbrainsym.mnc "$workDir"/"$fileName"_bigbrainsym.nii
+	fi
 fi
 
-# file conversion if necessary
-if [[ "$extension" != "mnc" ]] ; then
-	echo "transforming nii to mnc"
-	mnc2nii "$workDir"/"$fileName"_bigbrain.mnc "$workDir"/"$fileName"_bigbrain.nii
-fi
