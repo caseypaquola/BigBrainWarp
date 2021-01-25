@@ -61,6 +61,6 @@ if [[ ! -f $bbwDir/.gitignore ]] ; then
 fi
 
 # add to paths
-export PATH=$bbwDir/scripts/:$mnc2Path:$PATH
+export PATH=$bbwDir/scripts/:$mnc2Path/bin/:$PATH
 export PATH=$bbwDir/scripts/:$PATH
 export MATLABPATH=$bbwDir/scripts/:$MATLABPATH
