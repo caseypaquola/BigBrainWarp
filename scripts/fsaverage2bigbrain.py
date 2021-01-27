@@ -42,11 +42,11 @@ if len(lhInput) not in compatSizes:
 
 # load indexing
 mat = io.loadmat(bbwDir + "/scripts/nn_surface_indexing.mat")
-nn_bb_fs = np.array(mat["nn_bb_fs"])
+nn_fs_bb = np.array(mat["nn_fs_bb"])
 
 print("reindexing data to bigbrain")
 data_fs = np.array(np.concatenate((lhInput, rhInput), axis=0))
-data_bb = data_fs[nn_bb_fs[0]]  # nn_bb_fs is not defined
+data_bb = data_fs[nn_fs_bb[0]-1]
 
 print("writing out as text file")
 np.savetxt(outName+'_lh_bigbrain.txt', data_bb[:len(data_bb)//2], delimiter=',')
