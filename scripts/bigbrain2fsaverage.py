@@ -44,7 +44,7 @@ nn_bb_fs = np.array(mat["nn_bb_fs"])
 
 print("reindexing data to fsaverage")
 data_bb = np.array(np.concatenate((lhInput, rhInput), axis=0))
-data_fs = data_bb[nn_bb_fs[0]]
+data_fs = data_bb[nn_bb_fs[0]-1]
 
 print("writing out as text file")
 np.savetxt(outName+'_lh_fsaverage5.txt', data_fs[:len(data_fs)//2], delimiter=',')
