@@ -80,6 +80,13 @@ Tips for Getting Started
 .. toctree::
    :maxdepth: 1
    :hidden:
+   :caption: What's outside
+
+   pages/cross_pollination
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
    :caption: Footnotes
 
    pages/FAQs
