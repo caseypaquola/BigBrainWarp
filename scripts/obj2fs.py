@@ -10,4 +10,4 @@ outName=str(sys.argv[2])
 print(outName)
 
 mesh = io.read_obj(obj)
-nibabel.freesurfer.io.write_geometry(outName, coords, faces)
+nibabel.freesurfer.io.write_geometry(outName, mesh[0], mesh[1])

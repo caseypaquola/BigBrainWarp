@@ -6,4 +6,4 @@ txt=str(sys.argv[1])
 outName=str(sys.argv[2])
 
 values = np.loadtxt(txt)
-nibabel.freesurfer.io.write_geometry(outName, values)
+nibabel.freesurfer.io.write_morph_data(outName, values)
