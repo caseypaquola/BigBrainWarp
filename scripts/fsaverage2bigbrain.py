@@ -46,7 +46,7 @@ data_fs = np.array(np.concatenate((lhInput, rhInput), axis=0))
 
 if approach == 'nn':
     print('load indexing')
-    mat = io.loadmat(bbwDir + "/scripts/nn_surface_indexing.mat")
+    mat = io.loadmat(bbwDir + "/scripts/nn_surface_indexing_" + inSurf + ".mat")
     nn_bb_fs = np.array(mat["nn_fs_bb"])
     print("reindexing data to fsaverage5")
     data_fs = data_bb[nn_bb_fs[0]-1]

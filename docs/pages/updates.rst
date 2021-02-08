@@ -7,9 +7,10 @@ Updates
 
 February 8, 2021
 ------------------------------------------
-A new surface-based transformation powered by multi-modal surface matching
+Expanded the surface transformation functionality. Now supports (i) multi-modal surface registration via a parcel-based transformation and (ii) fs_LR for vertex-based nearest neighbour interpolation.  
 
 ::
 
-    ↪ Added option for parcel-based surface transformations        |  @caseypaquola
-    ↪ Updated documention for surface transformations              |  @caseypaquola
+    ↪ Added approach option for surface based transformations 		|  @caseypaquola
+    ↪ Added surface option for fs_LR and fsaverage compatibility    	|  @caseypaquola
+    ↪ Updated documention for surface transformations              	|  @caseypaquola
