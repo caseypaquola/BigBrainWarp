@@ -7,8 +7,10 @@ import sys
 print('assigning arguments')
 lhData=str(sys.argv[1])
 rhData=str(sys.argv[2])
-outName=str(sys.argv[3])
-bbwDir=str(sys.argv[4])
+approach=str(sys.argv[3])
+outSurf=str(sys.argv[4])
+outName=str(sys.argv[5])
+bbwDir=str(sys.argv[6])
 
 # load and vectorise surface data
 x = lhData.split(".")
@@ -37,14 +39,25 @@ if len(lhInput)!=len(rhInput):
 if len(lhInput) not in compatSizes:
     print("invalid number of vertices")
     sys.exit()
+data_bb = np.array(np.concatenate((lhInput, rhInput), axis=0))    
 
-# load indexing
-mat = io.loadmat(bbwDir + "/scripts/nn_surface_indexing.mat")
-nn_bb_fs = np.array(mat["nn_bb_fs"])
+if approach == 'nn':
+    print('load indexing')
+    mat = io.loadmat(bbwDir + "/scripts/nn_surface_indexing.mat")
+    nn_bb_fs = np.array(mat["nn_bb_fs"])
+    print("reindexing data to fsaverage5")
+    data_fs = data_bb[nn_bb_fs[0]-1]
+elif approch == 'msm':
+    print('load parcellation')
+    lhParcBB = np.loadtxt(bbwDir + "/spaces/bigbrain/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt")
+    rhParcBB = np.loadtxt(bbwDir + "/spaces/bigbrain/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt")
+    lhParcFS = np.loadtxt(bbwDir + "/spaces/" outSurf "/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt")
+    rhParcFS = np.loadtxt(bbwDir + "/spaces/" outSurf "/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt")
+    data_bb 
 
-print("reindexing data to fsaverage")
-data_bb = np.array(np.concatenate((lhInput, rhInput), axis=0))
-data_fs = data_bb[nn_bb_fs[0]-1]
+    
+
+
 
 print("writing out as text file")
 np.savetxt(outName+'_lh_fsaverage5.txt', data_fs[:len(data_fs)//2], delimiter=',')
