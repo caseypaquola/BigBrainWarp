@@ -14,7 +14,7 @@ Additionally, we’ve created a series of tutorials that illustrate potential wo
 Support
 -----------
 
-** See the readthedocs for lots of more information https://bigbrainwarp.readthedocs.io/ **
+**See the readthedocs for lots of more information https://bigbrainwarp.readthedocs.io/**
 
 If you have problems installing the software or questions about usage and documentation you can post to the Issues section of our `repository <https://github.com/MICA-MNI/BigBrainWrap/issues>`_.
 
