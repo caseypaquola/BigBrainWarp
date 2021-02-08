@@ -26,7 +26,7 @@ An overview of what scripts and features are contained in *BigBrainWarp*
 	* fs_LR: surface data on fs_LR 32k
 
 
-Preprocessed data can be found across various spaces:
+Preprocessed data can be found across various spaces. We indicate in brackets which surface-based approach was used to transform the data, where relevant. 
 
 .. list-table::
    :widths: 50 50 50
@@ -49,25 +49,25 @@ Preprocessed data can be found across various spaces:
      - bigbrain
    * - Hist-G1
      - first gradient of cytoarchtiectural differentitation derived from BigBrain 
-     - bigbrain, fsaverage5
+     - bigbrain, fsaverage5 (nn)
    * - Hist-G2
      - second gradient of cytoarchtiectural differentitation derived from BigBrain 
-     - bigbrain, fsaverage5
+     - bigbrain, fsaverage5 (nn)
    * - Micro-G1
      - first gradient of microstructural differentitation derived from quantitative in-vivo T1 imaging
-     - bigbrainsym, fsaverage5
+     - bigbrainsym, fsaverage5 (nn)
    * - Func-G1
      - first gradient of functional differentitation derived from rs-fMRI
-     - bigbrainsym, fsaverage5
+     - bigbrainsym, fsaverage5 (nn)
    * - Func-G2
      - second gradient of functional differentitation derived from rs-fMRI
-     - bigbrainsym, fsaverage5
+     - bigbrainsym, fsaverage5 (nn)
    * - Func-G3
      - third gradient of functional differentitation derived from rs-fMRI
-     - bigbrainsym, fsaverage5
+     - bigbrainsym, fsaverage5 (nn)
    * - *h.Yeo2011_7Networks_N1000
      - 7 functional clusters from `Yeo & Krienen et al., 2011 <https://doi.org/10.1152/jn.00338.2011>`_
-     - bigbrainsym, fsaverage5
+     - bigbrain (msm), fsaverage5
    * - *h.Yeo2011_17Networks_N1000
      - 17 functional clusters from `Yeo & Krienen et al., 2011 <https://doi.org/10.1152/jn.00338.2011>`_
-     - bigbrainsym, fsaverage5
+     - bigbrain (msm), fsaverage5

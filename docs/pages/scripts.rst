@@ -27,21 +27,21 @@ Transformations for surface-based data
 
 For surface-based transformations, we can performed a vertex-wise or parcel-wise interpolation. The vertex-wise transformation leverages a nearest neighbour interpolation from the BigBrainSym to fsaverage5. We've pre-computed the indexing between fsaverage5 and the bigbrain surface because it takes a little time to run, but you can see the procedure in **BigBrainWarp/scripts/nn_surface_indexing.m**. Alternatively, you can use a parcel-based transformation. Surface-values are averaged within 1000 parcels, then transformed to matched parcels on the alternative surface. The parcellation was transformed to the BigBrain surface using an optimised multi-modal surface matching (MSM) registration, which holds advantages in aligning cortical morphometry (`click here for more details <https://bigbrainproject.org/docs/4th-bb-workshop/20-06-26-BigBrainWorkshop-Lewis.pdf`_).
 
-The following bash scripts will call the necessary python functions. You can input .txt, .mgh, .annot, or .gii files, and the output will be .txt files. The functions currently support fsaverage5 for nearest neighbour interpolation ("nn") or fsaverage and fs_LR_32k for MSM informed tranformations ("msm").
+The following bash scripts will call the necessary python functions. You can input .txt, .mgh, .annot, or .gii files, and the output will be .txt files. The functions currently support fsaverage5 for nearest neighbour interpolation ("nn") or fsaverage for MSM informed tranformations ("msm").
 
 .. code-block:: bash
 
-	# Take your input data, say group-average qT1 on fsaverage5
-	# The positional arguments lh_data, rh_data, approach (nn or msm), input surface (fsaverage5, fsaverage, fs_LR) and output name
+	# Take your input data, say a functional parcellation on fsaverage
+	# The positional arguments lh_data, rh_data, approach (nn or msm), input_surface (fsaverage5 or fsaverage) and output_name
 	# For example:
-	bash fsaverage_to_bigbrain.sh /projects/casey/bigbrain/qT1_data_lh.txt /projects/casey/bigbrain/qT1_data_rh.txt nn fsaverage5 /projects/casey/bigbrain/qT1
-	# The output will be /projects/casey/bigbrain/qT1_lh_bigbrain.txt /projects/casey/bigbrain/qT1_rh_bigbrain.txt
+	bash fsaverage_to_bigbrain.sh fsaverage/lh.Yeo2011_7Networks_N1000.annot fsaverage/lh.Yeo2011_7Networks_N1000.annot msm fsaverage /projects/casey/bigbrain/Yeo2011_7Networks_N1000
+	# The output will be */projects/casey/bigbrain/Yeo2011_7Networks_N1000_lh_bigbrain.txt* and */projects/casey/bigbrain/Yeo2011_7Networks_N1000_rh_bigbrain.txt*
 
 	# Conversely, you can transform data from BigBrain or BigBrainSym surfaces to fsaverage5 using:
 	bash bigbrain_to_fsaverage.sh lh_data rh_data approach output_surface output_name
 	# For example:
-	bash bigbrain_to_fsaverage.sh $bbwDir/spaces/bigbrain/Hist-G2_lh.txt $bbwDir/spaces/bigbrain/Hist-G2_rh.txt msm fs_LR /projects/casey/bigbrain/Hist-G2
-	# The output will be /projects/casey/bigbrain/qT1_lh_fs_LR.txt /projects/casey/bigbrain/qT1_rh_fs_LR.txt
+	bash bigbrain_to_fsaverage.sh $bbwDir/spaces/bigbrain/Hist-G2_lh.txt $bbwDir/spaces/bigbrain/Hist-G2_rh.txt nn fsaverage5 /projects/casey/bigbrain/Hist-G2
+	# The output will be */projects/casey/bigbrain/qT1_lh_fsaverage5.txt* and */projects/casey/bigbrain/qT1_rh_fsaverage5.txt*
 
 
 

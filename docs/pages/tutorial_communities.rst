@@ -5,12 +5,12 @@ Intrinsic functional communities are commonly defined by endogenous co-fluctuati
 
 First things first, we should give some forethought to the data and potential transformations necessary for this analysis. Cytoarchitecture can be examined using BigBrain microstructure profiles, which are aligned to BigBrain surfaces. We can define population-average functional communities using the `Yeo, Krienen <https://doi.org/10.1152/jn.00338.2011>`_ atlas, which is openly available on a variety of standard surfaces and volumes. Given we’re using cytoarchitectural information on the BigBrain surface, we’ll also select a surface version of the Yeo, Krienen atlas. This also conforms with the original creation of the atlas. Specifically, we will use the fsaverage5 version with 7 functional communities and plan to transform the atlas to the BigBrain surface.
 
-The transformation from fsaverage5 to the BigBrain surface can be conducted in BigBrainWarp using one line of code. Under the hood, the code involves a nearest neighbour interpolation from fsavearge5 vertices to BigBrainSym vertices. We have precomputed the indexing for this procedure, so it is quick and easy to run with new iterations. We've alsready transformed the 7 and 17 Network Yeo, Krienen atlases to BigBrain for you and they can be found in the BigBrainWarp/bigbrainsym/. Following this interpolation, we should double check visually that the registration is anatomically sound. 
+The transformation from fsaverage to the BigBrain surface can be conducted in BigBrainWarp using one line of code. Under the hood, the code involves a multi-modal surface matching informed transformation from fsavearge parcel to BigBrainSym parcels. We've already transformed the 7 and 17 Network Yeo, Krienen atlases to BigBrain for you and they can be found in the BigBrainWarp/bigbrain/. Following this interpolation, we should double check visually that the registration is anatomically sound. 
 
 
 .. code-block:: bash
 
-	fsaverage_to_bigbrain lh.Yeo2011_7Networks_N1000.annot rh.Yeo2011_7Networks_N1000.annot BigBrainWarp/bigbrainsym/Yeo2011_7Networks
+	fsaverage_to_bigbrain lh.Yeo2011_7Networks_N1000.annot rh.Yeo2011_7Networks_N1000.annot msm fsaverage BigBrainWarp/bigbrainsym/Yeo2011_7Networks
 
 
 .. image:: ./images/tutorial_communities_a.png

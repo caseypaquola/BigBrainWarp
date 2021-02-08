@@ -55,9 +55,6 @@ if [[ ! -f $bbwDir/spaces/bigbrain/rh.Schaefer2018_1000Parcels_17Networks_order.
 	cd $bbwDir/spaces/fsaverage/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fsaverage/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fsaverage/Schaefer2018/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt
-	cd $bbwDir/spaces/fs_LR/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fs_LR/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fs_LR/Schaefer2018/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt
 fi
 
 # make git ignore
