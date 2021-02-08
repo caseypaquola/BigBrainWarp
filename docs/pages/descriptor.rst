@@ -13,8 +13,6 @@ An overview of what scripts and features are contained in *BigBrainWarp*
 	* nn_surface_indexing.mat: output of nn_surface_indexing.m
 	* bigbrain2fsaverage.py: python script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
 	* fsaverage2bigbrain.py: python script to perform nearest neighbour interpolation from fsaverage5 to BigBrain	
-	* bigbrain2fsaverage.m: matlab script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
-	* fsaverage2bigbrain.m: matlab script to perform nearest neighbour interpolation from fsaverage5 to BigBrain
 	* txt2curv.sh: wrapper script to convert .txt files to .curv, helpful for visualisation with Freesurfer
 	* obj2fs.sh: wrapper script to convert .obj surface meshes to a freesurfer style mesh (.pial), which can be loaded into Freeview for visualisation 
 	
@@ -24,6 +22,8 @@ An overview of what scripts and features are contained in *BigBrainWarp*
 	* bigbrainsym: stereotaxic registration of BigBrain to ICBM152 as part of first BigBrain release, includes surfaces and volumes
 	* icbm: volumetric data algined to the symmetric ICBM2009b atlas
 	* fsaverage5: surface data on fsaverage5
+	* fsaverage: surface data on fsaverage
+	* fs_LR: surface data on fs_LR 32k
 
 
 Preprocessed data can be found across various spaces:

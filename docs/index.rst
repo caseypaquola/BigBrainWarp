@@ -65,8 +65,8 @@ Tips for Getting Started
    :caption: What's inside
 
    pages/scripts
-   pages/transformed_maps
    pages/descriptor
+   pages/updates
 
 .. toctree::
    :maxdepth: 1
