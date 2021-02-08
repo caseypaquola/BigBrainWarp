@@ -1,0 +1,4 @@
+The fs_LR 32k template is standard use in the Human Connectome Project
+More information can be found:
+Van Essen, David C. “A population-average, landmark-and surface-based (PALS) atlas of human cerebral cortex.” Neuroimage 28.3 (2005): 635-662.
+

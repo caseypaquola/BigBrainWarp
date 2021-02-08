@@ -4,6 +4,7 @@ Toolbox contents
 An overview of what scripts and features are contained in *BigBrainWarp*
 
 * scripts
+	* demo_gitbased.sh: walkthrough of the toolbox utilities using the github installation
 	* bigbrain_to_icbm.sh: implements one-step transformation to BigBrainSym or three-step transformation BigBrain (Xiao et al. 2019)
 	* icbm_to_bigbrain.sh: inverted version of above (Xiao et al. 2019)
 	* bigbrain_to_fsaverage.sh: bash wrapper script to perform nearest neighbour interpolation from BigBrain to fsaverage5
@@ -13,8 +14,10 @@ An overview of what scripts and features are contained in *BigBrainWarp*
 	* bigbrain2fsaverage.py: python script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
 	* fsaverage2bigbrain.py: python script to perform nearest neighbour interpolation from fsaverage5 to BigBrain	
 	* bigbrain2fsaverage.m: matlab script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
-	* fsaverage2bigbrain.m: matlab script to perform nearest neighbour interpolation from fsaverage5 to BigBrain	
-
+	* fsaverage2bigbrain.m: matlab script to perform nearest neighbour interpolation from fsaverage5 to BigBrain
+	* txt2curv.sh: wrapper script to convert .txt files to .curv, helpful for visualisation with Freesurfer
+	* obj2fs.sh: wrapper script to convert .obj surface meshes to a freesurfer style mesh (.pial), which can be loaded into Freeview for visualisation 
+	
 
 * spaces:
 	* bigbrain: original histological space, includes surfaces and volumes
