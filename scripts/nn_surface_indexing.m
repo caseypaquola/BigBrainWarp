@@ -6,8 +6,9 @@
 % load surfaces
 GH          = '/data_/mica1/03_projects/casey/';
 bbwDir      = [GH '/BigBrainWarp/'];
-BB = SurfStatAvSurf({[bbwDir '/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj'], ...
-    [bbwDir '/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj']});
+BB = SurfStatAvSurf({'\gray_left_327680_2009b_sym.obj', ...
+    '\gray_right_327680_2009b_sym.obj'});
+
 fsAv = '/data_/mica1/03_projects/casey/micasoft/parcellations/fsaverage5';
 FS = SurfStatAvSurf({[fsAv '/lh.pial'], [fsAv '/rh.pial']});
 FSlh = SurfStatReadSurf([fsAv '/lh.pial']);  % using local versions of fsaverage pial surfaces (FS5.3)
@@ -45,7 +46,7 @@ parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
     nn_bb_fs(ii) = find(d==min(d)); 
 end
 
-save([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb_fs', 'nn_fs_bb', ....
+save([bbwDir '/scripts/nn_surface_indexing_fs_LR.mat'], 'nn_bb_fs', 'nn_fs_bb', ....
     'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_fs_bb10', 'BB10')
 
 
@@ -112,4 +113,4 @@ parfor ii = ((length(FS.coord)/2)+1):length(FS.coord)
     nn_bb10_fs(ii) = find(d==min(d)); 
 end
 
-save([bbwDir '/scripts/nn_surface_indexing.mat'], 'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_fs_bb10', 'BB10')
+save([bbwDir '/scripts/nn_surface_indexing_fs_LR.mat'], 'bb_downsample',  'nn_bb', 'nn_bb10_fs', 'nn_fs_bb10', 'BB10')

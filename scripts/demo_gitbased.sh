@@ -15,7 +15,7 @@ source $bbwDir/scripts/init.sh
 bash $bbwDir/scripts/init.sh
 
 # surface-based transformation
-bash bigbrain_to_fsaverage.sh $bbwDir/spaces/bigbrain/Hist-G2_lh.txt $bbwDir/spaces/bigbrain/Hist-G2_rh.txt $workingDir/Hist-G2
+bash bigbrain_to_fsaverage.sh $bbwDir/spaces/bigbrain/Hist-G2_lh.txt $bbwDir/spaces/bigbrain/Hist-G2_rh.txt nn fsaverage5 $workingDir/Hist-G2
 
 # create fressurfer-compatible files
 export PYTHONPATH=$PYTHONPATH:$bbwDir/dependencies:$bbwDir/scripts
@@ -49,15 +49,3 @@ for hemi in left right ; do
     python txt2curv.py $workingDir/motor_association-test_z_FDR_0.01_bigbrain_${hemi}.txt $workingDir/motor_association-test_z_FDR_0.01_bigbrain_${hemi}.curv
 done 
 freeview -f $workingDir/bigbrain_${hemi}.mid:overlay=$workingDir/motor_association-test_z_FDR_0.01_bigbrain_right.curv
-
-# surface transfomration - Yeo atlas
-bash fsaverage_to_bigbrain.sh $bbwDir/spaces/fsaverage5/lh.Yeo2011_7Networks_N1000.annot \
-    $bbwDir/spaces/fsaverage5/lh.Yeo2011_7Networks_N1000.annot \
-    $bbwDir/spaces/bigbrain/Yeo2011_17Networks_N1000
-# create fressurfer-compatible files
-export PYTHONPATH=$PYTHONPATH:$bbwDir/dependencies:$bbwDir/scripts
-for hemi in lh rh ; do
-    python txt2curv.py $workingDir/Yeo2011_17Networks_N1000_${hemi}_bigbrain.txt $workingDir/Yeo2011_17Networks_N1000_${hemi}_bigbrain.curv
-done
-# inspect in freeview
-freeview -f ../spaces/bigbrain/rh.pial:overlay=$workingDir/Yeo2011_17Networks_N1000_rh_bigbrain.curv
