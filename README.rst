@@ -2,31 +2,39 @@
 BigBrainWarp
 ====================
 
-This repository provides tools and resources for multimodal integration with `BigBrain <https://bigbrain.loris.ca/main.php>`_, 
-leveraging state-of-the-art co-registration methods and openly available datasets for in vivo structural and functional MRI, gene expression, receptor mapping, polarized light imaging, and intracranial electroencephalography.
+BigBrain is a singular dataset that offers an ultra-high-resolution (20µm) volumetric reconstruction of a sliced and stained post-mortem human brain (Amunts et al. 2013). **BigBrainWarp** aims to enable integration of BigBrain with neuroimaging and other neurobiological modalities, helping a wide range of neuroscientists to utilise the cytoarchitectural information encoded in BigBrain for multi-scale neuroscientific discovery.
 
-BigBrain is a singular dataset that offers a volumetric reconstruction of high-resolution cell-stained slices of a post mortem human brain.
-With BigBrainWarp, we aim provide to provide a centralised repository of resources and code to maximise the utility of BigBrain.
+.. image:: ./pages/images/toolbox_overview.png
+   :height: 350px
+   :align: center
 
-* Centralised information on integration of BigBrain with multi-modal imaging
-* Simple scripts to perform nonlinear warping between spaces
-* Imaging-based maps in BigBrain space
-* BigBrain-based maps in MNI152 space
+
+In the toolbox, you’ll find preprocessed BigBrain data, scripts to transform between BigBrain and standard MRI spaces, and a selection of histology-derived feature maps already transformed to MRI space.
+
+Additionally, we’ve created a series of tutorials that illustrate potential workflows for BigBrain-MRI integration.
+
+🚧 The toolbox and readthedocs are still under construction. If you're interested in certain features or data, please get in touch and we can let you know whether it's finalised and provide the most up to date version. 
 
 
 Support
 -----------
 
-If you have problems installing the software or questions about usage
-and documentation, or something else related to BrainSpace,
-you can post to the Issues section of our `repository <https://github.com/MICA-MNI/BigBrainWrap/issues>`_.
+** See the readthedocs for lots of more information https://bigbrainwarp.readthedocs.io/ **
+
+If you have problems installing the software or questions about usage and documentation you can post to the Issues section of our `repository <https://github.com/MICA-MNI/BigBrainWrap/issues>`_.
 
 
-Core development team
+Core developers
 -----------------------
 
-* Casey Paquola, MICA Lab - Montreal Neurological Institute
-* Jessica Royer, MICA Lab - Montreal Neurological Institute
-* Oualid Benkarim, MICA Lab - Montreal Neurological Institute
-* Boris Bernhardt, MICA Lab - Montreal Neurological Institute
+- Casey Paquola, INM-1, Forschungszentrum Jülich & MICA Lab, Montreal Neurological Institute
+- Boris Bernhardt, MICA Lab, Montreal Neurological Institute
+
+
+Contributors
+------------------
+
+- Jessica Royer, MICA Lab, Montreal Neurological Institute
+- Tristan Glatard, Concordia Univerisity
+
 
