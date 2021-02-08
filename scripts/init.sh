@@ -47,6 +47,19 @@ if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/Histological_Space/full8_400um_optbal.mnc
 fi
 
+# download parcellations for MSM based transformations templates
+if [[ ! -f $bbwDir/spaces/bigbrain/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt ]] ; then
+	cd $bbwDir/spaces/bigbrain/
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/BigBrain_space/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/BigBrain_space/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	cd $bbwDir/spaces/fsaverage/
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fsaverage/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fsaverage/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	cd $bbwDir/spaces/fs_LR/
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fs_LR/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fs_LR/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+fi
+
 # make git ignore
 if [[ ! -f $bbwDir/.gitignore ]] ; then
 	cp $bbwDir/template_gitignore.txt $bbwDir/.gitignore
