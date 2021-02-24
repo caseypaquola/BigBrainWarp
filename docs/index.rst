@@ -38,7 +38,7 @@ Additionally, we’ve created a series of tutorials that illustrate potential wo
 Tips for Getting Started
 ****************************
 
-* Watch a recent talk on the motivations and functionality of BigBrainWarp `https://youtu.be/Stg_R63GyV <https://youtu.be/Stg_R63GyV>`_
+* Watch a recent talk on the motivations and functionality of BigBrainWarp `https://youtu.be/Stg_R63GyVY <https://youtu.be/Stg_R63GyVY>`_
 * Progress along the side menu from top to bottom
 * For performing transformations, go to the Scripts page
 * For ready-made cytoarchitectural features and maps, check out the Toolbox contents page
