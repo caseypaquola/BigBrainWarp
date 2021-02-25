@@ -22,8 +22,8 @@ For more on interacting with the docker container, for example transferring file
 Alternatively, you can also install a local version of BigBrainWarp like so:
 
 1. Clone the GitHub repository to your local machine (https://github.com/caseypaquola/BigBrainWarp.git)
-2. Edit the first three lines of 'BigBrainWarp/scripts/init.sh' file based on the specific paths of your machine
-3. Prior to running any scripts, set the necessary global environment variables
+2. Edit the first three lines of 'BigBrainWarp/scripts/init.sh' file based on the specific paths of your machine. These direct the script to BigBrainWarp, minc2 and workbench
+3. Prior to running any scripts, set the necessary global environment variables and pull extra files from other places on the internet
 
 .. code-block:: bash
 
@@ -34,7 +34,8 @@ Alternatively, you can also install a local version of BigBrainWarp like so:
 If you're working with a local version, you will also need to set up the dependencies:
 
 * `MINC2 <https://github.com/BIC-MNI/minc-toolkit-v2>`_ is required for volumetric transformations (tested on MINC2-v2)
-* `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_ is required for volumetric transformations (tested on FSL 5.5)
+* `Workbench <https://www.humanconnectome.org/software/get-connectome-workbench>`_ is required for surface transformations (tested on workbench 1.5.0)
+* `Freesurfer <https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall>`_ is required for surface conversions (tested on Freesurfer 6.0)
 * Python (tested on 2.7 and 3.8) is required for surface-based transformations, with `numpy <https://numpy.org/>`_, `scipy <https://www.scipy.org/>`_ and `nibabel <https://nipy.org/nibabel/index.html>`_ packages
 
 These can be located anywhere on your system, just ensure that they are in your PATH and the functions are callable from your command line.
