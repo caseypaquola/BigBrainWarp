@@ -1,9 +1,6 @@
 xfms/*
-spaces/icbm/mni*
+spaces/*
 docs/build/*
 docs/py*
 docs/en*
 env/*
-spaces/bigbrain/*mnc
-spaces/bigbrainsym/*mnc
-scripts/init.sh
