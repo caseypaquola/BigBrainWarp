@@ -17,6 +17,7 @@ outName=$4 		# full path of output file (without extension or hemisphere label, 
 # check for input data type
 filename=$(basename -- "$lhInput")
 extension="${filename##*.}"
+echo $extension " input"
 
 for hemi in lh rh ; do
 	# define input
@@ -32,11 +33,11 @@ for hemi in lh rh ; do
 	elif [[ "$inSurf" == "fs_LR" ]] ; then
 		inSurf2="fsLR"
 	fi
-	
+
 
 	# define giiType and convert to gifti if necessary
 	if [[ "$extension" == "gii" ]] ; then
-		substr="${filename: -10}"		
+		substr="${filename: -10}"
 		if [[ $substr == *"label"* ]] ; then
 			giiType=label
 		else 

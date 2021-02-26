@@ -1,0 +1,10 @@
+tkmedit started: Fri Jan 29 12:53:21 2021
+
+	/data/mica1/01_programs/Freesurfer-6.0/tktools/tkmedit.bin fsaverage5 T1.mgz 
+
+$Id: tkmedit.c,v 1.348 2014/11/06 16:47:49 greve Exp $ $Name: stable6 $
+Set user home dir to /data/mica1/03_projects/casey/BigBrainWarp/scripts
+Set subject home dir to /data/mica1/01_programs/Freesurfer-6.0/subjects/fsaverage5
+Using interface file /data/mica1/01_programs/Freesurfer-6.0/tktools/tkmedit.tcl
+Tcl: Successfully parsed tkmedit.tcl
+Tcl: Successfully parsed tkm_functional.tcl
