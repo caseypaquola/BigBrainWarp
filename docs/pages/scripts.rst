@@ -37,13 +37,13 @@ Multi-modal surface matching is wrapped into the following bash scripts. You can
 	# Take your input data, say a functional parcellation on fsaverage
 	# The positional arguments lh_data, rh_data, input_surface (fsaverage or fs_LR) and output_name
 	# For example:
-	bash fsaverage_to_bigbrain.sh fsaverage/lh.Yeo2011_7Networks_N1000.annot fsaverage/lh.Yeo2011_7Networks_N1000.annot msm fsaverage /projects/casey/bigbrain/Yeo2011_7Networks_N1000
+	bash fsaverage_to_bigbrain.sh fsaverage/lh.Yeo2011_7Networks_N1000.annot fsaverage/lh.Yeo2011_7Networks_N1000.annot fsaverage /projects/casey/bigbrain/Yeo2011_7Networks_N1000
 	# The output will be */projects/casey/bigbrain/Yeo2011_7Networks_N1000_lh_bigbrain.label.gii* and */projects/casey/bigbrain/Yeo2011_7Networks_N1000_rh_bigbrain.label.gii*
 
 	# Conversely, you can transform data from BigBrain or BigBrainSym surfaces to fsaverage or fs_LR using:
 	bash bigbrain_to_fsaverage.sh lh_data rh_data output_surface output_name
 	# For example:
-	bash bigbrain_to_fsaverage.sh $bbwDir/spaces/bigbrain/Hist-G2_lh.txt $bbwDir/spaces/bigbrain/Hist-G2_rh.txt nn fsaverage /projects/casey/bigbrain/Hist-G2
+	bash bigbrain_to_fsaverage.sh $bbwDir/spaces/bigbrain/Hist-G2_lh.txt $bbwDir/spaces/bigbrain/Hist-G2_rh.txt fsaverage /projects/casey/bigbrain/Hist-G2
 	# The output will be */projects/casey/bigbrain/qT1_lh_fsaverage5.shape.gii* and */projects/casey/bigbrain/qT1_rh_fsaverage5.shape.gii*
 
 If you use the procedure please cite:
