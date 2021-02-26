@@ -30,7 +30,7 @@ Transformations for surface-based data
 
 Surface-based transformation can be enacted using multi-modal surface matching; a spherical registration approach. Ongoing work by Lewis et al., involves optimisation of registration surafces between BigBrain and standard surface templates. These are available at `ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support <ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support>`_. More details on procedure can be also found on the following `poster <https://drive.google.com/file/d/1vAqLRV8Ue7rf3gsNHMixFqlLxBjxtmc8/view?usp=sharing>`_ and `slides <https://drive.google.com/file/d/11dRgtttd2_FdpB31kDC9mUP4WCmdcbbg/view?usp=sharing>`_.
 
-These transformations are wrapped into the following bash scripts. You can input .txt, .curv, .annot, or .gii files, and the output will be .gii files. The functions currently support fsaverage and fs_LR
+Multi-modal surface matching is wrapped into the following bash scripts. You can input .txt, .curv, .annot, or .gii files, and the output will be .gii files. The functions currently support fsaverage and fs_LR
 
 .. code-block:: bash
 
