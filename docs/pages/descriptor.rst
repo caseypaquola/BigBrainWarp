@@ -9,11 +9,6 @@ An overview of what scripts and features are contained in *BigBrainWarp*
 	* icbm_to_bigbrain.sh: inverted version of above (Xiao et al. 2019)
 	* bigbrain_to_fsaverage.sh: bash wrapper script to perform nearest neighbour interpolation from BigBrain to fsaverage5
 	* fsaverage_to_bigbrain.sh: bash wrapper script to perform nearest neighbour interpolation from fsaverage5 to BigBrain
-	* bigbrain2fsaverage.py: python script to perform nearest neighbour interpolation from BigBrain to fsaverage5	
-	* fsaverage2bigbrain.py: python script to perform nearest neighbour interpolation from fsaverage5 to BigBrain	
-	* nn_surface_indexing.m: the creation of nearest neighbour indexing between fsaverage5 and BigBrainSym surfaces
-	* nn_surface_indexing_fsaverage5.mat: output of nn_surface_indexing.m for fsaverage5, used in vertex-wise surface-based transformations
-	* nn_surface_indexing_fs_LR.mat: output of nn_surface_indexing.m for fs_LR 32k, used in vertex-wise surface-based transformations
 	* txt2curv.sh: wrapper script to convert .txt files to .curv, helpful for visualisation with Freesurfer
 	* obj2fs.sh: wrapper script to convert .obj surface meshes to a freesurfer style mesh (.pial), which can be loaded into Freeview for visualisation 
 	

@@ -1,16 +1,66 @@
 #!/bin/bash
-# a nearest neighbour intrpolation from fsaverage5 to BigBrain surface
-# written by Casey Paquola @ MICA, MNI, 2020*
 
-lhInput=$1		# full path to input file of left hemisphere, can be in format .annot, .mgh, .curv, .gii, .txt
-rhInput=$2		# full path to input file of right hemisphere
-approach=$3		# can be "nn" for vertex-wise nearest neighbour interpolation or "msm" for parcel-wise transformation with 1000 parcels defined by multi-modal surface matching 
-inSurf=$4		# input surface can be "fsaverage5", "fs_LR" or "fsaverage". Currently, nn only works for fsaverage5 and msm only works for fs_LR and fsaverage
-outName=$5 		# full path of output file (without extension or hemisphere label, eg: User/BigBrain/tests/thickness
+# use multimodal surface matching to transform surface data (requires workbench)
+# Thanks to Lindsay Lewis for creating the multimodal surface matching spheres
+#
+# written by Casey Paquola @ MICA, MNI, 2021
 
-# default output is .txt
-# the output takes the form ${outName}_lh_bigbrain.txt and ${outName}_rh_bigbrain.txt, representing left and right hemisphere data separately
+lhInput=$1 		# full path to left hemisphere input file (must be .gii)
+rhInput=$2 		# full path to right hemisphere input file
+inSurf=$3		# input surface can be "fsaverage" or "fs_LR"
+outName=$4 		# full path of output file (without extension or hemisphere label, eg: User/BigBrain/tests/Ghist). 
 
-# use nearest neighbour surface indexing
-python fsaverage2bigbrain.py ${lhInput} ${rhInput} ${approach} ${inSurf} ${outName} ${bbwDir}
+# the output takes the form ${outName}_${hemi}_${outSurf}.${giiType}.gii
+# where hemi is lh and rh, they are saved out separately
+# default type is shape, however, .annot and .label.gii files will be label type
 
+# check for input data type
+filename=$(basename -- "$lhInput")
+extension="${filename##*.}"
+
+for hemi in lh rh ; do
+	# define input
+	if [[ "$hemi" == "lh" ]] ; then
+		inData=$lhInput
+	else
+		inData=$rhInput
+	fi
+
+	# rename inSurf to be able to find files
+	if [[ "$inSurf" == "fsaverage" ]] ; then
+		inSurf2="fsavg"
+	elif [[ "$inSurf" == "fs_LR" ]] ; then
+		inSurf2="fsLR"
+	fi
+	
+
+	# define giiType and convert to gifti if necessary
+	if [[ "$extension" == "gii" ]] ; then
+		substr="${filename: -10}"		
+		if [[ $substr == *"label"* ]] ; then
+			giiType=label
+		else 
+			giiType=shape
+		fi
+		cp $inData ${outName}_${hemi}.${giiType}.gii
+	elif [[ "$extension" == "annot" ]] ; then
+		giiType=label
+		mris_convert --annot $inData $bbwDir/spaces/${inSurf}/${hemi}.${inSurf2}.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+	elif [[ "$extension" == "curv" ]] ; then
+		giiType=shape
+		mris_convert -c $inData $bbwDir/spaces/${inSurf}/${hemi}.${inSurf2}.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+	elif [[ "$extension" == "txt" ]] ; then
+		giiType=shape
+		python $bbwDir/scripts/txt2curv.py $inData ${outName}_${hemi}.curv
+		mris_convert -c ${outName}_${hemi}.curv $bbwDir/spaces/${inSurf}/${hemi}.${inSurf2}.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+	fi
+
+	# multimodal surface matching
+	msmMesh=$bbwDir/xfms/${hemi}.sphere_BigBrain_rsled_like_${inSurf2}.sphere.reg.surf.gii
+	inMesh=$bbwDir/xfms/${hemi}.BigBrain.rot.${inSurf2}.sphere.surf.gii
+	if [[ "$giiType" == "shape" ]] ; then
+		wb_command -metric-resample ${outName}_${hemi}.${giiType}.gii $msmMesh $inMesh BARYCENTRIC ${outName}_${hemi}_bigbrain.${giiType}.gii	
+	elif [[ "$giiType" == "label" ]] ; then
+		wb_command -label-resample ${outName}_${hemi}.${giiType}.gii $msmMesh $inMesh BARYCENTRIC ${outName}_${hemi}_bigbrain.${giiType}.gii	
+	fi
+done

@@ -3,6 +3,7 @@
 # set up variables - change for your environment
 export bbwDir=/home/casey/Desktop/BigBrainWarp/  # change to your path to the github repo
 export mnc2Path=/opt/minc/1.9.18/ # path to your path to minc2 installation
+export wbPath=/home/casey/Downloads/software/workbench/bin_linux64/
 
 # set template and download if not already there
 export icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
@@ -47,14 +48,21 @@ if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/Histological_Space/full8_400um_optbal.mnc
 fi
 
-# download parcellations for MSM based transformations templates
-if [[ ! -f $bbwDir/spaces/bigbrain/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt ]] ; then
+# download MSM based transformations 
+if [[ ! -f $bbwDir/xfms/rh.fsavg.reg.surf.gii ]] ; then
+	cd $bbwDir/xfms/
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsavg/spheres/*
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsLR/spheres/*
+fi
+
+# download gifti white matter surfaces
+if [[ ! -f $bbwDir/spaces/bigbrain/lh.BigBrain.white.surf.gii ]] ; then
 	cd $bbwDir/spaces/bigbrain/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/BigBrain_space/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/BigBrain_space/Schaefer2018/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/white_surfaces/*BigBrain*.gii
 	cd $bbwDir/spaces/fsaverage/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fsaverage/Schaefer2018/lh.Schaefer2018_1000Parcels_17Networks_order.label.txt
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/Surface_Parcellations/fsaverage/Schaefer2018/rh.Schaefer2018_1000Parcels_17Networks_order.label.txt
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/white_surfaces/*fsavg*.gii
+	cd $bbwDir/spaces/fs_LR/
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/white_surfaces/*fsLR*.gii
 fi
 
 # make git ignore
@@ -63,6 +71,6 @@ if [[ ! -f $bbwDir/.gitignore ]] ; then
 fi
 
 # add to paths
-export PATH=$bbwDir/scripts/:$mnc2Path/bin/:$PATH
+export PATH=$bbwDir/scripts/:$mnc2Path/bin/:$wbPath:$PATH
 export PATH=$bbwDir/scripts/:$PATH
 export MATLABPATH=$bbwDir/scripts/:$MATLABPATH

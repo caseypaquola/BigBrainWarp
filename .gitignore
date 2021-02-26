@@ -1,4 +1,5 @@
 xfms/*
+<<<<<<< HEAD
 spaces/icbm/*
 spaces/bigbrain/*obj
 spaces/bigbrain/*surf.gii
@@ -6,10 +7,10 @@ spaces/fsaverage5/*
 spaces/fsaverage/*obj
 spaces/fsaverage/*surf.gii
 spaces/fs_LR/*surf.gii
+=======
+spaces/*
+>>>>>>> 78f4e44db758f51608d0e96d48fbb43b43745962
 docs/build/*
 docs/py*
 docs/en*
 env/*
-spaces/bigbrain/*mnc
-spaces/bigbrainsym/*mnc
-scripts/init.sh
