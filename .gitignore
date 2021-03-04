@@ -1,5 +1,13 @@
 xfms/*
-spaces/*
+spaces/icbm/*
+spaces/bigbrain/*obj
+spaces/bigbrain/*surf.gii
+spaces/fsaverage5/*
+spaces/fsaverage/*obj
+spaces/fsaverage/*surf.gii
+spaces/fs_LR/*surf.gii
+spaces/bigbrain/*.mnc
+spaces/bigbrainsym/*mnc
 docs/build/*
 docs/py*
 docs/en*

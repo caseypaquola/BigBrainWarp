@@ -26,6 +26,13 @@ for hemi in lh rh ; do
 		inData=$rhInput
 	fi
 
+	# rename outSurf to be able to find files
+	if [[ "$outSurf" == "fsaverage" ]] ; then
+		outSurf2="fsavg"
+	elif [[ "$outSurf" == "fs_LR" ]] ; then
+		outSurf2="fsLR"
+	fi
+
 	# define giiType and convert to gifti if necessary
 	if [[ "$extension" == "gii" ]] ; then
 		substr="${filename: -10}"		
@@ -48,8 +55,8 @@ for hemi in lh rh ; do
 	fi
 
 	# multimodal surface matching
-	msmMesh=$bbwDir/xfms/${hemi}.sphere_${outSurf}_rsled_like_BigBrain.sphere.reg.surf.gii
-	inMesh=$bbwDir/xfms/${hemi}.${outSurf}.sphere.surf.gii
+	msmMesh=$bbwDir/xfms/${hemi}.sphere_${outSurf2}_rsled_like_BigBrain.sphere.reg.surf.gii
+	inMesh=$bbwDir/xfms/${hemi}.${outSurf2}.sphere.surf.gii
 	if [[ "$giiType" == "shape" ]] ; then
 		wb_command -metric-resample ${outName}_${hemi}.${giiType}.gii $msmMesh $inMesh BARYCENTRIC ${outName}_${hemi}_${outSurf}.${giiType}.gii	
 	elif [[ "$giiType" == "label" ]] ; then
