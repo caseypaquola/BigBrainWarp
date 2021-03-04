@@ -5,7 +5,17 @@
 Updates
 ==================
 
-February 25, 2012
+March 4, 2021
+------------------------------------------
+Estimated layer thicknesses from Wagstyl et al., 2020 surfaces (ftp://bigbrain.loris.ca/BigBrainRelease.2015/Layer_Segmentation/3D_Surfaces/April2019/) and transformed to standard surface templates
+
+::
+
+    ↪ Pre-computed BigBrain layer thicknesses in /spaces/bigbrain/	|  @caseypaquola
+    ↪ Transformed layer thicknesses in fsaverage and /fs_LR		|  @caseypaquola
+
+
+February 25, 2021
 ------------------------------------------
 Changed all surface-based transformations to multi-modal surface matching, using new registrations from Lindsay.
 
