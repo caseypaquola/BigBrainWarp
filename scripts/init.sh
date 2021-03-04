@@ -49,7 +49,7 @@ if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 fi
 
 # download MSM based transformations 
-if [[ ! -f $bbwDir/xfms/rh.fsavg.reg.surf.gii ]] ; then
+if [[ ! -f $bbwDir/xfms/rh.fsavg.sphere.surf.gii ]] ; then
 	cd $bbwDir/xfms/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsavg/spheres/*
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsLR/spheres/*
