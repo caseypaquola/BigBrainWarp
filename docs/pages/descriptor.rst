@@ -22,7 +22,7 @@ An overview of what scripts and features are contained in *BigBrainWarp*
 	* fs_LR: surface data on fs_LR 32k
 
 
-Preprocessed data can be found across various spaces. We indicate in brackets which surface-based approach was used to transform the data, where relevant. 
+Preprocessed data can be found across various spaces
 
 .. list-table::
    :widths: 50 50 50
@@ -43,27 +43,21 @@ Preprocessed data can be found across various spaces. We indicate in brackets wh
    * - rh.confluence
      - continuous surface that includes isocortex and allocortex (hippocampus) from `Paquola et al., 2020 <https://elifesciences.org/articles/60673>`_
      - bigbrain
-   * - Hist-G1
-     - first gradient of cytoarchtiectural differentitation derived from BigBrain 
-     - bigbrain, fsaverage5 (nn)
-   * - Hist-G2
-     - second gradient of cytoarchtiectural differentitation derived from BigBrain 
-     - bigbrain, fsaverage5 (nn)
+   * - Hist-G*
+     - first two eigenvectors of cytoarchtiectural differentitation derived from BigBrain 
+     - bigbrain, fsaverage, fs_LR
    * - Micro-G1
-     - first gradient of microstructural differentitation derived from quantitative in-vivo T1 imaging
-     - bigbrainsym, fsaverage5 (nn)
-   * - Func-G1
-     - first gradient of functional differentitation derived from rs-fMRI
-     - bigbrainsym, fsaverage5 (nn)
-   * - Func-G2
-     - second gradient of functional differentitation derived from rs-fMRI
-     - bigbrainsym, fsaverage5 (nn)
-   * - Func-G3
-     - third gradient of functional differentitation derived from rs-fMRI
-     - bigbrainsym, fsaverage5 (nn)
-   * - *h.Yeo2011_7Networks_N1000
+     - first eigenvector of microstructural differentitation derived from quantitative in-vivo T1 imaging
+     - bigbrain, fsaverage
+   * - Func-G*
+     - first threee eigenvectors of functional differentitation derived from rs-fMRI
+     - bigbrain, fsaverage
+   * - Yeo2011_7Networks_N1000
      - 7 functional clusters from `Yeo & Krienen et al., 2011 <https://doi.org/10.1152/jn.00338.2011>`_
-     - bigbrain (msm), fsaverage5
-   * - *h.Yeo2011_17Networks_N1000
+     - bigbrain
+   * - Yeo2011_17Networks_N1000
      - 17 functional clusters from `Yeo & Krienen et al., 2011 <https://doi.org/10.1152/jn.00338.2011>`_
-     - bigbrain (msm), fsaverage5
+     - bigbrain
+   * - layer*_thickness
+     - Approximate layer thicknesses estimated from `Wagstyl et al., 2020 <https://doi.org/10.1371/journal.pbio.3000678>`_
+     - bigbrain, fsaverage, fs_LR
