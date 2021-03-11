@@ -54,6 +54,10 @@ for hemi in lh rh ; do
 		giiType=shape
 		python $bbwDir/scripts/txt2curv.py $inData ${outName}_${hemi}.curv
 		mris_convert -c ${outName}_${hemi}.curv $bbwDir/spaces/${inSurf}/${hemi}.${inSurf2}.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+	else
+		echo "non-standard file type - trying as .curv"
+		giiType=shape
+		mris_convert -c $inData $bbwDir/spaces/${inSurf}/${hemi}.${inSurf2}.white.surf.gii ${outName}_${hemi}.${giiType}.gii
 	fi
 
 	# multimodal surface matching

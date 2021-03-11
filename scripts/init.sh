@@ -3,7 +3,7 @@
 # set up variables - change for your environment
 export bbwDir=/data_/mica1/03_projects/casey/BigBrainWarp/  # change to your path to the github repo
 export mnc2Path=/data_/mica1/01_programs/minc2/ # path to your path to minc2 installation
-export wbPath=/data_/mica1/01_programs/workbench/bin_linux64/
+export wbPath=/data_/mica1/03_projects/casey/workbench/bin_linux64/
 
 # set template and download if not already there
 export icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
@@ -49,7 +49,7 @@ if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 fi
 
 # download MSM based transformations 
-if [[ ! -f $bbwDir/xfms/rh.fsavg.reg.surf.gii ]] ; then
+if [[ ! -f $bbwDir/xfms/rh.fsavg.sphere.surf.gii ]] ; then
 	cd $bbwDir/xfms/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsavg/spheres/*
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsLR/spheres/*
