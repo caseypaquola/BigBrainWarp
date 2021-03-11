@@ -27,7 +27,7 @@ Estimated layer thicknesses from Wagstyl et al., 2020 surfaces (ftp://bigbrain.l
 
 February 25, 2021
 ------------------------------------------
-Changed all surface-based transformations to multi-modal surface matching, using new registrations from Lindsay.
+Changed all surface-based transformations to multi-modal surface matching, using new registrations from Lindsay Lewis. More details `here <https://bigbrainproject.org/docs/4th-bb-workshop/20-06-26-BigBrainWorkshop-Lewis.pdf>`_.
 
 ::
 
