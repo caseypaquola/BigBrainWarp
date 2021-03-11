@@ -7,7 +7,7 @@ Updates
 
 March 11, 2021
 ------------------------------------------
-Cortical gradients are now available in volume space! We used registration fusion to project the gradient from fsaverage to icbm (`Wu et al., 2018 <https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/registration/Wu2017_RegistrationFusion>_`)
+Cortical gradients are now available in volume space! We used registration fusion to project the gradient from fsaverage to icbm (`Wu et al., 2018 <https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/registration/Wu2017_RegistrationFusion>`_)
 
 ::
 
