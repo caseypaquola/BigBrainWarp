@@ -19,4 +19,4 @@ A special thanks to the contributions of
 - Sara Larivière, MICA Lab, Montreal Neurological Institute - website design wizard 🧙‍♀️ 
 - Tristan Glatard, Concordia University - Docker hero 🐳
 - Lindsay Lewis, MCIN Lab, Montreal Neurological Institute - for the most excellent surface registrations 🧠
-- Claude Lepage, MCIN Lab, Montreal Neurological Institute - detailed eye on BigBrain warping 🕵️
+- Claude Lepage, MCIN Lab, Montreal Neurological Institute - the expert on all things related to transformations 🤖
