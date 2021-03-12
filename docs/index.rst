@@ -94,7 +94,6 @@ Tips for Getting Started
    pages/glossary   
    pages/references
    pages/acknowledgements
-   pages/contributors
 
 __________________________________________________________________________________________________
 
