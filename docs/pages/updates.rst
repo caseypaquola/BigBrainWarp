@@ -5,6 +5,17 @@
 Updates
 ==================
 
+March 24, 2021
+------------------------------------------
+Transforming data with BigBrainWarp is greatly simplified. Users need only interact with the bigbrainwarp function. 
+
+::
+
+    ↪ created bigbrainwarp base function				|  @caseypaquola
+    ↪ expanded volume-based interpolation options			|  @caseypaquola
+
+
+
 March 11, 2021
 ------------------------------------------
 Cortical gradients are now available in volume space! We used registration fusion to project the gradient from fsaverage to icbm (`Wu et al., 2018 <https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/registration/Wu2017_RegistrationFusion>`_)
