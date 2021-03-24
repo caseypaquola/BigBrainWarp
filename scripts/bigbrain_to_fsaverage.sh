@@ -5,9 +5,9 @@
 #
 # written by Casey Paquola @ MICA, MNI, 2021
 
-lhInput=$1 		# full path to left hemisphere input file (must be .gii)
+lhInput=$1 		# full path to left hemisphere input file
 rhInput=$2 		# full path to right hemisphere input file
-outSurf=$3		# output surface can be "fsavg" or "fsLR"
+outSurf=$3		# output surface can be "fsaverage" or "fsLR"
 outName=$4 		# full path of output file (without extension or hemisphere label, eg: User/BigBrain/tests/Ghist). 
 
 # the output takes the form ${outName}_${hemi}_${outSurf}.${giiType}.gii
@@ -49,7 +49,13 @@ for hemi in lh rh ; do
 		giiType=shape
 		mris_convert -c $inData $bbwDir/spaces/bigbrain/${hemi}.BigBrain.white.surf.gii ${outName}_${hemi}.${giiType}.gii
 	elif [[ "$extension" == "txt" ]] ; then
-		giiType=shape
+		if [[ -z $interp ]] ; then
+			giiType=shape
+		elif [[  "$interp" == "linear" ]] ; then
+			giiType=shape
+		elif [[  "$interp" == "nearest" ]] ; then			
+			giiType=label
+		fi
 		python $bbwDir/scripts/txt2curv.py $inData ${outName}_${hemi}.curv
 		mris_convert -c ${outName}_${hemi}.curv $bbwDir/spaces/bigbrain/${hemi}.BigBrain.white.surf.gii ${outName}_${hemi}.${giiType}.gii
 	fi

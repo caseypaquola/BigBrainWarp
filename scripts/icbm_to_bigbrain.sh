@@ -4,8 +4,9 @@
 
 fullFile=$1 	# full path to input file
 bbSpace=$2 		# which bigbrain space to output to: "histological" or "sym"
-interp=$3		# "linear" (smooth data) or "nearest_neighbour" (discrete data)
+interp=$3		# interpolation method: trilinear, tricubic, nearest or sinc
 workDir=$4 		# working directory
+outName=$5 	# output name prefix (optional)
 
 # output is $workDir/${fileFile}_bigbrain.mnc or $workDir/${fileFile}_bigbrain.nii (extension is determined by input)
 [[ -d $workDir ]] || mkdir -p $workDir
@@ -29,6 +30,11 @@ elif [[ "$extension" == "gz" ]] ; then
 	nii2mnc "$workDir"/"$fileName".nii "$workDir"/"$fileName".mnc
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
+fi
+
+# define output name if not provided
+if [[ -z $outName ]] ; then
+	outname=$fileName
 fi
 
 # precise interpolation method for minc
