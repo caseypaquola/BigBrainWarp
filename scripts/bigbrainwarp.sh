@@ -12,8 +12,8 @@ echo -e "
    $(basename $0)
 
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
-\t\033[38;5;197m-in_space\033[0m 	      : space of input data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
-\t\033[38;5;197m-out_space\033[0m 	      : space of input data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
+\t\033[38;5;197m-in_space\033[0m 	        : space of input data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
+\t\033[38;5;197m-out_space\033[0m 	      : space of output data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
 \t\033[38;5;197m-wd\033[0m 	              : Path to a working directory, where data will be output
 
 \033[38;5;141mVOLUME-BASED ARGUMENTS:\033[0m
@@ -48,31 +48,31 @@ do
     in_space=$2
     exit 1
   ;;
-  -out_space)
+  --out_space)
     out_space=$2
     shift;shift
   ;;
-  -wd)
+  --wd)
     wd=$2
     shift;shift
   ;;
-  -interp)
+  --interp)
     interp=$2
     exit 1
   ;;
-  -in)
+  --in)
     in=$2
     shift;shift
   ;;
-  -in_lh)
+  --in_lh)
     in_lh=$2
     shift;shift
   ;;
-  -in_rh)
+  --in_rh)
     in_rh=$2
     shift;shift
   ;;
-  -out_name)
+  --out_name)
     out_name=$2
     shift;shift
   ;;   
