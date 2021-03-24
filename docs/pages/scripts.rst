@@ -11,16 +11,19 @@ Running BigBrainWarp
     bigbrainwarp
 
 Required arguments
+
 - *in_space*		: Space of input data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
 - *out_space*		: Space of output data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
 - *wd*			: Path to a working directory, where data will be output
 
 Volume-based arguments
+
 - *in*			: (required) Full path to input data. Must be whole brain. Can be mnc, nii or nii.gz
 - *out_name*		: (optional) Prefix for output files. Default is prefix of input file. Output will be in the form {wd}/{out_name}_{out_space}
 - *interp*		: (optional) Interpolation method, can be trilinear, tricubic, nearest or sinc. Default is trilinear. 
 
-Volume-based arguments
+Surface-based arguments
+
 - *in_lh*		: (required) Full path to input data for left hemisphere. Can be .label.gii, .annot, .shape.gii, .curv or .txt
 - *in_rh*		: (required) Full path to input data for left hemisphere. Can be .label.gii, .annot, .shape.gii, .curv or .txt
 - *out_name*		: (required) Prefix for output files. Output will be in the form {wd}/{out_name}_lh_{out_space}.*.gii {wd}/{out_name}_rh_{out_space}.*.gii
