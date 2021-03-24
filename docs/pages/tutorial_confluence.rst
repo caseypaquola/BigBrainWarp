@@ -56,7 +56,8 @@ Next, we nonlinearly transform the volume from BigBrain to ICBM152. This can be 
 	source BigBrainWarp/scripts/init.sh
 	
 	% input arguments are: input_volume bigbrain_space interpolation working_directory clean_up
-	sh $bbwDir/scripts/bigbrain_to_icbm.sh $testDir/ bigbrain_axis_vox.nii histological linear working_directory n
+	bigbrainwarp --in_space bigbrain --out_space icbm --wd /project/ \
+ 		--in bigbrain_axis_vox.nii --interp trilinear
 
 
 .. figure:: ./images/tutorial_confluence_b.png
