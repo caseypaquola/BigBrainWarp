@@ -40,8 +40,6 @@ Tips for Getting Started
 
 * Watch a recent talk on the motivations and functionality of BigBrainWarp `https://youtu.be/Stg_R63GyVY <https://youtu.be/Stg_R63GyVY>`_
 * Progress along the side menu from top to bottom
-* For performing transformations, go to the Scripts page
-* For ready-made cytoarchitectural features and maps, check out the Toolbox contents page
 * The Tutorials are intended show interesting ways to use BigBrain with multi-modal imaging. They also contain more details on what's under the hood of the *BigBrainWarp*.
 * Get in touch if you have any questions 🤙
 
