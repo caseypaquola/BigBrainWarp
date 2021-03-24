@@ -108,29 +108,32 @@ With the downsampling and interpolation organised, we can move onto the construc
     [eigenvectors, results] = mica_diffusionEmbedding(normangle, 'ncomponents', 10);
     eigenvalues = results.lambdas/sum(results.lambdas);
 
+    for ii = 1:2
+        Gmpc = BoSurfStatMakeParcelData(eigenvectors(:,ii), S, nn_bb); # re-expands to whole cortex using a SurfStat function (https://github.com/MICA-MNI/micaopen/)
+        lhOut = [bbwDir '/spaces/bigbrain/Hist-G' num2str(ii) '_lh.txt'];
+        rhOut = [bbwDir 'spaces/bigbrain/Hist-G' num2str(ii) '_rh.txt'];
+        writematrix(Gmpc(1:end/2)', lhOut)
+        writematrix(Gmpc((end/2)+1:end)', rhOut)
+    end
 
-Next, we interpolate the BigBrain-derived gradients to fsaverage5, using the pre-computed nearest neighbour interpolation from the downsampled BigBrainSym surface to fsaverage5.
 
-.. code-block:: matlab
-	% load indexing
-	load([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb10_fs', ‘bb_downsample);
 
-	% note: build_mpc uses the unique function to sort the parcels, so we need to reverse this procedure to align with the vertex ordering of bb_downsample
-	[ubb, ia] = unique(bb_downsample);
-	for ii = 1:length(ubb)
-        	eigenvectors _sort(ia(ii),1:2) = eigenvectors(ii,1:2);
-	end
+Next, we transform the BigBrain-derived gradients to fsaverage using BigBrainWarp
 
-	% use indexing to move to fsaverage
-	HistG1 = eigenvectors (nn_bb10_fs,1);
-	HistG2 = eigenvectors (nn_bb10_fs,1);
+.. code-block:: bash
+
+	for ii in 1 2 : do
+		bigbrainwarp --in_space bigbrain --out_space fsaverage --wd $bbwDir/spaces/fsaverage/ \
+		--in_lh $bbwDir/spaces/bigbrain/Hist-G${i}_lh.txt \
+		--in_rh $bbwDir/spaces/bigbrain/Hist-G${i}_rh.txt \
+		--out_name Hist-G${i} --interp linear
+	done
 
 
 .. image:: ./images/tutorial_gradients_b.png
    :height: 350px
    :align: center
 
-	
 
 Et voila! The BigBrain-derived gradients are aligned to the MRI-derived gradients and can be statistically evaluated. The construction of the MRI-derived gradients is discussed at length in the `micapipe <https://micapipe.readthedocs.io/en/latest/>`_ documentation. Suffice to say, qT1 and rs-fMRI data from 50 healthy adults were registered to fsaverage5, then parcellated using the ~10k mesh patches discussed above. The microstructural gradient was generated using the MPC approach, with quantitative T1 images rather than BigBrain, and the functional gradient was created from resting state functional connectivity (a la `Margulies et al., <https://doi.org/10.1073/pnas.1608282113>`_).
 
