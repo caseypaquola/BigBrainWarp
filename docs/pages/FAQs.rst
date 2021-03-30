@@ -3,7 +3,7 @@ Frequently Asked Questions
 
 **What's the difference between BigBrain and BigBrainSym?** The original volumetric reconstruction of BigBrain is tilted compared to a typical brain housed in a skull (see below). This has to do with tissue deformations of the specimen post-mortem.
 
-To facilitate comparisons with standard neuroimaging spaces, BigBrain was nonlinearly transformed to ICBM152 space, resulting in BigBrainSym. When parsing arguments to scripts in this toolbox, we use the shorthand "histological" for BigBrain and "sym" for BigBrainSym.
+To facilitate comparisons with standard neuroimaging spaces, BigBrain was nonlinearly transformed to ICBM152 space, resulting in BigBrainSym. When parsing arguments to scripts in this toolbox, we use the "bigbrain" for BigBrain and "bigbrainsym" for BigBrainSym.
 
 .. figure:: ./images/FAQ_BigBrainSym.png
    :height: 150px
