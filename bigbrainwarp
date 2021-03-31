@@ -44,9 +44,9 @@ do
     help
     exit 1
   ;;
-  -in_space)
+  --in_space)
     in_space=$2
-    exit 1
+    shift;shift
   ;;
   --out_space)
     out_space=$2
@@ -58,7 +58,7 @@ do
   ;;
   --interp)
     interp=$2
-    exit 1
+    shift;shift
   ;;
   --in)
     in=$2
@@ -76,8 +76,8 @@ do
     out_name=$2
     shift;shift
   ;;   
--*)
-    Error "Unknown option ${2}"
+  -*)
+    echo "Unknown option ${2}"
     help
     exit 1
   ;;
@@ -87,14 +87,16 @@ done
 # argument check out & WARNINGS
 arg=($in_space $out_space $wd)
 if [ ${#arg[@]} -lt 3 ]; then
-Error "One or more mandatory arguments are missing:
+  echo "One or more mandatory arguments are missing:
                -in_space : $in_space
                -out_space : $out_space
                -wd : $wd"
+fi
 
 # identify whether volume or surface based transformation will be performed
 surface_spaces="fsaverage fs_LR"
-if [[ "$surface_spaces" =~ .*"$in_space".* ]] | [[ "$surface_spaces" =~ .*"$out_space".* ]] ; then
+echo $in_space
+if [[ "$surface_spaces" =~ .*"$in_space".* ]] || [[ "$surface_spaces" =~ .*"$out_space".* ]] ; then
     type=surface
 else
     type=volume
@@ -106,20 +108,20 @@ if [[ "$type" == "volume" ]] ; then
         interp=trilinear
     fi
     if [[ $in_space == "bigbrain" ]] ; then
-        bigbrain_to_icbm $in histological $interp $wd $out_name
+        bash $bbwDir/scripts/bigbrain_to_icbm.sh $in histological $interp $wd $out_name
     elif [[ $in_space == "bigbrainsym" ]] ; then
-        bigbrain_to_icbm $in sym $interp $wd $out_name
+        bash $bbwDir/scripts/bigbrain_to_icbm.sh $in sym $interp $wd $out_name
     else
         if [[ $out_space == "bigbrain" ]] ; then
-            icbm_to_bigbrain $in histological $interp $wd $out_name
+            bash $bbwDir/scripts/icbm_to_bigbrain.sh $in histological $interp $wd $out_name
         elif [[ $out_space == "bigbrainsym" ]] ; then
-            icbm_to_bigbrain $in sym $interp $wd $out_name
+            bash $bbwDir/scripts/icbm_to_bigbrain.sh $in sym $interp $wd $out_name
         fi
     fi
 elif [[ "$type" == "surface" ]] ; then
-    if [[ $in_space == .*"bigbrain".* ]]
-        bigbrain_to_fsaverage $in_lh $in_rh $out_space $wd/$out_name
+    if [[ $in_space == .*"bigbrain".* ]] ; then 
+        bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name
     else
-        fsaverage_to_bigbrain $in_lh $in_rh $in_space $wd/$out_name
+        bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $wd/$out_name
     fi
 fi
