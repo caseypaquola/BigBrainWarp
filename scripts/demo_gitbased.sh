@@ -15,12 +15,8 @@ cd $bbwDir/scripts
 nano $bbwDir/scripts/init.sh  # change the first three lines for your local environment
 source $bbwDir/scripts/init.sh
 
-# surface-based transformation - fsaverage to bigbrain
-bigbrainwarp --in_space fsaverage --out_space bigbrain --wd $workingDir \
-    --in_lh $workingDir/fsaverage/lh.random200.annot --in_rh $workingDir/fsaverage/rh.random200.annot \
-    --out_name random200
 
-# surface-based transformation
+# surface-based transformation - bigbrain to fsaverage
 bigbrainwarp --in_space bigbrain --out_space fsaverage --wd $workingDir \
     --in_lh $bbwDir/spaces/bigbrain/Hist_G2_lh.txt --in_rh $bbwDir/spaces/bigbrain/Hist_G2_rh.txt \
     --out_name Hist_G2
@@ -33,12 +29,12 @@ python obj2fs.py $bbwDir/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj $bbwD
 python obj2fs.py $bbwDir/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj $bbwDir/spaces/bigbrainsym/rh.pial
 for hemi in lh rh ; do
     python txt2curv.py $bbwDir/spaces/bigbrain/Hist-G2_${hemi}.txt $bbwDir/spaces/bigbrain/Hist-G2_${hemi}.curv
-    python txt2curv.py $workingDir/Hist-G2_${hemi}_fsaverage5.txt $workingDir/Hist-G2_${hemi}_fsaverage5.curv
+    python txt2curv.py $workingDir/Hist-G2_${hemi}_fsaverage.txt $workingDir/Hist-G2_${hemi}_fsaverage.curv
 done
 # inspect in freeview
 freeview -f ../spaces/bigbrain/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist-G2_rh.curv \
         -f ../spaces/bigbrainsym/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist-G2_rh.curv \
-        -f $SUBJECTS_DIR/fsaverage5/surf/rh.pial:overlay=$workingDir/Hist-G2_rh_fsaverage5.curv
+        -f $SUBJECTS_DIR/fsaverage/surf/rh.pial:overlay=$workingDir/Hist-G2_rh_fsaverage.curv
 
 # volumetric transformation - motor activation
 fsleyes $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz $bbwDir/tests/motor_association-test_z_FDR_0.01.nii -dr 2 20 -cm hot -in spline
@@ -59,9 +55,9 @@ done
 freeview -f $workingDir/bigbrain_${hemi}.mid:overlay=$workingDir/motor_association-test_z_FDR_0.01_bigbrain_right.curv
 
 # surface transfomration - Yeo atlas
-bash fsaverage_to_bigbrain.sh $bbwDir/spaces/fsaverage5/lh.Yeo2011_7Networks_N1000.annot \
-    $bbwDir/spaces/fsaverage5/lh.Yeo2011_7Networks_N1000.annot \
-    $bbwDir/spaces/bigbrain/Yeo2011_17Networks_N1000
+bigbrainwarp --in_space fsaverage --out_space bigbrain --wd $workingDir \
+    --in_lh $workingDir/fsaverage/lh.Yeo2011_7Networks_N1000.annot --in_rh $workingDir/fsaverage/rh.Yeo2011_7Networks_N1000.annot \
+    --out_name Yeo2011_7Networks_N1000
 # create fressurfer-compatible files
 export PYTHONPATH=$PYTHONPATH:$bbwDir/dependencies:$bbwDir/scripts
 for hemi in lh rh ; do
