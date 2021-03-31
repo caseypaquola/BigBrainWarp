@@ -95,7 +95,6 @@ fi
 
 # identify whether volume or surface based transformation will be performed
 surface_spaces="fsaverage fs_LR"
-echo $in_space
 if [[ "$surface_spaces" =~ .*"$in_space".* ]] || [[ "$surface_spaces" =~ .*"$out_space".* ]] ; then
     type=surface
 else
@@ -119,9 +118,11 @@ if [[ "$type" == "volume" ]] ; then
         fi
     fi
 elif [[ "$type" == "surface" ]] ; then
-    if [[ $in_space == .*"bigbrain".* ]] ; then 
+    if [[ $in_space =~ .*"bigbrain".* ]] ; then 
+        echo "using bigbrain_to_fsaverage.sh"
         bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name
     else
+        echo "using fsaverage_to_bigbrain.sh"
         bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $wd/$out_name
     fi
 fi

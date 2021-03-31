@@ -2,7 +2,7 @@
 
 # set up variables - change for your environment
 export bbwDir=/home/casey/Desktop/BigBrainWarp/  # change to your path to the github repo
-export mnc2Path=/home/casey/Downloads/software/minc-toolkit-v2/ # path to your path to minc2 installation
+export mnc2Path=/opt/minc/1.9.18/bin/ # path to your path to minc2 installation
 export wbPath=/home/casey/Downloads/software/workbench/bin_linux64/
 
 # set template and download if not already there
@@ -71,5 +71,5 @@ if [[ ! -f $bbwDir/.gitignore ]] ; then
 fi
 
 # add to paths
-export PATH=$bbwDir:$bbwDir/scripts/:$mnc2Path/bin/:$wbPath:$PATH
+export PATH=$bbwDir:$bbwDir/scripts/:$mnc2Path/:$wbPath:$PATH
 export MATLABPATH=$bbwDir/scripts/:$MATLABPATH

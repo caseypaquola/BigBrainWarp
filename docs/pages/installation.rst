@@ -33,7 +33,7 @@ Alternatively, you can also install a local version of BigBrainWarp like so:
 
 If you're working with a local version, you will also need to set up the dependencies:
 
-* `MINC2 <https://github.com/BIC-MNI/minc-toolkit-v2>`_ is required for volumetric transformations (tested on MINC2-v2)
+* `MINC2 <https://bic-mni.github.io/#v2-version-1918>`_ is required for volumetric transformations (tested on MINC2-v2)
 * `Workbench <https://www.humanconnectome.org/software/get-connectome-workbench>`_ is required for surface transformations (tested on workbench 1.5.0)
 * `Freesurfer <https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall>`_ is required for surface conversions (tested on Freesurfer 6.0)
 * Python (tested on 2.7 and 3.8) is required for surface-based transformations, with `numpy <https://numpy.org/>`_, `scipy <https://www.scipy.org/>`_ and `nibabel <https://nipy.org/nibabel/index.html>`_ packages

@@ -37,18 +37,13 @@ if [[ -z $outName ]] ; then
 	outname=$fileName
 fi
 
-# precise interpolation method for minc
-if [[ ${interp} = linear ]]; then
-	mnc_interp=trilinear
-elif [[ ${interp} = nearest ]] ; then
-	mnc_interp=nearest_neighbour
-fi
-
 # transformation
 if [[ ${bbSpace} = histological ]] ; then
 	echo "transform to original BigBrain space"
-	rm "$workDir"/"$fileName"_bigbrain.mnc
-	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
+	if [[ -f "$workDir"/"$fileName"_bigbrain.mnc ]] ; then
+		rm "$workDir"/"$fileName"_bigbrain.mnc
+	fi
+	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
 	# file conversion if necessary
 	if [[ "$extension" != "mnc" ]] ; then
 		echo "transforming nii to mnc"
@@ -56,8 +51,10 @@ if [[ ${bbSpace} = histological ]] ; then
 	fi
 else
 	echo "transform to BigBrainSym"
-	rm "$workDir"/"$fileName"_bigbrainsym.mnc
-	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${mnc_interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrainsym.mnc
+	if [[ -f "$workDir"/"$fileName"_bigbrainsym.mnc ]] ; then
+		rm "$workDir"/"$fileName"_bigbrainsym.mnc
+	fi
+	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrainsym.mnc
 	# file conversion if necessary
 	if [[ "$extension" != "mnc" ]] ; then
 		echo "transforming nii to mnc"

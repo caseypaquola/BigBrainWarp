@@ -14,4 +14,6 @@ To facilitate comparisons with standard neuroimaging spaces, BigBrain was nonlin
 
 **Are there regions of BigBrain that should be treated with caution?** There is a small tear in the left entorhinal cortex of BigBrain, which affects the pial surface construction as well as microstructure profiles in that region. For region of interest studies, it is always a good idea to carry out a detailed visual inspection. Try out the `EBRAINS interactive viewer <https://interactive-viewer.apps.hbp.eu/?templateSelected=Big+Brain+%28Histology%29&parcellationSelected=Cytoarchitectonic+Maps+-+v2.4&cNavigation=0.0.0.-W000..2_ZG29.-ASCS.2-8jM2._aAY3..BSR0..PDY1%7E.rzeq%7E.5qQV..15ye>`_
 
+**What causes "Error: opening MINC file BigBrainHist-to-ICBM2009sym-nonlin_grid_0.mnc" when the file exists?** This can be caused by using minc1 instead of minc2. Check which mincresample version is running from your terminal using "which mincresample". Ensure this come from the minc2 installation and not from another location on your computer. For instance, freesurfer contains a mincresample that is minc1 that will throw this error. 
+
 
