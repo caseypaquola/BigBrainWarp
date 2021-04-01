@@ -1,11 +1,43 @@
 # Provides MINC 2.3.0
 FROM simexp/minc-toolkit
 
-# Install FSL (5.0) from Neurodebian
-RUN wget -O- http://neuro.debian.net/lists/xenial.us-ca.full | tee /etc/apt/sources.list.d/neurodebian.sources.list &&\
-    apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9 && apt-get update &&\
-    apt install -y fsl 
+# Installing freesurfer
+RUN curl -sSL https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.1/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz | tar zxv --no-same-owner -C /opt \
+    --exclude='freesurfer/diffusion' \
+    --exclude='freesurfer/docs' \
+    --exclude='freesurfer/fsfast' \
+    --exclude='freesurfer/lib/cuda' \
+    --exclude='freesurfer/lib/qt' \
+    --exclude='freesurfer/matlab' \
+    --exclude='freesurfer/mni/share/man' \
+    --exclude='freesurfer/subjects/fsaverage_sym' \
+    --exclude='freesurfer/subjects/fsaverage3' \
+    --exclude='freesurfer/subjects/fsaverage4' \
+    --exclude='freesurfer/subjects/cvs_avg35' \
+    --exclude='freesurfer/subjects/cvs_avg35_inMNI152' \
+    --exclude='freesurfer/subjects/bert' \
+    --exclude='freesurfer/subjects/lh.EC_average' \
+    --exclude='freesurfer/subjects/rh.EC_average' \
+    --exclude='freesurfer/subjects/sample-*.mgz' \
+    --exclude='freesurfer/subjects/V1_average' \
+    --exclude='freesurfer/trctrain'
+    
+ENV OS="Linux" \
+    FS_OVERRIDE=0 \
+    FIX_VERTEX_AREA="" \
+    FSF_OUTPUT_FORMAT="nii.gz" \
+    FREESURFER_HOME="/opt/freesurfer"
+ENV SUBJECTS_DIR="$FREESURFER_HOME/subjects" \
+    FUNCTIONALS_DIR="$FREESURFER_HOME/sessions" \
+    MNI_DIR="$FREESURFER_HOME/mni" \
+    LOCAL_DIR="$FREESURFER_HOME/local"
+ENV PATH="$FREESURFER_HOME/bin:$FSFAST_HOME/bin:$FREESURFER_HOME/tktools
 
+# installing workbench
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        connectome-workbench=1.3.2-2~nd16.04+1
+                   
 # Install Python 3.8
 RUN add-apt-repository -y ppa:deadsnakes/ppa && apt-get update && apt-get install -y  python3.8 python3.8-dev python3.8-distutils wget 
 
@@ -22,7 +54,7 @@ RUN sed -i s,bbwDir=.*,bbwDir=/BigBrainWarp,g /BigBrainWarp/scripts/init.sh &&\
     bash /BigBrainWarp/scripts/init.sh && update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 
 # Source the fsl and BigBrainWarp init scripts before running the command
-ENTRYPOINT ["bash", "-c", "source /etc/fsl/5.0/fsl.sh && source /BigBrainWarp/scripts/init.sh && \"$@\"", "-s"]
+ENTRYPOINT ["bash", "-c", "source /BigBrainWarp/scripts/init.sh && \"$@\"", "-s"]
 
-# BibBrainWarp scripts must be run from this directory
+# BigBrainWarp scripts must be run from this directory
 WORKDIR /BigBrainWarp/scripts
