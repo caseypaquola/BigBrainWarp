@@ -1,3 +1,6 @@
+# Use Ubuntu 16.04 LTS
+FROM ubuntu:xenial-20200114
+
 # Provides MINC 2.3.0
 FROM simexp/minc-toolkit
 
