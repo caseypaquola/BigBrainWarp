@@ -1,6 +1,26 @@
 # Provides MINC 2.3.0
 FROM simexp/minc-toolkit
 
+# Pre-cache neurodebian key
+COPY docker/files/neurodebian.gpg /usr/local/etc/neurodebian.gpg
+
+# Prepare environment
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+                    curl \
+                    bzip2 \
+                    ca-certificates \
+                    xvfb \
+                    build-essential \
+                    autoconf \
+                    libtool \
+                    pkg-config \
+                    git && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y --no-install-recommends \
+                    nodejs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Installing freesurfer
 RUN curl -sSL https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.1/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz | tar zxv --no-same-owner -C /opt \
     --exclude='freesurfer/diffusion' \
