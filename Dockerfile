@@ -48,7 +48,7 @@ ENV PATH="$FREESURFER_HOME/bin:$FSFAST_HOME/bin:$FREESURFER_HOME/tktools:$PATH"
 # installing workbench
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-                        connectome-workbench=1.2.3-1~nd90+1+nd16.10+1
+                        connectome-workbench
                    
 # Install Python 3.8
 RUN add-apt-repository -y ppa:deadsnakes/ppa && apt-get update && apt-get install -y  python3.8 python3.8-dev python3.8-distutils wget 
