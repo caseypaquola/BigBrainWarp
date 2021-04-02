@@ -1,9 +1,6 @@
 # Provides MINC 2.3.0
 FROM simexp/minc-toolkit
 
-# Pre-cache neurodebian key
-COPY docker/files/neurodebian.gpg /usr/local/etc/neurodebian.gpg
-
 # Prepare environment
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -19,7 +16,7 @@ RUN apt-get update && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y --no-install-recommends \
                     nodejs && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get clean
 
 # Installing freesurfer
 RUN curl -sSL https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.1/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz | tar zxv --no-same-owner -C /opt \
@@ -61,7 +58,7 @@ RUN apt-get update && \
 # Install Python 3.8
 RUN add-apt-repository -y ppa:deadsnakes/ppa && apt-get update && apt-get install -y  python3.8 python3.8-dev python3.8-distutils wget 
 
-RUN  wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py && python3.8 get-pip.py
+RUN wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py && python3.8 get-pip.py
 
 # Python dependencies
 RUN pip3.8 install numpy nibabel scipy
