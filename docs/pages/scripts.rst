@@ -6,7 +6,7 @@ Integrating histological information with in vivo neuroimaging can deepen our un
 Running BigBrainWarp
 ********************************
 
-To run BigBrainWarp using docker, you must mount a working directory and a directory with a personal Freesurfer license. You can obtain a Freesurfer license here - 3. Obtain a Freesurfer license at `https://surfer.nmr.mgh.harvard.edu/registration.html <https://surfer.nmr.mgh.harvard.edu/registration.html>`_.
+To run BigBrainWarp using docker, you must mount a working directory and a directory with a personal Freesurfer license. You can obtain a Freesurfer license at `https://surfer.nmr.mgh.harvard.edu/registration.html <https://surfer.nmr.mgh.harvard.edu/registration.html>`_.
 
 .. code-block:: bash
 
