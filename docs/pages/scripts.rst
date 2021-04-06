@@ -6,15 +6,24 @@ Integrating histological information with in vivo neuroimaging can deepen our un
 Running BigBrainWarp
 ********************************
 
+To run BigBrainWarp using docker, you must mount a working directory and a directory with a personal Freesurfer license. You can obtain a Freesurfer license here - 3. Obtain a Freesurfer license at `https://surfer.nmr.mgh.harvard.edu/registration.html <https://surfer.nmr.mgh.harvard.edu/registration.html>`_.
+
 .. code-block:: bash
 
+    # with docker
+    docker run -it --rm -v /local/directory/with/freesurfer_license:/license \
+        -v /local/directory/with/data/:/BigBrainWarp/tests \
+        caseypaquola/bigbrainwarp bigbrainwarp
+    # change the local locations of the mounts accordingly
+
+    # without docker
     bigbrainwarp
 
 Required arguments
 
 - *in_space*		: Space of input data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
 - *out_space*		: Space of output data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
-- *wd*			: Path to a working directory, where data will be output
+- *wd*			: Path to a working directory, where data will be output. If using Docker, set this as /BigBrainWarp/tests. The output will be in your /local/directory/with/data/
 
 Volume-based arguments
 
