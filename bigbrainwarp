@@ -93,6 +93,9 @@ if [ ${#arg[@]} -lt 3 ]; then
                -wd : $wd"
 fi
 
+# try to copy license over if in the docker
+cp /license/license.txt $FREESURFER_HOME/
+
 # identify whether volume or surface based transformation will be performed
 surface_spaces="fsaverage fs_LR"
 if [[ "$surface_spaces" =~ .*"$in_space".* ]] || [[ "$surface_spaces" =~ .*"$out_space".* ]] ; then
