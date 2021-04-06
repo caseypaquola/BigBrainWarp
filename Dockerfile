@@ -45,8 +45,7 @@ ENV OS="Linux" \
 ENV SUBJECTS_DIR="$FREESURFER_HOME/subjects" \
     FUNCTIONALS_DIR="$FREESURFER_HOME/sessions" \
     MNI_DIR="$FREESURFER_HOME/mni" \
-    LOCAL_DIR="$FREESURFER_HOME/local" \
-    FS_LICENSE=/license
+    LOCAL_DIR="$FREESURFER_HOME/local"
 ENV PATH="$FREESURFER_HOME/bin:$FSFAST_HOME/bin:$FREESURFER_HOME/tktools:$PATH"
 
 # installing workbench
