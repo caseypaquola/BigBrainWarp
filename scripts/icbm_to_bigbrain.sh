@@ -40,25 +40,35 @@ fi
 # transformation
 if [[ ${bbSpace} = histological ]] ; then
 	echo "transform to original BigBrain space"
-	if [[ -f "$workDir"/"$fileName"_bigbrain.mnc ]] ; then
-		rm "$workDir"/"$fileName"_bigbrain.mnc
+	if [[ -f "$workDir"/"$outname"_bigbrain.mnc ]] ; then
+		rm "$workDir"/"$outname"_bigbrain.mnc
 	fi
-	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrain.mnc
+	mincresample -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${interp} $workDir/"$outname".mnc "$workDir"/"$outname"_bigbrain.mnc
 	# file conversion if necessary
 	if [[ "$extension" != "mnc" ]] ; then
 		echo "transforming nii to mnc"
-		mnc2nii "$workDir"/"$fileName"_bigbrain.mnc "$workDir"/"$fileName"_bigbrain.nii
+		mnc2nii "$workDir"/"$outname"_bigbrain.mnc "$workDir"/"$outname"_bigbrain.nii
+		rm "$workDir"/"$fileName".mnc
+		rm "$workDir"/"$outname"_bigbrain.mnc
+	fi
+	if [[ "$extension" == "gz" ]] ; then
+		gzip "$workDir"/"$outname"_bigbrain.nii
 	fi
 else
 	echo "transform to BigBrainSym"
-	if [[ -f "$workDir"/"$fileName"_bigbrainsym.mnc ]] ; then
-		rm "$workDir"/"$fileName"_bigbrainsym.mnc
+	if [[ -f "$workDir"/"$outname"_bigbrainsym.mnc ]] ; then
+		rm "$workDir"/"$outname"_bigbrainsym.mnc
 	fi
-	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${interp} $workDir/"$fileName".mnc "$workDir"/"$fileName"_bigbrainsym.mnc
+	mincresample -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -invert_transformation -tfm_input_sampling -${interp} $workDir/"$outname".mnc "$workDir"/"$outname"_bigbrainsym.mnc
 	# file conversion if necessary
 	if [[ "$extension" != "mnc" ]] ; then
 		echo "transforming nii to mnc"
-		mnc2nii "$workDir"/"$fileName"_bigbrainsym.mnc "$workDir"/"$fileName"_bigbrainsym.nii
+		mnc2nii "$workDir"/"$outname"_bigbrainsym.mnc "$workDir"/"$outname"_bigbrainsym.nii
+		rm "$workDir"/"$fileName".mnc
+		rm "$workDir"/"$outname"_bigbrainsym.mnc
+	fi
+	if [[ "$extension" == "gz" ]] ; then
+		gzip "$workDir"/"$outname"_bigbrainsym.nii
 	fi
 fi
 
