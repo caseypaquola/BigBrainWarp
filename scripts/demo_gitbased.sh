@@ -15,7 +15,6 @@ cd $bbwDir/scripts
 nano $bbwDir/scripts/init.sh  # change the first three lines for your local environment
 source $bbwDir/scripts/init.sh
 
-
 # surface-based transformation - bigbrain to fsaverage
 bigbrainwarp --in_space bigbrain --out_space fsaverage --wd $workingDir \
     --in_lh $bbwDir/spaces/bigbrain/Hist_G2_lh.txt --in_rh $bbwDir/spaces/bigbrain/Hist_G2_rh.txt \
