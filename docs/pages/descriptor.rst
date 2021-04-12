@@ -32,7 +32,7 @@ Preprocessed data can be found across various spaces
      - What is it?
      - In which spaces?
    * - profiles.txt
-     - cell-staining intensities sampled at each vertex and across 50 equivolumetric surfaces
+     - cell-staining intensities sampled at each vertex and across 50 equivolumetric surfaces. This is stored as a single vector to reduce the size. Reshape to 50 rows for use. 
      - bigbrain
    * - gray*327680*
      - pial surface (Amunts et al. 2013)

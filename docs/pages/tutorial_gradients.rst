@@ -90,13 +90,13 @@ With the downsampling organised, we can move onto the construction of gradients.
 .. code-block:: matlab
 
     % BigBrain profiles
-    load([bbwDir '/data/BB_profiles.mat'], 'MPsurface')
+    MP = reshape(dlmread([bbwDir '/spaces/bigbrain/profiles.txt']),[], 50)';
     
     % load downsampling indexing
     load([bbwDir '/scripts/nn_surface_indexing.mat'], 'nn_bb');
     
     % create MPC and gradient, using functions from the micaopen github
-    MPC = build_mpc(MPsurface,nn_bb);
+    MPC = build_mpc(MP,nn_bb);
     normangle = connectivity2normangle(MPC, 0);
     [eigenvectors, results] = mica_diffusionEmbedding(normangle, 'ncomponents', 10);
     eigenvalues = results.lambdas/sum(results.lambdas);
