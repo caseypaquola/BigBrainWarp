@@ -27,13 +27,13 @@ python obj2fs.py $bbwDir/spaces/bigbrain/gray_right_327680.obj $bbwDir/spaces/bi
 python obj2fs.py $bbwDir/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj $bbwDir/spaces/bigbrainsym/lh.pial
 python obj2fs.py $bbwDir/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj $bbwDir/spaces/bigbrainsym/rh.pial
 for hemi in lh rh ; do
-    python txt2curv.py $bbwDir/spaces/bigbrain/Hist-G2_${hemi}.txt $bbwDir/spaces/bigbrain/Hist-G2_${hemi}.curv
-    python txt2curv.py $workingDir/Hist-G2_${hemi}_fsaverage.txt $workingDir/Hist-G2_${hemi}_fsaverage.curv
+    python txt2curv.py $bbwDir/spaces/bigbrain/Hist_G2_${hemi}.txt $bbwDir/spaces/bigbrain/Hist_G2_${hemi}.curv
+    python txt2curv.py $workingDir/Hist_G2_${hemi}_fsaverage.txt $workingDir/Hist_G2_${hemi}_fsaverage.curv
 done
 # inspect in freeview
-freeview -f ../spaces/bigbrain/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist-G2_rh.curv \
-        -f ../spaces/bigbrainsym/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist-G2_rh.curv \
-        -f $SUBJECTS_DIR/fsaverage/surf/rh.pial:overlay=$workingDir/Hist-G2_rh_fsaverage.curv
+freeview -f ../spaces/bigbrain/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist_G2_rh.curv \
+        -f ../spaces/bigbrainsym/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist_G2_rh.curv \
+        -f $SUBJECTS_DIR/fsaverage/surf/rh.pial:overlay=$workingDir/Hist_G2_rh_fsaverage.curv
 
 # volumetric transformation - motor activation
 fsleyes $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz $bbwDir/tests/motor_association-test_z_FDR_0.01.nii -dr 2 20 -cm hot -in spline
