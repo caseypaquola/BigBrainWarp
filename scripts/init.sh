@@ -41,11 +41,11 @@ fi
 # download bigbrain templates
 if [[ ! -f $bbwDir/spaces/bigbrainsym/full8_400um_2009b_sym.mnc ]] ; then
 	cd $bbwDir/spaces/bigbrainsym/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/MNI-ICBM152_Space/full8_400um_2009b_sym.mnc
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/MNI-ICBM152_Space/mnc/full8_400um_2009b_sym.mnc
 fi
 if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 	cd $bbwDir/spaces/bigbrain/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/Histological_Space/full8_400um_optbal.mnc
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/Histological_Space/mnc/full8_400um_optbal.mnc
 fi
 
 # download MSM based transformations 
