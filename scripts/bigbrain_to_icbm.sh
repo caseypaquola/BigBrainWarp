@@ -19,8 +19,8 @@ if [[ "$extension" == "mnc" ]] ; then
 	echo "minc image, continuing to transformation"
 	cp $fullFile $workDir/${fileName}.mnc
 elif [[ "$extension" == "gz" ]] ; then
-	gunzip $fullFile
 	fileName="${fileName%.*}"
+	gunzip $fullFile $workDir/${fileName}.nii
 	nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
