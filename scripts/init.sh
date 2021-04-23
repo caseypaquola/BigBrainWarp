@@ -48,11 +48,12 @@ if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/Histological_Space/mnc/full8_400um_optbal.mnc
 fi
 
-# download MSM based transformations 
-if [[ ! -f $bbwDir/xfms/rh.fsavg.sphere.surf.gii ]] ; then
+# download MSM based transformations
+if [[ ! -f $bbwDir/xfms/rh.MNI152.rot.fsavg.sphere.surf.gii ]] ; then
 	cd $bbwDir/xfms/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsavg/spheres/*
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsLR/spheres/*
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_MNI/spheres/*
 fi
 
 # download gifti white matter surfaces
