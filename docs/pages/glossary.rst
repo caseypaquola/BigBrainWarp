@@ -17,6 +17,8 @@ Glossary
      - Intracortical surfaces constructed in such a way that preserves the volume of each strata (Waehnert et al., 2014; Wagstyl et al., 2019)
    * - fsaverage
      - Standard surface in FreeSurfer
+   * - fs_LR
+     - Standard surface in HCP (Van Essen et al. 2012)
    * - Gradients
      - Graded spatial variations in a neurobiological feature
    * - Isocortex
