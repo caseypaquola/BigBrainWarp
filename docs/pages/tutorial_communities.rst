@@ -3,6 +3,8 @@ Tutorial 2: Cytoarchitectural characterisation of functional communities
 
 Intrinsic functional communities are commonly defined by endogenous co-fluctuations in the BOLD response, which illustrate a temporal concordance of the timeseries in distributed areas of the cortex that are highly consistent across individuals. In this tutorial, we aim to characterise the cytoarchitecture of these intrinsic functional communities using BigBrain.
 
+Full tutorial code ➡️ `https://github.com/caseypaquola/BigBrainWarp/tree/master/tutorials/communities <https://github.com/caseypaquola/BigBrainWarp/tree/master/tutorials/communities>`_
+
 First things first, we should give some forethought to the data and potential transformations necessary for this analysis. Cytoarchitecture can be examined using BigBrain microstructure profiles, which are aligned to BigBrain surfaces. We can define population-average functional communities using the `Yeo, Krienen <https://doi.org/10.1152/jn.00338.2011>`_ atlas, which is openly available on a variety of standard surfaces and volumes. Given we’re using cytoarchitectural information on the BigBrain surface, we’ll also select a surface version of the Yeo, Krienen atlas. This also conforms with the original creation of the atlas. Specifically, we will use the fsaverage version with 7 functional communities and plan to transform the atlas to the BigBrain surface.
 
 The transformation from fsaverage to the BigBrain surface can be conducted in BigBrainWarp using one line of code. Under the hood, the code involves a multi-modal surface matching informed transformation from fsavearge parcel to BigBrainSym parcels. We've already transformed the 7 and 17 Network Yeo, Krienen atlases to BigBrain for you and they can be found in the BigBrainWarp/bigbrain/. Following this interpolation, we should double check visually that the registration is anatomically sound. 
@@ -12,8 +14,7 @@ The transformation from fsaverage to the BigBrain surface can be conducted in Bi
 	bigbrainwarp --in_space fsaverage --out_space bigbrain --wd /project/ \
 	--in_lh lh.Yeo2011_17Networks_N1000.annot \
 	--in_rh lh.Yeo2011_17Networks_N1000.annot \
-	--out_name Yeo2011_17Networks_N1000 \
-	--interp nearest
+	--out_name Yeo2011_17Networks_N1000
 
 .. image:: ./images/tutorial_communities_a.png
    :height: 350px
@@ -120,7 +121,6 @@ After inspecting the distribution of profile moments across the functional netwo
 
 
 And there we go. Visual networks harbour distinctive cytoarchitecture, reflected by relatively high accuracy and few incorrect predictions. Ventral attention B, limbic and temporoparietal networks are relatively homogenous in cytoarchitecture, related to their restricted spatial distribution. As such, predictive accuracy is moderate but they are also often incorrectly predicted. 
-
 
 .. image:: ./images/tutorial_communities_c.png
    :height: 250px

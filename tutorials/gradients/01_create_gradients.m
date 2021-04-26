@@ -3,17 +3,17 @@ for init_project = 1
     GH          = '/location/of/github/repos/';
     bbwDir      = [GH '/BigBrainWarp/']; 
     
-    run_downsample = 0; % takes ~15minutes, output is provided in BigBrainWarp
- 
-end
+    run_downsample = 0; % option turn off downsampling and uses the precomputed version in BigBrainWarp. Downsampling takes ~15minutes. 
+    
+    % addpaths
+    addpath([bbwDir '/scripts/'])
+    addpath(genpath([GH '/micaopen/surfstat']))
 
-% addpaths
-addpath([bbwDir '/scripts/'])
-addpath(genpath([GH '/micaopen/surfstat']))
-
-% load surface
-BB = SurfStatAvSurf({[bbwDir '/spaces/bigbrain/gray_left_327680.obj'], ...
+    % load surface
+    BB = SurfStatAvSurf({[bbwDir '/spaces/bigbrain/gray_left_327680.obj'], ...
         [bbwDir '/spaces/bigbrain/gray_right_327680.obj']});
+
+end
 
 % load profiles
 MP = reshape(dlmread([bbwDir '/spaces/bigbrain/profiles.txt']),[], 50)';
