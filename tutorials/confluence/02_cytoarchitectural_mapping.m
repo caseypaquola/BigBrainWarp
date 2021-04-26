@@ -3,10 +3,8 @@
 
 for set_up = 1
     
-    %micaopen    = '/path/to/parent/directory/';
-    %mainDir     = [micaopen '/CorticalConfluence/'];
-    micaopen    = 'C:\Users\cpaq3\Desktop\GitHub\micaopen\';
-    mainDir     = 'C:\Users\cpaq3\OneDrive\montreal\6_CorticalConfluence\micaopen\';
+    micaopen    = '/path/to/parent/directory/';
+    mainDir     = [micaopen '/CorticalConfluence/'];
     
     % scripts
     addpath(genpath(micaopen)) 
