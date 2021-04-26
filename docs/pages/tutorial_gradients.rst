@@ -81,9 +81,9 @@ Next, we transform the BigBrain-derived gradients to fsaverage using BigBrainWar
 
 	for ii in 1 2 : do
 		bigbrainwarp --in_space bigbrain --out_space fsaverage --wd $bbwDir/spaces/fsaverage/ \
-		--in_lh $bbwDir/spaces/bigbrain/Hist-G${i}_lh.txt \
-		--in_rh $bbwDir/spaces/bigbrain/Hist-G${i}_rh.txt \
-		--out_name Hist-G${i} --interp linear
+		--in_lh $bbwDir/spaces/bigbrain/Hist_G${i}_lh.txt \
+		--in_rh $bbwDir/spaces/bigbrain/Hist_G${i}_rh.txt \
+		--out_name Hist_G${i} --interp linear
 	done
 
 
