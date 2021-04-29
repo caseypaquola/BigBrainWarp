@@ -1,11 +1,51 @@
 #!/bin/bash
 
-# redefine these variables as necessary
-in_vol=${bbwDir}/bigbrain/full16_100um_optbal.mnc  # download a bigbrain volume from the ftp. Should be mnc format. Ensure the space is matched the surfaces (ie: histological with histological or sym with sym)
-upper_surf=${bbwDir}/bigbrain/gray_left_327680.obj
-lower_surf=${bbwDir}/bigbrain/white_left_327680.obj
-out_name=${bbwDir}/tests/left_
-num_surf=50
+# generates staining intensity profiles given a volume and matched surface files
+
+#---------------- FUNCTION: HELP ----------------#
+help() {
+echo -e "
+\033[38;5;141mCOMMAND:\033[0m
+   $(basename $0)
+\033[38;5;141mREQUIRED ARGUMENTS:\033[0m
+\t\033[38;5;197m-in_vol\033[0m 	      		: input volume to be sampled. Must be .mnc
+\t\033[38;5;197m-upper_surf\033[0m 	      	: upper surface. Must be aligned to the volume and an .obj
+\t\033[38;5;197m-lower_surf\033[0m              : lower surface. Must be aligned to the volume and an .obj
+\t\033[38;5;197m-num_surf\033[0m              	: number of surfaces to generate
+\t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
+
+
+
+# Create VARIABLES
+for arg in "$@"
+do
+  case "$arg" in
+  -h|-help)
+    help
+    exit 1
+  ;;
+  --in_vol)
+    in_vol=$2
+    shift;shift
+  ;;
+  --wd)
+    wd=$2
+    shift;shift
+  ;;
+  --upper_surf)
+    upper_surf=$2
+    shift;shift
+  ;;
+  --lower_surf)
+    lower_surf=$2
+    shift;shift
+  ;;
+  --num_surf)
+    num_surf=$2
+    shift;shift
+  ;;
+  -*)
+done
 
 # pull surface tools repo, if not already contained in scripts
 if [[ ! -d $bbwDir/scripts/surface_tools/ ]] ; then
@@ -18,14 +58,15 @@ if [[ ! -d $out_dir ]] ; then
 	mkdir $out_dir
 fi
 
-python generate_equivolumetric_surfaces.py ${upper_surf} ${lower_surf} ${num_surf} ${out_name}
-x=$(ls -t ${out_name}*) # orders my time created
+python generate_equivolumetric_surfaces.py ${upper_surf} ${lower_surf} ${num_surf} ${out_dir}
+x=$(ls -t ${out_dir}*.obj) # orders my time created
 for n in `seq 1 1 $num_surf` ; do
 	echo $n
 	which_surf=$(sed -n "$n"p <<< "$x")
-	nd=`$num_surf - $n` # numbered from upper to lower
-	volume_object_evaluate $in_vol $which_surf ${out_name}.$nd.txt
+	# make numbering from upper to lower
+	let "nd = $num_surf - $n"
+	volume_object_evaluate $in_vol $which_surf ${out_dir}/$nd.txt
 done
 
 cd $bbwDir/scripts/
-python compile_profiles.py ${out_name} ${num_surf}
+python compile_profiles.py ${out_dir} ${num_surf}

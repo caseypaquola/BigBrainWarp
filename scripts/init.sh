@@ -1,9 +1,8 @@
 #!/bin/bash/
 
 # set up variables - change for your environment
-export bbwDir=/home/casey/Desktop/BigBrainWarp/  # change to your path to the github repo
-export mnc2Path=/opt/minc/1.9.18/bin/ # path to your path to minc2 installation
-export wbPath=/home/casey/Downloads/software/workbench/bin_linux64/
+export bbwDir=/data_/mica1/03_projects/casey/BigBrainWarp/  # change to your path to the github repo
+export mnc2Path=/data_/mica1/01_programs/minc2/ # path to your path to minc2 installation
 
 # set template and download if not already there
 export icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
@@ -53,7 +52,8 @@ if [[ ! -f $bbwDir/xfms/rh.MNI152.rot.fsavg.sphere.surf.gii ]] ; then
 	cd $bbwDir/xfms/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsavg/spheres/*
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsLR/spheres/*
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_MNI/spheres/*
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_MNI152/spheres/*
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_MNI152/inmap_MNI152_outmap_BigBrain/input/*template*
 fi
 
 # download gifti white matter surfaces

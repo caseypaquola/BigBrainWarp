@@ -13,3 +13,5 @@ docs/py*
 docs/en*
 env/*
 scripts/init.sh
+scripts/surface_tools/*
+scripts/__py_cache__/*
