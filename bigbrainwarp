@@ -92,7 +92,7 @@ if [ ${#arg[@]} -lt 3 ]; then
 fi
 
 # try to copy license over if in the docker
-if [[ ! -f $FREESURFER_HOME/license.txt ]] ;
+if [[ ! -f $FREESURFER_HOME/license.txt ]] ; then
     if [[ -f /license/license.txt ]] ; then
       cp /license/license.txt $FREESURFER_HOME/
     else
