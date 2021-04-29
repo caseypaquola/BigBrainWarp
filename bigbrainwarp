@@ -128,7 +128,7 @@ if [[ "$in_type" == "volume" ]] ; then
         interp=trilinear
     fi
     if [[ $in_space == "bigbrain" ]] || [[ $in_space == "bigbrainsym" ]] ; then
-      if [[ $in_space == "bigbrain" ]]
+      if [[ $in_space == "bigbrain" ]] ; then
         echo "using bigbrain_to_icbm.sh"
         bash $bbwDir/scripts/bigbrain_to_icbm.sh $in histological $interp $wd $out_name
         echo "employed nonlinear transformation from bigbrain to icbm"
