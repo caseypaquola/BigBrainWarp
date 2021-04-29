@@ -51,7 +51,7 @@ for hemi in lh rh ; do
 		python $bbwDir/scripts/txt2curv.py $inData ${outName}_${hemi}.curv
 		mris_convert -c ${outName}_${hemi}.curv $bbwDir/spaces/bigbrain/${hemi}.BigBrain.white.surf.gii ${outName}_${hemi}.${giiType}.gii
 	fi
-    if [[ $hemi == "lh" ]] ; 
+    if [[ $hemi == "lh" ]] ; then
         struc_label=CORTEX_LEFT
     else
         struc_label=CORTEX_RIGHT
