@@ -120,7 +120,6 @@ if [[ -z $out_type ]] ; then
     out_type=$in_type
   fi
 fi
-echo "we're going to warp from $in_type to $out_type"
 
 # running through the possible options of transformations
 if [[ "$in_type" == "volume" ]] ; then
