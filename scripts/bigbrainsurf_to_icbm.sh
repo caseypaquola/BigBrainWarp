@@ -63,13 +63,15 @@ for hemi in lh rh ; do
 	outmeshMSM=$bbwDir/xfms/$hemi.sphere_MNI152_rsled_like_BigBrain.sphere.reg.surf.gii
 	if [[ "$giiType" == "shape" ]] ; then
 		wb_command -metric-resample ${outName}_${hemi}.${giiType}.gii $outmeshMSM $refmesh BARYCENTRIC ${outName}_${hemi}_icbm.${giiType}.gii
-		wb_command -metric-to-volume-mapping ${outName}_${hemi}_icbm.${giiType}.gii $bbwDir/xfms/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii \
-		${outName}_icbm.nii \
-		-ribbon_constrained 
+		wb_command -set-structure ${outName}_${hemi}_icbm.${giiType}.gii $struc_label
+		wb_command -metric-to-volume-mapping ${outName}_${hemi}_icbm.${giiType}.gii $bbwDir/spaces/icbm/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii \
+		$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.nii ${outName}_${hemi}_icbm.nii \
+		-ribbon-constrained $bbwDir/spaces/icbm/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii $bbwDir/spaces/icbm/icbm_avg_white_sym_mc_${hemi_long}_hires.surf.gii
 	elif [[ "$giiType" == "label" ]] ; then
 		wb_command -label-resample ${outName}_${hemi}.${giiType}.gii $outmeshMSM $refmesh BARYCENTRIC ${outName}_${hemi}_icbm.${giiType}.gii
+		wb_command -set-structure ${outName}_${hemi}_icbm.${giiType}.gii $struc_label
+		wb_command -label-to-volume-mapping ${outName}_${hemi}_icbm.${giiType}.gii $bbwDir/spaces/icbm/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii \
+		$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.nii ${outName}_${hemi}_icbm.nii \
+		-ribbon-constrained $bbwDir/spaces/icbm/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii $bbwDir/spaces/icbm/icbm_avg_white_sym_mc_${hemi_long}_hires.surf.gii
 	fi
-	wb_command -set-structure ${outName}_${hemi}_icbm.${giiType}.gii $struc_label
 done
-
-
