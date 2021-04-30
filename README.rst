@@ -20,11 +20,3 @@ Core developers
 - Casey Paquola, INM-1, Forschungszentrum Jülich & MICA Lab, Montreal Neurological Institute
 - Boris Bernhardt, MICA Lab, Montreal Neurological Institute
 
-
-Contributors
-------------------
-
-- Jessica Royer, MICA Lab, Montreal Neurological Institute
-- Tristan Glatard, Concordia Univerisity
-
-
