@@ -53,17 +53,23 @@ for hemi in lh rh ; do
 	fi
     if [[ $hemi == "lh" ]] ; then
         struc_label=CORTEX_LEFT
+	hemi_long=left
     else
         struc_label=CORTEX_RIGHT
+	hemi_long=right
     fi
 	# multimodal surface matching
-	$refmesh=$bbwDir/xfms/$hemi.MNI152.rot.fsavg.sphere.surf.gii 
-	$outmeshMSM=$bbwDir/xfms/$hemi.sphere_MNI152_rsled_like_BigBrain.sphere.reg.surf.gii
+	refmesh=$bbwDir/xfms/$hemi.MNI152.rot.fsavg.sphere.surf.gii
+	outmeshMSM=$bbwDir/xfms/$hemi.sphere_MNI152_rsled_like_BigBrain.sphere.reg.surf.gii
 	if [[ "$giiType" == "shape" ]] ; then
-		wb_command -metric-resample ${outName}_${hemi}.${giiType}.gii $outmeshMSM $refmesh BARYCENTRIC ${outName}_${hemi}.${giiType}_icbm.${giiType}.gii
-        wb_command -set-structure ${outName}_${hemi}.${giiType}_icbm.${giiType}.gii $struc_label
+		wb_command -metric-resample ${outName}_${hemi}.${giiType}.gii $outmeshMSM $refmesh BARYCENTRIC ${outName}_${hemi}_icbm.${giiType}.gii
+		wb_command -metric-to-volume-mapping ${outName}_${hemi}_icbm.${giiType}.gii $bbwDir/xfms/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii \
+		${outName}_icbm.nii \
+		-ribbon_constrained 
 	elif [[ "$giiType" == "label" ]] ; then
-		wb_command -label-resample ${outName}_${hemi}.${giiType}.gii $outmeshMSM $refmesh BARYCENTRIC ${outName}_${hemi}.${giiType}_icbm.${giiType}.gii
-        wb_command -set-structure ${outName}_${hemi}.${giiType}_icbm.${giiType}.gii $struc_label
+		wb_command -label-resample ${outName}_${hemi}.${giiType}.gii $outmeshMSM $refmesh BARYCENTRIC ${outName}_${hemi}_icbm.${giiType}.gii
 	fi
+	wb_command -set-structure ${outName}_${hemi}_icbm.${giiType}.gii $struc_label
 done
+
+
