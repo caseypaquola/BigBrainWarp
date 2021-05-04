@@ -107,13 +107,4 @@ Core developers
 - Boris Bernhardt, MICA Lab, Montreal Neurological Institute
 
 
-Contributors
-------------------
-
-- Jessica Royer, MICA Lab, Montreal Neurological Institute
-- Tristan Glatard, Concordia Univerisity
-- Lindsay Lewis, MCIN Lab, Montreal Neurological Institute
-- Claude Lepage, MCIN Lab, Montreal Neurological Institute
-
-
 Please drop us a line if you're interested in contributing!

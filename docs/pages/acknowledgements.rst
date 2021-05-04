@@ -27,6 +27,12 @@ The work is conducted through a collaboration of researchers at the Neuro and J�
    :align: center
 
 
+Core developers of the toolbox are
+
+- Casey Paquola, INM-1, Forschungszentrum Jülich & MICA Lab, Montreal Neurological Institute
+- Boris Bernhardt, MICA Lab, Montreal Neurological Institute
+
+
 A special thanks to the contributions of
 
 - Jessica Royer, MICA Lab, Montreal Neurological Institute - bug catcher extraordinaire 🐛
