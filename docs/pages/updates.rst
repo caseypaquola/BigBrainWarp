@@ -5,6 +5,18 @@
 Updates
 ==================
 
+March 30, 2021
+------------------------------------------
+Added ICBM surface, allows transformations between bigbrain surface and icbm volume too. Created a wrapper script for generating staining intensity profiles
+
+::
+
+    ↪ added icbm surface template from civet				|  @caseypaquola
+    ↪ added out_type option in bigbrainwarp				|  @caseypaquola
+    ↪ created sample_intensity_profiles.sh				|  @caseypaquola
+
+
+
 March 24, 2021
 ------------------------------------------
 Transforming data with BigBrainWarp is greatly simplified. Users need only interact with the bigbrainwarp function. 
