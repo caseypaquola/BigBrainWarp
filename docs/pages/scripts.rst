@@ -6,40 +6,76 @@ Integrating histological information with in vivo neuroimaging can deepen our un
 Running BigBrainWarp
 ********************************
 
+First, `install the package <https://bigbrainwarp.readthedocs.io/en/latest/pages/installation.html>`_
 To run BigBrainWarp using docker, you must mount a working directory and a directory with a personal Freesurfer license. You can obtain a Freesurfer license at `https://surfer.nmr.mgh.harvard.edu/registration.html <https://surfer.nmr.mgh.harvard.edu/registration.html>`_.
 
 .. code-block:: bash
 
-    # with docker
+    # with docker (change the local locations of the mounts accordingly)
     docker run -it --rm -v /local/directory/with/freesurfer_license:/license \
         -v /local/directory/with/data/:/BigBrainWarp/tests \
         caseypaquola/bigbrainwarp bigbrainwarp
-    # change the local locations of the mounts accordingly
 
     # without docker
     bigbrainwarp
 
-Required arguments
 
-- *in_space*		: Space of input data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
-- *out_space*		: Space of output data (bigbrain, bigbrainsym, icbm, fsaverage or fs_LR)
-- *wd*			: Path to a working directory, where data will be output. If using Docker, set this as /BigBrainWarp/tests. The output will be in your /local/directory/with/data/
+The following arguments can be used with BigBrainWarp
 
-Volume-based arguments
+.. list-table::
+   :widths: 25 50 50 50
+   :header-rows: 1
 
-- *in*			: (required) Full path to input data. Must be whole brain. Can be mnc, nii or nii.gz
-- *out_name*		: (optional) Prefix for output files. Default is prefix of input file. Output will be in the form {wd}/{out_name}_{out_space}
-- *interp*		: (optional) Interpolation method, can be trilinear, tricubic, nearest or sinc. Default is trilinear. 
+   * - Parameter
+     - Description	
+     - Conditions	
+     - Options
+   * - in_space	
+     - Space of input data	
+     - Required	
+     - bigbrain, bigbrainsym, icbm, fsaverage, fs_LR 
+   * - out_space	
+     - Space of output data	
+     - Required	
+     - bigbrain, bigbrainsym, icbm, fsaverage, fs_LR 
+   * - wd
+     - Path to working directory
+     - Required	
+     - 
+   * - in_vol	
+     - Full path to input data, whole brain volume.	
+     - Requires either in_vol, or in_lh and in_rh	
+     - Permitted formats: mnc, nii or nii.gz
+   * - ih_lh	
+     - Full path to input data, left hemisphere surface.
+     - Requires either in_vol, or in_lh and in_rh	
+     - Permitted formats: label.gii, annot, shape.gii, curv or txt
+   * - ih_rh	
+     - Full path to input data, left hemisphere surface.
+     - Requires either in_vol, or in_lh and in_rh	
+     - Permitted formats: label.gii, annot, shape.gii, curv or txt
+   * - interp	
+     - Interpolation method
+     - Required for in_vol.
+     - Optional for txt input. Not permitted for other surface inputs.	For in_vol, can be trilinear (default), tricubic, nearest or sinc. For txt, can be linear or nearest
+   * - out_name	
+     - Prefix for output files	
+     - Required for surface input. 
+     - Optional for volume input, otherwise defaults to prefix of input file
+   * - out_type	
+     - Specifies whether output in surface or volume space 	
+     - Optional function for bigbrain and bigbrainsym output. Otherwise, defaults to the same type as the input.  	
+     - surface, volume
 
-Surface-based arguments
 
-- *in_lh*		: (required) Full path to input data for left hemisphere. Can be .label.gii, .annot, .shape.gii, .curv or .txt
-- *in_rh*		: (required) Full path to input data for left hemisphere. Can be .label.gii, .annot, .shape.gii, .curv or .txt
-- *out_name*		: (required) Prefix for output files. Output will be in the form {wd}/{out_name}_lh_{out_space}.*.gii {wd}/{out_name}_rh_{out_space}.*.gii
-- *interp*		: (optional) Interpolation method, can be linear or nearest. Only works for .txt. Other types are forced to defaults (label.gii and .annot to nearest, shape.gii and .curv to linear)
+The BigBrainWarp function currently wraps the following range of transformations
+
+.. image:: ./images/bbw_workflow.png
+   :height: 300px
+   :align: center
 
 
-Transformations in volume space
+Example transformations in volume space
 ********************************
 
 .. code-block:: bash
@@ -56,7 +92,7 @@ If you use volume-based transformations in BigBrainWarp, please cite:
 Xiao, Y., et al. 'An accurate registration of the BigBrain dataset with the MNI PD25 and ICBM152 atlases'. Sci Data 6, 210 (2019). https://doi.org/10.1038/s41597-019-0217-0
 
 
-Transformations for surface-based data
+Example transformations for surface-based data
 ***************************************
 
 Surface-based transformation can be enacted using multi-modal surface matching; a spherical registration approach. Ongoing work by Lewis et al., involves optimisation of registration surafces between BigBrain and standard surface templates. These are available at `ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support <ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support>`_. More details on procedure can be also found on the following `poster <https://drive.google.com/file/d/1vAqLRV8Ue7rf3gsNHMixFqlLxBjxtmc8/view?usp=sharing>`_ and `slides <https://drive.google.com/file/d/11dRgtttd2_FdpB31kDC9mUP4WCmdcbbg/view?usp=sharing>`_.
