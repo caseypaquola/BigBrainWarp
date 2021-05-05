@@ -31,15 +31,11 @@ In the toolbox, you’ll find preprocessed BigBrain data, scripts to transform b
 
 Additionally, we’ve created a series of tutorials that illustrate potential workflows for BigBrain-MRI integration.
 
-🚧 The toolbox and readthedocs are still under construction. If you're interested in certain features or data, please get in touch and we can let you know whether it's finalised and provide the most up to date version. 
-
-
 
 Tips for Getting Started
 ****************************
 
 * Watch a recent talk on the motivations and functionality of BigBrainWarp `https://youtu.be/Stg_R63GyVY <https://youtu.be/Stg_R63GyVY>`_
-* Progress along the side menu from top to bottom
 * The Tutorials are intended show interesting ways to use BigBrain with multi-modal imaging. They also contain more details on what's under the hood of the *BigBrainWarp*.
 * Get in touch if you have any questions 🤙
 
