@@ -14,7 +14,9 @@ echo -e "
 \t\033[38;5;197m-num_surf\033[0m              	: number of surfaces to generate
 \t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
 
-
+Casey Paquola, MNI, MICA Lab, 2021
+https://bigbrainwarp.readthedocs.io/
+"
 
 # Create VARIABLES
 for arg in "$@"
