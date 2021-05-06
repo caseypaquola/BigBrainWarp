@@ -47,6 +47,7 @@ do
     shift;shift
   ;;
   -*)
+    esac
 done
 
 # pull surface tools repo, if not already contained in scripts
