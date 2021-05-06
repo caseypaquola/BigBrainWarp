@@ -1,7 +1,7 @@
 Toolbox contents
 ==================
 
-An overview of what scripts and features are contained in *BigBrainWarp*
+An overview of scripts and features contained in the github repository:
 
 * scripts
 	* annot2classes.m: helps to organise Freesurfer annotation labels into a parcellation scheme
