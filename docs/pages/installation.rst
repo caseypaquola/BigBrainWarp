@@ -22,7 +22,7 @@ For more on interacting with the docker container, for example transferring file
 Alternatively, you can also install a local version of BigBrainWarp like so:
 
 1. Clone the GitHub repository to your local machine (https://github.com/caseypaquola/BigBrainWarp.git)
-2. Edit the first three lines of 'BigBrainWarp/scripts/init.sh' file based on the specific paths of your machine. These direct the script to BigBrainWarp, minc2 and workbench
+2. Edit the first two lines of 'BigBrainWarp/scripts/init.sh' file based on the specific paths of your machine. These direct the script to BigBrainWarp and minc2
 3. Prior to running any scripts, set the necessary global environment variables and pull extra files from other places on the internet
 
 .. code-block:: bash
