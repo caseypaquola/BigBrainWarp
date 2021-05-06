@@ -14,13 +14,3 @@ Xiao, Y., et al. 'An accurate registration of the BigBrain dataset with the MNI 
 
 If you use surface-based transformations in BigBrainWarp, please cite:
 Lewis, L.B., et al. 'A multimodal surface matching (MSM) surface registration pipeline to bridge atlases across the MNI and the Freesurfer/Human Connectome Project Worlds' OHBM, Virtual (2020)
-
-
-
-
-
-
-
-
-
-
