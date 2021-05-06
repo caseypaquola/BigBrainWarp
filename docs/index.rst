@@ -37,7 +37,7 @@ Tips for Getting Started
 
 * Read the BigBrainWarp preprint `<https://www.biorxiv.org/content/10.1101/2021.05.04.442563v1>`_
 * Watch a recent talk on the motivations and functionality of BigBrainWarp `https://youtu.be/Stg_R63GyVY <https://youtu.be/Stg_R63GyVY>`_
-* Check out the tutorials. They are intended show interesting ways to use BigBrain with multi-modal imaging and contain extra details on what's under the hood of the *BigBrainWarp*.
+* Check out the tutorials. They are intended to show interesting ways to use BigBrain with multi-modal imaging and contain extra details on what's under the hood of the *BigBrainWarp*.
 * Get in touch if you have any questions 🤙
 
 
