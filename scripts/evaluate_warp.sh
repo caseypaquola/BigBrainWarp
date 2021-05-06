@@ -13,6 +13,11 @@ echo -e "
 \t\033[38;5;197m-warp\033[0m 	      	    : full path to deformation field. Currently only handles .mnc format
 \t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
 
+Casey Paquola, MNI, MICA Lab, 2021
+https://bigbrainwarp.readthedocs.io/
+"
+}
+
 # Create VARIABLES
 for arg in "$@"
 do
@@ -56,7 +61,7 @@ fi
 # define direction
 if [[ "$in_space" == "bigbrainsym" ]] ; then
     in_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
-    out_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
+    out_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
     in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
     out_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
 elif [[ "$in_space" == "icbm" ]] ; then
@@ -67,19 +72,27 @@ elif [[ "$in_space" == "icbm" ]] ; then
 fi
 
 # perform transform and calculate distance for anatomical fiducials
+if [[ -f $wd/trans_coords.txt ]] ; then
+    rm -f $wd/trans_coords.txt
+fi
+if [[ -f $wd/set_coords.txt ]] ; then
+    rm -f $wd/set_coords.txt
+fi
 for f in `seq 4 1 35 ` ; do
     IN=`head -n $f $in_af | tail -1`
     arrIN=(${IN//,/ })
-    echo "MNI Tag Point File n/ Volumes = 1; n/ Points = " ${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]} >> $wd/temp.tag
+    echo "MNI Tag Point File" > $wd/temp.tag
+    echo "Volumes = 1;" >> $wd/temp.tag
+    echo "Points = " ${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]} >> $wd/temp.tag 
     transform_tags $wd/temp.tag $warp $wd/temp_out.tag
     trans_coord=`tail -n 1 $wd/temp_out.tag`
-    suffix=' 0 -1 -1 "";'
-    trans_coord=${coord%$suffix}
-    echo $trans_coord > $wd/trans_coords.txt
+    suffix=' 0 -1 -1;'
+    trans_coord=${trans_coord%$suffix}
+    echo $trans_coord >> $wd/trans_coords.txt
     IN=`head -n $f $out_af | tail -1`
     arrIN=(${IN//,/ })
-    set_coord=`${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]}`
-    echo $set_coord > $wd/set_coords.txt
+    set_coord=`echo ${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]}`
+    echo $set_coord >> $wd/set_coords.txt
 done
 python $bbwDir/scripts/af_dist.py $wd
 
