@@ -47,6 +47,10 @@ do
     shift;shift
   ;;
   -*)
+    echo "Unknown option ${2}"
+    help
+    exit 1
+  ;;
     esac
 done
 
