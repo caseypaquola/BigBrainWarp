@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# evaluates the accuracy of a warp, based on anatomical fiducials and regional overlap
+
+#---------------- FUNCTION: HELP ----------------#
+help() {
+echo -e "
+\033[38;5;141mCOMMAND:\033[0m
+   $(basename $0)
+\033[38;5;141mREQUIRED ARGUMENTS:\033[0m
+\t\033[38;5;197m-in_space\033[0m 	      	: input space. Can be bigbrainsym or icbm
+\t\033[38;5;197m-out_space\033[0m 	      	: output space. Can be bigbrainsym or icbm
+\t\033[38;5;197m-warp\033[0m 	      	    : full path to deformation field. Currently only handles .mnc format
+\t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
+
+# Create VARIABLES
+for arg in "$@"
+do
+  case "$arg" in
+  -h|-help)
+    help
+    exit 1
+  ;;
+  --in_space)
+    in_space=$2
+    shift;shift
+  ;;
+  --wd)
+    wd=$2
+    shift;shift
+  ;;
+  --out_space)
+    out_space=$2
+    shift;shift
+  ;;
+  --warp)
+    warp=$2
+    shift;shift
+  ;;
+  -*)
+done
+
+# pull afids templates
+if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
+	cd $bbwDir/xfms/
+    wget https://github.com/afids/afids-analysis/tree/master/data/PHASE4_input_afid/*.fcsv
+fi
+
+# pull subcortical segmentations
+if [[ ! -d $bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc ]] ; then
+    cd $bbwDir/xfms/
+    wget -O BigBrain-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
+    wget -O ICBM2009b_sym-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
+fi
+
+# define direction
+if [[ "$in_space" == "bigbrainsym" ]] ; then
+    in_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
+    out_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
+    in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
+    out_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
+elif [[ "$in_space" == "icbm" ]] ; then
+    in_af=MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
+    out_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
+    in_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
+    out_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
+fi
+
+# perform transform and calculate distance for anatomical fiducials
+for f in `seq 4 1 35 ` ; do
+    IN=`head -n $f $in_af | tail -1`
+    arrIN=(${IN//,/ })
+    echo "MNI Tag Point File n/ Volumes = 1; n/ Points = " ${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]} >> $wd/temp.tag
+    transform_tags $wd/temp.tag $warp $wd/temp_out.tag
+    trans_coord=`tail -n 1 $wd/temp_out.tag`
+    suffix=' 0 -1 -1 "";'
+    trans_coord=${coord%$suffix}
+    echo $trans_coord > $wd/trans_coords.txt
+    IN=`head -n $f $out_af | tail -1`
+    arrIN=(${IN//,/ })
+    set_coord=`${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]}`
+    echo $set_coord > $wd/set_coords.txt
+done
+python $bbwDir/scripts/af_dist.py $wd
+
