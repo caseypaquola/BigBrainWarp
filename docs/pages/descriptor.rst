@@ -4,22 +4,34 @@ Toolbox contents
 An overview of what scripts and features are contained in *BigBrainWarp*
 
 * scripts
+	* annot2classes.m: helps to organise Freesurfer annotation labels into a parcellation scheme
+	* bigbrain_to_fsaverage.sh: called by bigbrainwarp
+	* bigbrain_to_icbm.sh: called by bigbrainwarp
+	* bigbrainsurf_to_icbm.sh: called by bigbrainwarp
+	* compile_profiles.py: collates and saves out intensities into profiles
+	* demo_dockerbased.sh: key examples of transformations using the docker installation
 	* demo_gitbased.sh: walkthrough of the toolbox utilities using the github installation
-	* bigbrain_to_icbm.sh: implements one-step transformation to BigBrainSym or three-step transformation BigBrain (Xiao et al. 2019)
-	* icbm_to_bigbrain.sh: inverted version of above (Xiao et al. 2019)
-	* bigbrain_to_fsaverage.sh: bash wrapper script to perform nearest neighbour interpolation from BigBrain to fsaverage5
-	* fsaverage_to_bigbrain.sh: bash wrapper script to perform nearest neighbour interpolation from fsaverage5 to BigBrain
+	* fsaverage_to_bigbrain.sh: called by bigbrainwarp
+	* icbm_to_bigbrain.sh: called by bigbrainwarp
+	* icbm_to_bigbrainsurf.sh: called by bigbrainwarp
+	* init.sh: initialises the environment
+	* io_mesh.py: scripts from `Surface Tools <https://github.com/kwagstyl/surface_tools>`_ that help with loading .obj files
+	* nn_surface_indexing.mat: contains mesh decimation output
+	* obj2fs.sh: wrapper script to convert .obj surface meshes to a freesurfer style mesh (.pial), which can be loaded into Freeview for visualisation 	
+	* sample_intensity_profiles.sh: wrapper script for generating staining intensity profiles
 	* txt2curv.sh: wrapper script to convert .txt files to .curv, helpful for visualisation with Freesurfer
-	* obj2fs.sh: wrapper script to convert .obj surface meshes to a freesurfer style mesh (.pial), which can be loaded into Freeview for visualisation 
-	
 
 * spaces:
 	* bigbrain: original histological space, includes surfaces and volumes
 	* bigbrainsym: stereotaxic registration of BigBrain to ICBM152 as part of first BigBrain release, includes surfaces and volumes
-	* icbm: volumetric data algined to the symmetric ICBM2009b atlas
-	* fsaverage5: surface data on fsaverage5
+	* icbm: volumetric data algined to the symmetric ICBM2009b atlas, as well as surfaces from civet
 	* fsaverage: surface data on fsaverage
 	* fs_LR: surface data on fs_LR 32k
+
+* tutorials
+	* gradients: scripts for "Tutorial 1: Comparing BigBrain- and MRI-derived cortical gradients on a common surface"
+	* confluence: scripts for "Tutorial 2: Cytoarchitectural characterisation of functional communities"
+	* communities: scripts for "Tutorial 3: Variations in resting state functional connectivity along a histological axis"
 
 
 Preprocessed data can be found across various spaces
@@ -34,6 +46,9 @@ Preprocessed data can be found across various spaces
    * - profiles.txt
      - cell-staining intensities sampled at each vertex and across 50 equivolumetric surfaces. This is stored as a single vector to reduce the size. Reshape to 50 rows for use. 
      - bigbrain
+   * - profiles.txt
+     - cell-staining intensities sampled at each vertex and across 50 equivolumetric surfaces. This is stored as a single vector to reduce the size. Reshape to 50 rows for use. 
+     - bigbrain
    * - gray*327680*
      - pial surface (Amunts et al. 2013)
      - bigbrain, bigbrainsym
@@ -45,7 +60,7 @@ Preprocessed data can be found across various spaces
      - bigbrain
    * - Hist-G*
      - first two eigenvectors of cytoarchtiectural differentitation derived from BigBrain 
-     - bigbrain, fsaverage, fs_LR
+     - bigbrain, fsaverage, fs_LR, icbm
    * - Micro-G1
      - first eigenvector of microstructural differentitation derived from quantitative in-vivo T1 imaging
      - bigbrain, fsaverage
