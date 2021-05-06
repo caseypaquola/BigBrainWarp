@@ -17,6 +17,7 @@ echo -e "
 Casey Paquola, MNI, MICA Lab, 2021
 https://bigbrainwarp.readthedocs.io/
 "
+}
 
 # Create VARIABLES
 for arg in "$@"
