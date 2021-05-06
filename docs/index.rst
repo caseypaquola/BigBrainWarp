@@ -86,6 +86,7 @@ Tips for Getting Started
 
    pages/FAQs
    pages/glossary   
+   pages/citing
    pages/references
    pages/acknowledgements
 
