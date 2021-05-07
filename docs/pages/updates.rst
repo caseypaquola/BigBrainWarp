@@ -5,6 +5,18 @@
 Updates
 ==================
 
+April 7, 2021
+------------------------------------------
+
+Transformed staining intensity profiles to fs_LR and fsaverage (our first user request 🎂)
+
+::
+
+    ↪ added spaces/fs_LR/profiles_fs_LR.txt				|  @caseypaquola
+    ↪ added spaces/fsaverage/profiles_fsaverage.txt			|  @caseypaquola
+
+
+
 March 30, 2021
 ------------------------------------------
 Added ICBM surface, allows transformations between bigbrain surface and icbm volume too. Created a wrapper script for generating staining intensity profiles
