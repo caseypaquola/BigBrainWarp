@@ -26,7 +26,7 @@ An overview of scripts and features contained in the github repository:
 	* bigbrainsym: stereotaxic registration of BigBrain to ICBM152 as part of first BigBrain release, includes surfaces and volumes
 	* icbm: volumetric data algined to the symmetric ICBM2009b atlas, as well as surfaces from civet
 	* fsaverage: surface data on fsaverage
-	* fs_LR: surface data on fs_LR 32k
+	* fs_LR: surface data on fs_LR 320k
 
 * tutorials
 	* gradients: scripts for "Tutorial 1: Comparing BigBrain- and MRI-derived cortical gradients on a common surface"
