@@ -23,7 +23,7 @@ extension="${filename##*.}"
 echo $extension " input"
 
 # check density of input surface
-in_den=`python $bbwDir/scripts/check_dim.py $in_lh`
+in_den=`python $bbwDir/scripts/check_dim.py $in_lh $extension`
 
 for hemi in L R ; do
 	# define input
