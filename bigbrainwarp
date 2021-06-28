@@ -20,10 +20,10 @@ echo -e "
 \t\033[38;5;197m-in_vol\033[0m            : full path to input data. Must be whole brain. Can be mnc, nii or nii.gz
 \t\033[38;5;197m-in_lh\033[0m             : full path to input data for left hemisphere. Can be .label.gii, .annot, .shape.gii, .curv or .txt
 \t\033[38;5;197m-in_rh\033[0m             : full path to input data for right hemisphere. Can be .label.gii, .annot, .shape.gii, .curv or .txt
+\t\033[38;5;197m-desc\033[0m              : descriptor of input data, which will be used to name the output.
 
 \033[38;5;141mEXTRA ARGUMENTS:\033[0m
 \t\033[38;5;197m-interp\033[0m           : interpolation method. For -in_vol, it can be trilinear (default), tricubic, nearest or sinc. For -in_lh/-in_rh, can be linear or nearest. Only works for .txt, however. Other types are forced to defaults (label.gii and .annot to nearest, shape.gii and .curv to linear)
-\t\033[38;5;197m-out_name\033[0m         : (required for -in_lh/-in_rh) prefix for output files. Defaults to prefix of input file for -in_vol. Output will be in the form {wd}/{out_name}_{out_space}
 \t\033[38;5;197m-out_type\033[0m         : (optional) specify output in surface or volume space for bigbrain and bigbrainsym. Otherwise, defaults to the same type as the input.  
 \t\033[38;5;197m-out_den\033[0m          : (optional) density of output mesh. Only applicable for -in_lh/-in_rh and if out_space is fs_LR. Can be 164 or 32. Default is 32. 
 \t\033[38;5;197m-h|-help\033[0m          : Print help
@@ -71,8 +71,8 @@ do
     in_rh=$2
     shift;shift
   ;;
-  --out_name)
-    out_name=$2
+  --desc)
+    desc=$2
     shift;shift
   ;;   
   --out_type)
@@ -92,12 +92,13 @@ do
 done
 
 # argument check out & WARNINGS
-arg=($in_space $out_space $wd)
+arg=($in_space $out_space $wd $desc)
 if [ ${#arg[@]} -lt 3 ]; then
   echo "One or more mandatory arguments are missing:
                -in_space : $in_space
                -out_space : $out_space
-               -wd : $wd"
+               -wd : $wd
+               -desc : $desc"
 fi
 
 # try to copy license over if in the docker
@@ -181,7 +182,7 @@ elif [[ "$in_type" == "surface" ]] ; then
         fi
     else
         echo "using fsaverage_to_bigbrain.sh"
-        bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $wd/$out_name
+        bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $desc $wd
         echo "employed multimodal surface matching transformation from icbm to bigbrain surface"
     fi
 fi
