@@ -83,13 +83,13 @@ for hemi in L R ; do
 	if [[ "$out_den" == "32" ]] ; then
 		if [[ "$gii_type" == "shape" ]] ; then
 			wb_command -metric-resample ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
-				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
-				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-132k_desc-sphere.surf.gii BARYCENTRIC \
+				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
+				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-132k_desc-sphere.surf.gii BARYCENTRIC \
 				${wd}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii
 		elif [[ "$gii_type" == "label" ]] ; then
 			wb_command -label-resample ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
-				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
-				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-132k_desc-sphere.surf.gii BARYCENTRIC \
+				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
+				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-132k_desc-sphere.surf.gii BARYCENTRIC \
 				${wd}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii
 		fi
 	fi
