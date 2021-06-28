@@ -10,6 +10,7 @@ in_rh=$2 		# full path to right hemisphere input file
 in_space=$3		# input surface can be "fsaverage" or "fs_LR"
 desc=$4 		# name of descriptor
 wd=$5			# working directory
+interp=$6		# interpolation method. Can be used if .txt input, otherwise is set as default
 
 # the output takes the form:
 # ${wd}/tpl-bigbrain_hemi-L_desc-${desc}.${gii_type}.gii  
@@ -53,7 +54,13 @@ for hemi in L R ; do
 			$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-white.surf.gii \
 			${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "txt" ]] ; then
-		gii_type=shape
+		if [[ -z $interp ]] ; then
+			gii_type=shape
+		elif [[  "$interp" == "linear" ]] ; then
+			gii_type=shape
+		elif [[  "$interp" == "nearest" ]] ; then			
+			gii_type=label
+		fi
 		python $bbwDir/scripts/txt2curv.py $inData ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.curv
 		mris_convert -c ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.curv \
 			$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-white.surf.gii \
@@ -78,7 +85,7 @@ for hemi in L R ; do
 	fi
 
 	# multimodal surface matching
-	msmMesh=$bbwDir/xfms/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere_rsled_like_bigbrain.reg.surf.gii
+	msmMesh=$bbwDir/xfms/tpl-bigbrain_hemi-${hemi}_desc-sphere_rsled_like_${in_space}.reg.surf.gii
 	inMesh=$bbwDir/xfms/tpl-bigbrain_hemi-${hemi}_desc-sphere_rot_${in_space}.surf.gii
 	if [[ "$gii_type" == "shape" ]] ; then
 		wb_command -metric-resample ${wd}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
