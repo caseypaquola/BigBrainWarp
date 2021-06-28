@@ -25,6 +25,7 @@ echo -e "
 \t\033[38;5;197m-interp\033[0m           : interpolation method. For -in_vol, it can be trilinear (default), tricubic, nearest or sinc. For -in_lh/-in_rh, can be linear or nearest. Only works for .txt, however. Other types are forced to defaults (label.gii and .annot to nearest, shape.gii and .curv to linear)
 \t\033[38;5;197m-out_name\033[0m         : (required for -in_lh/-in_rh) prefix for output files. Defaults to prefix of input file for -in_vol. Output will be in the form {wd}/{out_name}_{out_space}
 \t\033[38;5;197m-out_type\033[0m         : (optional) specify output in surface or volume space for bigbrain and bigbrainsym. Otherwise, defaults to the same type as the input.  
+\t\033[38;5;197m-out_den\033[0m          : (optional) density of output mesh. Only applicable for -in_lh/-in_rh and if out_space is fs_LR. Can be 164 or 32. Default is 32. 
 \t\033[38;5;197m-h|-help\033[0m          : Print help
 
 Casey Paquola, MNI, MICA Lab, 2021
@@ -76,6 +77,10 @@ do
   ;;   
   --out_type)
     out_type=$2
+    shift;shift
+  ;;
+  --out_den)
+    out_den=$2
     shift;shift
   ;;
   -*)
@@ -163,7 +168,15 @@ elif [[ "$in_type" == "surface" ]] ; then
           echo "running multimodal surface matching transformation from bigbrain surface to icbm"
         else
           echo "using bigbrain_to_fsaverage.sh"
-          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name
+          # check for output density or set to default
+          if [[ -z $out_dens ]] ; then
+            if [[ "fsaverage" == "$out_space" ]] ; then
+              out_dens=164
+            elif [[ "fs_LR" =~ "$out_space" ]] ; then
+              out_dens=32
+            fi
+          fi
+          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name $out_dens
           echo "employed multimodal surface matching transformation from bigbrain surface to $out_space"
         fi
     else
