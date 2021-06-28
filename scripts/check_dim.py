@@ -3,8 +3,15 @@ import sys
 
 # load data and print the dimensions
 input=str(sys.argv[1])
-data=nib.load(input)
+extension=str(sys.argv[2])
+
+# load data
+if "txt" in extension:
+    data=np.loadtxt(input)
+    vert_k=round(data.shape[0], -3) 
+else:
+    data=nib.load(input)
+    vert_k=round(data.darrays[0].data.shape[0], -3) 
 
 # get number of vertices and round to nearest thousand
-vert_k=round(data.darrays[0].data.shape[0], -3) 
 print(str.strip(str(vert_k),"0"))
