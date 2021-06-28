@@ -162,6 +162,9 @@ if [[ "$in_type" == "volume" ]] ; then
       echo "employed multimodal surface matching transformation from icbm to bigbrain surface"
     fi
 elif [[ "$in_type" == "surface" ]] ; then
+    if [[ -z "$interp" ]] ; then
+        interp=nearest
+    fi
     if [[ $in_space =~ .*"bigbrain".* ]] ; then
         if [[ $out_space == icbm ]] ; then
           echo "using bigbrainsurf_to_icbm.sh"
@@ -177,12 +180,12 @@ elif [[ "$in_type" == "surface" ]] ; then
               out_dens=32
             fi
           fi
-          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name $out_dens
+          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name $interp $out_dens 
           echo "employed multimodal surface matching transformation from bigbrain surface to $out_space"
         fi
     else
         echo "using fsaverage_to_bigbrain.sh"
-        bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $desc $wd
+        bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $desc $wd $interp
         echo "employed multimodal surface matching transformation from icbm to bigbrain surface"
     fi
 fi
