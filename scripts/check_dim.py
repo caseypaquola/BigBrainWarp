@@ -1,5 +1,6 @@
 import nibabel as nib
 import sys
+import numpy as np
 
 # load data and print the dimensions
 input=str(sys.argv[1])
