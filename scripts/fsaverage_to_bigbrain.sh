@@ -24,7 +24,6 @@ echo $extension " input"
 
 # check density of input surface
 in_den=`python3 $bbwDir/scripts/check_dim.py $in_lh $extension`
-echo $in_den
 
 for hemi in L R ; do
 	# define input
@@ -68,14 +67,12 @@ for hemi in L R ; do
 		if [[ "$gii_type" == "shape" ]] ; then
 			wb_command -metric-resample ${wd}/tpl-${in_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii \
 				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-32k_desc-sphere.surf.gii \
-				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \ 
-				BARYCENTRIC \
+				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii BARYCENTRIC \
 				${wd}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
 		elif [[ "$gii_type" == "label" ]] ; then
 			wb_command -label-resample ${wd}/tpl-${in_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii \
 				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-32k_desc-sphere.surf.gii \
-				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \ 
-				BARYCENTRIC \
+				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii BARYCENTRIC \
 				${wd}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
 		fi
 	fi
