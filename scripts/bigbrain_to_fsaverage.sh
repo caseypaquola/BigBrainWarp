@@ -24,9 +24,9 @@ out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 1
 filename=$(basename -- "$in_lh")
 extension="${filename##*.}"
 
-for hemi in lh rh ; do
+for hemi in L R ; do
 	# define input
-	if [[ "$hemi" == "lh" ]] ; then
+	if [[ "$hemi" == "L" ]] ; then
 		inData=$in_lh
 	else
 		inData=$in_rh
