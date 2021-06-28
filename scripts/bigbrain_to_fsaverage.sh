@@ -5,67 +5,91 @@
 #
 # written by Casey Paquola @ MICA, MNI, 2021
 
-lhInput=$1 		# full path to left hemisphere input file
-rhInput=$2 		# full path to right hemisphere input file
-outSurf=$3		# output surface can be "fsaverage" or "fsLR"
-outName=$4 		# full path of output file (without extension or hemisphere label, eg: User/BigBrain/tests/Ghist). 
+in_lh=$1 		# full path to left hemisphere input file
+in_rh=$2 		# full path to right hemisphere input file
+out_space=$3	# output surface can be "fsaverage" or "fs_LR"
+desc=$4 		# name of descriptor
+wd=$5			# working directory
+out_den=$6		# output density. If out_space is fs_LR, can be 164 or 32. Must be 164 for fsaverage
 
-# the output takes the form ${outName}_${hemi}_${outSurf}.${giiType}.gii
-# where hemi is lh and rh, they are saved out separately
-# default type is shape, however, .annot and .label.gii files will be label type
+# the output takes the form:
+# ${wd}/tpl-${out_space}_hemi-L_desc-${desc}.${gii_type}.gii  
+# ${wd}/tpl-bigbrain_hemi-R_desc-${desc}.${gii_type}.gii
+#
+# default $gii_type is shape, however, .annot and .label.gii files will be label type
 
 # check for input data type
-filename=$(basename -- "$lhInput")
+filename=$(basename -- "$in_lh")
 extension="${filename##*.}"
 
 for hemi in lh rh ; do
 	# define input
 	if [[ "$hemi" == "lh" ]] ; then
-		inData=$lhInput
+		inData=$in_lh
 	else
-		inData=$rhInput
+		inData=$in_rh
 	fi
 
-	# rename outSurf to be able to find files
-	if [[ "$outSurf" == "fsaverage" ]] ; then
-		outSurf2="fsavg"
-	elif [[ "$outSurf" == "fs_LR" ]] ; then
-		outSurf2="fsLR"
-	fi
-
-	# define giiType and convert to gifti if necessary
+	# define gii_type and convert to gifti if necessary
 	if [[ "$extension" == "gii" ]] ; then
 		substr="${filename: -10}"		
 		if [[ $substr == *"label"* ]] ; then
-			giiType=label
+			gii_type=label
 		else 
-			giiType=shape
+			gii_type=shape
 		fi
-		cp $inData ${outName}_${hemi}_${outSurf}.${giiType}.gii
+		cp $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "annot" ]] ; then
-		giiType=label
-		mris_convert --annot $inData $bbwDir/spaces/bigbrain/${hemi}.BigBrain.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+		gii_type=label
+		mris_convert --annot $inData \
+			$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-white.surf.gii \
+			${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "curv" ]] ; then
-		giiType=shape
-		mris_convert -c $inData $bbwDir/spaces/bigbrain/${hemi}.BigBrain.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+		gii_type=shape
+		mris_convert -c $inData \
+			$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-white.surf.gii \
+			${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[ -z $interp ]] ; then
-			giiType=shape
+			gii_type=shape
 		elif [[  "$interp" == "linear" ]] ; then
-			giiType=shape
+			gii_type=shape
 		elif [[  "$interp" == "nearest" ]] ; then			
-			giiType=label
+			gii_type=label
 		fi
-		python $bbwDir/scripts/txt2curv.py $inData ${outName}_${hemi}.curv
-		mris_convert -c ${outName}_${hemi}.curv $bbwDir/spaces/bigbrain/${hemi}.BigBrain.white.surf.gii ${outName}_${hemi}.${giiType}.gii
+		python $bbwDir/scripts/txt2curv.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.curv
+		mris_convert -c ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.curv \
+			$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-white.surf.gii \
+			${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	fi
 
 	# multimodal surface matching
-	msmMesh=$bbwDir/xfms/${hemi}.sphere_${outSurf2}_rsled_like_BigBrain.sphere.reg.surf.gii
-	inMesh=$bbwDir/xfms/${hemi}.${outSurf2}.sphere.surf.gii
-	if [[ "$giiType" == "shape" ]] ; then
-		wb_command -metric-resample ${outName}_${hemi}.${giiType}.gii $msmMesh $inMesh BARYCENTRIC ${outName}_${hemi}_${outSurf}.${giiType}.gii	
-	elif [[ "$giiType" == "label" ]] ; then
-		wb_command -label-resample ${outName}_${hemi}.${giiType}.gii $msmMesh $inMesh BARYCENTRIC ${outName}_${hemi}_${outSurf}.${giiType}.gii	
+	msmMesh=$bbwDir/xfms/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere_rsled_like_bigbrain.reg.surf.gii
+	inMesh=$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii
+	if [[ "$gii_type" == "shape" ]] ; then
+		wb_command -metric-resample ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii \
+			$msmMesh $inMesh BARYCENTRIC \
+			${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
+	elif [[ "$gii_type" == "label" ]] ; then
+		wb_command -label-resample ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii \
+			$msmMesh $inMesh BARYCENTRIC \
+			${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
 	fi
+
+
+	# internal downsample, if necessary
+	if [[ "$out_den" == "32" ]] ; then
+		if [[ "$gii_type" == "shape" ]] ; then
+			wb_command -metric-resample ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
+				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
+				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-132k_desc-sphere.surf.gii BARYCENTRIC \
+				${wd}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii
+		elif [[ "$gii_type" == "label" ]] ; then
+			wb_command -label-resample ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
+				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
+				$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-132k_desc-sphere.surf.gii BARYCENTRIC \
+				${wd}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii
+		fi
+	fi
+
 done
