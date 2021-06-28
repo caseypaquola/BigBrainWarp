@@ -163,7 +163,7 @@ if [[ "$in_type" == "volume" ]] ; then
     fi
 elif [[ "$in_type" == "surface" ]] ; then
     if [[ -z "$interp" ]] ; then
-        interp=nearest
+        interp=nearest # default interpolation, but this option only has an effect if the input is .txt 
     fi
     if [[ $in_space =~ .*"bigbrain".* ]] ; then
         if [[ $out_space == icbm ]] ; then
@@ -180,7 +180,7 @@ elif [[ "$in_type" == "surface" ]] ; then
               out_dens=32
             fi
           fi
-          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $wd/$out_name $interp $out_dens 
+          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $desc $wd $interp $out_dens 
           echo "employed multimodal surface matching transformation from bigbrain surface to $out_space"
         fi
     else
