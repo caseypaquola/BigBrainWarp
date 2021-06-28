@@ -173,14 +173,14 @@ elif [[ "$in_type" == "surface" ]] ; then
         else
           echo "using bigbrain_to_fsaverage.sh"
           # check for output density or set to default
-          if [[ -z $out_dens ]] ; then
+          if [[ -z $out_den ]] ; then
             if [[ "fsaverage" == "$out_space" ]] ; then
-              out_dens=164
+              out_den=164
             elif [[ "fs_LR" =~ "$out_space" ]] ; then
-              out_dens=32
+              out_den=32
             fi
           fi
-          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $desc $wd $interp $out_dens 
+          bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $out_space $desc $wd $interp $out_den 
           echo "employed multimodal surface matching transformation from bigbrain surface to $out_space"
         fi
     else
