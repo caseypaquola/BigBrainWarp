@@ -5,7 +5,7 @@
 #
 # written by Casey Paquola @ MICA, MNI, 2021
 
-lhInput=$1 		# full path to left hemisphere input file (must be .gii)
+lhInput=$1 		# full path to left hemisphere input file
 rhInput=$2 		# full path to right hemisphere input file
 inSurf=$3		# input surface can be "fsaverage" or "fs_LR"
 outName=$4 		# full path of output file (without extension or hemisphere label, eg: User/BigBrain/tests/Ghist). 
