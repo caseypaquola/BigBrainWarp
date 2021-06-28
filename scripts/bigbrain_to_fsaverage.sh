@@ -10,7 +10,9 @@ in_rh=$2 		# full path to right hemisphere input file
 out_space=$3	# output surface can be "fsaverage" or "fs_LR"
 desc=$4 		# name of descriptor
 wd=$5			# working directory
-out_den=$6		# output density. If out_space is fs_LR, can be 164 or 32. Must be 164 for fsaverage
+interp=$6		# interpolation method. Can be used if .txt input, otherwise is set as default
+out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 164 for fsaverage
+
 
 # the output takes the form:
 # ${wd}/tpl-${out_space}_hemi-L_desc-${desc}.${gii_type}.gii  
