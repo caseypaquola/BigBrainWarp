@@ -1,2 +1,0 @@
-You can obtain complete fsaverage5 dataset by donwloading Freesurfer
-https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
