@@ -78,8 +78,8 @@ for hemi in L R ; do
 	fi
 
 	# multimodal surface matching
-	msmMesh=$bbwDir/xfms/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere_rsled_like_bigbrain.reg.surf.gii
-	inMesh=$bbwDir/xfms/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-sphere_rot_${in_space}.surf.gii
+	msmMesh=$bbwDir/xfms/tpl-${in_space}_hemi-${hemi}_den-164k_desc-sphere_rsled_like_bigbrain.reg.surf.gii
+	inMesh=$bbwDir/xfms/tpl-bigbrain_hemi-${hemi}_desc-sphere_rot_${in_space}.surf.gii
 	if [[ "$gii_type" == "shape" ]] ; then
 		wb_command -metric-resample ${wd}/tpl-${in_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
 		$msmMesh $inMesh BARYCENTRIC \
