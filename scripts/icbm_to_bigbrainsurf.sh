@@ -32,7 +32,7 @@ fi
 
 # convert from nifti to gifti
 for hemi in L R ; do
-    inmesh=$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-sphere_rot_fsaverage.surf.gii
+    inmesh=$bbwDir/xfms/tpl-bigbrain_hemi-${hemi}_desc-sphere_rot_fsaverage.surf.gii
     outmeshMSM_inverted=$bbwDir/xfms/tpl-bigbrain_hemi-${hemi}_desc-sphere_rsled_like_icbm.reg.surf.gii
     if [[ $hemi == "L" ]] ; then
         struc_label=CORTEX_LEFT
