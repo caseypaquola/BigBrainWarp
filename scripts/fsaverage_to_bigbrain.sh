@@ -23,7 +23,6 @@ extension="${in_lh#*.}"
 
 # check density of input surface
 in_den=`python3 $bbwDir/scripts/check_dim.py $in_lh $extension`
-echo $in_den
 
 for hemi in L R ; do
 	# define input
