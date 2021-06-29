@@ -10,6 +10,9 @@ extension=str(sys.argv[2])
 if "txt" in extension:
     data=np.loadtxt(input)
     vert_k=round(data.shape[0], -3)
+elif "curv" in extension:
+    data=nib.freesurfer.io.read_morph_data(input)
+    vert_k=round(data.shape[0], -3)
 else:
     data=nib.load(input)
     vert_k=round(data.darrays[0].data.shape[0], -3) 
