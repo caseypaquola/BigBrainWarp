@@ -11,11 +11,9 @@ desc=$3 		# name of descriptor
 wd=$4			# working directory
 
 # the output takes the form:
-# ${wd}/tpl-icbm_hemi-L_desc-${desc}.${gii_type}.gii  
-# ${wd}/tpl-icbm_hemi-R_desc-${desc}.${gii_type}.gii
-#
-# default $gii_type is shape, however, .annot and .label.gii files will be label type
+# ${wd}/tpl-icbm_desc-${desc}.nii
 
+# check for input data type
 filename=$(basename -- "$in_lh")
 extension="${filename##*.}"
 

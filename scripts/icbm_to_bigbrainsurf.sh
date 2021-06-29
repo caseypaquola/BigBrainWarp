@@ -10,9 +10,9 @@ interp=$2	# interpolation method
 desc=$3     # name of descriptor
 wd=$4       # working directory
 
-# the output takes the form ${outName}_${hemi}_${outSurf}.${giiType}.gii
-# where hemi is lh and rh, they are saved out separately
-# default type is shape, however, .annot and .label.gii files will be label type
+# the output takes the form:
+# ${wd}/tpl-bigbrain_hemi-L_desc-${desc}.shape.gii  
+# ${wd}/tpl-bigbrain_hemi-R_desc-${desc}.shape.gii
 
 # check for input data type
 # file conversion to nifti if necessary

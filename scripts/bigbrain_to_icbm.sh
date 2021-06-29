@@ -2,56 +2,60 @@
 # perform nonlinear transformation from BigBrain spaces to ICBM2009c nonlinear symmetric
 # written by Casey Paquola @ MICA, MNI, 2020*
 
-fullFile=$1 	# full path to input file
-bbSpace=$2 		# which bigbrain space is input: "histological" or "sym"
+in_vol=$1 		# full path to input file
+bb_space=$2 	# which bigbrain space is input: "histological" or "sym"
 interp=$3		# interpolation method: trilinear, tricubic, nearest or sinc
-workDir=$4 		# working directory
-outName=$5 		# output name prefix (optional)
+desc=$4 		# descriptor
+wd=$5 			# working directory
 
-# output is $workDir/${fileFile}_icbm.mnc or $workDir/${fileFile}_icbm.nii (extension is determined by input)
-[[ -d $workDir ]] || mkdir -p $workDir
+# the output takes the form:
+# ${wd}/tpl-icbm_desc-${desc}.nii
 
 # file conversion if necessary
-fileName=$(basename -- "$fullFile")
-extension="${fileName##*.}"
-fileName="${fileName%.*}"
+file_name=$(basename -- "$in_vol")
+extension="${file_name##*.}"
+file_name="${file_name%.*}"
 if [[ "$extension" == "mnc" ]] ; then
 	echo "minc image, continuing to transformation"
-	cp $fullFile $workDir/${fileName}.mnc
+	cp $in_vol ${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc
 elif [[ "$extension" == "gz" ]] ; then
-	fileName="${fileName%.*}"
-	gunzip $fullFile $workDir/${fileName}.nii
-	nii2mnc $workDir/${fileName}.nii $workDir/${fileName}.mnc
+	file_name="${file_name%.*}"
+	gunzip $in_vol ${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.nii
+	nii2mnc ${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.nii ${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
-	nii2mnc $fullFile $workDir/${fileName}.mnc
+	nii2mnc $in_vol ${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
 
-# define output name if not provided
-if [[ -z $outName ]] ; then
-	outname=$fileName
-fi
-
 # transformation
 echo "transform to icbm"
-if [[ ${bbSpace} = histological ]] ; then
-	mincresample -clobber -transformation ${bbwDir}/xfms//BigBrainHist-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${interp} "$workDir"/"$outname".mnc "$workDir"/"$outname"_icbm.mnc
+icbm_template=${bbwDir}/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.nii
+if [[ ${bb_space} = histological ]] ; then
+	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm \
+		-tfm_input_sampling -like "$icbm_template" \
+		-$interp \
+		${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc \
+		${wd}/tpl-icbm_desc-${desc}.mnc
 else
-	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm -tfm_input_sampling -like "$icbmTemplate" -${interp} "$workDir"/${outname}.mnc "$workDir"/${outname}_icbm.mnc
+	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm 
+		-tfm_input_sampling -like "$icbm_template" \
+		-$interp \
+		${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc \
+		${wd}/tpl-icbm_desc-${desc}.mnc
 fi
 
 # file conversion if necessary
 if [[ "$extension" != "mnc" ]] ; then
 	echo "transforming mnc to nii"
-	mnc2nii "$workDir"/${outname}_icbm.mnc "$workDir"/${outname}_icbm.nii
-	rm -f "$workDir"/${outname}_icbm.mnc
-	rm -f $workDir/${outname}.mnc
+	mnc2nii ${wd}/tpl-icbm_desc-${desc}.mnc ${wd}/tpl-icbm_desc-${desc}.nii
+	rm -f ${wd}/tpl-icbm_desc-${desc}.mnc
+	rm -f ${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc
 fi
 if [[ "$extension" == "gz" ]] ; then
 	echo "transforming nii to nii.gz"
-	gzip "$workDir"/${outname}_icbm.nii
+	gzip ${wd}/tpl-icbm_desc-${desc}.nii
 fi
 
 
