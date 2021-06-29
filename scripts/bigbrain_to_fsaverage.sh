@@ -22,8 +22,6 @@ out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 1
 
 # check for input data type
 extension="${in_lh#*.}"
-echo $extension
-echo $interp
 
 for hemi in L R ; do
 	# define input
