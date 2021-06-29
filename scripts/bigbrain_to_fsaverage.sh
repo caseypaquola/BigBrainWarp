@@ -33,8 +33,7 @@ for hemi in L R ; do
 
 	# define gii_type and convert to gifti if necessary
 	if [[ "$extension" == *"gii"* ]] ; then
-		substr="${filename: -10}"		
-		if [[ $substr == *"label"* ]] ; then
+		if [[ $extension == *"label"* ]] ; then
 			gii_type=label
 		else 
 			gii_type=shape

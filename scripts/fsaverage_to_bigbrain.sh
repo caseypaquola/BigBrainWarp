@@ -19,9 +19,8 @@ interp=$6		# interpolation method. Can be used if .txt input, otherwise is set a
 # default $gii_type is shape, however, .annot and .label.gii files will be label type
 
 # check for input data type
-filename=$(basename -- "$in_lh")
-extension="${filename##*.}"
-echo $extension " input"
+extension="${in_lh#*.}"
+
 
 # check density of input surface
 in_den=`python3 $bbwDir/scripts/check_dim.py $in_lh $extension`
@@ -35,9 +34,8 @@ for hemi in L R ; do
 	fi
 
 	# define gii_type and convert to gifti if necessary
-	if [[ "$extension" == "gii" ]] ; then
-		substr="${filename: -10}"
-		if [[ $substr == *"label"* ]] ; then
+	if [[ "$extension" == *"gii"* ]] ; then
+		if [[ $extension == *"label"* ]] ; then
 			gii_type=label
 		else 
 			gii_type=shape
