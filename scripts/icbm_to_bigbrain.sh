@@ -20,13 +20,17 @@ if [[ "$extension" == "mnc" ]] ; then
 	cp $in_vol ${wd}/tpl-icbm_desc-${desc}.mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
-	rm ${wd}/tpl-icbm_desc-${desc}.mnc
+	if [[ -f ${wd}/tpl-icbm_desc-${desc}.mnc ]] ; then
+		rm ${wd}/tpl-icbm_desc-${desc}.mnc
+	fi
 	nii2mnc "$in_vol" ${wd}/tpl-icbm_desc-${desc}.mnc
 elif [[ "$extension" == "gz" ]] ; then
 	echo "transforming nii to mnc"
 	file_name="${file_name%.*}"
 	gunzip "$in_vol" ${wd}/tpl-icbm_desc-${desc}.nii
-	rm ${wd}/tpl-icbm_desc-${desc}.mnc
+	if [[ -f ${wd}/tpl-icbm_desc-${desc}.mnc ]] ; then
+		rm ${wd}/tpl-icbm_desc-${desc}.mnc
+	fi
 	nii2mnc ${wd}/tpl-icbm_desc-${desc}.nii ${wd}/tpl-icbm_desc-${desc}.mnc
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
