@@ -21,8 +21,7 @@ out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 1
 # default $gii_type is shape, however, .annot and .label.gii files will be label type
 
 # check for input data type
-filename=$(basename -- "$in_lh")
-extension="${filename##*.}"
+extension="${in_lh#*.}"
 echo $extension
 echo $interp
 
@@ -35,7 +34,7 @@ for hemi in L R ; do
 	fi
 
 	# define gii_type and convert to gifti if necessary
-	if [[ "$extension" == "gii" ]] ; then
+	if [[ "$extension" == *"gii"* ]] ; then
 		substr="${filename: -10}"		
 		if [[ $substr == *"label"* ]] ; then
 			gii_type=label
