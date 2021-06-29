@@ -176,7 +176,7 @@ elif [[ "$in_type" == "surface" ]] ; then
           if [[ -z $out_den ]] ; then
             if [[ "fsaverage" == "$out_space" ]] ; then
               out_den=164
-            elif [[ "fs_LR" =~ "$out_space" ]] ; then
+            elif [[ "fs_LR" == "$out_space" ]] ; then
               out_den=32
             fi
           fi
