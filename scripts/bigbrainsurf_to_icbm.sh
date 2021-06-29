@@ -66,7 +66,7 @@ for hemi in L R ; do
     fi
 
 	# multimodal surface matching
-	refmesh=$bbwDir/spaces/tpl-icbm/tpl-icbm_hemi-${hemi}_desc-sphere_rot_fsaverage.surf.gii
+	refmesh=$bbwDir/xfms/tpl-icbm_hemi-${hemi}_desc-sphere_rot_fsaverage.surf.gii
 	outmeshMSM=$bbwDir/xfms/tpl-icbm_hemi-${hemi}_desc-sphere_rsled_like_bigbrain.reg.surf.gii
 	if [[ "$gii_type" == "shape" ]] ; then
 		wb_command -metric-resample ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii \
