@@ -158,7 +158,7 @@ if [[ "$in_type" == "volume" ]] ; then
         fi
     elif [[ "$out_type" == "surface" ]] ; then
       echo "using icbm_to_bigbrainsurf.sh"
-      bash $bbwDir/scripts/icbm_to_bigbrainsurf.sh $in_vol $interp $wd
+      bash $bbwDir/scripts/icbm_to_bigbrainsurf.sh $in_vol $interp $desc $wd 
       echo "employed multimodal surface matching transformation from icbm to bigbrain surface"
     fi
 elif [[ "$in_type" == "surface" ]] ; then

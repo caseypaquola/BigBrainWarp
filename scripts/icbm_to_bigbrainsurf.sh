@@ -5,9 +5,10 @@
 #
 # written by Casey Paquola @ MICA, MNI, 2021
 
-fullFile=$1 	# input file 
+in_vol=$1 	# input file 
 interp=$2	# interpolation method
-workDir=$3      # working directory
+desc=$3     # name of descriptor
+wd=$4       # working directory
 
 # the output takes the form ${outName}_${hemi}_${outSurf}.${giiType}.gii
 # where hemi is lh and rh, they are saved out separately
@@ -15,41 +16,39 @@ workDir=$3      # working directory
 
 # check for input data type
 # file conversion to nifti if necessary
-fileName=$(basename -- "$fullFile")
-extension="${fileName##*.}"
-fileName="${fileName%.*}"
+file_name=$(basename -- "$in_vol")
+extension="${file_name##*.}"
+file_name="${file_name%.*}"
 if [[ "$extension" == "mnc" ]] ; then
-   	mnc2nii $fullFile $workDir/${fileName}.nii
+   	mnc2nii $in_vol ${wd}/tpl-icbm_desc-${desc}.nii
 elif [[ "$extension" == "gz" ]] ; then
-	fileName="${fileName%.*}"
-	gunzip $fullFile $workDir/${fileName}.nii
+	file_name="${file_name%.*}"
+	gunzip $in_vol ${wd}/tpl-icbm_desc-${desc}.nii
 elif [[ "$extension" == "nii" ]] ; then
-	if [[ ! -f $workDir/${fileName}.nii ]] ; then
-		cp $fullFile $workDir/${fileName}.nii
-	fi
+	cp $in_vol ${wd}/tpl-icbm_desc-${desc}.nii
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
 
 # convert from nifti to gifti
-for hemi in lh rh ; do
-    inmesh=$bbwDir/xfms/$hemi.BigBrain.rot.fsavg.sphere.surf.gii
-    refmesh=$bbwDir/xfms/$hemi.MNI152.rot.fsavg.sphere.surf.gii 
-    outmeshMSM=$bbwDir/xfms/$hemi.sphere_MNI152_rsled_like_BigBrain.sphere.reg.surf.gii
-    outmeshMSM_inverted=$bbwDir/xfms/$hemi.sphere_BigBrain_rsled_like_MNI152.sphere.reg.surf.gii
-    wb_command -surface-sphere-project-unproject $refmesh $outmeshMSM $inmesh $outmeshMSM_inverted
-    if [[ $hemi == "lh" ]] ; then
+for hemi in L R ; do
+    inmesh=$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-sphere_rot_fsaverage.surf.gii
+    outmeshMSM_inverted=$bbwDir/xfms/tpl-bigbrain_hemi-${hemi}_desc-sphere_rsled_like_icbm.reg.surf.gii
+    if [[ $hemi == "L" ]] ; then
         struc_label=CORTEX_LEFT
-	hemi_long=left
     else
         struc_label=CORTEX_RIGHT
-	hemi_long=right
     fi
     if [[ $interp == "nearest" ]] ; then
-	wb_command -volume-to-surface-mapping $workDir/${fileName}.nii $bbwDir/spaces/icbm/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii $workDir/${hemi}.${fileName}.shape.gii -enclosing
+	    wb_command -volume-to-surface-mapping ${wd}/tpl-icbm_desc-${desc}.nii \
+        $bbwDir/spaces/tpl-icbm/tpl-icbm_hemi-${hemi}_desc-mid.surf.gii \
+         ${wd}/tpl-icbm_desc-${desc}.shape.gii -enclosing
     else
-	wb_command -volume-to-surface-mapping $workDir/${fileName}.nii $bbwDir/spaces/icbm/icbm_avg_mid_sym_mc_${hemi_long}_hires.surf.gii $workDir/${hemi}.${fileName}.shape.gii -trilinear
+	    wb_command -volume-to-surface-mapping ${wd}/tpl-icbm_desc-${desc}.nii \
+        $bbwDir/spaces/tpl-icbm/tpl-icbm_hemi-${hemi}_desc-mid.surf.gii \
+         ${wd}/tpl-icbm_desc-${desc}.shape.gii -trilinear
     fi
-    wb_command -set-structure $workDir/${hemi}.${fileName}.shape.gii $struc_label
-    wb_command -metric-resample $workDir/${hemi}.${fileName}.shape.gii $outmeshMSM_inverted $inmesh BARYCENTRIC $workDir/${hemi}.${fileName}_bigbrain.shape.gii
+    wb_command -set-structure ${wd}/tpl-icbm_desc-${desc}.shape.gii $struc_label
+    wb_command -metric-resample ${wd}/tpl-icbm_desc-${desc}.shape.gii \
+        $outmeshMSM_inverted $inmesh BARYCENTRIC ${wd}/tpl-bigbrain_desc-${desc}.shape.gii
 done
