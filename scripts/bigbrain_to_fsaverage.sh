@@ -16,13 +16,15 @@ out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 1
 
 # the output takes the form:
 # ${wd}/tpl-${out_space}_hemi-L_desc-${desc}.${gii_type}.gii  
-# ${wd}/tpl-bigbrain_hemi-R_desc-${desc}.${gii_type}.gii
+# ${wd}/tpl-${out_space}_hemi-R_desc-${desc}.${gii_type}.gii
 #
 # default $gii_type is shape, however, .annot and .label.gii files will be label type
 
 # check for input data type
 filename=$(basename -- "$in_lh")
 extension="${filename##*.}"
+echo $extension
+echo $interp
 
 for hemi in L R ; do
 	# define input
@@ -78,7 +80,6 @@ for hemi in L R ; do
 			${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
 	fi
 	echo ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
-
 
 	# internal downsample, if necessary
 	if [[ "$out_den" == "32" ]] ; then
