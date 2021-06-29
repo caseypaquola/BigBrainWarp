@@ -77,6 +77,7 @@ for hemi in L R ; do
 			$msmMesh $inMesh BARYCENTRIC \
 			${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
 	fi
+	echo ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
 
 
 	# internal downsample, if necessary
