@@ -10,10 +10,10 @@
       </MD>
       <MD>
          <Name><![CDATA[ParentProvenance]]></Name>
-         <Value><![CDATA[/home/casey/Desktop/BigBrainWarp//xfms/lh.sphere_BigBrain_rsled_like_fsavg.sphere.reg.surf.gii:
+         <Value><![CDATA[/data_/mica1/03_projects/casey/BigBrainWarp//xfms/tpl-bigbrain_hemi-L_desc-sphere_rsled_like_fsaverage.reg.surf.gii:
 /home/users/llewis/workbench/bin_linux64/../exe_linux64/wb_command -surface-sphere-project-unproject lh.fsavg.sphere.surf.gii lh.sphere_fsavg_rsled_like_BigBrain.sphere.reg.surf.gii lh.BigBrain.rot.fsavg.sphere.surf.gii lh.sphere_BigBrain_rsled_like_fsavg.sphere.reg.surf.gii
 
-/home/casey/Desktop/BigBrainWarp//xfms/lh.BigBrain.rot.fsavg.sphere.surf.gii:
+/data_/mica1/03_projects/casey/BigBrainWarp//xfms/tpl-bigbrain_hemi-L_desc-sphere_rot_fsaverage.surf.gii:
 /home/users/llewis/workbench/bin_linux64/../exe_linux64/wb_command -surface-modify-sphere lh.sphere_rotfsavg2.surf.gii 100 lh.sphere_rotfsavg2.surf.gii
 
 ]]></Value>
@@ -23,24 +23,24 @@
          <Value><![CDATA[Connectome Workbench
 Type: Command Line Application
 Version: 1.4.2
-Qt Compiled Version: 5.7.0
-Qt Runtime Version: 5.7.0
-Commit: b527c79e526a558637f37c202af18c78cd98fa22
-Commit Date: 2021-02-11 13:49:38 -0600
+Qt Compiled Version: 5.9.5
+Qt Runtime Version: 5.9.5
+Commit: unknown
+Commit Date: unknown
 Compiled with OpenMP: YES
-Compiler: g++ (/home/caret/gcc/install/gcc-4.8.5/bin)
-Compiler Version: 4.8.5
+Compiler: c++ (/usr/bin)
+Compiler Version: 7.3.0
 Compiled Debug: NO
 Operating System: Linux
 ]]></Value>
       </MD>
       <MD>
          <Name><![CDATA[Provenance]]></Name>
-         <Value><![CDATA[/home/casey/Downloads/software/workbench/bin_linux64/../exe_linux64/wb_command -metric-resample /home/casey/Desktop/8_BigBrainWarp/tests/Func_G2_lh.shape.gii /home/casey/Desktop/BigBrainWarp//xfms/lh.sphere_BigBrain_rsled_like_fsavg.sphere.reg.surf.gii /home/casey/Desktop/BigBrainWarp//xfms/lh.BigBrain.rot.fsavg.sphere.surf.gii BARYCENTRIC /home/casey/Desktop/8_BigBrainWarp/tests/Func_G2_lh_bigbrain.shape.gii]]></Value>
+         <Value><![CDATA[wb_command -metric-resample /data_/mica1/03_projects/casey/sandbox1/8_BigBrainWarp/tests//tpl-fsaverage_hemi-L_den-164k_desc-Func_G2.shape.gii /data_/mica1/03_projects/casey/BigBrainWarp//xfms/tpl-bigbrain_hemi-L_desc-sphere_rsled_like_fsaverage.reg.surf.gii /data_/mica1/03_projects/casey/BigBrainWarp//xfms/tpl-bigbrain_hemi-L_desc-sphere_rot_fsaverage.surf.gii BARYCENTRIC /data_/mica1/03_projects/casey/sandbox1/8_BigBrainWarp/tests//tpl-bigbrain_hemi-L_desc-Func_G2.shape.gii]]></Value>
       </MD>
       <MD>
          <Name><![CDATA[WorkingDirectory]]></Name>
-         <Value><![CDATA[/home/casey/Desktop/BigBrainWarp]]></Value>
+         <Value><![CDATA[/data_/mica1/03_projects/casey/BigBrainWarp]]></Value>
       </MD>
    </MetaData>
    <LabelTable>
@@ -58,7 +58,7 @@ Operating System: Linux
    <MetaData>
       <MD>
          <Name><![CDATA[Name]]></Name>
-         <Value><![CDATA[spaces/fsaverage/Func_G2_lh.curv]]></Value>
+         <Value><![CDATA[/data_/mica1/03_projects/casey/BigBrainWarp//spaces/tpl-fsaverage/tpl-fsaverage_hemi-L_den-164k_desc-Func_G2.curv]]></Value>
       </MD>
       <MD>
          <Name><![CDATA[PaletteColorMapping]]></Name>
