@@ -168,7 +168,7 @@ elif [[ "$in_type" == "surface" ]] ; then
     if [[ $in_space =~ .*"bigbrain".* ]] ; then
         if [[ $out_space == icbm ]] ; then
           echo "using bigbrainsurf_to_icbm.sh"
-          bash $bbwDir/scripts/bigbrainsurf_to_icbm.sh $in_lh $in_rh $wd/$out_name
+          bash $bbwDir/scripts/bigbrainsurf_to_icbm.sh $in_lh $in_rh $desc $wd 
           echo "running multimodal surface matching transformation from bigbrain surface to icbm"
         else
           echo "using bigbrain_to_fsaverage.sh"
