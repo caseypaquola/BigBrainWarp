@@ -101,7 +101,8 @@ BigBrainWarp depends upon collation of data from various sources. We’ll refere
 Scripts
 ********************************
 
-The bigbrainwarp function calls a range of scripts:
+The bigbrainwarp function calls a range of scripts that may also be helpful for independent use:
+
 	* af_dist.py: calculates distance between transformed and set anatomical fiducials
 	* bigbrain_to_fsaverage.sh: called by bigbrainwarp
 	* bigbrain_to_icbm.sh: called by bigbrainwarp
