@@ -9,10 +9,9 @@ export icbmTemplate=$bbwDir/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_ma
 if [[ ! -f $icbmTemplate ]] ; then
 	cd $bbwDir/spaces/tpl-icbm/
 	wget http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_sym_09c_minc2.zip
-	unzip mni_icbm152_nlin_sym_09c_minc2.zip
+	unzip -j mni_icbm152_nlin_sym_09c_minc2.zip mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc -d $bbwDir/spaces/tpl-icbm/
 	rm -f mni_icbm152_nlin_sym_09c_minc2.zip
-	mv mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc  tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
-	rm -f mni*
+	mv mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
 fi
 
 # download nonlinear transformation matrices (note: large files)
