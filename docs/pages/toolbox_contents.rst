@@ -69,6 +69,10 @@ Data origins
 
 BigBrainWarp depends upon collation of data from various sources. We’ll reference these sources throughout the documentation. Here is an overview of the data that was directly used in BigBrainWarp. In other words, this list encompasses data that was not generated specifically for BigBrainWarp. 
 
+.. list-table::
+   :widths: 20 30 50 30
+   :header-rows: 1
+
    * - Source
      - Data
      - Hyperlink
