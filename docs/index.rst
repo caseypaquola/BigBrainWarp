@@ -73,6 +73,7 @@ Tips for Getting Started
    pages/tutorial_gradients
    pages/tutorial_communities
    pages/tutorial_confluence
+   pages/visualisation
 
 .. toctree::
    :maxdepth: 1
