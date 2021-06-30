@@ -9,9 +9,9 @@ echo -e "
    $(basename $0)
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
 \t\033[38;5;197m-in_space\033[0m 	      	: input space. Can be bigbrainsym or icbm
-\t\033[38;5;197m-out_space\033[0m 	      	: output space. Can be bigbrainsym or icbm
+\t\033[38;5;197m-out_space\033[0m 	      : output space. Can be bigbrainsym or icbm
 \t\033[38;5;197m-warp\033[0m 	      	    : full path to deformation field. Currently only handles .mnc format
-\t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
+\t\033[38;5;197m-wd\033[0m 	              : Path to a working directory, where data will be output
 
 Casey Paquola, MNI, MICA Lab, 2021
 https://bigbrainwarp.readthedocs.io/
