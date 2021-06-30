@@ -39,7 +39,7 @@ if [[ ${bb_space} = histological ]] ; then
 		${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc \
 		${wd}/tpl-icbm_desc-${desc}.mnc
 else
-	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm 
+	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
 		-tfm_input_sampling -like "$icbm_template" \
 		-$interp \
 		${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc \
