@@ -5,12 +5,13 @@ export bbwDir=/data_/mica1/03_projects/casey/BigBrainWarp/  # change to your pat
 export mnc2Path=/data_/mica1/01_programs/minc2/ # path to your path to minc2 installation
 
 # set template and download if not already there
-export icbmTemplate=$bbwDir/spaces/icbm/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
+export icbmTemplate=$bbwDir/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
 if [[ ! -f $icbmTemplate ]] ; then
-	cd $bbwDir/spaces/icbm/
+	cd $bbwDir/spaces/tpl-icbm/
 	wget http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_sym_09c_minc2.zip
 	unzip mni_icbm152_nlin_sym_09c_minc2.zip
 	rm mni_icbm152_nlin_sym_09c_minc2.zip
+	mv mni_icbm152_nlin_sym_09c_minc2.mnc tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
 fi
 
 # download nonlinear transformation matrices (note: large files)
@@ -45,25 +46,6 @@ fi
 if [[ ! -f $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc ]] ; then
 	cd $bbwDir/spaces/bigbrain/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Volumes/Histological_Space/mnc/full8_400um_optbal.mnc
-fi
-
-# download MSM based transformations
-if [[ ! -f $bbwDir/xfms/rh.MNI152.rot.fsavg.sphere.surf.gii ]] ; then
-	cd $bbwDir/xfms/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsavg/spheres/*
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_fsLR/spheres/*
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_MNI152/spheres/*
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/BigBrain_to_MNI152/inmap_MNI152_outmap_BigBrain/input/*template*
-fi
-
-# download gifti white matter surfaces
-if [[ ! -f $bbwDir/spaces/bigbrain/lh.BigBrain.white.surf.gii ]] ; then
-	cd $bbwDir/spaces/bigbrain/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/white_surfaces/*BigBrain*.gii
-	cd $bbwDir/spaces/fsaverage/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/white_surfaces/*fsavg*.gii
-	cd $bbwDir/spaces/fs_LR/
-	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/BigBrainWarp_Support/white_surfaces/*fsLR*.gii
 fi
 
 # make git ignore
