@@ -61,7 +61,7 @@ Tips for Getting Started
    :caption: What's inside
 
    pages/scripts
-   pages/descriptor
+   pages/toolbox_contents
    pages/updates
 
 .. toctree::
