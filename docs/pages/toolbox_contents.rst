@@ -1,5 +1,6 @@
 Toolbox contents
 ==================
+
 Datasets
 ********************************
 
@@ -44,8 +45,8 @@ Datasets
 
 Naming conventions
 ********************************
-In an effort to standardise and simplify the naming of files across BigBrainWarp, we have adopted the BIDS-like structure of `TemplateFlow https://www.templateflow.org/ <https://www.templateflow.org/>`_. This means that files likely have a different name than their source. We refer you to the following section on Data Origins to find the original file names. 
-The output of BigBrainWarp is automatically named according to this convention.
+
+In an effort to standardise and simplify the naming of files across BigBrainWarp, we have adopted the BIDS-like structure of `TemplateFlow https://www.templateflow.org/ <https://www.templateflow.org/>`_. This means that files likely have a different name than their source. The output of BigBrainWarp is automatically named according to this convention.
 
 .. list-table::
    :widths: 20 50
@@ -65,7 +66,9 @@ The output of BigBrainWarp is automatically named according to this convention.
 
 Data origins
 ********************************
+
 BigBrainWarp depends upon collation of data from various sources. We’ll reference these sources throughout the documentation. Here is an overview of the data that was directly used in BigBrainWarp. In other words, this list encompasses data that was not generated specifically for BigBrainWarp. 
+
    * - Source
      - Data
      - Hyperlink
@@ -97,6 +100,7 @@ BigBrainWarp depends upon collation of data from various sources. We’ll refere
 
 Scripts
 ********************************
+
 The bigbrainwarp function calls a range of scripts:
 	* af_dist.py: calculates distance between transformed and set anatomical fiducials
 	* bigbrain_to_fsaverage.sh: called by bigbrainwarp
