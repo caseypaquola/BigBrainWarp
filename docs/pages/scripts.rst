@@ -43,7 +43,7 @@ The following arguments can be used with BigBrainWarp
      - Required	
      - 
    * - desc
-     - Descriptor that determines the naming of the output. See more details in `Naming Conventions <https://bigbrainwarp.readthedocs.io/en/latest/pages/toolbox_contents.html#naming-conventions>_`
+     - Descriptor that determines the naming of the output. See more details in `Naming Conventions <https://bigbrainwarp.readthedocs.io/en/latest/pages/toolbox_contents.html#naming-conventions>`_
      - Required.
      - 
    * - in_vol	
