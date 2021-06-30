@@ -69,6 +69,7 @@ Tips for Getting Started
    :hidden:
    :caption: Tutorials
    
+   pages/tutorials_overview
    pages/tutorial_gradients
    pages/tutorial_communities
    pages/tutorial_confluence
