@@ -75,27 +75,27 @@ BigBrainWarp depends upon collation of data from various sources. We’ll refere
      - Reference
    * - BigBrain FTP 3D_Surfaces 
      - BigBrain and BigBrainSym meshes
-     - `<https://bigbrain-ftp.loris.ca/bigbrain-ftp/BigBrainRelease.2015/3D_Surfaces>_`
+     - `https://bigbrain-ftp.loris.ca/bigbrain-ftp/BigBrainRelease.2015/3D_Surfaces <https://bigbrain-ftp.loris.ca/bigbrain-ftp/BigBrainRelease.2015/3D_Surfaces>_`
      - `Amunts et al., 2013 <https://doi.org/10.1126/science.1235381>`_
    * - BigBrain FTP BigBrainWarp_Support 
      - Rotated meshes and MSM registration surfaces for BigBrain, fsaverage and fs_LR (32k) 
-     - `<https://bigbrain-ftp.loris.ca/bigbrain-ftp/BigBrainRelease.2015/BigBrainWarp_Support>_`
+     - `https://bigbrain-ftp.loris.ca/bigbrain-ftp/BigBrainRelease.2015/BigBrainWarp_Support <https://bigbrain-ftp.loris.ca/bigbrain-ftp/BigBrainRelease.2015/BigBrainWarp_Support>_`
      - `Lewis et al., 2020 <https://drive.google.com/file/d/1vAqLRV8Ue7rf3gsNHMixFqlLxBjxtmc8/view?usp=sharing>`_
    * - “Accurate registration of the BigBrain dataset with the MNI PD25 and ICBM152 atlases” OSF 
      -  Volume-based transformation matrices and segmentation labels for BigBrain and ICBM. (Not stored in BigBrainWarp repository; automatically pulled with initialisation). 
-     - `<https://osf.io/xkqb3/>_`
+     - `https://osf.io/xkqb3/ <https://osf.io/xkqb3/>_`
      - `Xiao et al., 2019 <https://doi.org/10.1038/s41597-019-0217-0>`_
    * - BIC packages
      -  Volume-based transformation matrices for BigBrainSym. (Not stored in BigBrainWarp repository; automatically pulled with initialisation). 
-     - `<https://packages.bic.mni.mcgill.ca/mni-models/PD25/>_`
+     - `https://packages.bic.mni.mcgill.ca/mni-models/PD25/ <https://packages.bic.mni.mcgill.ca/mni-models/PD25/>_`
      - `Xiao et al., 2019 <https://doi.org/10.1038/s41597-019-0217-0>`_
    * - Diedrichsen Lab Github
      - Inflated, sphere and reference sulcus surface maps for fs_LR 32k
-     - `<https://github.com/DiedrichsenLab/fs_LR_32>_`
+     - `https://github.com/DiedrichsenLab/fs_LR_32 <https://github.com/DiedrichsenLab/fs_LR_32>_`
      - `Van Essen et al., 2012 <https://doi.org/ 10.1093/cercor/bhr291>_` 
    * - WashU HCP pipelines Github 
      - Reference sulcus map for fs_LR (164k) 
-     - `<https://github.com/Washington-University/HCPpipelines/tree/master/global/templates/standard_mesh_atlases>_`
+     - `https://github.com/Washington-University/HCPpipelines/tree/master/global/templates/standard_mesh_atlases <https://github.com/Washington-University/HCPpipelines/tree/master/global/templates/standard_mesh_atlases>_`
      - `Van Essen et al., 2012 <https://doi.org/ 10.1093/cercor/bhr291>_` 
 
 Scripts
