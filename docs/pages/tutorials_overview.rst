@@ -4,14 +4,14 @@ Overview of Tutorials
 The tutorials cover three BigBrain-MRI analyses, which represent three unique types of transformations.
 
 .. image:: ./images/tutorials_overview.png
-   :height: 350px
+   :height: 250px
    :align: center
 
 
 Neither the forms nor the motivations are exhaustive but are illustrate applications based on our previous work. If you feel adventurous, the range of transformations availed by BigBrainWarp look more like this:
 
-.. image:: ./images/bbw_workflows_possibilities.png
-   :height: 350px
+.. image:: ./images/bbw_workflow_possibilities.png
+   :height: 250px
    :align: center
 
 
