@@ -42,6 +42,10 @@ The following arguments can be used with BigBrainWarp
      - Path to working directory
      - Required	
      - 
+   * - desc
+     - Descriptor that determines the naming of the output. See more details in `Naming Conventions <https://bigbrainwarp.readthedocs.io/en/latest/pages/toolbox_contents.html#naming-conventions>_`
+     - Required.
+     - 
    * - in_vol	
      - Full path to input data, whole brain volume.	
      - Requires either in_vol, or in_lh and in_rh	
@@ -58,10 +62,6 @@ The following arguments can be used with BigBrainWarp
      - Interpolation method
      - Required for in_vol.
      - Optional for txt input. Not permitted for other surface inputs.	For in_vol, can be trilinear (default), tricubic, nearest or sinc. For txt, can be linear or nearest
-   * - out_name	
-     - Prefix for output files	
-     - Required for surface input. 
-     - Optional for volume input, otherwise defaults to prefix of input file
    * - out_type	
      - Specifies whether output in surface or volume space 	
      - Optional function for bigbrain and bigbrainsym output. Otherwise, defaults to the same type as the input.  	
@@ -71,7 +71,7 @@ The following arguments can be used with BigBrainWarp
 The BigBrainWarp function currently wraps the following range of transformations
 
 .. image:: ./images/bbw_workflow.png
-   :height: 300px
+   :height: 500px
    :align: center
 
 
