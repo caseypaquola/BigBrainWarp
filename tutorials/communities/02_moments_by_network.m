@@ -31,15 +31,15 @@ MPmoments = zscore(MPmoments);
 
 % create cross folds 
 folds = 10;
-n = floor(6558/folds); % set based vertices in smallest network (DMN-C: 1100)
+n = floor(6558/folds); % set n vertices, to ensure matched number across networks. n is based number of vertices in smallest network
 Xcv_eq = zeros(n*17,size(MPmoments,1),folds);
 ycv_eq = zeros(n*17,folds);
 for ii = 1:17
-    idx = randperm(sum(parc==ii),sum(parc==ii)); % random list of number the length of the network
+    idx = randperm(sum(parc==ii),sum(parc==ii)); % randomly assigns an integer to each vertex of the network
     idx_net = find(parc==ii); % where is the network in the feature vector
     for cv = 1:folds
-        Xcv_eq(((ii-1)*n)+1:(ii*n),:,cv) = MPmoments(:,idx_net(ismember(idx,((cv-1)*n)+1:(cv*n))))';
-        ycv_eq(((ii-1)*n)+1:(ii*n),cv) = repmat(ii,n,1);
+        Xcv_eq(((ii-1)*n)+1:(ii*n),:,cv) = MPmoments(:,idx_net(ismember(idx,((cv-1)*n)+1:(cv*n))))'; % randomly selects n/folds vertices from the network
+        ycv_eq(((ii-1)*n)+1:(ii*n),cv) = repmat(ii,n,1); % labels network
     end
 end
 save([projDir '/output/yeo17_moments_bb.mat'], 'Xcv_eq', 'ycv_eq')
