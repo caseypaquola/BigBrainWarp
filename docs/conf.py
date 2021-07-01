@@ -12,7 +12,6 @@
 #
 import os
 import sys
-import warnings
 sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
@@ -60,7 +59,7 @@ highlight_language ='none'
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_theme_options = { 'style_nav_header_background': '#5D4BB7'}
+html_theme_options = { 'style_nav_header_background': '#5d4bb7'}
 
 # The name of the Pygments (syntax highlighting) style to use.
 import os
