@@ -82,7 +82,7 @@ elif [[ "$in_space" == "icbm" ]] ; then
 
     mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
         -invert_transformation \
-		    -tfm_input_sampling -like "$comp_seg" \
+		    -tfm_input_sampling \
 		    -nearest_neighbour \
 		    $in_seg \
 		    $trans_seg
