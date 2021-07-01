@@ -49,7 +49,7 @@ done
 # pull afids templates
 if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
 	cd $bbwDir/xfms/
-  wget https://github.com/afids/afids-analysis/tree/master/data/PHASE4_input_afid/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
+  wget https://raw.githubusercontent.com/afids/afids-analysis/master/data/PHASE4_input_afid/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
 fi
 
 # pull subcortical segmentations
