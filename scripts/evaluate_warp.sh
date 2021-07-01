@@ -65,14 +65,14 @@ if [[ "$in_space" == "bigbrainsym" ]] ; then
     out_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
     in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
     comp_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
-    $bbwDir/scripts/bigbrain_to_icbm.sh $in_seg sym $interp SubCorSeg $wd
+    $bbwDir/scripts/bigbrain_to_icbm.sh $in_seg sym nearest SubCorSeg $wd
     trans_seg=$wd/tpl-icbm_desc-SubCorSeg.mnc
 elif [[ "$in_space" == "icbm" ]] ; then
     in_af=MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
     out_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
     in_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
     comp_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
-    $bbwDir/scripts/icbm_to_bigbrain.sh $in_seg sym $interp SubCorSeg $wd
+    $bbwDir/scripts/icbm_to_bigbrain.sh $in_seg sym nearest SubCorSeg $wd
     trans_seg=$wd/tpl-bigbrain_desc-SubCorSeg.mnc
 fi
 
