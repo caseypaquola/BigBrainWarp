@@ -11,13 +11,13 @@ end
 
 % load network atlas
 parc_name='Yeo2011_17Networks_N1000';
-lh = gifti([bbwDir '/spaces/bigbrain/' parc_name '_lh_bigbrain.label.gii']);
-rh = gifti([bbwDir '/spaces/bigbrain/' parc_name '_rh_bigbrain.label.gii']);
+lh = gifti([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-' parc_name '.label.gii']);
+rh = gifti([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-' parc_name '.label.gii']);
 parc = [lh.cdata; rh.cdata];
 names = [lh.labels.name rh.labels.name];
 
 % moments 
-MP = reshape(dlmread([bbwDir '/spaces/bigbrain/profiles.txt']),[], 50)';
+MP = reshape(dlmread([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_desc-profiles.txt']),[], 50)';
 MP = MP*-1;
 MPmoments(1,:) = mean(MP);
 MPmoments(2,:) = std(MP);
@@ -42,4 +42,4 @@ for ii = 1:17
         ycv_eq(((ii-1)*n)+1:(ii*n),cv) = repmat(ii,n,1); % labels network
     end
 end
-save([projDir '/output/yeo17_moments_bb.mat'], 'Xcv_eq', 'ycv_eq')
+save([projDir '/output/tpl-bigbrain_desc-yeo17_moments.mat'], 'Xcv_eq', 'ycv_eq')
