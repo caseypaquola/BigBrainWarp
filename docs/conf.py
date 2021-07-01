@@ -65,7 +65,7 @@ html_theme_options = { 'style_nav_header_background': '#5d4bb7'}
 import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
-pygments_style = 'micapipelexer.micapipeLexerStyle'
+pygments_style = 'bigbrainwarplexer.bigbrainwarpLexerStyle'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pygments.styles.micapipe
+    pygments.styles.bigbrainwarp
     ~~~~~~~~~~~~~~~~~~~~~
     A modern style based on the VIM pyte theme. 
 """
@@ -10,32 +10,32 @@ from pygments.token import Keyword, Name, Comment, String, Error, \
     Number, Operator, Whitespace, Generic
 
 
-class micapipeLexerStyle(Style):
+class bigbrainwarpLexerStyle(Style):
     """
     A modern style based on the VIM pyte theme.
     """
 
-    background_color = "#c6c3db"
+    background_color = "#e7e5f6"
     default_style = ""
 
     styles = {
         Whitespace:                "#bbbbbb",
         Comment:                   "italic #888888",
-        Comment.Preproc:           "noitalic #8c8c8c",
+        Comment.Preproc:           "noitalic #000000",
         Comment.Special:           "noitalic bg:#fff0f0",
 
-        Keyword:                   "bold #8c8c8c",
+        Keyword:                   "bold #000000",
         Keyword.Pseudo:            "nobold",
         Keyword.Type:              "nobold #902000",
 
         Operator:                  "#000000",
-        Operator.Word:             "bold #8c8c8c",
+        Operator.Word:             "bold #000000",
 
-        Name.Builtin:              "#8c8c8c",
+        Name.Builtin:              "#000000",
         Name.Function:             "#06287e",
         Name.Class:                "bold #261F4A",
         Name.Namespace:            "bold #261F4A",
-        Name.Exception:            "#8c8c8c",
+        Name.Exception:            "#000000",
         Name.Variable:             "#bb60d5",
         Name.Constant:             "#60add5",
         Name.Label:                "bold #002070",
