@@ -9,8 +9,8 @@ for i in 1 2 ; do
         caseypaquola/bigbrainwarp bigbrainwarp --in_space bigbrain \
                                             --out_space fsaverage \
                                             --wd /BigBrainWarp/tests/ \
-                                            --in_lh /BigBrainWarp/spaces/bigbrain/Hist_G${i}_lh.txt \
-                                            --in_rh /BigBrainWarp/spaces/bigbrain/Hist_G${i}_rh.txt \
-                                            --out_name Hist_G${i}
+                                            --in_lh /BigBrainWarp/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-Hist_G${i}.txt \
+                                            --in_rh /BigBrainWarp/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-Hist_G${i}.txt \
+                                            --desc Hist_G${i}
 done                                            
 
