@@ -5,5 +5,6 @@ docker pull caseypaquola/bigbrainwarp:latest
 docker run -it --rm -v /local/directory/with/freesurfer_license:/license \
         -v /local/directory/with/data/:/BigBrainWarp/tests \
         bigbrainwarp --in_space bigbrain --out_space icbm --wd /BigBrainWarp/tests \
-        --in /BigBrainWarp/tests/histological_axis_vox.nii --interp trilinear
+        --desc confluence --interp trilinear \
+        --in /BigBrainWarp/tests/histological_axis_vox.nii 
 
