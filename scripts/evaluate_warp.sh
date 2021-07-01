@@ -83,13 +83,15 @@ fi
 if [[ "$invert" == "yes"]] ; then
   mincresample -clobber -transformation ${warp} \
         -invert_transformation
+        -like $comp_seg
 		    -tfm_input_sampling \
 		    -nearest_neighbour \
 		    $in_seg \
 		    $trans_seg
 else
   mincresample -clobber -transformation ${warp} \
-		    -tfm_input_sampling \
+		    -like $comp_seg
+        -tfm_input_sampling \
 		    -nearest_neighbour \
 		    $in_seg \
 		    $trans_seg
