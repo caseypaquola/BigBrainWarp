@@ -8,10 +8,11 @@ echo -e "
 \033[38;5;141mCOMMAND:\033[0m
    $(basename $0)
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
-\t\033[38;5;197m-in_space\033[0m 	      	: input space. Can be bigbrainsym or icbm
-\t\033[38;5;197m-out_space\033[0m 	      : output space. Can be bigbrainsym or icbm
-\t\033[38;5;197m-warp\033[0m 	      	    : full path to deformation field. Currently only handles .mnc format
-\t\033[38;5;197m-wd\033[0m 	              : Path to a working directory, where data will be output
+\t\033[38;5;197m-in_space\033[0m 	      	: (required) input space. Can be bigbrainsym or icbm
+\t\033[38;5;197m-out_space\033[0m 	      : (required) output space. Can be bigbrainsym or icbm
+\t\033[38;5;197m-warp\033[0m 	      	    : (required) full path to deformation field. Currently only handles .mnc format
+\t\033[38;5;197m-wd\033[0m 	              : (required) Path to a working directory, where data will be output
+\t\033[38;5;197m-invert\033[0m 	          : (optional) invert warp. Can be yes or no (default)
 
 Casey Paquola, MNI, MICA Lab, 2021
 https://bigbrainwarp.readthedocs.io/
@@ -42,6 +43,10 @@ do
     warp=$2
     shift;shift
   ;;
+  --invert)
+    warp=$2
+    shift;shift
+  ;;
   -*)
     esac
 done
@@ -59,29 +64,31 @@ if [[ ! -d $bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc ]] ; then
   wget -O ICBM2009b_sym-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
 fi
 
-# define direction and perform volume based transformation
+# define direction
 if [[ "$in_space" == "bigbrainsym" ]] ; then
     in_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
     comp_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
     in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
     comp_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
     trans_seg=$wd/tpl-icbm_desc-SubCorSeg.mnc
-    
-    mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
-		    -tfm_input_sampling -like "$comp_seg" \
-		    -nearest_neighbour \
-		    $in_seg \
-		    $trans_seg
-    
 elif [[ "$in_space" == "icbm" ]] ; then
     in_af=MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
     comp_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
     in_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
     comp_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
     trans_seg=$wd/tpl-bigbrain_desc-SubCorSeg.mnc
+fi
 
-    mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
-        -invert_transformation \
+# perform volume based transformation
+if [[ "$invert" == "yes"]] ; then
+  mincresample -clobber -transformation ${warp} \
+        -invert_transformation
+		    -tfm_input_sampling \
+		    -nearest_neighbour \
+		    $in_seg \
+		    $trans_seg
+else
+  mincresample -clobber -transformation ${warp} \
 		    -tfm_input_sampling \
 		    -nearest_neighbour \
 		    $in_seg \
@@ -91,7 +98,7 @@ fi
 # calculate overlap of non-isocortical labels 
 python $bbwDir/scripts/reg_overlap.py $trans_seg $comp_seg $wd 
 
-# perform transform and calculate distance for anatomical fiducials
+# transform coordinates
 if [[ -f $wd/trans_coords.txt ]] ; then
     rm -f $wd/trans_coords.txt
 fi
@@ -104,7 +111,11 @@ for f in `seq 4 1 35 ` ; do
     echo "MNI Tag Point File" > $wd/temp.tag
     echo "Volumes = 1;" >> $wd/temp.tag
     echo "Points = " ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]} >> $wd/temp.tag 
-    transform_tags $wd/temp.tag $warp $wd/temp_out.tag
+    if [[ "$invert" == "yes"]] ; then
+      transform_tags $wd/temp.tag $warp $wd/temp_out.tag yes
+    else
+      transform_tags $wd/temp.tag $warp $wd/temp_out.tag
+    fi
     trans_coord=`tail -n 1 $wd/temp_out.tag`
     suffix=' 0 -1 -1;'
     trans_coord=${trans_coord%$suffix}
@@ -114,6 +125,8 @@ for f in `seq 4 1 35 ` ; do
     set_coord=`echo ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]}`
     echo $set_coord >> $wd/set_coords.txt
 done
+
+# calculate distance for anatomical fiducials
 python $bbwDir/scripts/af_dist.py $wd
 
 
