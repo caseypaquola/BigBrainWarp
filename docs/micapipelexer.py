@@ -15,7 +15,7 @@ class micapipeLexerStyle(Style):
     A modern style based on the VIM pyte theme.
     """
 
-    background_color = "#AFA9E1"
+    background_color = "#db32b1"
     default_style = ""
 
     styles = {
