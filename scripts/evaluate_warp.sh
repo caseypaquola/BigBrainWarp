@@ -59,18 +59,25 @@ if [[ ! -d $bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc ]] ; then
   wget -O ICBM2009b_sym-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
 fi
 
-# define direction
+# define direction and perform volume based transformation
 if [[ "$in_space" == "bigbrainsym" ]] ; then
     in_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
     out_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
     in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
-    out_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
+    comp_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
+    $bbwDir/scripts/bigbrain_to_icbm.sh $in_seg sym $interp SubCorSeg $wd
+    trans_seg=$wd/tpl-icbm_desc-SubCorSeg.mnc
 elif [[ "$in_space" == "icbm" ]] ; then
     in_af=MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
     out_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
     in_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
-    out_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
+    comp_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
+    $bbwDir/scripts/icbm_to_bigbrain.sh $in_seg sym $interp SubCorSeg $wd
+    trans_seg=$wd/tpl-bigbrain_desc-SubCorSeg.mnc
 fi
+
+# calculate overlap of non-isocortical labels 
+python $bbwDir/scripts/reg_overlap.py $trans_seg $comp_seg $wd 
 
 # perform transform and calculate distance for anatomical fiducials
 if [[ -f $wd/trans_coords.txt ]] ; then
@@ -96,4 +103,6 @@ for f in `seq 4 1 35 ` ; do
     echo $set_coord >> $wd/set_coords.txt
 done
 python $bbwDir/scripts/af_dist.py $wd
+
+
 
