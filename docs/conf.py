@@ -15,8 +15,6 @@ import sys
 import warnings
 sys.path.insert(0, os.path.abspath('..'))
 
-import enigmatoolbox
-
 # -- Project information -----------------------------------------------------
 
 project = 'The Big Brain Warp'
@@ -46,7 +44,6 @@ autodoc_default_options = {'members': True, 'inherited-members': True}
 numpydoc_show_class_members = False
 autoclass_content = "class"
 
-
 # The master toctree document.
 master_doc = 'index'
 
@@ -65,13 +62,11 @@ highlight_language ='none'
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = { 'style_nav_header_background': '#5D4BB7'}
 
-
 # The name of the Pygments (syntax highlighting) style to use.
 import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
 pygments_style = 'micapipelexer.micapipeLexerStyle'
-
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -85,8 +80,6 @@ html_static_path = ['_static']
 # or fully qualified paths (eg. https://...)
 html_css_files = ['css/bigbrainwarp.css', 
                   'css/bigbrainwarp_nomaxwidth.css']
-
-#html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
