@@ -4,13 +4,14 @@ import numpy
 import nibabel as nib
 
 # Define input arguments
-wd = str(sys.argv[1])
-template = str(sys.argv[2])
+trans_seg = str(sys.argv[1])
+comp_seg = str(sys.argv[2])
+wd = str(sys.argv[3])
 
 # load template and transformed image
-img1 = nib.load(template)
+img1 = nib.load(trans_seg)
 img1_data = img1.get_fdata()
-img2 = nib.load(wd + "trans_seg.mnc")
+img2 = nib.load(comp_seg)
 img2_data = img2.get_fdata()
 
 # Calculate DICE overlap
