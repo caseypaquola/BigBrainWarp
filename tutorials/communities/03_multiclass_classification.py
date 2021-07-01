@@ -14,7 +14,7 @@ from sklearn.metrics import roc_auc_score
 
 # load data
 projDir = '/local/working/directory/'
-mat = io.loadmat(projDir + "output/yeo17_moments_bb.mat")
+mat = io.loadmat(projDir + "output/tpl-bigbrain_desc-yeo17_moments.mat")
 X = mat["Xcv_eq"]
 ycv = mat["ycv_eq"]
 n_classes = ycv.shape[1]
@@ -29,4 +29,4 @@ for i in range(0,train_folds):
     classifier.fit(X[:,:,i], ycv[:,i])
     y_pred[:,i] = classifier.predict(X[:,:,i+train_folds])
 
-io.savemat(projDir + "output/yeo17_moments_pred_ovr.mat", {"y_pred": y_pred})
+io.savemat(projDir + "output/tpl-bigbrain_desc-yeo17_moments_pred_ovr.mat", {"y_pred": y_pred})
