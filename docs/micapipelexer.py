@@ -21,21 +21,21 @@ class micapipeLexerStyle(Style):
     styles = {
         Whitespace:                "#bbbbbb",
         Comment:                   "italic #888888",
-        Comment.Preproc:           "noitalic #15993a",
+        Comment.Preproc:           "noitalic #ffffff",
         Comment.Special:           "noitalic bg:#fff0f0",
 
-        Keyword:                   "bold #15993a",
+        Keyword:                   "bold #ffffff",
         Keyword.Pseudo:            "nobold",
         Keyword.Type:              "nobold #902000",
 
         Operator:                  "#000000",
-        Operator.Word:             "bold #15993a",
+        Operator.Word:             "bold #ffffff",
 
-        Name.Builtin:              "#15993a",
+        Name.Builtin:              "#ffffff",
         Name.Function:             "#06287e",
         Name.Class:                "bold #261F4A",
         Name.Namespace:            "bold #261F4A",
-        Name.Exception:            "#15993a",
+        Name.Exception:            "#ffffff",
         Name.Variable:             "#bb60d5",
         Name.Constant:             "#60add5",
         Name.Label:                "bold #002070",
