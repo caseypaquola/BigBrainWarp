@@ -17,6 +17,6 @@ img2_data = img2.get_fdata()
 # Calculate DICE overlap
 dice = numpy.zeros(22)
 for f in range(1,22):
-    dice[f-1] = sum([img1_data==f] and [img2_data==f])/sum([img1_data==f] or [img2_data==f])
+    dice[f-1] = numpy.count_nonzero([img1_data==f] and [img2_data==f])/numpy.count_nonzero([img1_data==f] or [img2_data==f])
 
 numpy.savetxt(wd + "reg_dice.txt", dice)
