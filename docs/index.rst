@@ -9,7 +9,7 @@
       hr {
       width: 100%;
       height: 1px;
-      background-color: #D23A2D;
+      background-color: #5D4BB7;
       margin-top: 24px;
       }
    </style>
