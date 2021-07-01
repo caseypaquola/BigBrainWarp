@@ -62,7 +62,7 @@ fi
 # define direction and perform volume based transformation
 if [[ "$in_space" == "bigbrainsym" ]] ; then
     in_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
-    out_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
+    comp_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
     in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
     comp_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
     trans_seg=$wd/tpl-icbm_desc-SubCorSeg.mnc
@@ -75,7 +75,7 @@ if [[ "$in_space" == "bigbrainsym" ]] ; then
     
 elif [[ "$in_space" == "icbm" ]] ; then
     in_af=MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
-    out_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
+    comp_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
     in_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
     comp_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
     trans_seg=$wd/tpl-bigbrain_desc-SubCorSeg.mnc
@@ -103,15 +103,15 @@ for f in `seq 4 1 35 ` ; do
     arrIN=(${IN//,/ })
     echo "MNI Tag Point File" > $wd/temp.tag
     echo "Volumes = 1;" >> $wd/temp.tag
-    echo "Points = " ${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]} >> $wd/temp.tag 
+    echo "Points = " ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]} >> $wd/temp.tag 
     transform_tags $wd/temp.tag $warp $wd/temp_out.tag
     trans_coord=`tail -n 1 $wd/temp_out.tag`
     suffix=' 0 -1 -1;'
     trans_coord=${trans_coord%$suffix}
     echo $trans_coord >> $wd/trans_coords.txt
-    IN=`head -n $f $out_af | tail -1`
+    IN=`head -n $f $comp_af | tail -1`
     arrIN=(${IN//,/ })
-    set_coord=`echo ${arrIN[2]} " " ${arrIN[3]} " " ${arrIN[4]}`
+    set_coord=`echo ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]}`
     echo $set_coord >> $wd/set_coords.txt
 done
 python $bbwDir/scripts/af_dist.py $wd
