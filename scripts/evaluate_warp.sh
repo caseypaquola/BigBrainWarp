@@ -60,7 +60,7 @@ fi
 # pull subcortical segmentations
 if [[ ! -d $bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc ]] ; then
   cd $bbwDir/xfms/
-  wget -O BigBrain-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
+  wget -O BigBrain-SubCorSeg-500um.mnc https://osf.io/68qbm/download
   wget -O ICBM2009b_sym-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
 fi
 
