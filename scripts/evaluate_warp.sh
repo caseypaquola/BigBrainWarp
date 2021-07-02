@@ -82,8 +82,8 @@ fi
 # perform volume based transformation
 if [[ "$invert" == "yes" ]] ; then
   mincresample -clobber -transformation ${warp} \
-        -use_input_sampling
-        -invert_transformation
+        -use_input_sampling \
+        -invert_transformation \
         -like $comp_seg
 		    -tfm_input_sampling \
 		    -nearest_neighbour \
@@ -91,7 +91,7 @@ if [[ "$invert" == "yes" ]] ; then
 		    $trans_seg
 else
   mincresample -clobber -transformation ${warp} \
-		    -like $comp_seg
+		    -like $comp_seg \
         -use_input_sampling \
 		    -nearest_neighbour \
 		    $in_seg \
@@ -114,7 +114,7 @@ for f in `seq 4 1 35 ` ; do
     echo "MNI Tag Point File" > $wd/temp.tag
     echo "Volumes = 1;" >> $wd/temp.tag
     echo "Points = " ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]} >> $wd/temp.tag 
-    if [[ "$invert" == "yes"]] ; then
+    if [[ "$invert" == "yes" ]] ; then
       transform_tags $wd/temp.tag $warp $wd/temp_out.tag yes
     else
       transform_tags $wd/temp.tag $warp $wd/temp_out.tag
