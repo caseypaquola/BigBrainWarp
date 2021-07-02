@@ -84,8 +84,7 @@ if [[ "$invert" == "yes" ]] ; then
   mincresample -clobber -transformation ${warp} \
         -use_input_sampling \
         -invert_transformation \
-        -like $comp_seg
-		    -tfm_input_sampling \
+        -like $comp_seg \
 		    -nearest_neighbour \
 		    $in_seg \
 		    $trans_seg
