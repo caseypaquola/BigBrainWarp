@@ -80,7 +80,7 @@ elif [[ "$in_space" == "icbm" ]] ; then
 fi
 
 # perform volume based transformation
-if [[ "$invert" == "yes"]] ; then
+if [[ "$invert" == "yes" ]] ; then
   mincresample -clobber -transformation ${warp} \
         -use_input_sampling
         -invert_transformation
