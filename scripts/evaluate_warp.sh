@@ -82,6 +82,7 @@ fi
 # perform volume based transformation
 if [[ "$invert" == "yes"]] ; then
   mincresample -clobber -transformation ${warp} \
+        -use_input_sampling
         -invert_transformation
         -like $comp_seg
 		    -tfm_input_sampling \
@@ -91,7 +92,7 @@ if [[ "$invert" == "yes"]] ; then
 else
   mincresample -clobber -transformation ${warp} \
 		    -like $comp_seg
-        -tfm_input_sampling \
+        -use_input_sampling \
 		    -nearest_neighbour \
 		    $in_seg \
 		    $trans_seg
