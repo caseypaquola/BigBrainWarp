@@ -44,7 +44,7 @@ do
     shift;shift
   ;;
   --invert)
-    warp=$2
+    invert=$2
     shift;shift
   ;;
   -*)
