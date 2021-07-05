@@ -1,12 +1,12 @@
 Visualisation Tools
 ============================================================================================================
 
-We always need to check our data when we transform between spaces. We also often jump between file formats when performing such transformations with BigBrainWarp. So, we'll briefly overview a couple of ways to inspect data of various forms, especially those less commonplace in the neuroimaging.
+We should always visually check the fidelty of our data transformations. Here are a couple of tips for data visualisation. 
 
 Surfaces: Matlab-based, SurfStat-powered
 **************************************************************
 
-Our favourite tool for surface-based analyses is `SurfStat <https://www.math.mcgill.ca/keith/surfstat/>`_. SurfStat is a Matlab toolbox for statistical analysis and visualisation of neuroimaging data. You can download the toolbox as well as tutorials and extra helper functions from the `micaopen github <https://github.com/MICA-MNI/micaopen/tree/master/surfstat>`_. By combining this with in-built Matlab functions, Freesurfer's Matlab add-ons and the `gifti toolbox <https://www.artefact.tk/software/matlab/gifti/>`_, we can load and inspect the MINC (.obj, .mnc), Freesurfer and Gifti universes in one space. 
+Our favourite tool for surface-based analyses is `SurfStat <https://www.math.mcgill.ca/keith/surfstat/>`_. SurfStat is a Matlab toolbox for statistical analysis and visualisation of neuroimaging data. You can download the toolbox as well as tutorials and extra helper functions from the `micaopen github <https://github.com/MICA-MNI/micaopen/tree/master/surfstat>`_. By combining this with in-built Matlab functions, Freesurfer's Matlab add-ons and the `gifti toolbox <https://www.artefact.tk/software/matlab/gifti/>`_, we can load and inspect MINC (.obj, .mnc), Freesurfer and Gifti datatypes in one easy space. 
 
 .. code-block:: matlab
 
@@ -53,13 +53,34 @@ Our favourite tool for surface-based analyses is `SurfStat <https://www.math.mcg
 
 
 	
-
-
-Volumes: Displaying MINC
+Displaying MINC
 *******************************
 
-The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-mni.github.io/#MINC-Tool-Kit>`_. BigBrainWarp enables conversions to nifti, so it may not be necessary to check the intermediary .mnc files yourself, but if you would like to then we'll turn your attention towards `Display <https://www.bic.mni.mcgill.ca/software/Display/Display.html>`_
+The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-mni.github.io/#MINC-Tool-Kit>`_. BigBrainWarp enables conversions to nifti, so it may not be necessary to check the intermediary .mnc files yourself, but if you would like to then we'll turn your attention towards `Display <https://www.bic.mni.mcgill.ca/software/Display/Display.html>`_. With Display, you can also overlay .obj surfaces on the volume.
 
+.. code-block:: bash
+
+	Display volume_file.mnc
+	
+	% Click "File" then "Load File"
+	% in the terminal
+	/full/path/to/surface_file.obj
+	
+	% Return to Main Menu, Click "Objects" then "Write Object to File"
+	
+	
+.. image:: ./images/display_screenshot1.png
+   :height: 300px
+   :align: left
+  
+  
+.. image:: ./images/display_screenshot2.png
+   :height: 300px
+   :align: right
+
+
+Displaying Gifti
+*******************************
 
 
 
