@@ -62,16 +62,16 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 
 	Display volume_file.mnc
 	
-	% Click "File" then "Load File"
-	% in the terminal
+	# Click "File" then "Load File"
+	# in the terminal
 	/full/path/to/surface_file.obj
 	
-	% Return to Main Menu, Click "Objects" then "Write Object to File"
+	# Return to Main Menu, Click "Objects" then "Write Object to File"
 	
 	
 .. image:: ./images/display_screenshot1.PNG
    :height: 300px
-   :align: centre
+   :align: left
   
 .. image:: ./images/display_screenshot2.png
    :height: 300px
