@@ -69,14 +69,14 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	% Return to Main Menu, Click "Objects" then "Write Object to File"
 	
 	
-.. image:: ./images/display_screenshot1.png
+.. image:: ./images/display_screenshot1.PNG
    :height: 300px
-   :align: left
-  
+   :align: centre
   
 .. image:: ./images/display_screenshot2.png
    :height: 300px
-   :align: right
+   :align: centre
+
 
 
 Displaying Gifti
