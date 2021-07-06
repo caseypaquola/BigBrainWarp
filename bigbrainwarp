@@ -91,7 +91,7 @@ do
     esac
 done
 
-# argument check out & WARNINGS
+# argument check out & warning
 arg=($in_space $out_space $wd $desc)
 if [ ${#arg[@]} -lt 3 ]; then
   echo "One or more mandatory arguments are missing:
@@ -101,7 +101,7 @@ if [ ${#arg[@]} -lt 3 ]; then
                -desc : $desc"
 fi
 
-# try to copy license over if in the docker
+# try to copy Freesurfer license, in case of docker
 if [[ ! -f $FREESURFER_HOME/license.txt ]] ; then
     if [[ -f /license/license.txt ]] ; then
       cp /license/license.txt $FREESURFER_HOME/
@@ -110,7 +110,7 @@ if [[ ! -f $FREESURFER_HOME/license.txt ]] ; then
     fi
 fi
 
-# identify whether volume or surface based transformation will be performed
+# use arguments to identify form of transformation (ie: surface or volume-based)
 if [[ -z $in_vol ]] ; then
     if [[ -z $in_lh ]] || [[ -z $in_rh ]] ; then
       print "did not find required input arguments"
@@ -131,7 +131,7 @@ if [[ -z $out_type ]] ; then
   fi
 fi
 
-# running through the possible options of transformations
+# series of if statements to determine the form and direction of transformation
 if [[ "$in_type" == "volume" ]] ; then
     if [[ -z "$interp" ]] ; then
         interp=trilinear
