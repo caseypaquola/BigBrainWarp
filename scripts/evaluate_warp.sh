@@ -51,6 +51,9 @@ do
     esac
 done
 
+# create Jacobian map
+mincblob -determinant $warp $wd/warp_jacobian.mnc
+
 # pull afids templates
 if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
 	cd $bbwDir/xfms/
