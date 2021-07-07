@@ -25,7 +25,7 @@ BigBrainWarp has an **evaluate_warp** function that, as the name suggests, allow
 
 * warp_jacobian.mnc: The Jacobian map is the determinant of the Jacobian matrix of a deformation field. This provides a succinct measure of the distortions at each voxel that are invoked by the transformation procedure. Negative values indicate a contraction and positive values and expansion. The values encode the % change, i.e. 0.1 represents a 10% expansion.
 * reg_dice.txt: DICE coefficient of the overlap between native, manually segmented labels and the transformed labels. See https://osf.io/7w2dy/ for list of labels. 
-* af_dist.txt: Landmark registration errors (mm), based on anatomical fiducials (Lam et al.,) that were manually identified in BigBrainSym and ICBM152.
+* af_dist.txt: Landmark registration errors (mm), based on anatomical fiducials (Lau et al.,) that were manually identified in BigBrainSym and ICBM152.
 
 .. figure:: ./images/evaluate_warp_volumetric.png
 	:height: 350px
