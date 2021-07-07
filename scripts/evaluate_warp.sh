@@ -10,7 +10,7 @@ echo -e "
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
 \t\033[38;5;197m-in_space\033[0m 	      	: (required) input space. Can be bigbrainsym or icbm
 \t\033[38;5;197m-out_space\033[0m 	      : (required) output space. Can be bigbrainsym or icbm
-\t\033[38;5;197m-warp\033[0m 	      	    : (required) full path to deformation field. Currently only handles .mnc format
+\t\033[38;5;197m-xfm\033[0m 	      	    : (required) full path to transformation matrix. Currently only handles MINC format. 
 \t\033[38;5;197m-wd\033[0m 	              : (required) Path to a working directory, where data will be output
 \t\033[38;5;197m-invert\033[0m 	          : (optional) invert warp. Can be yes or no (default)
 
@@ -52,7 +52,7 @@ do
 done
 
 # create Jacobian map
-mincblob -determinant $warp $wd/warp_jacobian.mnc
+mincblob -determinant $xfm $wd/warp_jacobian.mnc
 
 # pull afids templates
 if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
@@ -115,9 +115,9 @@ for f in `seq 4 1 35 ` ; do
     echo "Volumes = 1;" >> $wd/temp.tag
     echo "Points = " ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]} >> $wd/temp.tag 
     if [[ "$invert" == "yes" ]] ; then
-      transform_tags $wd/temp.tag $warp $wd/temp_out.tag yes
+      transform_tags $wd/temp.tag $xfm $wd/temp_out.tag yes
     else
-      transform_tags $wd/temp.tag $warp $wd/temp_out.tag
+      transform_tags $wd/temp.tag $xfm $wd/temp_out.tag
     fi
     trans_coord=`tail -n 1 $wd/temp_out.tag`
     suffix=' 0 -1 -1;'
