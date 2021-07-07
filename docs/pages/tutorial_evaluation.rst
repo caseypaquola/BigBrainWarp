@@ -16,7 +16,7 @@ BigBrainWarp has an **evaluate_warp** function that, as the name suggests, allow
 
 .. code-block:: bash
 	
-	% for example, we’ll evaluate the Xiao et al., 
+	# for example, we’ll evaluate the Xiao et al., 
 	cd $bbwDir
 	sh scripts/evaluate_warp.sh --in_space bigbrainsym --out_space icbm –warp $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm --wd /project/
 
