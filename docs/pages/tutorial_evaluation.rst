@@ -24,6 +24,10 @@ sh scripts/evaluate_warp.sh --in_space bigbrainsym --out_space icbm –warp $bbw
 #. af_dist.txt: Landmark registration errors (mm), based on anatomical fiducials (Liao et al.,) that were manually identified in BigBrainSym and ICBM152.
 
 .. figure:: ./images/evaluate_warp_volumetric.png
-   :height: 350px
-   :align: center
+	:height: 350px
+	:align: center
+
+	i. Jacobian determinant of deformation field shown with a sagittal slice and stratified by lobe. Subcortical+ includes the shape priors mentioned in “BigBrain-MRI transformations of the Methods” and the + connotes hippocampus, which is allocortical. Lobe labels were defined based assignment of CerebrA atlas labels (Manera et al., 2020) to each lobe. ii. Sagital slices illustrate the overlap of native and transformed subcortical+ labels. iii. Superior view of anatomical fiducials (Liao et al.,). iv. Violin plots show the DICE coefficient of regional overlap (ii) and landmark misregistration (iii) for the BigBrainSym and Xiao et al., approaches. Higher DICE coefficients shown improved registration of subcortical+ regions with Xiao et al., while distributions of landmark misregistration indicate similar performance for alignment of anatomical fiducials. 
+
+
 
