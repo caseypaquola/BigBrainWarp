@@ -34,13 +34,13 @@ echo "transform to icbm"
 icbm_template=${bbwDir}/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
 if [[ ${bb_space} = histological ]] ; then
 	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm \
-		-tfm_input_sampling -like "$icbm_template" \
+		-like "$icbm_template" \
 		-$interp \
 		${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc \
 		${wd}/tpl-icbm_desc-${desc}.mnc
 else
 	mincresample -clobber -transformation ${bbwDir}/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
-		-tfm_input_sampling -like "$icbm_template" \
+		-like "$icbm_template" \
 		-$interp \
 		${wd}/tpl-bigbrain_desc-${desc}_${bb_space}.mnc \
 		${wd}/tpl-icbm_desc-${desc}.mnc
