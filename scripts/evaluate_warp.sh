@@ -52,7 +52,25 @@ do
 done
 
 # create Jacobian map
-mincblob -determinant $xfm $wd/warp_jacobian.mnc
+filename=$(basename -- "$xfm")
+dirname=${xfm%/*}
+x=0;
+unset jacobians
+d_fields=`find $dirname -name "${filename%.*}"*.mnc`
+for file in $d_fields ; do
+  mincblob -clobber -determinant $file $wd/warp_jacobian_${x}.mnc
+  if [[ $x > 0 ]] ; then
+  echo "add"
+    mincmath -clobber -copy_header -add $wd/warp_jacobian.mnc $wd/warp_jacobian_${x}.mnc $wd/tmp.mnc
+    yes | mv $wd/tmp.mnc $wd/warp_jacobian.mnc
+  else
+    echo "copy"
+    yes | cp $wd/warp_jacobian_0.mnc $wd/warp_jacobian.mnc
+  fi
+  let "x = $x + 1"
+  echo $x
+done
+rm $wd/warp_jacobian_*.mnc
 
 # pull afids templates
 if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
