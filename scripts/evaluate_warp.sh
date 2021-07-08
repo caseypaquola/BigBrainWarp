@@ -70,7 +70,7 @@ for file in $d_fields ; do
   let "x = $x + 1"
   echo $x
 done
-rm $wd/warp_jacobian_*.mnc
+yes | rm $wd/warp_jacobian_*.mnc
 
 # pull afids templates
 if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
