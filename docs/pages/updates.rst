@@ -5,6 +5,20 @@
 Updates
 ==================
 
+July 21, 2021
+------------------------------------------
+
+Overhauled naming conventions within BigBrainWarp, which led to changes in the input arguments for the main function. To reduce the size of the Docker image, Freesurfer functions have been purged and it is no longer a software dependency. 
+
+::
+
+    ↪ implemented BIDS-style naming of files				|  @caseypaquola
+    ↪ changed bigbrainwarp arguments, requires "desc"			|  @caseypaquola
+    ↪ added option for 32k or 164k mesh for fs_LR			|  @caseypaquola
+    ↪ removed Freesurfer dependencies					|  @caseypaquola
+    ↪ created tutorial on evaluating transformations			|  @caseypaquola
+
+
 April 7, 2021
 ------------------------------------------
 
