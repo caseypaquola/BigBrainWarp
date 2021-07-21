@@ -42,14 +42,10 @@ for hemi in L R ; do
 		cp $inData ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-		mris_convert --annot $inData \
-			$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-white.surf.gii \
-			${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
+		python $bbwDir/scripts/annot2gii.py $inData ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-		mris_convert -c $inData \
-			$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-white.surf.gii \
-			${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
+		python $bbwDir/scripts/curv2gii.py $inData ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[ -z $interp ]] ; then
 			gii_type=shape
@@ -58,10 +54,7 @@ for hemi in L R ; do
 		elif [[  "$interp" == "nearest" ]] ; then			
 			gii_type=label
 		fi
-		python $bbwDir/scripts/txt2curv.py $inData ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.curv
-		mris_convert -c ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.curv \
-			$bbwDir/spaces/tpl-${in_space}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-white.surf.gii \
-			${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
+		python $bbwDir/scripts/txt2gii.py $inData ${wd}/tpl-${in_space}_hemi-${hemi}_den-${in_den}k_desc-${desc}.${gii_type}.gii
 	else
 		echo "file type of $inData not recognised"
 	fi

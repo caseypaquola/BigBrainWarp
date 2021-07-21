@@ -41,14 +41,10 @@ for hemi in L R ; do
 		cp $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-		mris_convert --annot $inData \
-			$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-white.surf.gii \
-			${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		python $bbwDir/scripts/annot2gii.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-		mris_convert -c $inData \
-			$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-white.surf.gii \
-			${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		python $bbwDir/scripts/curv2gii.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[ -z $interp ]] ; then
 			gii_type=shape
@@ -57,10 +53,7 @@ for hemi in L R ; do
 		elif [[  "$interp" == "nearest" ]] ; then			
 			gii_type=label
 		fi
-		python $bbwDir/scripts/txt2curv.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.curv
-		mris_convert -c ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.curv \
-			$bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_hemi-${hemi}_desc-white.surf.gii \
-			${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		python $bbwDir/scripts/txt2gii.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
 	fi
 
 	# multimodal surface matching
