@@ -7,13 +7,12 @@ Running BigBrainWarp
 ********************************
 
 First, `install the package <https://bigbrainwarp.readthedocs.io/en/latest/pages/installation.html>`_
-To run BigBrainWarp using docker, you must mount a working directory and a directory with a personal Freesurfer license. You can obtain a Freesurfer license at `https://surfer.nmr.mgh.harvard.edu/registration.html <https://surfer.nmr.mgh.harvard.edu/registration.html>`_.
+To run BigBrainWarp using docker, you must mount a working directory (using the -v argument). It is expected that your input data is housed in the mounted directory. The output will also be deposited in that directory. 
 
 .. code-block:: bash
 
-    # with docker (change the local locations of the mounts accordingly)
-    docker run -it --rm -v /local/directory/with/freesurfer_license:/license \
-        -v /local/directory/with/data/:/BigBrainWarp/tests \
+    # with docker (change the path to the local location of the mount accordingly)
+    docker run -it --rm -v /local/directory/with/data/:/BigBrainWarp/tests \
         caseypaquola/bigbrainwarp bigbrainwarp
 
     # without docker
@@ -81,10 +80,10 @@ Example transformations in volume space
 .. code-block:: bash
 
 	# for example, transformation of a bigbrain to icbm can take the form
-	bigbrainwarp --in_space bigbrain --out_space icbm --wd /project/ --in data.nii --interp trilinear
+	bigbrainwarp --in_space bigbrain --out_space icbm --wd /project/ --in data.nii --desc data --interp trilinear
 
 	# in contrast, transformation from icbm to bigbrainsym could be
-	bigbrainwarp --in_space icbm --out_space bigbrainsym --wd /project/ --in data.mnc --interp sinc
+	bigbrainwarp --in_space icbm --out_space bigbrainsym --wd /project/ --in data.mnc --desc data --interp sinc
 
 
 BigBrainWarp utilises a recently published nonlinear transformation Xiao et al., (2019)
@@ -101,10 +100,10 @@ The functions currently support fsaverage and fs_LR as standard imaging template
 .. code-block:: bash
 
 	# for example, transformation of a bigbrain to fsaverage can take the form
-	bigbrainwarp --in_space bigbrain --out_space fsaverage --wd /project/ --in_lh lh.data.label.gii --in_rh rh.data.label.gii --out_name data
+	bigbrainwarp --in_space bigbrain --out_space fsaverage --wd /project/ --in_lh lh.data.label.gii --in_rh rh.data.label.gii --desc data
 
 	# in contrast, transformation from icbm to bigbrainsym could be
-	bigbrainwarp --in_space fs_LR --out_space bigbrain --wd /project/ --in_lh lh.data.label.txt --in_rh rh.data.label.txt --out_name data --interp linear
+	bigbrainwarp --in_space fs_LR --out_space bigbrain --wd /project/ --in_lh lh.data.label.txt --in_rh rh.data.label.txt --desc data --interp linear
 
 
 If you use surface-based transformations in BigBrainWarp, please cite:
