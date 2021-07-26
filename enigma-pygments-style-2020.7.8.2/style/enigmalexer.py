@@ -3,7 +3,7 @@
     pygments.styles.enigma
     ~~~~~~~~~~~~~~~~~~~~~
 
-    A modern style based on the VIM pyte theme. 
+    A modern style based on the VIM pyte theme.
 
 
 """
