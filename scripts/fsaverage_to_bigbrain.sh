@@ -22,7 +22,7 @@ interp=$6		# interpolation method. Can be used if .txt input, otherwise is set a
 extension="${in_lh#*.}"
 
 # check density of input surface
-in_den=`python3 "$bbwDir"/scripts/check_dim.py "$in_lh" "$extension"`
+in_den=$(python3 "$bbwDir"/scripts/check_dim.py "$in_lh" "$extension")
 
 for hemi in L R ; do
 	# define input
@@ -56,7 +56,7 @@ for hemi in L R ; do
 		fi
 		python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	else
-		echo "file type of "$inData" not recognised"
+		echo "file type of ${inData} not recognised"
 	fi
 
 	# internal upsampling, if necessary

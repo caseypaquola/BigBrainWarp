@@ -17,7 +17,7 @@ extension="${file_name##*.}"
 file_name="${file_name%.*}"
 if [[ "$extension" == "mnc" ]] ; then
 	echo "minc image, continuing to transformation"
-	cp $in_vol "$wd"/tpl-icbm_desc-"$desc".mnc
+	cp "$in_vol" "$wd"/tpl-icbm_desc-"$desc".mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
 	if [[ -f "$wd"/tpl-icbm_desc-"$desc".mnc ]] ; then
