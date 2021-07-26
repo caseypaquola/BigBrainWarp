@@ -1,6 +1,16 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/03e7162846474e4fb3717f5c7e2a8e35)](https://www.codacy.com/gh/caseypaquola/BigBrainWarp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caseypaquola/BigBrainWarp&amp;utm_campaign=Badge_Grade)
-[![License: GPL v3](https://img.shields.io/github/license/caseypaquola/BigBrainWarp)](https://www.gnu.org/licenses/gpl-3.0)
-[![Documentation Status](https://readthedocs.org/projects/bigbrainwarp/badge/?version=latest)](https://bigbrainwarp.readthedocs.io/en/latest/?badge=latest)
+.. image:: https://api.codacy.com/project/badge/Grade/a793c78a53eb4435a4bb86d725c8f817
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/project/badge/Grade/03e7162846474e4fb3717f5c7e2a8e35)](https://www.codacy.com/gh/caseypaquola/BigBrainWarp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caseypaquola/BigBrainWarp&amp;utm_campaign=Badge_Grade
+
+.. image:: https://img.shields.io/badge/license-GPL3.0-brightgreen
+   :target: https://www.gnu.org/licenses/gpl-3.0
+
+.. image:: https://readthedocs.org/projects/pip/badge/?version=stable
+    :target: https://bigbrainwarp.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status   
+
+.. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-brightgreen
+    :target: https://doi.org/10.1101/2021.05.04.442563
 
     <hr>
 
