@@ -13,7 +13,7 @@
 
     <hr>
 
-.. image::  https://github.com/caseypaquola/BigBrainWarp/tree/master/docs/pages/images/title.png?raw=true
+.. image::  https://github.com/caseypaquola/BigBrainWarp/tree/master/docs/pages/images/title.png
     :align: center
     :scale: 50%
 
