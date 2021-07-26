@@ -21,9 +21,6 @@
 
     <hr>
 
-====================
-BigBrainWarp
-====================
 
 BigBrain is a singular dataset that offers an ultra-high-resolution (20µm) volumetric reconstruction of a sliced and stained post-mortem human brain (Amunts et al. 2013). **BigBrainWarp** aims to enable integration of BigBrain with neuroimaging and other neurobiological modalities, helping a wide range of neuroscientists to utilise the cytoarchitectural information encoded in BigBrain for multi-scale neuroscientific discovery.
 
