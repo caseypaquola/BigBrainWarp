@@ -2,18 +2,20 @@
    :alt: Codacy Badge
    :target: https://app.codacy.com/project/badge/Grade/03e7162846474e4fb3717f5c7e2a8e35)](https://www.codacy.com/gh/caseypaquola/BigBrainWarp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caseypaquola/BigBrainWarp&amp;utm_campaign=Badge_Grade
 
-.. image:: https://img.shields.io/badge/license-BSD-brightgreen
-   :target: https://opensource.org/licenses/BSD-3-Clause
+.. image:: https://img.shields.io/badge/license-GPL3.0-brightgreen
+   :target: https://www.gnu.org/licenses/gpl-3.0
 
 .. image:: https://readthedocs.org/projects/pip/badge/?version=stable
-    :target: https://pip.pypa.io/en/stable/?badge=stable
+    :target: https://bigbrainwarp.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status   
 
-.. raw:: html
+.. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-brightgreen
+    :target: https://doi.org/10.1101/2021.05.04.442563
+    
 
     <hr>
 
-.. image::  https://github.com/caseypaquola/BigBrainWarp/tree/master/docs/pages/images/title.png
+.. image:: ./docs/pages/images/title.png?raw=true
     :align: center
     :scale: 50%
 
