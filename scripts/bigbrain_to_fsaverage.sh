@@ -7,12 +7,11 @@
 
 in_lh=$1 		# full path to left hemisphere input file
 in_rh=$2 		# full path to right hemisphere input file
-out_space=$3	# output surface can be "fsaverage" or "fs_LR"
-desc=$4 		# name of descriptor
-wd=$5			# working directory
-interp=$6		# interpolation method. Can be used if .txt input, otherwise is set as default
-out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 164 for fsaverage
-
+interp=$3		# interpolation method. Can be used if .txt input, otherwise is set as default
+out_space=$4	# output surface can be "fsaverage" or "fs_LR"
+out_den=$5		# output density. If out_space is fs_LR, can be 164 or 32. Must be 164 for fsaverage
+desc=$6 		# name of descriptor
+wd=$7			# working directory
 
 # the output takes the form:
 # "$wd"/tpl-"$out_space"_hemi-L_desc-"$desc"."$gii_type".gii  
@@ -68,7 +67,6 @@ for hemi in L R ; do
 			"$msmMesh" "$inMesh" BARYCENTRIC \
 			"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 	fi
-	echo "$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 
 	# internal downsample, if necessary
 	if [[ "$out_den" == "32" ]] ; then

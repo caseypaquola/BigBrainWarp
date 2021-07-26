@@ -7,10 +7,10 @@
 
 in_lh=$1 		# full path to left hemisphere input file
 in_rh=$2 		# full path to right hemisphere input file
-in_space=$3		# input surface can be "fsaverage" or "fs_LR"
-desc=$4 		# name of descriptor
-wd=$5			# working directory
-interp=$6		# interpolation method. Can be used if .txt input, otherwise is set as default
+interp=$3		# interpolation method. Can be used if .txt input, otherwise is set as default
+bb_space=$4		# input surface can be "fsaverage" or "fs_LR"
+desc=$5 		# name of descriptor
+wd=$6			# working directory
 
 # the output takes the form:
 # "$wd"/tpl-bigbrain_hemi-L_desc-"$desc"."$gii_type".gii  
