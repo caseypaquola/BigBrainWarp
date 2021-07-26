@@ -181,7 +181,7 @@ elif [[ "$in_type" == "surface" ]] && [[ "fs" == .*"$in_space".* ]] && [[ "$out_
   echo "employed multimodal surface matching transformation from fsaverage to bigbrain surface then filled the cortical ribbon"
 elif [[ "$in_type" == "surface" ]] && [[ "fs" == .*"$in_space".* ]] && [[ "$out_type" == "surface" ]] ; then
   # fsaverage to bigbrain surface
-  bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $interp $bb_space $desc $wd
+  bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $interp $desc $wd
   echo "employed multimodal surface matching transformation from fsaverage to bigbrain surface"
 else
   echo "error: cannot match combination of ${in_space} ${in_type} to ${out_type} to a transformation strategy"
