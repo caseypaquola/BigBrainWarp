@@ -1,3 +1,4 @@
+import numpy as np
 import io_mesh as io
 import nibabel
 import sys

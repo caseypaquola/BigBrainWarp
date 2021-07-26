@@ -6,7 +6,7 @@
 help() {
 echo -e "
 \033[38;5;141mCOMMAND:\033[0m
-   $(basename $0)
+   $(basename "$0")
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
 \t\033[38;5;197m-in_vol\033[0m 	      		: input volume to be sampled. Must be .mnc
 \t\033[38;5;197m-upper_surf\033[0m 	      	: upper surface. Must be aligned to the volume and an .obj

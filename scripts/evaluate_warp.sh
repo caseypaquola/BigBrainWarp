@@ -6,13 +6,12 @@
 help() {
 echo -e "
 \033[38;5;141mCOMMAND:\033[0m
-   $(basename $0)
+   $(basename "$0")
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
-\t\033[38;5;197m-in_space\033[0m 	      	: (required) input space. Can be bigbrainsym or icbm
-\t\033[38;5;197m-out_space\033[0m 	      : (required) output space. Can be bigbrainsym or icbm
-\t\033[38;5;197m-xfm\033[0m 	      	    : (required) full path to transformation matrix. Currently only handles MINC format. 
-\t\033[38;5;197m-wd\033[0m 	              : (required) Path to a working directory, where data will be output
-\t\033[38;5;197m-invert\033[0m 	          : (optional) invert warp. Can be yes or no (default)
+\t\033[38;5;197m--in_space\033[0m 	      	: (required) input space. Can be bigbrainsym or icbm
+\t\033[38;5;197m--xfm\033[0m 	      	    : (required) full path to transformation matrix. Currently only handles MINC format. 
+\t\033[38;5;197m--wd\033[0m 	              : (required) Path to a working directory, where data will be output
+\t\033[38;5;197m--invert\033[0m 	          : (optional) invert warp. Can be yes or no (default)
 
 Casey Paquola, MNI, MICA Lab, 2021
 https://bigbrainwarp.readthedocs.io/
@@ -33,10 +32,6 @@ do
   ;;
   --wd)
     wd=$2
-    shift;shift
-  ;;
-  --out_space)
-    out_space=$2
     shift;shift
   ;;
   --warp)
@@ -127,7 +122,7 @@ if [[ -f "$wd"/set_coords.txt ]] ; then
     rm -f "$wd"/set_coords.txt
 fi
 for f in $(seq 4 1 35) ; do
-    IN=`head -n "$f" "$in_af" | tail -1`
+    IN=$(head -n "$f" "$in_af" | tail -1)
     arrIN=(${IN//,/ })
     echo "MNI Tag Point File" > "$wd"/temp.tag
     echo "Volumes = 1;" >> "$wd"/temp.tag
@@ -141,7 +136,7 @@ for f in $(seq 4 1 35) ; do
     suffix=' 0 -1 -1;'
     trans_coord=${trans_coord%$suffix}
     echo "$trans_coord" >> "$wd"/trans_coords.txt
-    IN=`head -n "$f" "$comp_af" | tail -1`
+    IN=$9head -n "$f" "$comp_af" | tail -1)
     arrIN=(${IN//,/ })
     set_coord=$(echo ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]})
     echo "$set_coord" >> "$wd"/set_coords.txt
