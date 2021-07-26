@@ -56,99 +56,99 @@ filename=$(basename -- "$xfm")
 dirname=${xfm%/*}
 x=0;
 unset jacobians
-d_fields=`find $dirname -name "${filename%.*}"*.mnc`
+d_fields=$(find $dirname -name "${filename%.*}"*.mnc)
 for file in $d_fields ; do
-  mincblob -clobber -determinant $file $wd/warp_jacobian_${x}.mnc
-  if [[ $x > 0 ]] ; then
+  mincblob -clobber -determinant "$file" "$wd"/warp_jacobian_"$x".mnc
+  if [[ "$x" > 0 ]] ; then
   echo "add"
-    mincmath -clobber -copy_header -add $wd/warp_jacobian.mnc $wd/warp_jacobian_${x}.mnc $wd/tmp.mnc
-    yes | mv $wd/tmp.mnc $wd/warp_jacobian.mnc
+    mincmath -clobber -copy_header -add "$wd"/warp_jacobian.mnc "$wd"/warp_jacobian_"$x".mnc "$wd"/tmp.mnc
+    yes | mv "$wd"/tmp.mnc "$wd"/warp_jacobian.mnc
   else
     echo "copy"
-    yes | cp $wd/warp_jacobian_0.mnc $wd/warp_jacobian.mnc
+    yes | cp "$wd"/warp_jacobian_0.mnc "$wd"/warp_jacobian.mnc
   fi
   let "x = $x + 1"
-  echo $x
+  echo "$x"
 done
-yes | rm $wd/warp_jacobian_*.mnc
+yes | rm "$wd"/warp_jacobian_*.mnc
 
 # pull afids templates
-if [[ ! -d $bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
-	cd $bbwDir/xfms/
+if [[ ! -d "$bbwDir"/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv ]] ; then
+	cd "$bbwDir"/xfms/
   wget https://raw.githubusercontent.com/afids/afids-analysis/master/data/PHASE4_input_afid/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
 fi
 
 # pull subcortical segmentations
-if [[ ! -d $bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc ]] ; then
-  cd $bbwDir/xfms/
+if [[ ! -d "$bbwDir"/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc ]] ; then
+  cd "$bbwDir"/xfms/
   wget -O BigBrain-SubCorSeg-500um.mnc https://osf.io/68qbm/download
   wget -O ICBM2009b_sym-SubCorSeg-500um.mnc https://osf.io/dbe4v/download
 fi
 
 # define direction
 if [[ "$in_space" == "bigbrainsym" ]] ; then
-    in_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
-    comp_af=$bbwDir/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
-    in_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
-    comp_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
-    trans_seg=$wd/tpl-icbm_desc-SubCorSeg.mnc
+    in_af="$bbwDir"/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
+    comp_af="$bbwDir"/xfms/MNI152NLin2009bSym_T1_Rater03_1_20180914.fcsv
+    in_seg="$bbwDir"/xfms/BigBrain-SubCorSeg-500um.mnc
+    comp_seg="$bbwDir"/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
+    trans_seg="$wd"/tpl-icbm_desc-SubCorSeg.mnc
 elif [[ "$in_space" == "icbm" ]] ; then
     in_af=MNI152NLin2009bSym_T1_Rater03_1_20180917.fcsv
-    comp_af=$bbwDir/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
-    in_seg=$bbwDir/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
-    comp_seg=$bbwDir/xfms/BigBrain-SubCorSeg-500um.mnc
-    trans_seg=$wd/tpl-bigbrain_desc-SubCorSeg.mnc
+    comp_af="$bbwDir"/xfms/BigBrain_T1_Rater03_1_20180918.fcsv
+    in_seg="$bbwDir"/xfms/ICBM2009b_sym-SubCorSeg-500um.mnc
+    comp_seg="$bbwDir"/xfms/BigBrain-SubCorSeg-500um.mnc
+    trans_seg="$wd"/tpl-bigbrain_desc-SubCorSeg.mnc
 fi
 
 # perform volume based transformation
 if [[ "$invert" == "yes" ]] ; then
-  mincresample -clobber -transformation ${warp} \
+  mincresample -clobber -transformation "$warp" \
         -invert_transformation \
-        -like $comp_seg \
+        -like "$comp_seg" \
 		    -nearest_neighbour \
-		    $in_seg \
-		    $trans_seg
+		    "$in_seg" \
+		    "$trans_seg"
 else
-  mincresample -clobber -transformation ${warp} \
-		    -like $comp_seg \
+  mincresample -clobber -transformation "$warp" \
+		    -like "$comp_seg" \
 		    -nearest_neighbour \
-		    $in_seg \
-		    $trans_seg
+		    "$in_seg" \
+		    "$trans_seg"
 fi
 
 # calculate overlap of non-isocortical labels 
-python $bbwDir/scripts/reg_overlap.py $trans_seg $comp_seg $wd 
+python "$bbwDir"/scripts/reg_overlap.py "$trans_seg" "$comp_seg" "$wd" 
 
 # transform coordinates
-if [[ -f $wd/trans_coords.txt ]] ; then
-    rm -f $wd/trans_coords.txt
+if [[ -f "$wd"/trans_coords.txt ]] ; then
+    rm -f "$wd"/trans_coords.txt
 fi
-if [[ -f $wd/set_coords.txt ]] ; then
-    rm -f $wd/set_coords.txt
+if [[ -f "$wd"/set_coords.txt ]] ; then
+    rm -f "$wd"/set_coords.txt
 fi
-for f in `seq 4 1 35 ` ; do
-    IN=`head -n $f $in_af | tail -1`
+for f in $(seq 4 1 35) ; do
+    IN=`head -n "$f" "$in_af" | tail -1`
     arrIN=(${IN//,/ })
-    echo "MNI Tag Point File" > $wd/temp.tag
-    echo "Volumes = 1;" >> $wd/temp.tag
-    echo "Points = " ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]} >> $wd/temp.tag 
+    echo "MNI Tag Point File" > "$wd"/temp.tag
+    echo "Volumes = 1;" >> "$wd"/temp.tag
+    echo "Points = " ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]} >> "$wd"/temp.tag 
     if [[ "$invert" == "yes" ]] ; then
-      transform_tags $wd/temp.tag $xfm $wd/temp_out.tag yes
+      transform_tags "$wd"/temp.tag "$xfm" "$wd"/temp_out.tag yes
     else
-      transform_tags $wd/temp.tag $xfm $wd/temp_out.tag
+      transform_tags "$wd"/temp.tag "$xfm" "$wd"/temp_out.tag
     fi
-    trans_coord=`tail -n 1 $wd/temp_out.tag`
+    trans_coord=`tail -n 1 "$wd"/temp_out.tag`
     suffix=' 0 -1 -1;'
     trans_coord=${trans_coord%$suffix}
-    echo $trans_coord >> $wd/trans_coords.txt
-    IN=`head -n $f $comp_af | tail -1`
+    echo "$trans_coord" >> "$wd"/trans_coords.txt
+    IN=`head -n "$f" "$comp_af" | tail -1`
     arrIN=(${IN//,/ })
-    set_coord=`echo ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]}`
-    echo $set_coord >> $wd/set_coords.txt
+    set_coord=$(echo ${arrIN[1]} " " ${arrIN[2]} " " ${arrIN[3]})
+    echo "$set_coord" >> "$wd"/set_coords.txt
 done
 
 # calculate distance for anatomical fiducials
-python $bbwDir/scripts/af_dist.py $wd
+python "$bbwDir"/scripts/af_dist.py "$wd"
 
 
 

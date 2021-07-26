@@ -2,7 +2,6 @@
 
 # set path of github repo
 bbwDir=/home/casey/Desktop/BigBrainWarp/ # the github repo
-mnc2Path=/opt/minc/1.9.18/bin/
 wbPath=/home/casey/Downloads/software/workbench/bin_linux64/
 workingDir=/home/casey/Desktop/8_BigBrainWarp/tests/ # somewhere on your local computer
 

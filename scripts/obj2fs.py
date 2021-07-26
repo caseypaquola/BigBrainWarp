@@ -14,18 +14,8 @@ def read_obj(file):
         """Yield successive n-sized chunks from l."""
         for i in range(0, len(l), n):
             yield l[i:i + n]
-    def indices(lst,element):
-        result=[]
-        offset = -1
-        while True:
-            try:
-                offset=lst.index(element,offset+1)
-            except ValueError:
-                return result
-            result.append(offset)
     fp=open(file,'r')
     n_vert=[]
-    n_poly=[]
     k=0
     Polys=[]
 	# Find number of vertices and number of polygons, stored in .obj file.
@@ -43,7 +33,6 @@ def read_obj(file):
              elif k==1:
                  Polys.extend(line.split())
     Polys=list(map(int,Polys))
-    npPolys=np.array(Polys)
     triangles=np.array(list(chunks(Polys,3)))
     return XYZ, triangles;
 
