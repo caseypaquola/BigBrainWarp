@@ -17,14 +17,14 @@ extension="${file_name##*.}"
 file_name="${file_name%.*}"
 if [[ "$extension" == "mnc" ]] ; then
 	echo "minc image, continuing to transformation"
-	cp $in_vol "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
+	cp "$in_vol" "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
 elif [[ "$extension" == "gz" ]] ; then
 	file_name=""$file_name%.*""
 	gunzip $in_vol "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".nii
 	nii2mnc "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".nii "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
-	nii2mnc $in_vol "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
+	nii2mnc "$in_vol" "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
 else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
@@ -41,7 +41,7 @@ if [[ "$bb_space" = histological ]] ; then
 else
 	mincresample -clobber -transformation "$bbwDir"/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
 		-like "$icbm_template" \
-		-$interp \
+		-"$interp" \
 		"$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc \
 		"$wd"/tpl-icbm_desc-"$desc".mnc
 fi

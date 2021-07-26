@@ -65,7 +65,7 @@ for hemi in L R ; do
 			"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 	elif [[ "$gii_type" == "label" ]] ; then
 		wb_command -label-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			$msmMesh $inMesh BARYCENTRIC \
+			"$msmMesh" "$inMesh" BARYCENTRIC \
 			"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 	fi
 	echo "$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii

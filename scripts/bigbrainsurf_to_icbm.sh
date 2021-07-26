@@ -70,7 +70,7 @@ for hemi in L R ; do
 	outmeshMSM="$bbwDir"/xfms/tpl-icbm_hemi-"$hemi"_desc-sphere_rsled_like_bigbrain.reg.surf.gii
 	if [[ "$gii_type" == "shape" ]] ; then
 		wb_command -metric-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			$outmeshMSM $refmesh BARYCENTRIC "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
+			"$outmeshMSM" "$refmesh" BARYCENTRIC "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 		wb_command -set-structure "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii $struc_label
 		wb_command -metric-to-volume-mapping "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
 			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii \
@@ -80,7 +80,7 @@ for hemi in L R ; do
 			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii
 	elif [[ "$gii_type" == "label" ]] ; then
 		wb_command -label-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			$outmeshMSM $refmesh BARYCENTRIC "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
+			"$outmeshMSM" "$refmesh" BARYCENTRIC "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 		wb_command -set-structure "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii $struc_label
 		wb_command -label-to-volume-mapping "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
 			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii \
