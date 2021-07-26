@@ -1,16 +1,8 @@
 # import libraries
 import numpy as np
-from sklearn.multiclass import OneVsRestClassifier, OneVsOneClassifier
 from sklearn.svm import SVC
-from sklearn.model_selection import KFold
 import scipy.io as io
-from sklearn import svm, datasets
-from sklearn.metrics import roc_curve, auc, roc_auc_score, confusion_matrix
-from sklearn.model_selection import train_test_split, StratifiedKFold
-from sklearn.preprocessing import label_binarize
 from sklearn.multiclass import OneVsRestClassifier
-from scipy import interp
-from sklearn.metrics import roc_auc_score
 
 # load data
 projDir = '/local/working/directory/'

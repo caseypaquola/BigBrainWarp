@@ -15,8 +15,8 @@ out_den=$7		# output density. If out_space is fs_LR, can be 164 or 32. Must be 1
 
 
 # the output takes the form:
-# ${wd}/tpl-${out_space}_hemi-L_desc-${desc}.${gii_type}.gii  
-# ${wd}/tpl-${out_space}_hemi-R_desc-${desc}.${gii_type}.gii
+# "$wd"/tpl-"$out_space"_hemi-L_desc-"$desc"."$gii_type".gii  
+# "$wd"/tpl-"$out_space"_hemi-R_desc-"$desc"."$gii_type".gii
 #
 # default $gii_type is shape, however, .annot and .label.gii files will be label type
 
@@ -26,62 +26,62 @@ extension="${in_lh#*.}"
 for hemi in L R ; do
 	# define input
 	if [[ "$hemi" == "L" ]] ; then
-		inData=$in_lh
+		inData="$in_lh"
 	else
-		inData=$in_rh
+		inData="$in_rh"
 	fi
 
 	# define gii_type and convert to gifti if necessary
 	if [[ "$extension" == *"gii"* ]] ; then
-		if [[ $extension == *"label"* ]] ; then
+		if [[ "$extension" == *"label"* ]] ; then
 			gii_type=label
 		else 
 			gii_type=shape
 		fi
-		cp $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		cp "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-		python $bbwDir/scripts/annot2gii.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-		python $bbwDir/scripts/curv2gii.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "txt" ]] ; then
-		if [[ -z $interp ]] ; then
+		if [[ -z "$interp" ]] ; then
 			gii_type=shape
 		elif [[  "$interp" == "linear" ]] ; then
 			gii_type=shape
 		elif [[  "$interp" == "nearest" ]] ; then			
 			gii_type=label
 		fi
-		python $bbwDir/scripts/txt2gii.py $inData ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii
+		python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	fi
 
 	# multimodal surface matching
-	msmMesh=$bbwDir/xfms/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere_rsled_like_bigbrain.reg.surf.gii
-	inMesh=$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii
+	msmMesh="$bbwDir"/xfms/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-sphere_rsled_like_bigbrain.reg.surf.gii
+	inMesh="$bbwDir"/spaces/tpl-"$out_space"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-sphere.surf.gii
 	if [[ "$gii_type" == "shape" ]] ; then
-		wb_command -metric-resample ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii \
-			$msmMesh $inMesh BARYCENTRIC \
-			${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
+		wb_command -metric-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
+			"$msmMesh" "$inMesh" BARYCENTRIC \
+			"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 	elif [[ "$gii_type" == "label" ]] ; then
-		wb_command -label-resample ${wd}/tpl-bigbrain_hemi-${hemi}_desc-${desc}.${gii_type}.gii \
+		wb_command -label-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
 			$msmMesh $inMesh BARYCENTRIC \
-			${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
+			"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 	fi
-	echo ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii
+	echo "$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii
 
 	# internal downsample, if necessary
 	if [[ "$out_den" == "32" ]] ; then
 		if [[ "$gii_type" == "shape" ]] ; then
-			wb_command -metric-resample ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
-				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
-				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-sphere.surf.gii BARYCENTRIC \
-				${wd}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii
+			wb_command -metric-resample "$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii \
+				"$bbwDir"/spaces/tpl-"$out_space"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-sphere.surf.gii \
+				"$bbwDir"/spaces/tpl-"$out_space"/tpl-"$out_space"_hemi-"$hemi"_den-32k_desc-sphere.surf.gii BARYCENTRIC \
+				"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-32k_desc-"$desc"."$gii_type".gii
 		elif [[ "$gii_type" == "label" ]] ; then
-			wb_command -label-resample ${wd}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-${desc}.${gii_type}.gii \
-				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-164k_desc-sphere.surf.gii \
-				$bbwDir/spaces/tpl-${out_space}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-sphere.surf.gii BARYCENTRIC \
-				${wd}/tpl-${out_space}_hemi-${hemi}_den-32k_desc-${desc}.${gii_type}.gii
+			wb_command -label-resample "$wd"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii \
+				"$bbwDir"/spaces/tpl-"$out_space"/tpl-"$out_space"_hemi-"$hemi"_den-164k_desc-sphere.surf.gii \
+				"$bbwDir"/spaces/tpl-"$out_space"/tpl-"$out_space"_hemi-"$hemi"_den-32k_desc-sphere.surf.gii BARYCENTRIC \
+				"$wd"/tpl-"$out_space"_hemi-"$hemi"_den-32k_desc-"$desc"."$gii_type".gii
 		fi
 	fi
 

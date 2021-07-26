@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from distutils.core import setup
-import setuptools
 import sys
-
 
 _version = '2020.07.8.2'
 _packages = ['style']

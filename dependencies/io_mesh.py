@@ -6,7 +6,7 @@ import nibabel as nb
 import numpy as np
 
 def load_mgh(filename):
-    """ import mgh file using nibabel. returns flattened data array"""
+    # import mgh file using nibabel. returns flattened data array
     mgh_file=nb.load(filename)
     mmap_data=mgh_file.get_data()
     array_data=np.ndarray.flatten(mmap_data)
@@ -182,7 +182,7 @@ def read_ply(file):
 #function to read MNI obj mesh format
 def read_obj(file):
     def chunks(l, n):
-        """Yield successive n-sized chunks from l."""
+        #Yield successive n-sized chunks from l
         for i in range(0, len(l), n):
             yield l[i:i + n]
     def indices(lst,element):
@@ -416,7 +416,7 @@ def write_ply(filename, vertices, faces, comment=None):
 
 
 def normalize_v3(arr):
-    ''' Normalize a numpy array of 3 component vectors shape=(n,3) '''
+    #Normalize a numpy array of 3 component vectors shape=(n,3)
     lens = np.sqrt( arr[:,0]**2 + arr[:,1]**2 + arr[:,2]**2 )
     arr[:,0] /= lens
     arr[:,1] /= lens
