@@ -15,6 +15,8 @@ RUN apt-get update && \
                     autoconf \
                     libtool \
                     pkg-config
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # installing workbench
 RUN apt-get update && \
@@ -22,7 +24,9 @@ RUN apt-get update && \
                         connectome-workbench
                    
 # Install Python 3.8
-RUN add-apt-repository -y ppa:deadsnakes/ppa && apt-get update && apt-get install -y  python3.8 python3.8-dev python3.8-distutils wget 
+RUN add-apt-repository -y ppa:deadsnakes/ppa && apt-get update && apt-get install -y --no-install-recommends python3.8 python3.8-dev python3.8-distutils wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py && python3.8 get-pip.py
 
