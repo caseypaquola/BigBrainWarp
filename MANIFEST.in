@@ -1,4 +1,0 @@
-recursive-include enigmatoolbox/datasets *
-recursive-include enigmatoolbox/permutation_testing *
-recursive-include enigmatoolbox/plotting *
-include README.rst LICENSE
