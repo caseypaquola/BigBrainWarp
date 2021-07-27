@@ -5,6 +5,16 @@
 Updates
 ==================
 
+July 27, 2021
+------------------------------------------
+
+New option to define output resolution for volumes
+
+::
+
+    ↪ added optional "out_res" input parameter to bigbrainwarp		|  @caseypaquola
+
+
 July 21, 2021
 ------------------------------------------
 

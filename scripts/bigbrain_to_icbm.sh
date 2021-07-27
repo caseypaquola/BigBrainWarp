@@ -5,8 +5,9 @@
 in_vol=$1 		# full path to input file
 bb_space=$2 	# which bigbrain space is input: "histological" or "sym"
 interp=$3		# interpolation method: trilinear, tricubic, nearest or sinc
-desc=$4 		# descriptor
-wd=$5 			# working directory
+out_res=$5		# output resolution in mm
+desc=$6 		# descriptor
+wd=$7 			# working directory
 
 # the output takes the form:
 # "$wd"/tpl-icbm_desc-"$desc".nii
@@ -29,18 +30,50 @@ else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
 
+# rename interp method to align with minc
+if [[ "$interp" == "nearest" ]] ; then
+	interp=nearest_neighbour
+fi
+
+# define reference volume and resample if necessary
+ref_volume="$bbwDir"/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
+if [[ "$out_res" == "1" ]] ; then
+    # Get input spacing and dimension
+    vx_input=$(mincinfo "$ref_volume" -attvalue xspace:step)
+    vy_input=$(mincinfo "$ref_volume" -attvalue yspace:step)
+    vz_input=$(mincinfo "$ref_volume" -attvalue zspace:step)
+​
+    dx_input=$(mincinfo "$ref_volume" -dimlength xspace)
+    dy_input=$(mincinfo "$ref_volume" -dimlength yspace)
+    dz_input=$(mincinfo "$ref_volume"-dimlength zspace)
+​
+    # Compute output dimension
+    dx_output=$(echo "$dx_input * $vx_input / ${out_res}" | bc); dx_output=${dx_output#-}
+    dy_output=$(echo "$dy_input * $vy_input / ${out_res}" | bc); dy_output=${dx_output#-}
+    dz_output=$(echo "$dz_input * $vz_input / ${out_res}" | bc); dz_output=${dx_output#-}
+
+    # resample reference image to 
+    echo "resampling reference image to provided output resolution"
+    mincresample -clobber -"$interp" \
+        "$ref_volume" "$wd"/ref_resampled.mnc \
+        -step "$vx_output" "$vy_output" "$vz_output" \
+        -nelements "$dx_output" "$dy_output" "$dz_output"
+
+    ref_volume="$wd"/ref_resampled.mnc
+fi
+
 # transformation
 echo "transform to icbm"
-icbm_template="$bbwDir"/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
+icbm_template=
 if [[ "$bb_space" = histological ]] ; then
 	mincresample -clobber -transformation "$bbwDir"/xfms/BigBrainHist-to-ICBM2009sym-nonlin.xfm \
-		-like "$icbm_template" \
+		-like "$ref_volume" \
 		-"$interp" \
 		"$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc \
 		"$wd"/tpl-icbm_desc-"$desc".mnc
 else
 	mincresample -clobber -transformation "$bbwDir"/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
-		-like "$icbm_template" \
+		-like "$ref_volume" \
 		-"$interp" \
 		"$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc \
 		"$wd"/tpl-icbm_desc-"$desc".mnc

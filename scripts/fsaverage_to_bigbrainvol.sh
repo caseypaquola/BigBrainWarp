@@ -9,15 +9,14 @@ in_lh=$1 		# full path to left hemisphere input file
 in_rh=$2 		# full path to right hemisphere input file
 interp=$3		# interpolation method. Can be used if .txt input, otherwise is set as default
 bb_space=$4		# input surface can be "fsaverage" or "fs_LR"
-desc=$5 		# name of descriptor
-wd=$6			# working directory
+out_res=$5		# output resolution in mm
+desc=$6 		# name of descriptor
+wd=$7			# working directory
 
 # the output takes the form:
-# "$wd"/tpl-bigbrain_hemi-L_desc-"$desc"."$gii_type".gii  
-# "$wd"/tpl-bigbrain_hemi-R_desc-"$desc"."$gii_type".gii
+# "$wd"/tpl-bigbrain_hemi-L_res-"$out_res"_desc-"$desc".nii
+# "$wd"/tpl-bigbrain_hemi-R_res-"$out_res"_desc-"$desc".nii
 #
-# default $gii_type is shape, however, .annot and .label.gii files will be label type
-
 # check for input data type
 extension="${in_lh#*.}"
 
@@ -36,23 +35,30 @@ for hemi in L R ; do
 	if [[ "$extension" == *"gii"* ]] ; then
 		if [[ "$extension" == *"label"* ]] ; then
 			gii_type=label
+            interp_res=nearest_neighbour
 		else 
 			gii_type=shape
+            interp_res=trilinear
 		fi
 		cp "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
+        interp_res=nearest_neighbour
 		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
+        interp_res=trilinear
 		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[ -z $interp ]] ; then
 			gii_type=shape
+            interp_res=trilinear
 		elif [[  "$interp" == "linear" ]] ; then
 			gii_type=shape
+            interp_res=trilinear
 		elif [[  "$interp" == "nearest" ]] ; then			
 			gii_type=label
+            interp_res=nearest_neighbour
 		fi
 		python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	else
@@ -84,6 +90,38 @@ for hemi in L R ; do
         white="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white_sym.surf.gii
         ref_volume="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii
     fi
+
+    # resample reference volume, if necessary
+    if [[ "$out_res" == "1" ]] ; then
+        nii2mnc "$ref_volume" "$wd"/tmp_ref.mnc
+
+        # Get input spacing and dimension
+        vx_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue xspace:step)
+        vy_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue yspace:step)
+        vz_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue zspace:step)
+​
+        dx_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength xspace)
+        dy_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength yspace)
+        dz_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength zspace)
+​
+        # Compute output dimension
+        dx_output=$(echo "$dx_input * $vx_input / ${out_res}" | bc); dx_output=${dx_output#-}
+        dy_output=$(echo "$dy_input * $vy_input / ${out_res}" | bc); dy_output=${dx_output#-}
+        dz_output=$(echo "$dz_input * $vz_input / ${out_res}" | bc); dz_output=${dx_output#-}
+
+        # resample reference image to 
+        echo "resampling reference image to provided output resolution"
+        mincresample -clobber -"$interp_res" \
+            "$wd"/tmp_ref.mnc "$wd"/tmp_ref_resampled.mnc \
+            -step "$vx_output" "$vy_output" "$vz_output" \
+            -nelements "$dx_output" "$dy_output" "$dz_output"
+
+        mnc2nii "$wd"/tmp_ref_resampled.mnc "$wd"/ref_resampled.nii
+        rm -rf "$wd"/tmp_ref.mnc
+        rm -rf "$wd"/tmp_ref_resampled.mnc
+        ref_volume="$wd"/ref_resampled.nii
+    fi
+
 
 	# multimodal surface matching
 	msmMesh="$bbwDir"/xfms/tpl-bigbrain_hemi-"$hemi"_desc-sphere_rsled_like_"$in_space".reg.surf.gii

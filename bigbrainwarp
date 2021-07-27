@@ -26,6 +26,7 @@ echo -e "
 \t\033[38;5;197m--interp\033[0m           : interpolation method. For --in_vol, it can be trilinear (default), tricubic, nearest or sinc. For --in_lh/--in_rh, can be linear or nearest. Only works for .txt, however. Other types are forced to defaults (label.gii and .annot to nearest, shape.gii and .curv to linear)
 \t\033[38;5;197m--out_type\033[0m         : (optional) specify output in surface or volume space. Otherwise, defaults to the same type as the input.
 \t\033[38;5;197m--out_den\033[0m          : (optional) density of output mesh. Only applicable for -in_lh/-in_rh and if out_space is fs_LR. Can be 164 or 32. Default is 32. 
+\t\033[38;5;197m--out_res\033[0m          : (optional) resolution of output volume. Only applicable for -in_vol. Provide in mm. Default is 1. 
 \t\033[38;5;197m--h|-help\033[0m          : Print help
 
 Casey Paquola, MNI, MICA Lab, 2021
@@ -77,6 +78,10 @@ do
   ;;   
   --out_type)
     out_type=$2
+    shift;shift
+  ;;
+  --out_den)
+    out_den=$2
     shift;shift
   ;;
   --out_den)
@@ -150,39 +155,53 @@ if [[ -z "$out_den" ]] ; then
   fi
 fi
 
+# set deafult resolution parameter for volume outputs
+if [[ "$out_type" == "volume" ]] ; then
+if [[ -z "$out_res" ]] ; then
+  out_res=1
+fi
+
 # use combination of three parameters to determine the form of the transformation
 if [[ "$in_type" == "volume" ]] && [[ "bigbrain" == .*"$in_space".* ]] && [[ "$out_type" == "volume" ]] ; then
   # bigbrain volume to icbm volume
-  bash $bbwDir/scripts/bigbrain_to_icbm.sh $in_vol $bb_space $interp $desc $wd 
+  bash $bbwDir/scripts/bigbrain_to_icbm.sh $in_vol $bb_space $interp $out_res $desc $wd 
   echo "employed nonlinear transformation from bigbrain to icbm"
+
 elif [[ "$in_type" == "volume" ]] && [[ "bigbrain" == .*"$in_space".* ]] && [[ "$out_type" == "surface" ]] ; then
   # bigbrain volume to fsaverage
   bash $bbwDir/scripts/bigbrainvol_to_fsaverage.sh $in_vol $bb_space $interp $out_space $out_den $desc $wd
   echo  "sampled data from midsurface and used multimodal surface matching to transform from bigbrain surface to ${out_space}"
+
 elif [[ "$in_type" == "volume" ]] && [[ "icbm" == "$in_space" ]] && [[ "$out_type" == "volume" ]] ; then
   # icbm volume to bigbrain volume
-  bash $bbwDir/scripts/icbm_to_bigbrain.sh $in_vol $bb_space $interp $desc $wd 
+  bash $bbwDir/scripts/icbm_to_bigbrain.sh $in_vol $bb_space $interp $out_res $desc $wd 
   echo "employed nonlinear transformation from icbm to bigbrain"
+
 elif [[ "$in_type" == "volume" ]] && [[ "icbm" == "$in_space" ]] && [[ "$out_type" == "surface" ]] ; then
   # icbm volume to bigbrain surface
   bash $bbwDir/scripts/icbm_to_bigbrainsurf.sh $in_vol $interp $desc $wd 
   echo "sampled data from midsurface and used multimodal surface matching to transform from icbm to bigbrain surface"
+
 elif [[ "$in_type" == "surface" ]] && [[ "bigbrain" == .*"$in_space".* ]] && [[ "$out_type" == "volume" ]] ; then
   # bigbrain surface to icbm volume
-  bash $bbwDir/scripts/bigbrainsurf_to_icbm.sh $in_lh $in_rh $desc $wd 
+  bash $bbwDir/scripts/bigbrainsurf_to_icbm.sh $in_lh $in_rh $interp $out_res $desc $wd 
   echo "running multimodal surface matching transformation from bigbrain surface to icbm"
+
 elif [[ "$in_type" == "surface" ]] && [[ "bigbrain" == .*"$in_space".* ]] && [[ "$out_type" == "surface" ]] ; then
   # bigbrain surface to fsaverage
   bash $bbwDir/scripts/bigbrain_to_fsaverage.sh $in_lh $in_rh $interp $out_space $out_den $desc $wd
   echo "employed multimodal surface matching transformation from bigbrain surface to $out_space"
+
 elif [[ "$in_type" == "surface" ]] && [[ "fs" == .*"$in_space".* ]] && [[ "$out_type" == "volume" ]] ; then
   # fsaverage to bigbrain volume
-  bash $bbwDir/scripts/fsaverage_to_bigbrainvol.sh $in_lh $in_rh $interp $bb_space $desc $wd 
+  bash $bbwDir/scripts/fsaverage_to_bigbrainvol.sh $in_lh $in_rh $interp $bb_space $out_res $desc $wd 
   echo "employed multimodal surface matching transformation from fsaverage to bigbrain surface then filled the cortical ribbon"
+
 elif [[ "$in_type" == "surface" ]] && [[ "fs" == .*"$in_space".* ]] && [[ "$out_type" == "surface" ]] ; then
   # fsaverage to bigbrain surface
   bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $interp $desc $wd
   echo "employed multimodal surface matching transformation from fsaverage to bigbrain surface"
+
 else
   echo "error: cannot match combination of ${in_space} ${in_type} to ${out_type} to a transformation strategy"
 fi
