@@ -74,6 +74,9 @@ if [[ "$out_res" == "1" ]] ; then
 
     ref_volume="$wd"/ref_resampled.mnc
     rm -rf "$wd"/tmp_ref.mnc
+else
+	nii2mnc "$ref_volume" "$wd"/tmp_ref.mnc
+	ref_volume="$wd"/tmp_ref.mnc
 fi
 
 # transformation
