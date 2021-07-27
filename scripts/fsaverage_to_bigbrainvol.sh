@@ -99,11 +99,10 @@ for hemi in L R ; do
         vx_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue xspace:step)
         vy_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue yspace:step)
         vz_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue zspace:step)
-​
+		
         dx_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength xspace)
         dy_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength yspace)
         dz_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength zspace)
-​
         # Compute output dimension
         dx_output=$(echo "$dx_input * $vx_input / ${out_res}" | bc); dx_output=${dx_output#-}
         dy_output=$(echo "$dy_input * $vy_input / ${out_res}" | bc); dy_output=${dx_output#-}
