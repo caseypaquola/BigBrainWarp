@@ -52,6 +52,8 @@ if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii ]] ;
 	mv full_cls_1000um_2009b_sym.nii tpl-bigbrain_desc-cls_1000um_sym.nii
 fi
 
+cd $bbwDir
+
 # make git ignore
 if [[ ! -f $bbwDir/.gitignore ]] ; then
 	cp $bbwDir/template_gitignore.txt $bbwDir/.gitignore
@@ -60,3 +62,5 @@ fi
 # add to paths
 export PATH=$bbwDir:$bbwDir/scripts/:$mnc2Path/:$wbPath:$PATH
 export MATLABPATH=$bbwDir/scripts/:$MATLABPATH
+
+
