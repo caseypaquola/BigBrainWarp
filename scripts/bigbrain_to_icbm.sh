@@ -21,7 +21,7 @@ if [[ "$extension" == "mnc" ]] ; then
 	cp "$in_vol" "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
 elif [[ "$extension" == "gz" ]] ; then
 	file_name=""$file_name%.*""
-	gunzip $in_vol "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".nii
+	gunzip "$in_vol" "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".nii
 	nii2mnc "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".nii "$wd"/tpl-bigbrain_desc-"$desc"_"$bb_space".mnc
 elif [[ "$extension" == "nii" ]] ; then
 	echo "transforming nii to mnc"
