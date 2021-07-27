@@ -40,19 +40,19 @@ for hemi in L R ; do
 		cp "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
+		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii  "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
+		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.label."$gii_type".gii
 	elif [[ "$extension" == "txt" ]] ; then
-		if [[ -z "$interp" ]] ; then
-			gii_type=shape
-		elif [[  "$interp" == "linear" ]] ; then
-			gii_type=shape
-		elif [[  "$interp" == "nearest" ]] ; then			
+		if [[  "$interp" == "nearest" ]] ; then
 			gii_type=label
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
+		else
+			gii_type=shape
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.label."$gii_type".gii
 		fi
-		python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
+		
 	fi
 
 	# multimodal surface matching
