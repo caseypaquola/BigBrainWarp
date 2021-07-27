@@ -1,64 +1,55 @@
 #!/bin/bash
-
-# set path of github repo
-bbwDir=/home/casey/Desktop/BigBrainWarp/ # the github repo
-workingDir=/home/casey/Desktop/8_BigBrainWarp/tests/ # somewhere on your local computer
-
-# pull newest version
-cd $bbwDir
+cd BigBrainWarp
 git pull
-cd $bbwDir/scripts
+source scripts/init.sh
 
-# initialisation
-nano $bbwDir/scripts/init.sh  # change the first three lines for your local environment
-source $bbwDir/scripts/init.sh
+# tests
+wd=/data_/mica1/03_projects/casey/sandbox1/8_BigBrainWarp/tests/
 
-# surface-based transformation - bigbrain to fsaverage
-bigbrainwarp --in_space bigbrain --out_space fsaverage --wd $workingDir \
-    --in_lh $bbwDir/spaces/bigbrain/Hist_G2_lh.txt --in_rh $bbwDir/spaces/bigbrain/Hist_G2_rh.txt \
-    --out_name Hist_G2
+# FORM 1 - bigbrain volume to icbm volume
+bigbrainwarp --in_space bigbrain --in_vol "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii \
+    --interp nearest --out_space icbm --out_res 0.5 \
+    --desc cls --wd "$wd"
 
-# create fressurfer-compatible files
-export PYTHONPATH=$PYTHONPATH:$bbwDir/dependencies:$bbwDir/scripts
-python obj2fs.py $bbwDir/spaces/bigbrain/gray_left_327680.obj $bbwDir/spaces/bigbrain/lh.pial
-python obj2fs.py $bbwDir/spaces/bigbrain/gray_right_327680.obj $bbwDir/spaces/bigbrain/rh.pial
-python obj2fs.py $bbwDir/spaces/bigbrainsym/gray_left_327680_2009b_sym.obj $bbwDir/spaces/bigbrainsym/lh.pial
-python obj2fs.py $bbwDir/spaces/bigbrainsym/gray_right_327680_2009b_sym.obj $bbwDir/spaces/bigbrainsym/rh.pial
-for hemi in lh rh ; do
-    python txt2curv.py $bbwDir/spaces/bigbrain/Hist_G2_${hemi}.txt $bbwDir/spaces/bigbrain/Hist_G2_${hemi}.curv
-    python txt2curv.py $workingDir/Hist_G2_${hemi}_fsaverage.txt $workingDir/Hist_G2_${hemi}_fsaverage.curv
-done
-# inspect in freeview
-freeview -f ../spaces/bigbrain/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist_G2_rh.curv \
-        -f ../spaces/bigbrainsym/rh.pial:overlay=$bbwDir/spaces/bigbrain/Hist_G2_rh.curv \
-        -f $SUBJECTS_DIR/fsaverage/surf/rh.pial:overlay=$workingDir/Hist_G2_rh_fsaverage.curv
+# FORM 2 - bigbrain volume to fsaverage
+bigbrainwarp --in_space bigbrainsym --in_vol "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii \
+    --interp linear --out_type surface --out_space fsaverage \
+    --desc cls --wd "$wd"
 
-# volumetric transformation - motor activation
-fsleyes $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz $bbwDir/tests/motor_association-test_z_FDR_0.01.nii -dr 2 20 -cm hot -in spline
-bigbrainwarp --in_space icbm --out_space bigbrain --wd $workingDir --in $bbwDir/tests/motor_association-test_z_FDR_0.01.nii --interp trilinear
+# FORM 3 - icbm volume to bigbrain volume
+bigbrainwarp --in_space icbm --in_vol "$bbwDir"/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc \
+    --interp nearest --out_space bigbrainsym --out_res 2 \
+    --desc cls --wd "$wd"
 
-# visualisation
-mnc2nii $bbwDir/spaces/bigbrain/full8_400um_optbal.mnc $bbwDir/spaces/bigbrain/full8_400um_optbal.nii
-fsleyes $bbwDir/spaces/bigbrain/full8_400um_optbal.nii $workingDir/motor_association-test_z_FDR_0.01_bigbrain.nii -dr 2 20 -cm hot -in spline
+# FORM 4 - icbm volume to bigbrain surface
+bigbrainwarp --in_space icbm --in_vol "$bbwDir"/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc \
+    --interp nearest --out_space bigbrainsym --out_type surface \
+    --desc cls --wd "$wd"
 
-## project activation to bigbrain midsurface
-nii2mnc $workingDir/motor_association-test_z_FDR_0.01_bigbrain.nii $workingDir/motor_association-test_z_FDR_0.01_bigbrain.mnc
-for hemi in left right ; do
-    average_surfaces $workingDir/bigbrain_midsurface_${hemi}.obj none none 1 $bbwDir/spaces/bigbrain/gray_${hemi}_327680.obj $bbwDir/spaces/bigbrain/white_${hemi}_327680.obj 
-    python obj2fs.py $workingDir/bigbrain_midsurface_${hemi}.obj $workingDir/bigbrain_${hemi}.mid
-    volume_object_evaluate $workingDir/motor_association-test_z_FDR_0.01_bigbrain.mnc $workingDir/bigbrain_midsurface_${hemi}.obj $workingDir/motor_association-test_z_FDR_0.01_bigbrain_${hemi}.txt
-    python txt2curv.py $workingDir/motor_association-test_z_FDR_0.01_bigbrain_${hemi}.txt $workingDir/motor_association-test_z_FDR_0.01_bigbrain_${hemi}.curv
-done 
-freeview -f $workingDir/bigbrain_${hemi}.mid:overlay=$workingDir/motor_association-test_z_FDR_0.01_bigbrain_right.curv
+# FORM 5 - bigbrain surface to icbm volume
+bigbrainwarp --in_space bigbrain \
+    --in_lh "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-Hist_G1.txt \
+    --in_rh "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-Hist_G1.txt \
+    --interp linear --out_space icbm --out_type volume --out_res 0.75 \
+    --desc Hist_G1 --wd "$wd"
 
-# surface transfomration - Yeo atlas
-bigbrainwarp --in_space fsaverage --out_space bigbrain --wd $workingDir \
-    --in_lh $workingDir/fsaverage/lh.Yeo2011_7Networks_N1000.annot --in_rh $workingDir/fsaverage/rh.Yeo2011_7Networks_N1000.annot \
-    --out_name Yeo2011_7Networks_N1000
-# create fressurfer-compatible files
-export PYTHONPATH=$PYTHONPATH:$bbwDir/dependencies:$bbwDir/scripts
-for hemi in lh rh ; do
-    python txt2curv.py $workingDir/Yeo2011_17Networks_N1000_${hemi}_bigbrain.txt $workingDir/Yeo2011_17Networks_N1000_${hemi}_bigbrain.curv
-done
-# inspect in freeview
-freeview -f ../spaces/bigbrain/rh.pial:overlay=$workingDir/Yeo2011_17Networks_N1000_rh_bigbrain.curv
+# FORM 6 - bigbrain surface to fsaverage
+bigbrainwarp --in_space bigbrain \
+    --in_lh "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-Hist_G1.txt \
+    --in_rh "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-Hist_G1.txt \
+    --interp linear --out_space fs_LR --out_den 32 \
+    --desc Hist_G1 --wd "$wd"
+
+# FORM 7 - fsaverage to bigbrain volume
+bigbrainwarp --in_space fsaverage \
+    --in_lh "$bbwDir"/spaces/tpl-fsaverage/tpl-fsaverage_hemi-L_den-164k_desc-Func_G1.curv \
+    --in_rh "$bbwDir"/spaces/tpl-fsaverage/tpl-fsaverage_hemi-R_den-164k_desc-Func_G1.curv \
+    --interp linear --out_space bigbrain --out_type volume \
+    --desc Func_G1 --wd "$wd"
+
+# FORM 8 - fsaverage to bigbrain surface
+bigbrainwarp --in_space fsaverage \
+    --in_lh "$bbwDir"/spaces/tpl-fsaverage/tpl-fsaverage_hemi-L_den-164k_desc-Func_G1.curv \
+    --in_rh "$bbwDir"/spaces/tpl-fsaverage/tpl-fsaverage_hemi-R_den-164k_desc-Func_G1.curv \
+    --interp nearest --out_space bigbrainsym \
+    --desc Func_G1 --wd "$wd"
