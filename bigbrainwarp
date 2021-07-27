@@ -138,7 +138,7 @@ if [[ -z "$interp" ]] ; then
 fi
 
 # set specific space parameter for bigbrain
-if [[ *bigbrain* == "$in_space" ]] || [[ *bigbrain* == "$out_space" ]] ; then
+if [[ "$in_space" == *bigbrain* ]] || [[ "$out_space" == *bigbrain* ]] ; then
   if [[ "bigbrainsym" == "$in_space" ]] || [[ "bigbrainsym" == "$out_space" ]] ; then
     bb_space=sym
   else
