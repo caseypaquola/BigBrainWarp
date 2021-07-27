@@ -54,7 +54,7 @@ for hemi in L R ; do
 			gii_type=shape
 			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 		fi
-	else
+	fi
 
 	# internal upsampling, if necessary
 	if [[ "$in_den" == "32" ]] ; then
