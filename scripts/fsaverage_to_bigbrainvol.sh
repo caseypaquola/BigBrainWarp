@@ -36,22 +36,28 @@ for hemi in L R ; do
 	if [[ "$extension" == *"gii"* ]] ; then
 		if [[ "$extension" == *"label"* ]] ; then
 			gii_type=label
+			interp_res=nearest_neighbour
 		else 
 			gii_type=shape
+			interp_res=trilinear
 		fi
 		cp "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
+		interp_res=nearest_neighbour
 		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
+		interp_res=trilinear
 		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[  "$interp" == "nearest" ]] ; then
 			gii_type=label
+			interp_res=nearest_neighbour
 			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 		else
 			gii_type=shape
+			interp_res=trilinear
 			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 		fi
 	else
@@ -105,10 +111,6 @@ for hemi in L R ; do
 
         # resample reference image to 
         echo "resampling reference image to provided output resolution"
-        echo "mincresample -clobber -$interp_res \
-            -step $out_res $out_res $out_res \
-            -nelements $dx_output $dy_output $dz_output \
-			$wd/tmp_ref.mnc $wd/tmp_ref_resampled.mnc"
 		mincresample -clobber -"$interp_res" \
             -step "$out_res" "$out_res" "$out_res" \
             -nelements "$dx_output" "$dy_output" "$dz_output" \

@@ -51,15 +51,12 @@ for hemi in L R ; do
 			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white.surf.gii \
 			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "txt" ]] ; then
-		if [[ -z $interp ]] ; then
-			gii_type=shape
-			interp_res=trilinear
-		elif [[  "$interp" == "linear" ]] ; then
-			gii_type=shape
-			interp_res=trilinear
-		elif [[  "$interp" == "nearest" ]] ; then			
+		if [[  "$interp" == "nearest" ]] ; then			
 			gii_type=label
 			interp_res=nearest_neighbour
+		else
+			gii_type=shape
+			interp_res=trilinear
 		fi
 		python "$bbwDir"/scripts/txt2curv.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".curv
 		mris_convert -c "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".curv \
