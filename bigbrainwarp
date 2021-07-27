@@ -143,6 +143,7 @@ if [[ "bigbrain" == .*"$in_space".* ]] || [[ "bigbrain" == .*"$out_space".* ]]; 
     bb_space=sym
   else
     bb_space=histological
+  fi
 fi
 
 # set density parameter for fsaverage outputs
