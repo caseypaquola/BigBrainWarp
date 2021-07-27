@@ -46,6 +46,7 @@ for hemi in L R ; do
 			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
+		interp_res=trilinear
 		mris_convert -c "$inData" \
 			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white.surf.gii \
 			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
