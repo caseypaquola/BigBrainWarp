@@ -84,8 +84,8 @@ do
     out_den=$2
     shift;shift
   ;;
-  --out_den)
-    out_den=$2
+  --out_res)
+    out_res=$2
     shift;shift
   ;;
   -*)
