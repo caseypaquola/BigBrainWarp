@@ -98,7 +98,7 @@ done
 
 # argument check out & warning
 arg=($in_space $out_space $wd $desc)
-if [ ${#arg[@]} -lt 3 ]; then
+if [ ${#arg[@]} -lt 4 ]; then
   echo "One or more mandatory arguments are missing:
                -in_space : $in_space
                -out_space : $out_space
@@ -163,6 +163,20 @@ if [[ "$out_type" == "volume" ]] ; then
     out_res=1
   fi
 fi
+
+# print out parameters for the user
+echo "Input parameters:
+              -in_space : $in_space
+              -out_space : $out_space
+              -wd : $wd
+              -desc : $desc
+              -in_vol : $in_vol
+              -in_lh : $in_lh
+              -in_rh : $in_rh
+              -interp : $interp
+              -out_type : $out_type
+              -out_den : $out_den
+              -out_res : $out_res"
 
 # use combination of three parameters to determine the form of the transformation
 if [[ "$in_type" == "volume" ]] && [[ "bigbrain" == *"$in_space"* ]] && [[ "$out_type" == "volume" ]] ; then
