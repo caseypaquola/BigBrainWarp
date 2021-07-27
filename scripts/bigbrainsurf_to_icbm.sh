@@ -103,7 +103,7 @@ for hemi in L R ; do
         rm -rf "$wd"/tmp_ref_resampled.mnc
         ref_volume="$wd"/ref_resampled.nii
 	else
-		mnc2nii $ref_volume "$wd"/ref.nii
+		mnc2nii "$ref_volume" "$wd"/ref.nii
 		ref_volume="$wd"/ref.nii
     fi
 
