@@ -7,9 +7,10 @@
 
 in_lh=$1 		# full path to left hemisphere input file
 in_rh=$2 		# full path to right hemisphere input file
-interp=$3		# interpolation method. Can be used if .txt input, otherwise is set as default
-desc=$4 		# name of descriptor
-wd=$5			# working directory
+in_space=$3		# specific template that is input, can be fsaverage or fs_LR
+interp=$4		# interpolation method. Can be used if .txt input, otherwise is set as default
+desc=$5 		# name of descriptor
+wd=$6			# working directory
 
 # the output takes the form:
 # "$wd"/tpl-bigbrain_hemi-L_desc-"$desc"."$gii_type".gii  
@@ -42,17 +43,17 @@ for hemi in L R ; do
 		cp "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
+		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
+		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[  "$interp" == "nearest" ]] ; then
 			gii_type=label
-			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 		else
 			gii_type=shape
-			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 		fi
 	else
 		echo "file type of ${inData} not recognised"
