@@ -49,7 +49,7 @@ if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii ]] ; the
 	cd $bbwDir/spaces/tpl-bigbrain/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Classified_Volumes/Histological_Space/nii/full_cls_1000um.nii.gz
 	gunzip full_cls_1000um.nii.gz
-	mv full_cls_1000um_2009b_sym.nii tpl-bigbrain_desc-cls_1000um.nii
+	mv full_cls_1000um.nii tpl-bigbrain_desc-cls_1000um.nii
 fi
 
 cd $bbwDir
