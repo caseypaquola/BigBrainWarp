@@ -39,18 +39,20 @@ if [[ ! -f $bbwDir/xfms/BigBrainHist-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then
 fi
 
 # download bigbrain templates
-if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii ]] ; then
+if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii ]] ; then
 	cd $bbwDir/spaces/tpl-bigbrain/
 	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Classified_Volumes/MNI-ICBM152_Space/nii/full_cls_1000um_2009b_sym.nii.gz
 	gunzip full_cls_1000um_2009b_sym.nii.gz
-	mv full_cls_1000um_2009b_sym.nii tpl-bigbrain_desc-cls_1000um.nii
-fi
-if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii ]] ; then
-	cd $bbwDir/spaces/bigbrain/
-	wget ftp://bigbrain.loris.ca/3D_Classified_Volumes/Histological_Space/nii/full_cls_1000um.nii.gz
-	gunzip full_cls_1000um.nii.gz
 	mv full_cls_1000um_2009b_sym.nii tpl-bigbrain_desc-cls_1000um_sym.nii
 fi
+if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii ]] ; then
+	cd $bbwDir/spaces/tpl-bigbrain/
+	wget ftp://bigbrain.loris.ca/BigBrainRelease.2015/3D_Classified_Volumes/Histological_Space/nii/full_cls_1000um.nii.gz
+	gunzip full_cls_1000um.nii.gz
+	mv full_cls_1000um.nii tpl-bigbrain_desc-cls_1000um.nii
+fi
+
+cd $bbwDir
 
 # make git ignore
 if [[ ! -f $bbwDir/.gitignore ]] ; then
@@ -60,3 +62,5 @@ fi
 # add to paths
 export PATH=$bbwDir:$bbwDir/scripts/:$mnc2Path/:$wbPath:$PATH
 export MATLABPATH=$bbwDir/scripts/:$MATLABPATH
+
+
