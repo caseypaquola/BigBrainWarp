@@ -1,6 +1,6 @@
 .. image:: https://api.codacy.com/project/badge/Grade/a793c78a53eb4435a4bb86d725c8f817
-   :alt: Codacy Badge
    :target: https://app.codacy.com/project/badge/Grade/03e7162846474e4fb3717f5c7e2a8e35)](https://www.codacy.com/gh/caseypaquola/BigBrainWarp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caseypaquola/BigBrainWarp&amp;utm_campaign=Badge_Grade
+   :alt: Codacy Badge
 
 .. image:: https://img.shields.io/badge/license-GPL3.0-brightgreen
    :target: https://www.gnu.org/licenses/gpl-3.0
@@ -9,9 +9,14 @@
     :target: https://bigbrainwarp.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status   
 
-.. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-brightgreen
+.. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-blue.svg
     :target: https://doi.org/10.1101/2021.05.04.442563
+    :alt: DOI of preprint
     
+.. image:: https://img.shields.io/badge/docker-caseypaquola/BigBrainWarp-brightgreen.svg?logo=docker&style=flat
+  :target: https://hub.docker.com/r/caseypaquola/Bigbrainwarp/tags/
+  :alt: Docker image available
+
 
     <hr>
 
