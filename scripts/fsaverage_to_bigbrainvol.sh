@@ -133,12 +133,16 @@ for hemi in L R ; do
 		"$msmMesh" "$inMesh" BARYCENTRIC \
 		"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
         wb_command -metric-to-volume-mapping "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			 "$white" "$ref_volume" -ribbon-constrained "$pial" "$white"
+			 "$white" "$ref_volume" \
+			 "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii \
+			 -ribbon-constrained "$pial" "$white"
 	elif [[ "$gii_type" == "label" ]] ; then
 		wb_command -label-resample "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-164k_desc-"$desc"."$gii_type".gii \
 		"$msmMesh" "$inMesh" BARYCENTRIC \
 		"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
         wb_command -label-to-volume-mapping "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			"$white" "$ref_volume" -ribbon-constrained "$pial" "$white"
+			"$white" "$ref_volume" \
+			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii \
+			-ribbon-constrained "$pial" "$white"
 	fi
 done
