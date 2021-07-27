@@ -16,4 +16,4 @@ outGifti = refGifti
 outGifti.darrays[0].data = np.float32(values)
 
 # write out
-nibabel.gifti.giftiio.write(values, outName)
+nibabel.gifti.giftiio.write(outGifti, outName)
