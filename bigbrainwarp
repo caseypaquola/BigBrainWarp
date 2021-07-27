@@ -138,8 +138,8 @@ if [[ -z "$interp" ]] ; then
 fi
 
 # set specific space parameter for bigbrain
-if [[ "bigbrain" == .*"$in_space".* ]] || [[ "bigbrain" == .*"$out_space".* ]]; then
-  if [[ "bigbrainsym" == "$in_space" ]] || [[ "bigbrainsym" == .*"$out_space".* ]] ; then
+if [[ "bigbrain" == *"$in_space"* ]] || [[ "bigbrain" == *"$out_space"* ]]; then
+  if [[ "bigbrainsym" == "$in_space" ]] || [[ "bigbrainsym" == "$out_space" ]] ; then
     bb_space=sym
   else
     bb_space=histological
@@ -164,19 +164,20 @@ if [[ "$out_type" == "volume" ]] ; then
   fi
 fi
 
-# print out parameters for the user
+# print out parameters for the user (handy for debugging)
 echo "Input parameters:
-              -in_space : $in_space
-              -out_space : $out_space
-              -wd : $wd
-              -desc : $desc
-              -in_vol : $in_vol
-              -in_lh : $in_lh
-              -in_rh : $in_rh
-              -interp : $interp
-              -out_type : $out_type
-              -out_den : $out_den
-              -out_res : $out_res"
+              --in_space : $in_space
+              --out_space : $out_space
+              --bb_space : $bb_space
+              --wd : $wd
+              --desc : $desc
+              --in_vol : $in_vol
+              --in_lh : $in_lh
+              --in_rh : $in_rh
+              --interp : $interp
+              --out_type : $out_type
+              --out_den : $out_den
+              --out_res : $out_res"
 
 # use combination of three parameters to determine the form of the transformation
 if [[ "$in_type" == "volume" ]] && [[ "bigbrain" == *"$in_space"* ]] && [[ "$out_type" == "volume" ]] ; then
