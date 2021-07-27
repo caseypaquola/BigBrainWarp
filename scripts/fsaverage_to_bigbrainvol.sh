@@ -31,39 +31,30 @@ for hemi in L R ; do
 		inData="$in_rh"
 	fi
 
-	# define gii_type and convert to gifti if necessary
+	# define gii_type and convert to gifti if necessary.
+	# third argument to python conversions is a template and is relatively arbitrary. Only the giiType is conserved. 
 	if [[ "$extension" == *"gii"* ]] ; then
 		if [[ "$extension" == *"label"* ]] ; then
 			gii_type=label
-            interp_res=nearest_neighbour
 		else 
 			gii_type=shape
-            interp_res=trilinear
 		fi
 		cp "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-        interp_res=nearest_neighbour
-		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
+		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-        interp_res=trilinear
-		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
+		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 	elif [[ "$extension" == "txt" ]] ; then
-		if [[ -z $interp ]] ; then
-			gii_type=shape
-            interp_res=trilinear
-		elif [[  "$interp" == "linear" ]] ; then
-			gii_type=shape
-            interp_res=trilinear
-		elif [[  "$interp" == "nearest" ]] ; then			
+		if [[  "$interp" == "nearest" ]] ; then
 			gii_type=label
-            interp_res=nearest_neighbour
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
+		else
+			gii_type=shape
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 		fi
-		python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	else
-		echo "file type of ${inData} not recognised"
-	fi
 
 	# internal upsampling, if necessary
 	if [[ "$in_den" == "32" ]] ; then
@@ -99,7 +90,7 @@ for hemi in L R ; do
         vx_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue xspace:step)
         vy_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue yspace:step)
         vz_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue zspace:step)
-		
+
         dx_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength xspace)
         dy_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength yspace)
         dz_input=$(mincinfo "$wd"/tmp_ref.mnc -dimlength zspace)
