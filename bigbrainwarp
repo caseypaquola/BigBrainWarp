@@ -147,11 +147,12 @@ fi
 
 # set density parameter for fsaverage outputs
 if [[ "$out_type" == "surface" ]] ; then
-if [[ -z "$out_den" ]] ; then
-  if [[ "fsaverage" == "$out_space" ]] ; then
-    out_den=164
-  elif [[ "fs_LR" == "$out_space" ]] ; then
-    out_den=32
+  if [[ -z "$out_den" ]] ; then
+    if [[ "fsaverage" == "$out_space" ]] ; then
+      out_den=164
+    elif [[ "fs_LR" == "$out_space" ]] ; then
+      out_den=32
+    fi
   fi
 fi
 
