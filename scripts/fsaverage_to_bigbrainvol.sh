@@ -46,20 +46,20 @@ for hemi in L R ; do
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
 		interp_res=nearest_neighbour
-		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
+		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
 		interp_res=trilinear
-		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
+		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[  "$interp" == "nearest" ]] ; then
 			gii_type=label
 			interp_res=nearest_neighbour
-			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000.label."$gii_type".gii
 		else
 			gii_type=shape
 			interp_res=trilinear
-			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
+			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 		fi
 	else
 		echo "file type of ${inData} not recognised"
