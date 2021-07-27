@@ -46,11 +46,11 @@ for hemi in L R ; do
     if [[ "$interp" == "nearest" ]] ; then
 	    wb_command -volume-to-surface-mapping "$wd"/tpl-bigbrain_desc-"$desc".nii \
          "$mid_surf" \
-         "$wd"/tpl-bigbrain_desc-"$desc".shape.gii -enclosing
+         "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".shape.gii -enclosing
     else
 	    wb_command -volume-to-surface-mapping "$wd"/tpl-bigbrain_desc-"$desc".nii \
         "$mid_surf" \
-         "$wd"/tpl-bigbrain_desc-"$desc".shape.gii -trilinear
+         "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".shape.gii -trilinear
     fi
 
 	# multimodal surface matching
