@@ -101,6 +101,7 @@ for hemi in L R ; do
         dx_output=$(echo "$dx_input * $vx_input / ${out_res}" | bc); dx_output=${dx_output#-}
         dy_output=$(echo "$dy_input * $vy_input / ${out_res}" | bc); dy_output=${dx_output#-}
         dz_output=$(echo "$dz_input * $vz_input / ${out_res}" | bc); dz_output=${dx_output#-}
+		echo "$dx_output" "$dy_output" "$dz_output"
 
         # resample reference image to 
         echo "resampling reference image to provided output resolution"
