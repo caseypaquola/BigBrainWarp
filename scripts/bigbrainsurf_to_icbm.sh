@@ -58,7 +58,7 @@ for hemi in L R ; do
 			gii_type=shape
 			interp_res=trilinear
 		fi
-		python "$bbwDir"/scripts/txt2curv.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".curv
+		python "$bbwDir"/scripts/txt2curv.py "$inData" "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".curv "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
 		mris_convert -c "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".curv \
 			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white.surf.gii \
 			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
