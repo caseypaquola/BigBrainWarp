@@ -5,9 +5,9 @@
 in_vol=$1 		# full path to input file
 bb_space=$2 	# which bigbrain space is input: "histological" or "sym"
 interp=$3		# interpolation method: trilinear, tricubic, nearest or sinc
-out_res=$5		# output resolution in mm
-desc=$6 		# descriptor
-wd=$7 			# working directory
+out_res=$4		# output resolution in mm
+desc=$5 		# descriptor
+wd=$6 			# working directory
 
 # the output takes the form:
 # "$wd"/tpl-icbm_desc-"$desc".nii
