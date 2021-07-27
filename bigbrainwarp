@@ -155,10 +155,11 @@ if [[ -z "$out_den" ]] ; then
   fi
 fi
 
-# set deafult resolution parameter for volume outputs
+# set default resolution parameter for volume outputs
 if [[ "$out_type" == "volume" ]] ; then
-if [[ -z "$out_res" ]] ; then
-  out_res=1
+  if [[ -z "$out_res" ]] ; then
+    out_res=1
+  fi
 fi
 
 # use combination of three parameters to determine the form of the transformation
