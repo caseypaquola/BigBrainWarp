@@ -9,16 +9,15 @@
     :target: https://bigbrainwarp.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status   
 
-.. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-blue.svg
-    :target: https://doi.org/10.1101/2021.05.04.442563
-    :alt: DOI of preprint
     
 .. image:: https://img.shields.io/badge/docker-caseypaquola/BigBrainWarp-brightgreen.svg?logo=docker&style=flat
   :target: https://hub.docker.com/r/caseypaquola/Bigbrainwarp/tags/
   :alt: Docker image available
 
+.. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-blue.svg
+    :target: https://doi.org/10.1101/2021.05.04.442563
+    :alt: DOI of preprint
 
-    <hr>
 
 .. image:: ./docs/pages/images/title.png?raw=true
     :align: center
@@ -26,7 +25,6 @@
 
 .. raw:: html
 
-    <hr>
 
 
 BigBrain is a singular dataset that offers an ultra-high-resolution (20µm) volumetric reconstruction of a sliced and stained post-mortem human brain (Amunts et al. 2013). **BigBrainWarp** aims to enable integration of BigBrain with neuroimaging and other neurobiological modalities, helping a wide range of neuroscientists to utilise the cytoarchitectural information encoded in BigBrain for multi-scale neuroscientific discovery.
