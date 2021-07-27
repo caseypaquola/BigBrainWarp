@@ -105,9 +105,9 @@ for hemi in L R ; do
         # resample reference image to 
         echo "resampling reference image to provided output resolution"
         mincresample -clobber -"$interp_res" \
-            "$wd"/tmp_ref.mnc "$wd"/tmp_ref_resampled.mnc \
             -step "$out_res" "$out_res" "$out_res" \
-            -nelements "$dx_output" "$dy_output" "$dz_output"
+            -nelements "$dx_output" "$dy_output" "$dz_output" \
+			"$wd"/tmp_ref.mnc "$wd"/tmp_ref_resampled.mnc
 
         mnc2nii "$wd"/tmp_ref_resampled.mnc "$wd"/ref_resampled.nii
         rm -rf "$wd"/tmp_ref.mnc
