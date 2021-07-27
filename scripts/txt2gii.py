@@ -10,7 +10,7 @@ refName=str(sys.argv[3])
 values = np.loadtxt(inName)
 
 # load reference gifti
-refGifti = nib.load(refName)
+refGifti = nibabel.load(refName)
 
 # replace data array in gifti object (needs to be np.float32)
 outGifti = refGifti
