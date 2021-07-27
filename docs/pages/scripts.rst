@@ -65,6 +65,14 @@ The following arguments can be used with BigBrainWarp
      - Specifies whether output in surface or volume space 	
      - Optional function for bigbrain and bigbrainsym output. Otherwise, defaults to the same type as the input.  	
      - surface, volume
+   * - out_res	
+     - Resolution of output volume
+     - Optional where out_type is volume. Default is 1. 
+     - Value provided in mm
+   * - out_dens	
+     - Density of output mesh
+     - Optional where out_type is surface. Default is 164
+     - For fs_LR, 164 or 32
 
 
 The BigBrainWarp function currently wraps the following range of transformations
@@ -72,6 +80,7 @@ The BigBrainWarp function currently wraps the following range of transformations
 .. image:: ./images/bbw_workflow.png
    :height: 500px
    :align: center
+   
 
 
 Example transformations in volume space
@@ -80,10 +89,10 @@ Example transformations in volume space
 .. code-block:: bash
 
 	# for example, transformation of a bigbrain to icbm can take the form
-	bigbrainwarp --in_space bigbrain --out_space icbm --wd /project/ --in data.nii --desc data --interp trilinear
+	bigbrainwarp --in_vol data.nii --in_space bigbrain  --interp trilinear --out_space icbm --out_res 0.5 --desc data --wd /project/
 
 	# in contrast, transformation from icbm to bigbrainsym could be
-	bigbrainwarp --in_space icbm --out_space bigbrainsym --wd /project/ --in data.mnc --desc data --interp sinc
+	bigbrainwarp --in_vol data.mnc --in_space icbm  --interp sinc --out_space bigbrainsym --desc data --wd /project/
 
 
 BigBrainWarp utilises a recently published nonlinear transformation Xiao et al., (2019)
@@ -100,10 +109,10 @@ The functions currently support fsaverage and fs_LR as standard imaging template
 .. code-block:: bash
 
 	# for example, transformation of a bigbrain to fsaverage can take the form
-	bigbrainwarp --in_space bigbrain --out_space fsaverage --wd /project/ --in_lh lh.data.label.gii --in_rh rh.data.label.gii --desc data
+	bigbrainwarp --in_lh lh.data.label.gii --in_rh rh.data.label.gii --in_space bigbrain --out_space fsaverage --desc data --wd /project/ 
 
 	# in contrast, transformation from icbm to bigbrainsym could be
-	bigbrainwarp --in_space fs_LR --out_space bigbrain --wd /project/ --in_lh lh.data.label.txt --in_rh rh.data.label.txt --desc data --interp linear
+	bigbrainwarp --in_lh lh.data.label.txt --in_rh rh.data.label.txt --in_space fs_LR --interp linear --out_space bigbrain --out_dens 32 --desc data --wd /project/ 
 
 
 If you use surface-based transformations in BigBrainWarp, please cite:
