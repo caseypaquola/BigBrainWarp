@@ -7,11 +7,12 @@
 
 in_lh=$1 		# full path to left hemisphere input file
 in_rh=$2 		# full path to right hemisphere input file
-interp=$3		# interpolation method. Can be used if .txt input, otherwise is set as default
-bb_space=$4		# input surface can be "fsaverage" or "fs_LR"
-out_res=$5		# output resolution in mm
-desc=$6 		# name of descriptor
-wd=$7			# working directory
+in_space=$3		# input surface can be "fsaverage" or "fs_LR"
+interp=$4		# interpolation method. Can be used if .txt input, otherwise is set as default
+bb_space=$5		# which bigbrain space is input: "histological" or "sym"
+out_res=$6		# output resolution in mm
+desc=$7 		# name of descriptor
+wd=$8			# working directory
 
 # the output takes the form:
 # "$wd"/tpl-bigbrain_hemi-L_res-"$out_res"_desc-"$desc".nii
@@ -92,7 +93,8 @@ for hemi in L R ; do
 
     # resample reference volume, if necessary
     if [[ "$out_res" == "1" ]] ; then
-        nii2mnc "$ref_volume" "$wd"/tmp_ref.mnc
+        rm -rf "$wd"/tmp_ref.mnc
+		nii2mnc "$ref_volume" "$wd"/tmp_ref.mnc
 
         # Get input spacing and dimension
         vx_input=$(mincinfo "$wd"/tmp_ref.mnc -attvalue xspace:step)

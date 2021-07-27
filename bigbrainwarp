@@ -212,12 +212,12 @@ elif [[ "$in_type" == "surface" ]] && [[ "$in_space" == *bigbrain* ]] && [[ "$ou
 
 elif [[ "$in_type" == "surface" ]] && [[ "$in_space" == *fs* ]] && [[ "$out_type" == "volume" ]] ; then
   # fsaverage to bigbrain volume
-  bash $bbwDir/scripts/fsaverage_to_bigbrainvol.sh $in_lh $in_rh $interp $bb_space $out_res $desc $wd 
+  bash $bbwDir/scripts/fsaverage_to_bigbrainvol.sh $in_lh $in_rh $in_space $interp $bb_space $out_res $desc $wd 
   echo "employed multimodal surface matching transformation from fsaverage to bigbrain surface then filled the cortical ribbon"
 
 elif [[ "$in_type" == "surface" ]] && [[ "$in_space" == *fs* ]] && [[ "$out_type" == "surface" ]] ; then
   # fsaverage to bigbrain surface
-  bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $interp $desc $wd
+  bash $bbwDir/scripts/fsaverage_to_bigbrain.sh $in_lh $in_rh $in_space $interp $desc $wd
   echo "employed multimodal surface matching transformation from fsaverage to bigbrain surface"
 
 else
