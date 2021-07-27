@@ -82,12 +82,12 @@ for hemi in L R ; do
 
     # set templates based on bb_space
     if [[ "$bb_space" == "histological" ]] ; then
-        pial="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-pial.surf.gii
-        white="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii
+        pial="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-pial.surf.gii
+        white="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white.surf.gii
         ref_volume="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii
     else
-        pial="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-pial_sym.surf.gii
-        white="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white_sym.surf.gii
+        pial="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-pial_sym.surf.gii
+        white="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white_sym.surf.gii
         ref_volume="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii
     fi
 
