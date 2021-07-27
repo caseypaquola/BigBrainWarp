@@ -37,9 +37,9 @@ fi
 for hemi in L R ; do
     # select midsurface based on bb_space
     if [[ "$bb_space" == "histological" ]] ; then
-        mid_surf="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-mid.surf.gii
+        mid_surf="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-mid.surf.gii
     else
-        mid_surf="$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-mid_sym.surf.gii
+        mid_surf="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-mid_sym.surf.gii
     fi
 
     # volume to surface mapping
