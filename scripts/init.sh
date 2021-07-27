@@ -46,7 +46,7 @@ if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii ]] ; the
 	mv full_cls_1000um_2009b_sym.nii tpl-bigbrain_desc-cls_1000um.nii
 fi
 if [[ ! -f $bbwDir/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii ]] ; then
-	cd $bbwDir/spaces/bigbrain/
+	cd $bbwDir/spaces/tpl-bigbrain/
 	wget ftp://bigbrain.loris.ca/3D_Classified_Volumes/Histological_Space/nii/full_cls_1000um.nii.gz
 	gunzip full_cls_1000um.nii.gz
 	mv full_cls_1000um_2009b_sym.nii tpl-bigbrain_desc-cls_1000um_sym.nii
