@@ -111,7 +111,7 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	
  
 .. image:: ./images/display_screenshot2.png
-   :height: 300px
+   :height: 100
    :align: center
 	
 
