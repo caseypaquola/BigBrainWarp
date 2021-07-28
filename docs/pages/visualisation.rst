@@ -82,7 +82,7 @@ Our favourite tool for surface-based analyses is `SurfStat <https://www.math.mcg
 
 
 
-.. image:: ./images/surfstat_screenshot1.png
+.. image:: ./images/surfstat_screenshot1.PNG
    :height: 300px
    :align: center
 	
@@ -105,7 +105,7 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	# Return to Main Menu, Click "Objects" then "Write Object to File"
 
 
-.. image:: ./images/display_screenshot1.png
+.. image:: ./images/display_screenshot1.PNG
    :height: 300px
    :align: center
 	
@@ -120,9 +120,10 @@ MANGO 🥭
 
 MANGO is a Multi-Image Analysis GUI that supports a wide range of imaging file formats. Bonus, it is very easy to install and run on any operating system (http://mangoviewer.com/index.html).
 
-.. image:: ./images/mango_screenshot.png
-   :height: 300
-   :align: centre
+.. image:: ./images/mango_screenshot1.png
+   :height: 300px
+   :align: center
+	
 
 
 
@@ -132,11 +133,10 @@ Freeview
 Freeview is the built-in visualisation tool of Freesurfer and is handy for all Freesurfer-style file formats.
 
 
-.. image:: ./images/freeview_screenshot.png
-	:height: 300px
-	:align: centre
-	:alt: freeview
-
+.. image:: ./images/freeview_screenshot1.png
+   :height: 300px
+   :align: center
+	
 
 
  
