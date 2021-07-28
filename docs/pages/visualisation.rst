@@ -81,6 +81,10 @@ Our favourite tool for surface-based analyses is `SurfStat <https://www.math.mcg
 	figure; SurfStatViewData(FSLR32, FSLR32_G1)
 
 
+.. image:: ./images/surfstat_screenshot.png
+   :height: 300px
+   :align: centre
+
 
 	
 Displaying MINC
@@ -125,6 +129,15 @@ MANGO is a Multi-Image Analysis GUI that supports a wide range of imaging file f
    :align: centre
 
 
+Freeview
+*******************************
+
+Freeview is the built-in visualisation tool of Freesurfer and is handy for all Freesurfer-style file formats.
+
+
+.. image:: ./images/freeview_screenshot.png
+   :height: 300px
+   :align: centre
 
 
 
