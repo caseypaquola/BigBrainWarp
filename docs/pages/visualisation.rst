@@ -1,7 +1,37 @@
-Visualisation Tools
+Visualisation across file formats
 ============================================================================================================
 
 We should always visually check the fidelty of our data transformations. Here are a couple of tips for data visualisation. 
+
+.. list-table::
+   :widths: 20 80 50
+   :header-rows: 1
+
+   * - File format
+     - Type
+     - Visualisation tools
+   * - Nifti (.nii)
+     - Volume	
+     - freeview, wb_view, MANGO, SurfStat
+   * - MINC (.mnc)
+     - Volume	
+     - Display, MANGO, SurfStat
+   * - Gifti (.gii)	
+     - 3D geometry of surface (.surf.gii), vertex-wise data (.shape.gii) or vertex-wise labels (.label.gii)
+     - wb_view, MANGO, Matlab
+   * - Wavefront obj (.obj)
+     - 3D geometry of surface
+     - SurfStat, Display
+   * - Freesurfer surface (.pial, .inflated, .white)
+     - 3D geometry of surface
+     - SurfStat, freeview
+   * - Curv (.curv)
+     - Vertex-wise data
+     - freeview, SurfStat
+   * - Annotation (.annot)
+     - Vertex-wise labels and colour look up table
+     - freeview, SurfStat
+
 
 Surfaces: Matlab-based, SurfStat-powered
 **************************************************************
@@ -68,23 +98,23 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	
 	# Return to Main Menu, Click "Objects" then "Write Object to File"
 	
+
 	
 .. image:: ./images/display_screenshot1.PNG
    :height: 300px
    :align: centre
   
+
   
 .. image:: ./images/display_screenshot2.png
    :height: 300px
    :align: centre
 
 
-
-Displaying Gifti
+MANGO 🥭
 *******************************
 
-
-
+MANGO is a Multi-Image Analysis GUI that supports a wide range of imaging file formats. 
 
 
 
