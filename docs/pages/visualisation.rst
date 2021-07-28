@@ -97,7 +97,9 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	/full/path/to/surface_file.obj
 	
 	# Return to Main Menu, Click "Objects" then "Write Object to File"
+
 	
+
 
 
 .. image:: ./images/display_screenshot1.PNG
@@ -105,6 +107,7 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
    :align: center
 	
   
+
 .. image:: ./images/display_screenshot2.PNG
    :height: 300px
    :align: centre
