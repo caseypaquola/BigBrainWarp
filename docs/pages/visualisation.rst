@@ -108,13 +108,13 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 
 
 
-.. image:: ./images/display_screenshot1.PNG
+.. image:: ./images/display_screenshot1.png
    :height: 300px
    :align: center
 	
   
 
-.. image:: ./images/display_screenshot2.PNG
+.. image:: ./images/display_screenshot2.png
    :height: 300px
    :align: centre
 
@@ -125,7 +125,7 @@ MANGO 🥭
 
 MANGO is a Multi-Image Analysis GUI that supports a wide range of imaging file formats. Bonus, it is very easy to install and run on any operating system (http://mangoviewer.com/index.html).
 
-.. image:: ./images/mango_screenshot.PNG
+.. image:: ./images/mango_screenshot.png
    :height: 300
    :align: centre
 
@@ -137,7 +137,7 @@ Freeview
 Freeview is the built-in visualisation tool of Freesurfer and is handy for all Freesurfer-style file formats.
 
 
-.. image:: ./images/surfstat_screenshot.jpg
+.. image:: ./images/freeview_screenshot.png
 	:height: 300px
 	:align: centre
 	:alt: freeview
