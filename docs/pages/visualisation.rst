@@ -137,13 +137,10 @@ Freeview
 
 Freeview is the built-in visualisation tool of Freesurfer and is handy for all Freesurfer-style file formats.
 
-
-
 .. image:: ./images/freeview_screenshot.png
-   :height: 300px
-   :align: centre
-
-
+  :width: 400
+  :align: centre
+  :alt: freeview
 
 
 
