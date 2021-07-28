@@ -123,13 +123,13 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 MANGO 🥭
 *******************************
 
+.. image:: ./images/mango_screenshot.PNG
+   :height: 300
+   :align: centre
+
+
 MANGO is a Multi-Image Analysis GUI that supports a wide range of imaging file formats. Bonus, it is very easy to install and run on any operating system (http://mangoviewer.com/index.html).
 
-
-
-.. image:: ./images/mango_screenshot.PNG
-   :height: 300px
-   :align: centre
 
 
 Freeview
