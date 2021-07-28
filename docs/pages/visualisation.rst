@@ -104,21 +104,15 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	# Return to Main Menu, Click "Objects" then "Write Object to File"
 
 
-	
-
-
-
 .. image:: ./images/display_screenshot1.png
    :height: 300px
    :align: center
 	
-  
-
+ 
 .. image:: ./images/display_screenshot2.png
    :height: 300px
-   :align: centre
-
-
+   :align: center
+	
 
 MANGO 🥭
 *******************************
