@@ -82,9 +82,10 @@ Our favourite tool for surface-based analyses is `SurfStat <https://www.math.mcg
 
 
 
-.. image:: ./images/surfstat_screenshot.png
+.. image:: ./images/surfstat_screenshot1.png
    :height: 300px
-   :align: centre
+   :align: center
+	
 
 
 	
