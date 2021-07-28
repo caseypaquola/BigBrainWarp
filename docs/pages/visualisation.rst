@@ -1,7 +1,7 @@
 Visualisation across file formats
 ============================================================================================================
 
-We should always visually check the fidelty of our data transformations. Here are a couple of tips for data visualisation. 
+We should always visually check the fidelty of our data transformations. BigBrainWarp accepts and produces a range of file format, which require different types of visualisation. Here are a couple of tips for data visualisation, including a non-exhaustive list of visualisation tools for each file format. 
 
 .. list-table::
    :widths: 20 80 50
@@ -99,16 +99,16 @@ The volume-based transformations in BigBrainWarp depend upon `MINC <https://bic-
 	# Return to Main Menu, Click "Objects" then "Write Object to File"
 	
 
-	
+
 .. image:: ./images/display_screenshot1.PNG
    :height: 300px
-   :align: centre
+   :align: center
+	
   
-
-  
-.. image:: ./images/display_screenshot2.png
+.. image:: ./images/display_screenshot2.PNG
    :height: 300px
    :align: centre
+
 
 
 MANGO 🥭
