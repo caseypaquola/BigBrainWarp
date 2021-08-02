@@ -80,7 +80,7 @@ What's under the hood?
 The BigBrainWarp function currently wraps the following range of transformations
 
 .. image:: ./images/bbw_workflow_wide.png
-   :height: 500px
+   :height: 350px
    :align: center
    
 
