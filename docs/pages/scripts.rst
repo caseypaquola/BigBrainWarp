@@ -1,12 +1,11 @@
 How to warp
 ===============
 
-Integrating histological information with in vivo neuroimaging can deepen our understanding of neuroanatomy and structure-function coupling in the human brain. 
-
 Running BigBrainWarp
 ********************************
 
-First, `install the package <https://bigbrainwarp.readthedocs.io/en/latest/pages/installation.html>`_
+First, `install the package <https://bigbrainwarp.readthedocs.io/en/latest/pages/installation.html>`_.
+
 To run BigBrainWarp using docker, you must mount a working directory (using the -v argument). It is expected that your input data is housed in the mounted directory. The output will also be deposited in that directory. 
 
 .. code-block:: bash
@@ -75,12 +74,69 @@ The following arguments can be used with BigBrainWarp
      - For fs_LR, 164 or 32
 
 
+What's under the hood?
+********************************
+
 The BigBrainWarp function currently wraps the following range of transformations
 
-.. image:: ./images/bbw_workflow.png
+.. image:: ./images/bbw_workflow_wide.png
    :height: 500px
    :align: center
    
+
+Each coloured path represents a distinct script called by bigbrainwarp. The method for each transformation is as follows:
+
+
+.. list-table::
+   :widths: 10 10 10 10 50
+   :header-rows: 1
+
+   * - Input type
+     - Input template	
+     - Output type	
+     - Colour
+     - Method
+   * - Volume
+     - BigBrain
+     - Volume
+     - Dark pink
+     - Nonlinear transformation (Xiao et al.,)
+   * - Volume
+     - BigBrain
+     - Surface
+     - Light pink
+     - Volume-to-surface (HCP workbench) then multi-modal surface matching (Lewis et al., 2020)
+   * - Volume
+     - ICBM152
+     - Volume
+     - Dark orange
+     - Nonlinear transformation (Xiao et al.,)
+   * - Volume
+     - ICBM152
+     - Surface
+     - Light orange
+     - Volume-to-surface (HCP workbench) then multi-modal surface matching (Lewis et al., 2020)
+   * - Surface
+     - BigBrain
+     - Volume
+     - Dark green
+     - Multi-modal surface matching (Lewis et al., 2020) then surface-to-volume (HCP workbench)
+   * - Surface
+     - BigBrain
+     - Surface
+     - Light green
+     - Multi-modal surface matching (Lewis et al., 2020)
+   * - Surface
+     - fsaverage
+     - Volume
+     - Dark blue
+     - Multi-modal surface matching (Lewis et al., 2020) then surface-to-volume (HCP workbench)
+   * - Surface
+     - fsaverage
+     - Surface
+     - Light blue
+     - Multi-modal surface matching (Lewis et al., 2020)
+
 
 
 Example transformations in volume space
@@ -117,6 +173,8 @@ The functions currently support fsaverage and fs_LR as standard imaging template
 
 If you use surface-based transformations in BigBrainWarp, please cite:
 Lewis, L.B., et al. 'A multimodal surface matching (MSM) surface registration pipeline to bridge atlases across the MNI and the Freesurfer/Human Connectome Project Worlds' OHBM, Virtual (2020)
+
+
 
 
 
