@@ -77,7 +77,7 @@ The following arguments can be used with BigBrainWarp
 What's under the hood?
 ********************************
 
-The BigBrainWarp function currently wraps the following range of transformations. In C) it is assumed either the input or the output is BigBrain
+The BigBrainWarp function currently wraps the following range of transformations. In C), the output template is not specified as it is assumed that either the input or the output is BigBrain.
 
 .. image:: ./images/bbw_workflow_wide.png
    :height: 350px
