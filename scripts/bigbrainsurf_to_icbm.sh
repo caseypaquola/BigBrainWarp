@@ -125,13 +125,14 @@ for hemi in L R ; do
     fi
 
     # use a volume-based transformation for bigbrain to icbm
-    nii2mnc "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc
+    yes | rm "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc
+	nii2mnc "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc
     mincresample -clobber -transformation "$bbwDir"/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
 		-like "$ref_volume" \
 		-"$interp" \
 		"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc \
 		"$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc
     mnc2nii "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".nii
-    rm "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc
+    yes | rm "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc
 
 done
