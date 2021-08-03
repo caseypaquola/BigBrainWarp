@@ -1,8 +1,5 @@
 #!/bin/bash
 #
-# use multimodal surface matching to transform surface data (requires workbench)
-# Thanks to Lindsay Lewis for creating the multimodal surface matching spheres
-#
 # written by Casey Paquola @ MICA, MNI, 2021
 
 in_lh=$1 		# full path to left hemisphere input file
@@ -71,6 +68,24 @@ for hemi in L R ; do
         struc_label=CORTEX_RIGHT
     fi
 
+    # bigbrain surface to bigbrain volume
+    ref_volume="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii
+	if [[ "$gii_type" == "shape" ]] ; then
+		wb_command -metric-to-volume-mapping "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
+			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-pial_sym.surf.gii \
+			"$ref_volume" \
+			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii \
+			-ribbon-constrained "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-pial_sym.surf.gii \
+			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white_sym.surf.gii
+	elif [[ "$gii_type" == "label" ]] ; then
+		wb_command -label-to-volume-mapping "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
+			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-pial_sym.surf.gii \
+			"$ref_volume" \
+			"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii \
+			-ribbon-constrained "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-pial_sym.surf.gii \
+			"$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-white_sym.surf.gii
+	fi
+
 	# define reference volume and resample if necessary
 	ref_volume="$bbwDir"/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
     if [[ "$out_res" == "1" ]] ; then
@@ -104,28 +119,19 @@ for hemi in L R ; do
 		ref_volume="$wd"/ref.nii
     fi
 
-	# multimodal surface matching
-	refmesh="$bbwDir"/xfms/tpl-icbm_hemi-"$hemi"_desc-sphere_rot_fsaverage.surf.gii
-	outmeshMSM="$bbwDir"/xfms/tpl-icbm_hemi-"$hemi"_desc-sphere_rsled_like_bigbrain.reg.surf.gii
-	if [[ "$gii_type" == "shape" ]] ; then
-		wb_command -metric-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			"$outmeshMSM" "$refmesh" BARYCENTRIC "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
-		wb_command -set-structure "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii $struc_label
-		wb_command -metric-to-volume-mapping "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii \
-			"$ref_volume" \
-			"$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".nii \
-			-ribbon-constrained "$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-mid.surf.gii \
-			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii
-	elif [[ "$gii_type" == "label" ]] ; then
-		wb_command -label-resample "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			"$outmeshMSM" "$refmesh" BARYCENTRIC "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii
-		wb_command -set-structure "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii $struc_label
-		wb_command -label-to-volume-mapping "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc"."$gii_type".gii \
-			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii \
-			"$ref_volume" \
-			"$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".nii \
-			-ribbon-constrained "$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-mid.surf.gii \
-			"$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-white.surf.gii
-	fi
+    # rename interp method to align with minc
+    if [[ "$interp" == "nearest" ]] ; then
+	    interp=nearest_neighbour
+    fi
+
+    # use a volume-based transformation for bigbrain to icbm
+    nii2mnc "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc
+    mincresample -clobber -transformation "$bbwDir"/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
+		-like "$ref_volume" \
+		-"$interp" \
+		"$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc \
+		"$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc
+    mnc2nii "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".nii
+    rm "$wd"/tpl-icbm_hemi-"$hemi"_desc-"$desc".mnc
+
 done

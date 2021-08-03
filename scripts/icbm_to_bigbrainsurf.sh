@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# use multimodal surface matching to transform surface data (requires workbench)
-# Thanks to Lindsay Lewis for creating the multimodal surface matching spheres
 #
 # written by Casey Paquola @ MICA, MNI, 2021
 
@@ -30,25 +28,30 @@ else
 	echo "file type not recognised; must be .mnc, .nii or .nii.gz"
 fi
 
+# rename interp method to align with minc
+if [[ "$interp" == "nearest" ]] ; then
+	interp=nearest_neighbour
+fi
+
+# icbm to bigbrain volume
+ref_volume="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii
+mincresample -clobber -transformation "$bbwDir"/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
+		-invert_transformation \
+		-like "$ref_volume" \
+		-"$interp" \
+		"$wd"/tpl-icbm_desc-"$desc".mnc \
+		"$wd"/tpl-bigbrain_desc-"$desc"_sym.mnc
+mnc2nii "$wd"/tpl-bigbrain_desc-"$desc"_sym.mnc "$wd"/tpl-bigbrain_desc-"$desc"_sym.nii        
+
 # convert from nifti to gifti
 for hemi in L R ; do
-    inmesh="$bbwDir"/xfms/tpl-bigbrain_hemi-"$hemi"_desc-sphere_rot_fsaverage.surf.gii
-    outmeshMSM_inverted="$bbwDir"/xfms/tpl-bigbrain_hemi-"$hemi"_desc-sphere_rsled_like_icbm.reg.surf.gii
-    if [[ "$hemi" == "L" ]] ; then
-        struc_label=CORTEX_LEFT
+    if [[ "$interp" == "nearest_neighbour" ]] ; then
+	    wb_command -volume-to-surface-mapping "$wd"/tpl-bigbrain_desc-"$desc"_sym.nii \
+        "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-mid_sym.surf.gii \
+        "$wd"/tpl-bigbrain_desc-"$desc".shape.gii -enclosing
     else
-        struc_label=CORTEX_RIGHT
+	    wb_command -volume-to-surface-mapping "$wd"/tpl-bigbrain_desc-"$desc"_sym.nii \
+        "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-mid_sym.surf.gii \
+        "$wd"/tpl-bigbrain_desc-"$desc".shape.gii -trilinear
     fi
-    if [[ "$interp" == "nearest" ]] ; then
-	    wb_command -volume-to-surface-mapping "$wd"/tpl-icbm_desc-"$desc".nii \
-        "$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-mid.surf.gii \
-         "$wd"/tpl-icbm_desc-"$desc".shape.gii -enclosing
-    else
-	    wb_command -volume-to-surface-mapping "$wd"/tpl-icbm_desc-"$desc".nii \
-        "$bbwDir"/spaces/tpl-icbm/tpl-icbm_hemi-"$hemi"_desc-mid.surf.gii \
-         "$wd"/tpl-icbm_desc-"$desc".shape.gii -trilinear
-    fi
-    wb_command -set-structure "$wd"/tpl-icbm_desc-"$desc".shape.gii $struc_label
-    wb_command -metric-resample "$wd"/tpl-icbm_desc-"$desc".shape.gii \
-        "$outmeshMSM_inverted" "$inmesh" BARYCENTRIC "$wd"/tpl-bigbrain_desc-"$desc".shape.gii
 done
