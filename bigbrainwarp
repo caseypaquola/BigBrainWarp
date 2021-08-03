@@ -198,12 +198,12 @@ elif [[ "$in_type" == "volume" ]] && [[ "icbm" == "$in_space" ]] && [[ "$out_typ
 elif [[ "$in_type" == "volume" ]] && [[ "icbm" == "$in_space" ]] && [[ "$out_type" == "surface" ]] ; then
   # icbm volume to bigbrain surface
   bash $bbwDir/scripts/icbm_to_bigbrainsurf.sh $in_vol $interp $desc $wd 
-  echo "sampled data from midsurface and used multimodal surface matching to transform from icbm to bigbrain surface"
+  echo "employed nonlinear transformation from icbm to bigbrainsym then sampled the values along the midsurface"
 
 elif [[ "$in_type" == "surface" ]] && [[ "$in_space" == *bigbrain* ]] && [[ "$out_type" == "volume" ]] ; then
   # bigbrain surface to icbm volume
   bash $bbwDir/scripts/bigbrainsurf_to_icbm.sh $in_lh $in_rh $interp $out_res $desc $wd 
-  echo "running multimodal surface matching transformation from bigbrain surface to icbm"
+  echo "projected data to bigbrainsym volume then employed nonlinear transformation to icbm"
 
 elif [[ "$in_type" == "surface" ]] && [[ "$in_space" == *bigbrain* ]] && [[ "$out_type" == "surface" ]] ; then
   # bigbrain surface to fsaverage
