@@ -33,6 +33,8 @@ fi
 # rename interp method to align with minc
 if [[ "$interp" == "nearest" ]] ; then
 	interp=nearest_neighbour
+elif [[ "$interp" == "linear" ]] ; then
+	interp=trilinear
 fi
 
 # define reference volume and resample if necessary

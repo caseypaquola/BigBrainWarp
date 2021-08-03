@@ -31,6 +31,8 @@ fi
 # rename interp method to align with minc
 if [[ "$interp" == "nearest" ]] ; then
 	interp=nearest_neighbour
+elif [[ "$interp" == "linear" ]] ; then
+	interp=trilinear
 fi
 
 # icbm to bigbrain volume
