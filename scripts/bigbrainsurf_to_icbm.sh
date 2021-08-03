@@ -4,7 +4,7 @@
 
 in_lh=$1 		# full path to left hemisphere input file
 in_rh=$2 		# full path to right hemisphere input file
-interp=$3		# interpolation method. Can be used if .txt input, otherwise is set as default
+interp=$3		# interpolation method. Can be "nearest" or "linear". The linear is implemented as trilinear in the volume-based transformation.
 out_res=$4		# output resolution in mm
 desc=$5 		# name of descriptor
 wd=$6			# working directory
@@ -116,16 +116,13 @@ for hemi in L R ; do
     # rename interp method to align with minc
     if [[ "$interp" == "nearest" ]] ; then
 	    interp=nearest_neighbour
+	elif [[ "$interp" == "linear" ]] ; then
+		interp=trilinear
     fi
 
     # use a volume-based transformation for bigbrain to icbm
     yes | rm "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc
 	nii2mnc "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".nii "$wd"/tpl-bigbrain_hemi-"$hemi"_desc-"$desc".mnc
-    echo "mincresample -clobber -transformation $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
-		-like $ref_volume \
-		-$interp \
-		$wd/tpl-bigbrain_hemi-${hemi}_desc-${desc}.mnc \
-		$wd/tpl-icbm_hemi-${hemi}_desc-${desc}.mnc"
 	mincresample -clobber -transformation "$bbwDir"/xfms/BigBrain-to-ICBM2009sym-nonlin.xfm \
 		-like "$ref_volume" \
 		-"$interp" \
