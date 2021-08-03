@@ -110,13 +110,7 @@ for hemi in L R ; do
             -step "$out_res" "$out_res" "$out_res" \
             -nelements "$dx_output" "$dy_output" "$dz_output"
 
-        mnc2nii "$wd"/tmp_ref_resampled.mnc "$wd"/ref_resampled.nii
-        yes | rm "$wd"/tmp_ref.mnc
-        yes | rm "$wd"/tmp_ref_resampled.mnc
-        ref_volume="$wd"/ref_resampled.nii
-	else
-		mnc2nii "$ref_volume" "$wd"/ref.nii
-		ref_volume="$wd"/ref.nii
+        ref_volume="$wd"/tmp_ref_resampled.mnc
     fi
 
     # rename interp method to align with minc
