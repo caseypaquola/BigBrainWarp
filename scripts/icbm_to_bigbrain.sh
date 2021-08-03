@@ -48,7 +48,7 @@ if [[ "$bb_space" == "histological" ]] ; then
 else
 	ref_volume="$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii
 fi
-if [[ "$out_res" == "1" ]] ; then
+if [[ "$out_res" != "1" ]] ; then
 	nii2mnc "$ref_volume" "$wd"/tmp_ref.mnc
 
     # Get input spacing and dimension
@@ -73,7 +73,7 @@ if [[ "$out_res" == "1" ]] ; then
         -nelements "$dx_output" "$dy_output" "$dz_output"
 
     ref_volume="$wd"/ref_resampled.mnc
-    rm -rf "$wd"/tmp_ref.mnc
+    yes | rm "$wd"/tmp_ref.mnc
 else
 	nii2mnc "$ref_volume" "$wd"/tmp_ref.mnc
 	ref_volume="$wd"/tmp_ref.mnc

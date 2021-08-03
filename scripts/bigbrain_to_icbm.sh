@@ -37,7 +37,7 @@ fi
 
 # define reference volume and resample if necessary
 ref_volume="$bbwDir"/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
-if [[ "$out_res" == "1" ]] ; then
+if [[ "$out_res" != "1" ]] ; then
     # Get input spacing and dimension
     vx_input=$(mincinfo "$ref_volume" -attvalue xspace:step)
     vy_input=$(mincinfo "$ref_volume" -attvalue yspace:step)
