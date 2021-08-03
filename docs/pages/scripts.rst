@@ -77,7 +77,7 @@ The following arguments can be used with BigBrainWarp
 What's under the hood?
 ********************************
 
-The BigBrainWarp function currently wraps the following range of transformations
+The BigBrainWarp function currently wraps the following range of transformations. In C) it is assumed either the input or the output is BigBrain
 
 .. image:: ./images/bbw_workflow_wide.png
    :height: 350px
@@ -100,7 +100,7 @@ Each coloured path represents a distinct script called by bigbrainwarp. The meth
      - BigBrain
      - Volume
      - Dark pink
-     - Nonlinear transformation (Xiao et al.,)
+     - Nonlinear volume-based transformation (Xiao et al.,)
    * - Volume
      - BigBrain
      - Surface
@@ -110,17 +110,17 @@ Each coloured path represents a distinct script called by bigbrainwarp. The meth
      - ICBM152
      - Volume
      - Dark orange
-     - Nonlinear transformation (Xiao et al.,)
+     - Nonlinear volume-based transformation (Xiao et al.,)
    * - Volume
      - ICBM152
      - Surface
      - Light orange
-     - Volume-to-surface (HCP workbench) then multi-modal surface matching (Lewis et al., 2020)
+     - Nonlinear volume-based transformation (Xiao et al.,) then volume-to-surface (HCP workbench)
    * - Surface
      - BigBrain
      - Volume
      - Dark green
-     - Multi-modal surface matching (Lewis et al., 2020) then surface-to-volume (HCP workbench)
+     - Surface-to-volume (HCP workbench) then nonlinear volume-based transformation (Xiao et al.,)
    * - Surface
      - BigBrain
      - Surface
