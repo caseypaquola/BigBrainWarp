@@ -111,8 +111,8 @@ for hemi in L R ; do
             -nelements "$dx_output" "$dy_output" "$dz_output"
 
         mnc2nii "$wd"/tmp_ref_resampled.mnc "$wd"/ref_resampled.nii
-        rm -rf "$wd"/tmp_ref.mnc
-        rm -rf "$wd"/tmp_ref_resampled.mnc
+        yes | rm "$wd"/tmp_ref.mnc
+        yes | rm "$wd"/tmp_ref_resampled.mnc
         ref_volume="$wd"/ref_resampled.nii
 	else
 		mnc2nii "$ref_volume" "$wd"/ref.nii
