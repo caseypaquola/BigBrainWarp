@@ -13,6 +13,9 @@ if "txt" in extension:
 elif "curv" in extension:
     data=nib.freesurfer.io.read_morph_data(inData)
     vert_k=round(data.shape[0], -3)
+elif "annot" in extension:                                                                                                  
+    data = nib.freesurfer.io.read_annot(inData)                                                                             
+    vert_k=round(data[0].shape[0], -3)
 else:
     data=nib.load(inData)
     vert_k=round(data.darrays[0].data.shape[0], -3)
