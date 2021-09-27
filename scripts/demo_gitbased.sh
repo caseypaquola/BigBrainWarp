@@ -7,9 +7,9 @@ source scripts/init.sh
 wd=/data_/mica1/03_projects/casey/sandbox1/8_BigBrainWarp/tests/
 
 # FORM 1 - bigbrain volume to icbm volume
-bigbrainwarp --in_space bigbrain --in_vol "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um.nii \
-    --interp nearest --out_space icbm --out_res 0.5 \
-    --desc cls --wd "$wd"
+bigbrainwarp --in_space bigbrain --in_vol "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-MTL_axis.nii \
+    --interp nearest --out_space icbm --out_res 1 \
+    --desc MTI_axis --wd "$wd"
 
 # FORM 2 - bigbrain volume to fsaverage
 bigbrainwarp --in_space bigbrainsym --in_vol "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_desc-cls_1000um_sym.nii \
