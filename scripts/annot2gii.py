@@ -7,7 +7,7 @@ outName=str(sys.argv[2])
 refName=str(sys.argv[3])
 
 # read data
-values = nibabel.freesurfer.io.read_annot(inName)
+values, _, _ = nibabel.freesurfer.io.read_annot(inName)
 
 # load reference gifti
 refGifti = nibabel.load(refName)
