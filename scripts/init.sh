@@ -8,7 +8,7 @@ export mnc2Path=/data_/mica1/01_programs/minc2/ # path to your path to minc2 ins
 export icbmTemplate=$bbwDir/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
 if [[ ! -f $icbmTemplate ]] ; then
 	cd $bbwDir/spaces/tpl-icbm/
-	wget http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_sym_09c_minc2.zip
+	wget --no-check-certificate http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_sym_09c_minc2.zip
 	unzip -j mni_icbm152_nlin_sym_09c_minc2.zip mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc -d $bbwDir/spaces/tpl-icbm/
 	rm -f mni_icbm152_nlin_sym_09c_minc2.zip
 	mv mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
@@ -18,7 +18,7 @@ fi
 if [[ ! -f $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then
 	mkdir $bbwDir/xfms/
 	cd $bbwDir/xfms/
-	wget https://packages.bic.mni.mcgill.ca/mni-models/PD25/mni_PD25_20190708_minc2.zip
+	wget --no-check-certificate https://packages.bic.mni.mcgill.ca/mni-models/PD25/mni_PD25_20190708_minc2.zip 
 	unzip mni_PD25_20190708_minc2.zip
 	cp tranformation/BigBrain-to-ICBM2009sym* $bbwDir/xfms/
 	rm -rf MRI
