@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 
 # set up variables - change for your environment
 export bbwDir=/data_/mica1/03_projects/casey/BigBrainWarp/  # change to your path to the github repo
