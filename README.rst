@@ -37,7 +37,7 @@ This repository includes:
 - A selection of histology-derived feature maps already transformed to MRI space, and vice versa
 - A series of tutorials that illustrate potential workflows for BigBrain-MRI integration
 
-**See the preprint (https://www.biorxiv.org/content/10.1101/2021.05.04.442563v1) or readthedocs (https://bigbrainwarp.readthedocs.io/) for all your BigBrainWarp needs**
+**See the article (https://elifesciences.org/articles/70119) or readthedocs (https://bigbrainwarp.readthedocs.io/) for all your BigBrainWarp needs**
 
 Core developers
 -----------------------
