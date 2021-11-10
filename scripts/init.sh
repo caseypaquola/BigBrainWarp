@@ -4,14 +4,6 @@
 export bbwDir=/data_/mica1/03_projects/casey/BigBrainWarp/  # change to your path to the github repo
 export mnc2Path=/data_/mica1/01_programs/minc2/ # path to your path to minc2 installation
 
-# set template and download if not already there
-
-if [[ ! -f $icbmTemplate ]] ; then
-	cd $bbwDir/spaces/tpl-icbm/
-	wget https://fz-juelich.sciebo.de/s/pFu9XfNonT65HpS/mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc&files=mni_icbm152_t1_tal_nlin_sym_09c_mask.mnc
-	
-fi
-
 # set template and download nonlinear transformation matrices
 export icbmTemplate=$bbwDir/spaces/tpl-icbm/tpl-icbm_desc-t1_tal_nlin_sym_09c_mask.mnc
 if [[ ! -f $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then
