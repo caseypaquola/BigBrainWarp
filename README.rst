@@ -15,8 +15,8 @@
   :alt: Docker image available
 
 .. image:: https://img.shields.io/badge/doi-10.1101/2021.05.04.442563-blue.svg
-    :target: https://doi.org/10.1101/2021.05.04.442563
-    :alt: DOI of preprint
+    :target: https://doi.org/10.7554/eLife.70119
+    :alt: DOI of published article
 
 
 .. image:: ./docs/pages/images/title.png?raw=true
