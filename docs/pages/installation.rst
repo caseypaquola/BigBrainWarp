@@ -9,8 +9,9 @@ Local installation
 
 .. code-block:: bash
 
-	bash BigBrainWarp/scripts/downloads.sh
 	source BigBrainWarp/scripts/init.sh
+	bash BigBrainWarp/scripts/downloads.sh
+
 
 If you're working with a local version, you will also need to set up the dependencies:
 

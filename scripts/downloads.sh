@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # download template and download nonlinear transformation matrices
 if [[ ! -f $bbwDir/xfms/BigBrain-to-ICBM2009sym-nonlin_grid_2.mnc ]] ; then
 	mkdir $bbwDir/xfms/
