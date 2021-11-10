@@ -1,0 +1,5 @@
+.git
+docs/*
+enigma-pygments-style-2020.7.8.2/*
+.circleci
+colours.txt
