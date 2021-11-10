@@ -5,6 +5,17 @@
 Updates
 ==================
 
+November 10, 2021
+------------------------------------------
+
+Restructuring of intialisation script and a new stable docker image. See the installation page for the new form. 
+
+::
+
+    ↪ split installation scripts into downloads and init		|  @caseypaquola
+
+
+
 July 27, 2021
 ------------------------------------------
 
@@ -12,7 +23,7 @@ New option to define output resolution for volumes
 
 ::
 
-    ↪ added optional "out_res" input parameter to bigbrainwarp		|  @caseypaquola
+    ↪ added optional "out_res" input parameter to bigbrainwarp	|  @caseypaquola
 
 
 July 21, 2021
@@ -23,10 +34,10 @@ Overhauled naming conventions within BigBrainWarp, which led to changes in the i
 ::
 
     ↪ implemented BIDS-style naming of files				|  @caseypaquola
-    ↪ changed bigbrainwarp arguments, requires "desc"			|  @caseypaquola
+    ↪ changed bigbrainwarp arguments, requires "desc"		|  @caseypaquola
     ↪ added option for 32k or 164k mesh for fs_LR			|  @caseypaquola
-    ↪ removed Freesurfer dependencies					|  @caseypaquola
-    ↪ created tutorial on evaluating transformations			|  @caseypaquola
+    ↪ removed Freesurfer dependencies					    |  @caseypaquola
+    ↪ created tutorial on evaluating transformations		|  @caseypaquola
 
 
 April 7, 2021
@@ -36,8 +47,8 @@ Transformed staining intensity profiles to fs_LR and fsaverage (our first user r
 
 ::
 
-    ↪ added spaces/fs_LR/profiles_fs_LR.txt				|  @caseypaquola
-    ↪ added spaces/fsaverage/profiles_fsaverage.txt			|  @caseypaquola
+    ↪ added spaces/fs_LR/profiles_fs_LR.txt				    |  @caseypaquola
+    ↪ added spaces/fsaverage/profiles_fsaverage.txt		    |  @caseypaquola
 
 
 
