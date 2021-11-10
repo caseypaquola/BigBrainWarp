@@ -36,10 +36,10 @@ RUN pip3.8 install numpy nibabel scipy
 COPY . /BigBrainWarp
 
 # BigBrainWarp config: fix paths, run downloads script, set default python to 3.8 (scripts call "python")
-RUN sed -i s,bbwDir=.*,bbwDir=/BigBrainWarp,g /BigBrainWarp/scripts/init.sh &&\
-    sed -i s,mnc2Path=.*,mnc2Path=/opt/minc-itk4/bin,g /BigBrainWarp/scripts/init.sh &&\
-    source /BigBrainWarp/scripts/init.sh &&\
-    bash /BigBrainWarp/scripts/downloads.sh &&\
+RUN sed -i s,bbwDir=.*,bbwDir=/BigBrainWarp,g /BigBrainWarp/scripts/init.sh && \
+    sed -i s,mnc2Path=.*,mnc2Path=/opt/minc-itk4/bin,g /BigBrainWarp/scripts/init.sh && \
+    bash /BigBrainWarp/scripts/init.sh && \
+    bash /BigBrainWarp/scripts/downloads.sh && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 
 # Source the fsl and BigBrainWarp init scripts before running the command
