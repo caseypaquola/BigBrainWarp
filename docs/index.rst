@@ -18,12 +18,15 @@
 **Welcome to BIG BRAIN WARP**
 ==========================================
 
+🛎️ Full article now available online: `<https://elifesciences.org/articles/70119>`_
+
+
 Integrating BigBrain with multi-modal imaging 
 ----------------------------------------------------
 BigBrain is a singular dataset that offers an ultra-high-resolution (20µm) volumetric reconstruction of a sliced and stained post-mortem human brain (Amunts et al. 2013). **BigBrainWarp** aims to enable integration of BigBrain with neuroimaging and other neurobiological modalities, helping a wide range of neuroscientists to utilise the cytoarchitectural information encoded in BigBrain for multi-scale neuroscientific discovery.
 
 .. image:: ./pages/images/toolbox_overview.png
-   :height: 350px
+   :height: 150px
    :align: center
 
 
@@ -35,8 +38,8 @@ Additionally, we’ve created a series of tutorials that illustrate potential wo
 Tips for Getting Started
 ****************************
 
-* Read the BigBrainWarp preprint `<https://doi.org/10.1101/2021.05.04.442563>`_
-* Watch a recent talk on the motivations and functionality of BigBrainWarp `https://youtu.be/Stg_R63GyVY <https://youtu.be/Stg_R63GyVY>`_
+* Read the BigBrainWarp article `<https://elifesciences.org/articles/70119>`_
+* Watch a recent talk on the motivations of BigBrainWarp `https://youtu.be/Stg_R63GyVY <https://youtu.be/Stg_R63GyVY>`_ (note: the functionality has been slightly updated)
 * Check out the tutorials. They are intended to show interesting ways to use BigBrain with multi-modal imaging and contain extra details on what's under the hood of the *BigBrainWarp*.
 * Get in touch if you have any questions 🤙
 
