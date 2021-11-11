@@ -25,11 +25,6 @@ Integrating BigBrain with multi-modal imaging
 ----------------------------------------------------
 BigBrain is a singular dataset that offers an ultra-high-resolution (20µm) volumetric reconstruction of a sliced and stained post-mortem human brain (Amunts et al. 2013). **BigBrainWarp** aims to enable integration of BigBrain with neuroimaging and other neurobiological modalities, helping a wide range of neuroscientists to utilise the cytoarchitectural information encoded in BigBrain for multi-scale neuroscientific discovery.
 
-.. image:: ./pages/images/toolbox_overview.png
-   :height: 150px
-   :align: center
-
-
 In the toolbox, you’ll find preprocessed BigBrain data, scripts to transform between BigBrain and standard MRI spaces, and a selection of histology-derived feature maps already transformed to MRI space.
 
 Additionally, we’ve created a series of tutorials that illustrate potential workflows for BigBrain-MRI integration.

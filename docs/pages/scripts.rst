@@ -11,7 +11,7 @@ To run BigBrainWarp using docker, you must mount a working directory (using the 
 .. code-block:: bash
 
     # with docker (change the path to the local location of the mount accordingly)
-    docker run -it --rm -v /local/directory/with/data/:/BigBrainWarp/tests \
+    docker run -it --rm -v /local/directory/with/data/:/BigBrainWarp/mount \
         caseypaquola/bigbrainwarp bigbrainwarp
 
     # without docker
@@ -144,8 +144,11 @@ Example transformations in volume space
 
 .. code-block:: bash
 
-	# for example, transformation of a bigbrain to icbm can take the form
+	# for example, transformation of a bigbrain to icbm can take the form with a local installation
 	bigbrainwarp --in_vol data.nii --in_space bigbrain  --interp trilinear --out_space icbm --out_res 0.5 --desc data --wd /project/
+  # or with the docker version - note how the working input volume is preprended with the "mount/" and the working directory is set to "mount"
+  docker run -it --rm -v /project/:/BigBrainWarp/mount caseypaquola/bigbrainwarp \
+  bigbrainwarp --in_vol mount/data.nii --in_space bigbrain  --interp trilinear --out_space icbm --out_res 0.5 --desc data --wd mount
 
 	# in contrast, transformation from icbm to bigbrainsym could be
 	bigbrainwarp --in_vol data.mnc --in_space icbm  --interp sinc --out_space bigbrainsym --desc data --wd /project/
@@ -166,6 +169,9 @@ The functions currently support fsaverage and fs_LR as standard imaging template
 
 	# for example, transformation of a bigbrain to fsaverage can take the form
 	bigbrainwarp --in_lh lh.data.label.gii --in_rh rh.data.label.gii --in_space bigbrain --out_space fsaverage --desc data --wd /project/ 
+  # or with the docker version - note how the working inputs are preprended with the "mount/" and the working directory is set to "mount"
+  docker run -it --rm -v /project/:/BigBrainWarp/mount caseypaquola/bigbrainwarp \
+  bigbrainwarp --in_lh mount/lh.data.label.gii --in_rh mount/rh.data.label.gii --in_space bigbrain --out_space fsaverage --desc data --wd mount 
 
 	# in contrast, transformation from icbm to bigbrainsym could be
 	bigbrainwarp --in_lh lh.data.label.txt --in_rh rh.data.label.txt --in_space fs_LR --interp linear --out_space bigbrain --out_dens 32 --desc data --wd /project/ 
