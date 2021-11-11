@@ -5,12 +5,13 @@ Local installation
 ********************************
 1. Clone the GitHub repository to your local machine (https://github.com/caseypaquola/BigBrainWarp.git)
 2. Edit the first two lines of 'BigBrainWarp/scripts/init.sh' file based on the specific paths of your machine. These direct the script to BigBrainWarp and minc2
-3. Prior to running any scripts, pull extra files from other places on the internet and set the necessary global environment variables with
+3. Prior to running any scripts, set the necessary global environment variables pull extra files from other places on the internet with:
 
 .. code-block:: bash
 
-	source BigBrainWarp/scripts/init.sh
-	bash BigBrainWarp/scripts/downloads.sh
+	# run within BigBrainWarp github repo
+	source scripts/init.sh
+	bash scripts/downloads.sh
 
 
 If you're working with a local version, you will also need to set up the dependencies:
