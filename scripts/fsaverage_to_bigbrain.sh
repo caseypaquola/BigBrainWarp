@@ -22,7 +22,7 @@ wd=$6			# working directory
 extension="${in_lh#*.}"
 
 # check density of input surface
-in_den=$(python3 "$bbwDir"/scripts/check_dim.py "$in_lh" "$extension")
+in_den=$(python "$bbwDir"/scripts/check_dim.py "$in_lh" "$extension")
 
 for hemi in L R ; do
 	# define input
