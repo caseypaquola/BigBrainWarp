@@ -33,15 +33,24 @@ RUN wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py && python3.8 get-pip
 # Python dependencies
 RUN pip3.8 install numpy nibabel scipy
 
+# Copy everything
 COPY . /BigBrainWarp
 
-# BigBrainWarp config: fix paths, run downloads script, set default python to 3.8 (scripts call "python")
+# BigBrainWarp run downloads script
+RUN sed -i s,bbwDir=.*,bbwDir=/BigBrainWarp,g /BigBrainWarp/scripts/init.sh && \
+    sed -i s,mnc2Path=.*,mnc2Path=/opt/minc-itk4/bin,g /BigBrainWarp/scripts/init.sh && \
+    bash /BigBrainWarp/scripts/init.sh && \
+    bash /BigBrainWarp/scripts/downloads.sh && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
+
+# Copy over new files
+COPY . /BigBrainWarp
+
+# BigBrainWarp config (set paths in initialisation script and set python as 3.8)
 RUN sed -i s,bbwDir=.*,bbwDir=/BigBrainWarp,g /BigBrainWarp/scripts/init.sh && \
     sed -i s,mnc2Path=.*,mnc2Path=/opt/minc-itk4/bin,g /BigBrainWarp/scripts/init.sh && \
     bash /BigBrainWarp/scripts/init.sh && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
-
-RUN bash /BigBrainWarp/scripts/downloads.sh
 
 # Source the fsl and BigBrainWarp init scripts before running the command
 ENTRYPOINT ["bash", "-c", "source /BigBrainWarp/scripts/init.sh && \"$@\"", "-s"]
