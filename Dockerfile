@@ -39,8 +39,9 @@ COPY . /BigBrainWarp
 RUN sed -i s,bbwDir=.*,bbwDir=/BigBrainWarp,g /BigBrainWarp/scripts/init.sh && \
     sed -i s,mnc2Path=.*,mnc2Path=/opt/minc-itk4/bin,g /BigBrainWarp/scripts/init.sh && \
     bash /BigBrainWarp/scripts/init.sh && \
-    bash /BigBrainWarp/scripts/downloads.sh && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
+
+RUN bash /BigBrainWarp/scripts/downloads.sh
 
 # Source the fsl and BigBrainWarp init scripts before running the command
 ENTRYPOINT ["bash", "-c", "source /BigBrainWarp/scripts/init.sh && \"$@\"", "-s"]
