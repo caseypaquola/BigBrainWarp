@@ -6,7 +6,7 @@ Running BigBrainWarp
 
 First, `install the package <https://bigbrainwarp.readthedocs.io/en/latest/pages/installation.html>`_.
 
-To run BigBrainWarp using docker, you must mount a working directory (using the -v argument). It is expected that your input data is housed in the mounted directory. The output will also be deposited in that directory. 
+To run BigBrainWarp using docker, you should mount a working directory (using the -v argument). It is expected that your input data is housed in the mounted directory. The output will also be deposited in that directory. 
 
 .. code-block:: bash
 
