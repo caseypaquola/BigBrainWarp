@@ -1,3 +1,0 @@
-xfms/*
-spaces/icbm/*.mnc
-dependencies/surfstat/*
