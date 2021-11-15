@@ -10,8 +10,6 @@ To facilitate comparisons with standard neuroimaging spaces, BigBrain was nonlin
    :align: center
 
 
-**What space is X in?**  For data provided on BigBrainWarp, the space corresponds the directory location. For example, anything in spaces/bigbrain/ is in native bigbrain space. If the file contains a suffix (eg: "_bigbrain"), that means the data was transformed from a different space to that space. 
-
 **How can I build equivolumetric surfaces?** This can be performed using the `python-based surface tools <https://github.com/kwagstyl/surface_tools/tree/v1.0.0>`_, which we've also translated for `matlab-based pipelines <https://github.com/MICA-MNI/micaopen/blob/master/cortical_confluence/scripts/equivolumetric_surfaces.m>`_. 
 
 **How can I obtain staining intensity profiles?** We've pre-generated a standard set of staining intensity profiles for BigBrain using 50 surfaces between the pial and white matter, the 100um resolution volume of BigBrain and conservative smoothing. If you would like to make your own, for example, using different surfaces or volume, try the `sample_intensity_profiles.sh <https://github.com/MICA-MNI/micaopen/blob/master/BigBrainWarp/scripts/sample_intensity_profiles.sh>`_. It requires an volume to sample as well as upper and lower surfaces (in .obj format) as input. Then specify the number of surfaces, and the function will pull on surface_tools (see above) to generate equivolumetric surfaces, sample intensities and compile these as a profiles. Example use: bash sample_intensity_profiles.sh -in_vol full8_100um_optbal.mnc -upper_surf pial_left_327680.obj -lower_surf white_left_327680.obj -wd tests -num_surf 50
