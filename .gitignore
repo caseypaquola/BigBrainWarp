@@ -4,9 +4,6 @@ docs/en*
 env/*
 scripts/surface_tools/*
 scripts/__py_cache__/*
-xfms/BigBrain*
-spaces/tpl-icbm/*.nii
-spaces/tpl-icbm/*.mnc
-spaces/tpl-bigbrain/*.nii
-spaces/tpl-bigbrain/*.mnc
+xfms
+spaces
 mount
