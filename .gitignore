@@ -4,6 +4,6 @@ docs/en*
 env/*
 scripts/surface_tools/*
 scripts/__py_cache__/*
-xfms
-spaces
+xfms/*
+spaces/*
 mount
