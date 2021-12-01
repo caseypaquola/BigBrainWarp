@@ -20,7 +20,7 @@ wd=$7			# working directory
 # default $gii_type is shape, however, .annot and .label.gii files will be label type
 
 # check for input data type
-extension="${in_lh#*.}"
+extension="${in_lh##*.}"
 
 for hemi in L R ; do
 	# define input
@@ -32,7 +32,7 @@ for hemi in L R ; do
 
 	# define gii_type and convert to gifti if necessary
 	if [[ "$extension" == *"gii"* ]] ; then
-		if [[ "$extension" == *"label"* ]] ; then
+		if [[ "$in_lh" == *"label"* ]] ; then
 			gii_type=label
 		else 
 			gii_type=shape
