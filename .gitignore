@@ -5,5 +5,7 @@ env/*
 scripts/surface_tools/*
 scripts/__py_cache__/*
 xfms/*
-spaces/*
+spaces/*/*.nii.gz
+spaces/*/*.nii
+spaces/*/*.mnc
 mount
