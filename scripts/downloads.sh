@@ -1,13 +1,12 @@
 #!/bin/bash
 # download data and unzip
 cd $bbwDir
-wget --no-check-certificate --content-disposition "https://fz-juelich.sciebo.de/s/pFu9XfNonT65HpS/download"
-unzip BigBrainWarp.zip
+curl https://fz-juelich.sciebo.de/s/pFu9XfNonT65HpS/download --output BBW_BigData.zip
+unzip BBW_BigData.zip
+mv BigBrainWarp/spaces spaces
 cd BigBrainWarp
-unzip spaces.zip
-mv spaces ../spaces
 unzip xfms.zip
 mv xfms ../xfms
-rm BigBrainWarp.zip
-rm spaces.zip
-rm xfms.zip
+cd ..
+rm -rf BigBrainWarp
+rm BBW_BigData.zip
