@@ -3,10 +3,10 @@
 cd $bbwDir
 curl https://fz-juelich.sciebo.de/s/pFu9XfNonT65HpS/download --output BBW_BigData.zip
 unzip BBW_BigData.zip
-mv BigBrainWarp/spaces spaces
-cd BigBrainWarp
+mv BBW_BigData/spaces spaces
+cd BBW_BigData
 unzip xfms.zip
 mv xfms ../xfms
 cd ..
-rm -rf BigBrainWarp
+rm -rf BBW_BigData
 rm BBW_BigData.zip
