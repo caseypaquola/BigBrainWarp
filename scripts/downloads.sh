@@ -10,3 +10,6 @@ mv xfms ../xfms
 cd ..
 rm -rf BBW_BigData
 rm BBW_BigData.zip
+rm -rf xfms/xfms
+rm -rf spaces/spaces
+
