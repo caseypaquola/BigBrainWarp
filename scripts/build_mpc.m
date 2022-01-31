@@ -1,4 +1,4 @@
-function [MPC, I] = build_mpc(MP, parc)
+function [R, MP] = build_mpc(MP, parc)
 
 %   build_mpc   Construct a microstructure profile covariance matrix
 %   
@@ -9,8 +9,8 @@ function [MPC, I] = build_mpc(MP, parc)
 %
 %
 %   OUTPUT
-%   MPC         microstructural profile covariance matrix
-%   I           microstructure intensity profiles (node-wise if parc is given)
+%   R           microstructural profile covariance matrix
+%   MP          microstructure profiles (node-wise if parc is given)
 %
 
 if isempty(parc)
@@ -40,11 +40,11 @@ if downsample==1
     
         % parcel, ignoring nans
         I(:,ii)        = nanmean(tmpMP2,2);
-    end       
+    end
+    MP = I;
     szI = [size(MP,1) length(unique(parc))];
     szZ = [length(unique(parc)) length(unique(parc))];
 else
-    I = MP;
     szI = size(MP);
     szZ = [size(MP,1) size(MP,1)];
 end
@@ -52,13 +52,13 @@ end
 if nnz(isnan(I)) > 0
     
     disp('warning: problem with parcellation, mpc will be NaNs')
-    I = NaN(szI);
-    MPC = NaN(szZ);
+    MP = NaN(szI);
+    R = NaN(szZ);
     
 else
     
     % create MPC matrix from partial correlation
-    R = partialcorr(I, mean(I,2));
+    R = partialcorr(MP, mean(MP,2));
     
 end
 
