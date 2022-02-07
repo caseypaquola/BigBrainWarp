@@ -32,7 +32,7 @@ BigBrain is a singular dataset that offers an ultra-high-resolution (20µm) volu
 
 This repository includes:
 
-- Preprocessed BigBrain features
+- Preprocessed BigBrain features (direct download from https://fz-juelich.sciebo.de/s/pFu9XfNonT65HpS/download)
 - Simple scripts to transform between BigBrain and standard MRI spaces
 - A selection of histology-derived feature maps already transformed to MRI space, and vice versa
 - A series of tutorials that illustrate potential workflows for BigBrain-MRI integration
