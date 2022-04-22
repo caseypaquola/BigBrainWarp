@@ -22,7 +22,7 @@ wd=$6			# working directory
 extension="${in_lh##*.}"
 
 # check density of input surface
-in_den=$(python "$bbwDir"/scripts/check_dim.py "$in_lh" "$extension")
+in_den=$(python3 "$bbwDir"/scripts/check_dim.py "$in_lh" "$extension")
 
 for hemi in L R ; do
 	# define input
@@ -33,7 +33,6 @@ for hemi in L R ; do
 	fi
 
 	# define gii_type and convert to gifti if necessary.
-	# third argument to python conversions is a template and is relatively arbitrary. Only the giiType is conserved. 
 	if [[ "$extension" == *"gii"* ]] ; then
 		if [[ "$in_lh" == *"label"* ]] ; then
 			gii_type=label
@@ -43,17 +42,17 @@ for hemi in L R ; do
 		cp "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii
 	elif [[ "$extension" == "annot" ]] ; then
 		gii_type=label
-		python "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000."$gii_type".gii
+		python3 "$bbwDir"/scripts/annot2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-"$in_space"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-aparc."$gii_type".gii
 	elif [[ "$extension" == "curv" ]] ; then
 		gii_type=shape
-		python "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
+		python3 "$bbwDir"/scripts/curv2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-"$in_space"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-Hist_G1.shape.gii
 	elif [[ "$extension" == "txt" ]] ; then
 		if [[  "$interp" == "nearest" ]] ; then
 			gii_type=label
-			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Yeo2011_7Networks_N1000."$gii_type".gii
+			python3 "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-"$in_space"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-aparc."$gii_type".gii
 		else
 			gii_type=shape
-			python "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-bigbrain/tpl-bigbrain_hemi-"$hemi"_desc-Func_G1.shape.gii
+			python3 "$bbwDir"/scripts/txt2gii.py "$inData" "$wd"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-"$desc"."$gii_type".gii "$bbwDir"/spaces/tpl-"$in_space"/tpl-"$in_space"_hemi-"$hemi"_den-"$in_den"k_desc-Hist_G1.shape.gii
 		fi
 	else
 		echo "file type of ${inData} not recognised"
