@@ -1,4 +1,4 @@
-for init_project = 1
+%% Initialise Project
     
     GH          = '/location/of/github/repos/';
     bbwDir      = [GH '/BigBrainWarp/'];
@@ -13,11 +13,14 @@ for init_project = 1
     BB = SurfStatAvSurf({[bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-pial.obj'], ...
         [bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-pial.obj']});
 
-end
-
-% load profiles
+%% Analysis
+% load staining intensity profiles
 MP = reshape(dlmread([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_desc-profiles.txt']),[], 50)';
 
+% create a parcellation on BigBrain based on morphometry
+% downsampling is necessary to calculate correlations between profiles across whole cortex
+% the output is provided in BigBrainWarp and may be directly loaded. If so,
+% set run_downsample to 0 (see line 6).
 if run_downsample == 1    
     % mesh decimation
     numFaces= 20484;
@@ -54,11 +57,50 @@ else
 end
 
 % mpc and gradient
-MPC = build_mpc(MP,nn_bb);
-normangle = connectivity2normangle(MPC, 0);
-[embedding, results] = mica_diffusionEmbedding(normangle, 'ncomponents', 10);
+MPC = build_mpc(MP,nn_bb); % parcellate profiles and perform partial correlation
+normangle = connectivity2normangle(MPC, 0); % convert to normalised angle matrix
+[embedding, results] = mica_diffusionEmbedding(normangle, 'ncomponents', 10); % diffusion map embedding. Eigenvectors ("gradients") are in the embedding output
 
-% write out
+%% Visualisation
+f = figure('units','centimeters','outerposition',[0 0 20 20]);
+
+% profiles
+% for two parcels (in this example 1 and 4), plots the mean profile and the
+% individual profiles
+% uses "lapaz", "vik" and "roma" colormaps - https://www.fabiocrameri.ch/colourmaps/
+a(1) = axes('position', [0.1 0.6 0.15 0.3]);
+ubb = unique(nn_bb);
+plot(MP(:,nn_bb==ubb(1))*-1, flip(1:50),'--', 'Color', lapaz(50,:), 'LineWidth', 0.001)
+alpha 0.5
+hold on
+plot(mean(MP(:,nn_bb==ubb(1))*-1,2), flip(1:50), 'LineWidth', 1.5, 'Color', lapaz(20,:))
+plot(MP(:,nn_bb==ubb(4))*-1, flip(1:50),'--', 'Color', lapaz(150,:), 'LineWidth', 0.001)
+alpha 0.5
+hold on
+plot(mean(MP(:,nn_bb==ubb(4))*-1,2), flip(1:50), 'LineWidth', 1.5, 'Color', lapaz(50,:))
+ylim([1 51])
+
+% MPC matrix (ordered by first eigenvector)
+a(2) = axes('position', [0.3 0.6 0.3 0.3]);
+[~, idx] = sort(embedding(:,1));
+imagesc(MPC(idx,idx)); axis off
+camroll(45)
+colormap(a(2), vik)
+
+% pseudo-variance explained
+a(3) = axes('position', [0.7 0.6 0.15 0.3]);
+scatter(1:10, results.lambdas(1:10)/sum(results.lambdas), ...
+            20, [0.5 0.5 0.5], 'filled', 'MarkerEdgeColor', 'k')
+
+% eigenvectors on the cortical surface
+GOnSurf = BoSurfStatMakeParcelData(embedding(:,1), BB, nn_bb); % expand from parcels to vertices
+BoSurfStat_calibrate4Views(GOnSurf, BB, ...
+        [0.4 0.3 0.2 0.2; 0.4 0.1 0.2 0.2; ...
+        0.58 0.1 0.2 0.2; 0.58 0.3 0.2 0.2], ...
+        1:4, [min(embedding(:,1)) max(embedding(:,1))], roma)
+
+%% Export
+% write out as text files for BigBrainWarp
 for ii = 1:2
     Gmpc = BoSurfStatMakeParcelData(embedding(:,ii), BB, nn_bb);
     lhOut = [bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-Hist_G' num2str(ii) '.txt'];
