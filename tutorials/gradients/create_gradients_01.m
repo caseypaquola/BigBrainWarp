@@ -1,17 +1,17 @@
 %% Initialise Project
-    
-    GH          = '/location/of/github/repos/';
-    bbwDir      = [GH '/BigBrainWarp/'];
-    
-    run_downsample = 0; % option turn off downsampling and uses the precomputed version in BigBrainWarp. Downsampling takes ~15minutes. 
-    
-    % addpaths
-    addpath([bbwDir '/scripts/']);
-    addpath(genpath([GH '/micaopen/'])); % https://github.com/MICA-MNI/micaopen
 
-    % load surface
-    BB = SurfStatAvSurf({[bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-pial.obj'], ...
-        [bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-pial.obj']});
+GH          = '/location/of/github/repos/';
+bbwDir      = [GH '/BigBrainWarp/'];
+
+run_downsample = 0; % option turn off downsampling and uses the precomputed version in BigBrainWarp. Downsampling takes ~15minutes.
+
+% addpaths
+addpath([bbwDir '/scripts/']);
+addpath(genpath([GH '/micaopen/'])); % https://github.com/MICA-MNI/micaopen
+
+% load surface
+BB = SurfStatAvSurf({[bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-L_desc-pial.obj'], ...
+    [bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_hemi-R_desc-pial.obj']});
 
 %% Analysis
 % load staining intensity profiles
