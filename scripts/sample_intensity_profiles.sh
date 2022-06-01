@@ -22,7 +22,7 @@ Example:
 sh sample_intensity_profiles.sh -in_vol full8_1000um_optbal.nii -upper_surf tpl-bigbrain_hemi-L_desc-pial.obj -lower_surf tpl-bigbrain_hemi-L_desc-white.obj -num_surf 50 -wd Output
 
 Output:
-profile.txt - microstructure profiles
+profiles.txt - microstructure profiles
 *.obj 	- equivolumetric surfaces, numbered by depth
 *.txt	- intensities per surface, numbered by depth
 
