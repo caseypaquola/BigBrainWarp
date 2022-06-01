@@ -19,7 +19,7 @@ Requirements:
 minc, numpy
 
 Example:
-sh sample_intensity_profiles.sh -in_vol full8_1000um_optbal.nii -upper_surf tpl-bigbrain_hemi-L_desc-pial.obj -lower_surf tpl-bigbrain_hemi-L_desc-white.obj -num_surf 50 -wd Output
+sh sample_intensity_profiles.sh -in_vol full8_1000um_optbal.mnc -upper_surf tpl-bigbrain_hemi-L_desc-pial.obj -lower_surf tpl-bigbrain_hemi-L_desc-white.obj -num_surf 50 -wd Output
 
 Output:
 profiles.txt - microstructure profiles
