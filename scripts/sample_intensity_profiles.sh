@@ -13,6 +13,18 @@ echo -e "
 \t\033[38;5;197m-lower_surf\033[0m              : lower surface. Must be aligned to the volume and an .obj
 \t\033[38;5;197m-num_surf\033[0m              	: number of surfaces to generate
 \t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
+\t
+
+Requirements:
+minc, numpy
+
+Example:
+sh sample_intensity_profiles.sh -in_vol full8_1000um_optbal.nii -upper_surf tpl-bigbrain_hemi-L_desc-pial.obj -lower_surf tpl-bigbrain_hemi-L_desc-white.obj -num_surf 50 -wd Output
+
+Output:
+profile.txt - microstructure profiles
+*.obj 	- equivolumetric surfaces, numbered by depth
+*.txt	- intensities per surface, numbered by depth
 
 Casey Paquola, MNI, MICA Lab, 2021
 https://bigbrainwarp.readthedocs.io/
