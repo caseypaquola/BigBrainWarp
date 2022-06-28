@@ -40,16 +40,8 @@ In this tutorial, we'd like to test the distinguishability of the functional net
     	names = [lh.labels.name rh.labels.name];
 
 	% load BigBrain profiles and calculate moments
-	MP = reshape(dlmread([bbwDir '/spaces/bigbrain/profiles.txt']),[], 50)';
-	MP = MP*-1;
-	MPmoments(1,:) = mean(MP);
-	MPmoments(2,:) = std(MP);
-	MPmoments(3,:) = skewness(MP);
-	MPmoments(4,:) = kurtosis(MP);
-	MPmoments(5,:) = mean(diff(MP));
-	MPmoments(6,:) = std(diff(MP);
-	MPmoments(7,:) = skewness(diff(MP));
-	MPmoments(8,:) = kurtosis(diff(MP));
+	MP = 65536 - reshape(dlmread([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_desc-profiles.txt']),[], 50)';
+	MPmoments = calculate_moments(MP); % caution will take ~60 minutes to run with 10 parallel workers
 	writetable(table(MPmoments', parc_bb, 'VariableNames', {'mo', 'yeo'}), ...
 		    [projDir '/output/yeo17_moments.csv'])
 
