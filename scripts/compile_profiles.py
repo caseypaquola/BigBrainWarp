@@ -13,6 +13,6 @@ tmp=numpy.loadtxt(out_dir + "1.txt")
 # load all the surfaces and construct profiles
 profiles = numpy.zeros([num_surf, tmp.shape[0]])
 for i in range(0,num_surf):
-    profiles[i,:] = numpy.loadtxt(out_dir + str(i+1) + ".txt")
+    profiles[i,:] = numpy.loadtxt(out_dir + str(i) + ".txt")
 
 numpy.savetxt(out_dir + "profiles.txt", profiles, delimiter=',')
