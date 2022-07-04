@@ -74,14 +74,14 @@ if [[ ! -d "$bbwDir"/scripts/surface_tools/ ]] ; then
 fi
 cd "$bbwDir"/scripts/surface_tools/equivolumetric_surfaces/
 
-python generate_equivolumetric_surfaces.py "$upper_surf" "$lower_surf" "$num_surf" "$out_dir"
-x=$(ls -t "$out_dir"*.obj) # orders my time created
+python generate_equivolumetric_surfaces.py "$upper_surf" "$lower_surf" "$num_surf" "$wd"
+x=$(ls -t "$wd"*.obj) # orders my time created
 for n in $(seq 1 1 "$num_surf") ; do
 	echo "$n"
 	which_surf=$(sed -n "$n"p <<< "$x")
 	# make numbering from upper to lower
 	let "nd = "$num_surf" - "$n""
-	volume_object_evaluate "$in_vol" "$which_surf" "$out_dir"/"$nd".txt
+	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt
 done
 
 cd "$bbwDir"/scripts/
