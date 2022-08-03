@@ -1,11 +1,11 @@
 How to cite BigBrainWarp
 ====================================
 
-*A manuscript accompanying BigBrainWarp is up on biorxiv ✨ Please cite it if you use the toolbox:*
+*A manuscript accompanying BigBrainWarp is published in eLife ✨ Please cite it if you use the toolbox :*
 
 BigBrainWarp: Toolbox for integration of BigBrain 3D histology with mutlimodal neuroimaging
 Casey Paquola, Jessica Royer, Lindsay B Lewis, Claude Lepage, Tristan Glatard, Konrad Wagstyl, Jordan DeKraker, Paule-J Toussaint, Sofie Louise Valk, D. Louis Collins, Ali Khan, Katrin Amunts, Alan C Evans, Timo Dickscheid, Boris Bernhardt
-bioRxiv 2021.05.04.442563; doi: https://doi.org/10.1101/2021.05.04.442563
+eLife; https://doi.org/10.7554/eLife.70119
 
 *If you use BigBrain, please cite:*
 

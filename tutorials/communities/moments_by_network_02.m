@@ -17,17 +17,8 @@ parc = [lh.cdata; rh.cdata];
 names = [lh.labels.name rh.labels.name];
 
 % moments 
-MP = reshape(dlmread([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_desc-profiles.txt']),[], 50)';
-MP = MP*-1;
-MPmoments(1,:) = mean(MP);
-MPmoments(2,:) = std(MP);
-MPmoments(3,:) = skewness(MP);
-MPmoments(4,:) = kurtosis(MP);
-MPmoments(5,:) = mean(diff(MP));
-MPmoments(6,:) = std(diff(MP));
-MPmoments(7,:) = skewness(diff(MP));
-MPmoments(8,:) = kurtosis(diff(MP));
-MPmoments = zscore(MPmoments);
+MP = 65536 - reshape(dlmread([bbwDir '/spaces/tpl-bigbrain/tpl-bigbrain_desc-profiles.txt']),[], 50)';
+MPmoments = calculate_moments(MP); % caution will take ~60 minutes to run with 10 parallel workers
 
 % create cross folds 
 folds = 10;

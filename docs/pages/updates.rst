@@ -5,6 +5,29 @@
 Updates
 ==================
 
+June 28, 2022
+------------------------------------------
+
+Added documentation on the approximate variance explained by each eigenvector
+
+::
+
+    ↪ updated  "Toolbox contents" page		                    |  @caseypaquola
+
+
+
+June 28, 2022
+------------------------------------------
+
+New method implemented to calculate moments from microstructure profiles
+
+::
+
+    ↪ added scripts/calculate_moments.m		                    |  @caseypaquola
+    ↪ amended communities tutorial	                            |  @caseypaquola
+
+
+
 November 10, 2021
 ------------------------------------------
 

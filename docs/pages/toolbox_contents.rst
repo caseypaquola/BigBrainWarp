@@ -24,13 +24,13 @@ Datasets
      - continuous surface that includes isocortex and allocortex (hippocampus) from `Paquola et al., 2020 <https://elifesciences.org/articles/60673>`_. Only available for the right hemisphere. 
      - bigbrain
    * - Hist-G*
-     - first two eigenvectors of cytoarchitectural differentiation derived from BigBrain 
+     - first two eigenvectors of cytoarchitectural differentiation derived from BigBrain, accounting for approximately 41.9 and 29.5% of variance, respectively. 
      - bigbrain, fsaverage, fs_LR (164k and 32k), icbm
    * - Micro-G*
-     - first two eigenvector of microstructural differentiation derived from quantitative in-vivo T1 imaging
+     - first two eigenvector of microstructural differentiation derived from quantitative in-vivo T1 imaging, accounting for approximately 59.0 and 10.5% of variance, respectively.
      - bigbrain, fsaverage
    * - Func-G*
-     - first three eigenvectors of functional differentiation derived from rs-fMRI
+     - first three eigenvectors of functional differentiation derived from rs-fMRI, accounting for approximately 12.9, 6.5 and 5.3% of variance, respectively.
      - bigbrain, fsaverage
    * - Yeo2011_7Networks_N1000
      - 7 functional clusters from `Yeo & Krienen et al., 2011 <https://doi.org/10.1152/jn.00338.2011>`_
