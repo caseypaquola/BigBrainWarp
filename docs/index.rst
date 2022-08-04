@@ -102,8 +102,8 @@ ________________________________________________________________________________
 Core developers 
 ------------------
 
-- Casey Paquola, INM-1, Forschungszentrum Jülich & MICA Lab, Montreal Neurological Institute
-- Boris Bernhardt, MICA Lab, Montreal Neurological Institute
+- Casey Paquola, INM-1, Forschungszentrum Jülich (https://multiscale-neuroanatomy.github.io/) & MICA Lab, Montreal Neurological Institute
+- Boris Bernhardt, MICA Lab, Montreal Neurological Institute (https://mica-mni.github.io/)
 
 
 Please drop us a line if you're interested in contributing!
