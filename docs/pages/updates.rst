@@ -5,7 +5,18 @@
 Updates
 ==================
 
-June 28, 2022
+August 4th, 2022
+------------------------------------------
+
+Added bigbrain-transformed Desikan-Killany ("aparc") parcellation, fixed a bug in surface-transformations, updated tutorials.
+
+::
+
+    ↪ added  *aparc.label.gii to space/tpl-bigbrain		        |  @caseypaquola
+    ↪ updated tutorials in readthedocs and code examples		|  @caseypaquola
+
+
+July 28, 2022
 ------------------------------------------
 
 Added documentation on the approximate variance explained by each eigenvector
