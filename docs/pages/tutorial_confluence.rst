@@ -62,7 +62,10 @@ Next, we nonlinearly transform the volume from BigBrain to ICBM152. This can be 
 
 .. code-block:: bash
 
-	bigbrainwarp --in_space bigbrain --out_space icbm --wd /project/ --in_vol bigbrain_axis_vox.nii --interp trilinear
+	bigbrainwarp --in_space bigbrain --out_space icbm --wd /local_directory/for/output/ \
+		--in /full/path/to/histological_axis_vox.nii \
+		--desc confluence \
+		--interp trilinear
 
 
 .. figure:: ./images/tutorial_confluence_b.png
