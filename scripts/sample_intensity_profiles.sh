@@ -74,15 +74,16 @@ if [[ ! -d "$bbwDir"/scripts/surface_tools/ ]] ; then
 fi
 cd "$bbwDir"/scripts/surface_tools/equivolumetric_surfaces/
 
+# generate intracortical surfaces
 python generate_equivolumetric_surfaces.py "$upper_surf" "$lower_surf" "$num_surf" "$wd"
-x=$(ls -t "$wd"*.obj) # orders my time created
+x=$(ls -t "$wd"*.obj) # order surfaces by time created
 for n in $(seq 1 1 "$num_surf") ; do
 	echo "$n"
 	which_surf=$(sed -n "$n"p <<< "$x")
 	# make numbering from upper to lower
 	let "nd = "$num_surf" - "$n""
-	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt
+	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt # samples volume intensities based on coordinates in the intracortical surfaces
 done
 
 cd "$bbwDir"/scripts/
-python compile_profiles.py "$wd" "$num_surf"
+python compile_profiles.py "$wd" "$num_surf" # organises the output in a nice, simple table
