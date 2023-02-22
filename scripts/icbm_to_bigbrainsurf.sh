@@ -21,7 +21,7 @@ if [[ "$extension" == "mnc" ]] ; then
    	mnc2nii "$in_vol" "$wd"/tpl-icbm_desc-"$desc".nii
 elif [[ "$extension" == "gz" ]] ; then
 	file_name=""$file_name%.*""
-	gunzip "$in_vol" "$wd"/tpl-icbm_desc-"$desc".nii
+	gunzip -c "$in_vol" > "$wd"/tpl-icbm_desc-"$desc".nii
 elif [[ "$extension" == "nii" ]] ; then
 	cp "$in_vol" "$wd"/tpl-icbm_desc-"$desc".nii
 else
