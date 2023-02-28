@@ -47,7 +47,7 @@ if [[ "$out_res" != "1" ]] ; then
 ​
     dx_input=$(mincinfo "$ref_volume" -dimlength xspace)
     dy_input=$(mincinfo "$ref_volume" -dimlength yspace)
-    dz_input=$(mincinfo "$ref_volume"-dimlength zspace)
+    dz_input=$(mincinfo "$ref_volume" -dimlength zspace)
 ​
     # Compute output dimension
     dx_output=$(echo "$dx_input * $vx_input / ${out_res}" | bc); dx_output=${dx_output#-}
