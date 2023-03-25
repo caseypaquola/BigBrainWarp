@@ -84,9 +84,9 @@ for n in $(seq 1 1 "$num_surf") ; do
 	which_surf=$(sed -n "$n"p <<< "$x")
 	# numbers surfaces from upper to lower
 	let "nd = "$num_surf" - "$n""
-	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt # minc tool to extract intensities along a surface mesh, like vol2surf
+	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt # samples volume intensities based on coordinates in the intracortical surfaces
 done
 
 # organises the intensities into a matrix of depth x vertex
 cd "$bbwDir"/scripts/
-python compile_profiles.py "$wd" "$num_surf"
+python compile_profiles.py "$wd" "$num_surf" # organises the output in a nice, simple table

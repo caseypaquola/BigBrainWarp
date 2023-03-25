@@ -11,10 +11,9 @@ The transformation from fsaverage to the BigBrain surface can be conducted in Bi
 
 .. code-block:: bash
 
-	bigbrainwarp --in_space fsaverage --out_space bigbrain --wd /project/ \
-	--in_lh lh.Yeo2011_17Networks_N1000.annot \
-	--in_rh lh.Yeo2011_17Networks_N1000.annot \
-	--out_name Yeo2011_17Networks_N1000
+	bigbrainwarp --in_space fsaverage --out_space bigbrain --wd /local/directory/for/output/ \
+                --in_lh /full/path/to/lh.Yeo2011_17Networks_N1000.annot --in_rh /full/path/to/rh.Yeo2011_17Networks_N1000.annot \
+                --desc Yeo2011_17Networks_N1000
 
 .. image:: ./images/tutorial_communities_a.png
    :height: 350px

@@ -28,7 +28,7 @@ elif [[ "$extension" == "nii" ]] ; then
 elif [[ "$extension" == "gz" ]] ; then
 	echo "transforming nii to mnc"
 	file_name=""$file_name%.*""
-	gunzip "$in_vol" "$wd"/tpl-icbm_desc-"$desc".nii
+	gunzip -c "$in_vol" > "$wd"/tpl-icbm_desc-"$desc".nii
 	if [[ -f "$wd"/tpl-icbm_desc-"$desc".mnc ]] ; then
 		rm "$wd"/tpl-icbm_desc-"$desc".mnc
 	fi
