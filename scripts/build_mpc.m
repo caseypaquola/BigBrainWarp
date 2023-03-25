@@ -49,7 +49,7 @@ else
     szZ = [size(MP,1) size(MP,1)];
 end
              
-if nnz(isnan(I)) > 0
+if nnz(isnan(MP)) > 0
     
     disp('warning: problem with parcellation, mpc will be NaNs')
     MP = NaN(szI);

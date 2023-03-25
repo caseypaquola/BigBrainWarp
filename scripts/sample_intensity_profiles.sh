@@ -9,10 +9,10 @@ echo -e "
    $(basename "$0")
 \033[38;5;141mREQUIRED ARGUMENTS:\033[0m
 \t\033[38;5;197m-in_vol\033[0m 	      		: input volume to be sampled. Must be .mnc
-\t\033[38;5;197m-upper_surf\033[0m 	      	: upper surface. Must be aligned to the volume and an .obj
-\t\033[38;5;197m-lower_surf\033[0m              : lower surface. Must be aligned to the volume and an .obj
-\t\033[38;5;197m-num_surf\033[0m              	: number of surfaces to generate
-\t\033[38;5;197m-wd\033[0m 	              	: Path to a working directory, where data will be output
+\t\033[38;5;197m-upper_surf\033[0m 	      : upper surface. Must be aligned to the volume and an .obj
+\t\033[38;5;197m-lower_surf\033[0m        : lower surface. Must be aligned to the volume and an .obj
+\t\033[38;5;197m-num_surf\033[0m          : number of surfaces to generate
+\t\033[38;5;197m-wd\033[0m 	              : Path to a working directory, where data will be output
 \t
 
 Requirements:
@@ -74,15 +74,19 @@ if [[ ! -d "$bbwDir"/scripts/surface_tools/ ]] ; then
 fi
 cd "$bbwDir"/scripts/surface_tools/equivolumetric_surfaces/
 
+# generate intracortical cortical surfaces using an equivolumetric algorithm
 python generate_equivolumetric_surfaces.py "$upper_surf" "$lower_surf" "$num_surf" "$wd"
-x=$(ls -t "$wd"*.obj) # orders my time created
+
+x=$(ls -t "$wd"*.obj) # orders surfaces by time created
+# loop through cortical depths and extract volume intensity at each vertex of each surface
 for n in $(seq 1 1 "$num_surf") ; do
 	echo "$n"
 	which_surf=$(sed -n "$n"p <<< "$x")
-	# make numbering from upper to lower
+	# numbers surfaces from upper to lower
 	let "nd = "$num_surf" - "$n""
-	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt
+	volume_object_evaluate "$in_vol" "$which_surf" "$wd"/"$nd".txt # minc tool to extract intensities along a surface mesh, like vol2surf
 done
 
+# organises the intensities into a matrix of depth x vertex
 cd "$bbwDir"/scripts/
 python compile_profiles.py "$wd" "$num_surf"
