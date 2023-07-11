@@ -27,10 +27,10 @@ Datasets
      - first two eigenvectors of cytoarchitectural differentiation derived from BigBrain, accounting for approximately 41.9 and 29.5% of variance, respectively. 
      - bigbrain, fsaverage, fs_LR (164k and 32k), icbm
    * - Micro-G*
-     - first two eigenvector of microstructural differentiation derived from quantitative in-vivo T1 imaging, accounting for approximately 59.0 and 10.5% of variance, respectively.
+     - first two eigenvector of microstructural differentiation derived from quantitative in-vivo T1 imaging of healthy adults (MICs dataset), accounting for approximately 59.0 and 10.5% of variance, respectively.
      - bigbrain, fsaverage
    * - Func-G*
-     - first three eigenvectors of functional differentiation derived from rs-fMRI, accounting for approximately 12.9, 6.5 and 5.3% of variance, respectively.
+     - first three eigenvectors of functional differentiation derived from rs-fMRI of healthy adults (MICs dataset), accounting for approximately 12.9, 6.5 and 5.3% of variance, respectively.
      - bigbrain, fsaverage
    * - Yeo2011_7Networks_N1000
      - 7 functional clusters from `Yeo & Krienen et al., 2011 <https://doi.org/10.1152/jn.00338.2011>`_
@@ -93,6 +93,10 @@ BigBrainWarp depends upon collation of data from various sources. We’ll refere
      -  Volume-based transformation matrices for BigBrainSym. (Not stored in BigBrainWarp repository; automatically pulled with initialisation). 
      - `https://packages.bic.mni.mcgill.ca/mni-models/PD25/ <https://packages.bic.mni.mcgill.ca/mni-models/PD25/>`_
      - `Xiao et al., 2019 <https://doi.org/10.1038/s41597-019-0217-0>`_
+   * - MICs dataset
+     -  In-vivo imaging dataset of 50 healthy adults that was used to create microstructural and functional gradients
+     - `https://portal.conp.ca/dataset?id=projects/mica-mics>`_
+     - `Royer et al., 2022 <https://doi.org/10.1038/s41597-022-01682-y>`_
    * - Diedrichsen Lab Github
      - Inflated, sphere and reference sulcus surface maps for fs_LR 32k
      - `https://github.com/DiedrichsenLab/fs_LR_32 <https://github.com/DiedrichsenLab/fs_LR_32>`_
