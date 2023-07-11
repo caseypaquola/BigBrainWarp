@@ -34,7 +34,6 @@ This repository includes:
 
 - Preprocessed BigBrain features and in-vivo imaging features projected into BigBrain space (direct download from https://fz-juelich.sciebo.de/s/pFu9XfNonT65HpS/download)
 - Simple scripts to transform between BigBrain and standard MRI spaces
-- A selection of histology-derived feature maps already transformed to MRI space, and vice versa
 - A series of tutorials that illustrate potential workflows for BigBrain-MRI integration
 
 **See the article (https://elifesciences.org/articles/70119) or readthedocs (https://bigbrainwarp.readthedocs.io/) for all your BigBrainWarp needs**
