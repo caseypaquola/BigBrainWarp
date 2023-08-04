@@ -41,6 +41,6 @@ This repository includes:
 Core developers
 -----------------------
 
-- Casey Paquola, INM-1, Forschungszentrum Jülich & MICA Lab, Montreal Neurological Institute
+- Casey Paquola, INM-7, Forschungszentrum Jülich & MICA Lab, Montreal Neurological Institute
 - Boris Bernhardt, MICA Lab, Montreal Neurological Institute
 
